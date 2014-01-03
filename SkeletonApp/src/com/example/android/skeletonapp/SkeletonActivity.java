@@ -45,7 +45,7 @@ public class SkeletonActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+	//asdfasdfasdfasdfasdfasdf
         // Inflate our UI from its XML layout description.
         setContentView(R.layout.skeleton_activity);
 
