@@ -21,6 +21,8 @@
             android:layout_centerVertical="true"
             android:text="注册"
             android:textColor="#ffffff"
-            android:textSize="22sp" />
+            android:textSize="22sp" 
+            android:id="@+id/tv_title"
+            />
     </RelativeLayout>
 </merge>
