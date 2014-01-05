@@ -1,5 +1,9 @@
 package com.example.youlian;
 
+/**
+ * 全局公共类
+ *
+ */
 public class Global {
 	public static final int TEMPLATE_ONE = 1;
 	public static final int TEMPLATE_TWO = 2;
