@@ -26,7 +26,7 @@ public class YouLianHttpApi {
 	
 	
 	/**
-	 * »ñÈ¡Ö÷Ìâ»î¶¯
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½î¶¯
 	 * @param id
 	 * @param successListener
 	 * @param errorListener
@@ -40,8 +40,21 @@ public class YouLianHttpApi {
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
 		queue.add(myReq);
-		
 	}
+	
+	
+	public static void getMemberCard(String userToken, String cityId, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.cards.get";
+		
+		String url = getUrl("user_token", userToken, "city_id", cityId, KEY_SERVER, server, KEY_CLIENT_TYPE,"android");
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 	
 	public static String getUrl(String... keyValues) {
 		// get base url

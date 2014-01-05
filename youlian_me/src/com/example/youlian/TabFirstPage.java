@@ -5,9 +5,13 @@ import java.util.List;
 import org.json.JSONException;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.android.volley.Response;
@@ -21,10 +25,11 @@ import com.example.youlian.view.TemplateThree;
 import com.example.youlian.view.TemplateTwo;
 
 
-public class TabFirstPage extends Activity  {
+public class TabFirstPage extends Activity implements OnClickListener {
 	
 	protected static final String TAG = "TabPie";
 	private LinearLayout container;
+	private Button bt_membercard;
 
 
 	@Override
@@ -44,6 +49,21 @@ public class TabFirstPage extends Activity  {
 	
 	private void initViews() {
 		container = (LinearLayout)this.findViewById(R.id.container);
+		bt_membercard = (Button)this.findViewById(R.id.bt_membercard);
+		bt_membercard.setOnClickListener(this);
+	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.bt_membercard:
+			Intent i = new Intent(getApplicationContext(), MembershipActivity.class);
+			startActivity(i);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 
