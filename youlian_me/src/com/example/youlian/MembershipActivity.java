@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.view.Menu;
 
 public class MembershipActivity extends Activity {
+  // ª·‘±ø®
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
