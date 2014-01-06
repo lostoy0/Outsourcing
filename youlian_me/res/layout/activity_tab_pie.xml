@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_title" >
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/select_btn_scan" />
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="@drawable/search_edit"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_weight="0.1"
+                    android:src="@drawable/ads_search" />
+
+                <EditText
+                    android:id="@+id/search_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:background="@null"
+                    android:hint="请输入商家名称"
+                    android:textColorHint="@color/grey"
+                    android:textSize="18dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="乌鲁木齐" />
+
+                <ImageView
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:background="@drawable/arror" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <!-- 会员卡  优惠券  热狗 -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/hotbuy_margin_top" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:layout_width="@dimen/hotbuy_size"
+                    android:layout_height="@dimen/hotbuy_size"
+                    android:background="@drawable/select_btn_memenber" 
+                    android:id="@+id/bt_membercard"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:layout_width="@dimen/hotbuy_size"
+                    android:layout_height="@dimen/hotbuy_size"
+                    android:background="@drawable/select_btn_coupon" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:layout_width="@dimen/hotbuy_size"
+                    android:layout_height="@dimen/hotbuy_size"
+                    android:background="@drawable/select_btn_hotbuy" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 活动  商家 -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/hotbuy_margin_top" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/select_btn_huodong"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="30dp"
+                    android:text="活动" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="精彩活动，尽在优联" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/select_btn_shangjia"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="30dp"
+                    android:text="商家" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="优品质，联系我" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 广告图 -->
+
+        <!-- <com.example.youlian.view.TemplateOne
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:layout_marginTop="@dimen/hotbuy_margin_top"
+            android:background="@drawable/guanggao" /> -->
+
+        <!-- 超级吃货 -->
+
+       <!--  <com.example.youlian.view.TemplateTwo
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" /> -->
+
+        <!-- 超爱电影 -->
+
+       <!--  <com.example.youlian.view.TemplateThree
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" /> -->
+        
+       <!--  <com.example.youlian.view.TemplateFour
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" />
+
+         <com.example.youlian.view.TemplateFive
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" />
+        
+        <com.example.youlian.view.TemplateSix
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" /> -->
+        
+       
+    </LinearLayout>
+
+</ScrollView>

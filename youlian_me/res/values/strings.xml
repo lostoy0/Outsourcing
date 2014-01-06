@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">youlian_me</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    
+    <string name="error_timeout">读取数据超时</string>
+    <string name="error_noconnection">服务器异常</string>
+    <string name="error_authfailure">鉴权失败</string>
+    <string name="error_network">网络错误</string>
+    <string name="unknown_error">未知错误</string>
+    
+    <string name="all_area">全部区域</string>
+    <string name="all_sort">全部分类</string>
+    <string name="hot">热门</string>
+    <string name="membership">会员卡</string>
+
+</resources>

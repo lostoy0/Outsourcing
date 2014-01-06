@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="white">#FFFFFF</color>
+	<color name="black">#000000</color>
+	<color name="grey">#CCCCCC</color>
+	<color name="red">#ff5a00</color>
+	<color name="yello">#EEEE00</color>
+	<color name="oragne">#FF7F00</color>
+	<color name="blue">#366000</color>
+	<color name="green">#FF578600</color>
+	<color name="pink">#FFFAFA</color>
+	<color name="black_2">#494949</color>
+
+	<color name="title_start">#99000000</color>
+	<color name="title_end">#759F9F9F</color>
+	<color name="nav_start">#99000000</color>
+	<color name="nav_end">#759F9F9F</color>
+	<color name="content">#FF333333</color>
+	<color name="item_bar">#FF2F2A2D</color>
+	<color name="item_bar_transparency">#992F2A2D</color>
+	<color name="item_content">#FFC2C2C2</color>
+	<color name="item_title">#FFBD0447</color>
+
+	<color name="submit_begin">#88000000</color>
+	<color name="submit_end">#66000000</color>
+
+	<color name="glass">#16FFFFFF</color>
+	<color name="divider">#22000000</color>
+	<color name="highline">#88FFFFFF</color>
+
+	<color name="text_app_title">#FFD0E0ED</color>
+	<color name="text_title">#FF1C7CB2</color>
+	<color name="text_dialog_content">#FF1C7CB2</color>
+	<color name="text_detail_content">#FFA0A0A0</color>
+
+	<color name="dullred">#FF494146</color>
+	<color name="dullblack">#FF2B2B2B</color>
+
+	<color name="transparency">#00FFFFFF</color>
+	<color name="progress_background_start">#FF0D64AD</color>
+	<color name="progress_background_end">#FF0D64AD</color>
+	<color name="progress_background_center">#FF1D84C3</color>
+	<color name="dialog_background_tips">#FFEB8317</color>
+	<color name="title">#D02080</color>
+
+	<!-- TextView -->
+	<color name="pinkcolor">#CA46C4</color>
+
+	<!-- bg color -->
+<!-- 	<color name="vipshop_bg_color">#FFFFFF</color> -->
+<!-- 	<color name="vippurchase_bg_color">#FFFFFF</color> -->
+<!-- 	<color name="vipclub_bg_color">#2E2E2E</color> -->
+
+
+	<color name="vipshop_title_bg_color">#ECECEC</color>
+	<color name="vippurchase_title_bg_color">#ECECEC</color>
+	<color name="vipclub_title_bg_color">#2E2E2E</color>
+
+	<color name="vip_n">#8F8F8F</color>
+	<color name="vip_y">#4A4A4A</color>
+	<color name="vip_y_">#FFFFFF</color>
+	 <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="help_button_view">#ffcccccc</color>
+    <color name="help_view">#ff404040</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="result_image_border">#ffffffff</color>
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c000ff00</color>
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="sbc_header_text">#ff808080</color>
+    <color name="sbc_header_view">#ffffffff</color>
+    <color name="sbc_list_item">#fffff0e0</color>
+    <color name="sbc_layout_view">#ffffffff</color>
+    <color name="sbc_page_number_text">#ff000000</color>
+    <color name="sbc_snippet_text">#ff4b4b4b</color>
+    <color name="share_text">#ff000000</color>
+    <color name="share_view">#ffffffff</color>
+    <color name="status_view">#50000000</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="viewfinder_frame">#ff88ae00</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+</resources>
