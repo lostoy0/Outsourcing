@@ -30,6 +30,7 @@ public class TabFirstPage extends Activity implements OnClickListener {
 	protected static final String TAG = "TabPie";
 	private LinearLayout container;
 	private Button bt_membercard;
+	private Button bt_youhuiquan;
 
 
 	@Override
@@ -51,6 +52,10 @@ public class TabFirstPage extends Activity implements OnClickListener {
 		container = (LinearLayout)this.findViewById(R.id.container);
 		bt_membercard = (Button)this.findViewById(R.id.bt_membercard);
 		bt_membercard.setOnClickListener(this);
+		
+		bt_youhuiquan = (Button)this.findViewById(R.id.bt_youhuiquan);
+		bt_youhuiquan.setOnClickListener(this);
+		
 	}
 	
 	@Override
@@ -60,7 +65,11 @@ public class TabFirstPage extends Activity implements OnClickListener {
 			Intent i = new Intent(getApplicationContext(), MembershipActivity.class);
 			startActivity(i);
 			break;
-
+		case R.id.bt_youhuiquan:
+			 i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
+			startActivity(i);
+			break;
+			
 		default:
 			break;
 		}

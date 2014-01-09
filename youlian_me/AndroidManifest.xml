@@ -35,6 +35,7 @@
         <activity android:name=".TabSign"></activity>
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".MembershipActivity"></activity>
+        <activity android:name=".YouhuiQuanActivity"></activity>
         
     </application>
 
