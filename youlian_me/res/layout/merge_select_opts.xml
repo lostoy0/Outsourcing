@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout
+        android:id="@+id/tab_btn_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+	    <LinearLayout 
+	        android:orientation="horizontal"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/select_foot_bg"
+	        android:layout_gravity="bottom">
+	        
+	        <Button
+	            android:id="@+id/btn_pie"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_weight="1"
+	            android:paddingTop="4dp"
+	            android:text="首页"
+	            android:singleLine="true"
+	            android:textSize="10sp"
+	            android:background="@drawable/bottom_button_bg"
+	            android:drawableTop="@drawable/select_btn_pie"
+	            android:textColor="@android:color/white"/>
+	        
+	        <Button
+	            android:id="@+id/btn_tier"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_weight="1"
+	            android:paddingTop="4dp"
+	            android:text="签到"
+	            android:singleLine="true"
+	            android:textSize="10sp"
+	            android:background="@drawable/bottom_button_bg"
+	            android:drawableTop="@drawable/select_btn_tier"
+	            android:textColor="@android:color/white"
+	            style="@android:style/TextAppearance.Small"/>
+	            
+	        <Button
+	            android:id="@+id/btn_wigame"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_weight="1"
+	            android:paddingTop="4dp"
+	            android:text="我的"
+	            android:singleLine="true"
+	            android:textSize="10sp"
+	            style="@android:style/TextAppearance.Small"
+	            android:background="@drawable/bottom_button_bg"
+	            android:drawableTop="@drawable/btn_foot_wigame"
+	            android:textColor="@android:color/white"/>
+	        
+	        <Button
+	            android:id="@+id/btn_more"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_weight="1"
+	            android:paddingTop="4dp"
+	            android:text="更多"
+	            android:singleLine="true"
+	            android:textSize="10sp"
+	            style="@android:style/TextAppearance.Small"
+	            android:background="@drawable/bottom_button_bg"
+	            android:drawableTop="@drawable/select_btn_more"
+	            android:textColor="@android:color/white"/>
+	        
+	    </LinearLayout>
+	    <ImageView
+	       android:id="@+id/footer_light"
+	       android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/foot_bg_light"
+           android:layout_gravity="bottom" />
+    </FrameLayout>
+</merge>

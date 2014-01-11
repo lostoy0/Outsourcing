@@ -17,16 +17,32 @@ import com.example.youlian.app.MyVolley;
 public class YouLianHttpApi {
 	public static final String URL_ZHENSHI = "http://www.younion.com.cn/younionmember/router/router.action";
 	public static final String URL_TEST = "http://118.244.146.145:8080/younionmember/router.do";
-	
+	// http://test.younion.cn/younionmember/
 	
 	
 	public static final String KEY_SERVER = "service";
 	public static final String KEY_CLIENT_TYPE = "client_type";
 	private static final String TAG = "YouLianHttpApi";
 	
+	/**
+	 * 首页广告
+	 * @param zone
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getAdvertisement(String zone, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.advertisement.get";
+		String url = getUrl(KEY_SERVER, server, "zone",zone);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
 	
 	/**
-	 * ��ȡ����
+	 * 主题活动
 	 * @param id
 	 * @param successListener
 	 * @param errorListener
@@ -43,10 +59,28 @@ public class YouLianHttpApi {
 	}
 	
 	
+	public static void getAllactivitys(Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.allactivitys.get";
+		String url = getUrl(KEY_SERVER, server);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	
+	/**
+	 * 会员卡实体列表
+	 * @param userToken
+	 * @param cityId
+	 * @param successListener
+	 * @param errorListener
+	 */
 	public static void getMemberCard(String userToken, String cityId, Response.Listener<String> successListener,
 			Response.ErrorListener errorListener){
 		String server = "younion.cards.get";
-		
 		String url = getUrl("user_token", userToken, "city_id", cityId, KEY_SERVER, server, KEY_CLIENT_TYPE,"android");
 		Log.i(TAG, "url:" +  url);
 		RequestQueue queue = MyVolley.getRequestQueue();

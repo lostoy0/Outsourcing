@@ -62,7 +62,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 		listview = (ListView) this.findViewById(R.id.listview);
 		adapter = new MyAdapter(getApplicationContext());
 		listview.setAdapter(adapter);
-		listview.setVisibility(View.GONE);
+//		listview.setVisibility(View.GONE);
 		listview.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -84,7 +84,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 		listview_all = (ListView) this.findViewById(R.id.listview_all);
 		adapterAll = new MyAdapterAll(getApplicationContext());
 		listview_all.setAdapter(adapterAll);
-//		listview_all.setVisibility(View.GONE);
+		listview_all.setVisibility(View.GONE);
 	}
 
 	boolean exChange = true;
