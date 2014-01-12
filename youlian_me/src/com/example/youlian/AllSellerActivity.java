@@ -11,6 +11,7 @@ import com.example.youlian.view.ActLeft;
 import com.example.youlian.view.ActRight;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AllSellerActivity extends Activity implements OnClickListener {
 	protected static final String TAG = "AllSellerActivity";
@@ -77,10 +79,24 @@ public class AllSellerActivity extends Activity implements OnClickListener {
     	for(int i=0; i<5; i++){
     		ActLeft left = new ActLeft(getApplicationContext());
     		ActRight right = new ActRight(getApplicationContext());
+    		left.setData();
+    		left.setTag(i);
+    		left.setOnClickListener(onClickListener);
     		container_left.addView(left);
     		container_right.addView(right);
     	}
 	}
+    
+    private OnClickListener onClickListener = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			Integer tag = (Integer)v.getTag();
+			Log.i(TAG, "tag:" + tag);
+			Intent i = new Intent(getApplicationContext(), AllSellerDetailActivity.class);
+			startActivity(i);
+		}
+	};
 
 	private Response.ErrorListener createGetAdErrorListener() {
         return new Response.ErrorListener() {

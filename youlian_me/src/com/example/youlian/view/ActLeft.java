@@ -1,12 +1,16 @@
 package com.example.youlian.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.youlian.AllSellerDetailActivity;
 import com.example.youlian.R;
 
 public class ActLeft extends FrameLayout {
@@ -16,6 +20,8 @@ public class ActLeft extends FrameLayout {
 	private Context mContext = null;
 	
 	private ImageView iv;
+
+	private TextView tv_title;
 	
 
 	public ActLeft(Context context) {
@@ -44,8 +50,14 @@ public class ActLeft extends FrameLayout {
 				R.layout.item_act_left, null);
 
 		addView(view);
-//		iv = (ImageView) this.findViewById(R.id.iv);
+		iv = (ImageView) this.findViewById(R.id.iv_icon);
+		tv_title = (TextView) this.findViewById(R.id.tv_title);
 	}
+	
+	public void setData(){
+	}
+	
+	
 	
 	
 }

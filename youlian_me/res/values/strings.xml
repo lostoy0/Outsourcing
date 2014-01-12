@@ -18,5 +18,9 @@
     <string name="membership">会员卡</string>
     <string name="youhuiquan">优惠券</string>
     <string name="act">活动</string>
-
+<string name="category_more">更多</string>
+    <string name="share_info">亲，把您在优联的动态，与您的好友一起分享，一起享受优惠生活！设置好后,可绑定一键分享！</string>
+    <string name="retrieve_psd">输入注册时的手机号码，该手机号将会收到一条账号及密码信息的短信！</string>
+   <string name="capture_tip">请将条码置于取景框内扫描</string>
+   <string name="shared_set">分享设置</string>
 </resources>
