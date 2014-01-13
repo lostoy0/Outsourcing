@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:background="#ffffff"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  <TextView android:id="@+id/txt_title"
+  			android:layout_width="fill_parent"
+  			android:layout_height="48dip"
+  			android:textSize="22sp"
+  			android:gravity="center"
+  			android:textColor="#ffffff"
+  			/>
+   <!--  <WebView android:id="@+id/web_view"
+    		 android:layout_width="fill_parent"
+    		 android:layout_height="fill_parent"/> -->
+    		 <ScrollView 
+    		 android:layout_width="fill_parent"
+  			android:layout_height="fill_parent">
+  			
+    		  <TextView android:id="@+id/txt_content"
+  			android:layout_width="fill_parent"
+  			android:layout_height="wrap_content"
+  			android:textSize="16sp"
+  			android:padding="8dip"
+  			android:textColor="@color/black">
+  			</TextView>
+    		 </ScrollView>
+    	
+</LinearLayout>

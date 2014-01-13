@@ -58,7 +58,11 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
-	
+	/**
+	 * 所有商家活动
+	 * @param successListener
+	 * @param errorListener
+	 */
 	public static void getAllactivitys(Response.Listener<String> successListener,
 			Response.ErrorListener errorListener){
 		String server = "younion.allactivitys.get";
@@ -88,6 +92,23 @@ public class YouLianHttpApi {
 				successListener, errorListener);
 		queue.add(myReq);
 	}
+	
+	/**
+	 * 检查版本
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void checkVersion(Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.app.update";
+		String url = getUrl(KEY_SERVER, server, KEY_CLIENT_TYPE,"android");
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 	
 	
 	public static String getUrl(String... keyValues) {

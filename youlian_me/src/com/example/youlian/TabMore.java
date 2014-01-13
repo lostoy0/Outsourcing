@@ -1,38 +1,34 @@
 package com.example.youlian;
 
-import java.util.ArrayList;
-
-import com.example.youlian.more.ShareSetActivity;
-import com.example.youlian.view.MySlipSwitch;
-import com.example.youlian.view.MySlipSwitch.OnSwitchListener;
-
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.KeyEvent;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.example.youlian.more.ShareSetActivity;
+import com.example.youlian.view.SimpleProgressDialog;
+import com.example.youlian.view.dialog.HuzAlertDialog;
 
 
 public class TabMore extends Activity implements OnClickListener{
 
 	
-	
+	protected static final String TAG = "TabMore";
+
 	private RelativeLayout messagePropelling;
 	
 	private RelativeLayout shareSet;
@@ -131,13 +127,13 @@ public class TabMore extends Activity implements OnClickListener{
 //			aboutIntent.putExtra(WebViewActivity.BACK_GROUND, R.drawable.title_header_bg);
 //			startActivity(aboutIntent);
 //			break;
-//		case R.id.more_service:
-//			Intent tremIntent = new Intent();
-//			tremIntent.setClass(this, WebViewActivity.class);
-//			tremIntent.putExtra(WebViewActivity.webType, 2);
-//			tremIntent.putExtra(WebViewActivity.TITLE, "服务条款");
-//			tremIntent.putExtra(WebViewActivity.BACK_GROUND, R.drawable.title_header_bg);
-//			startActivity(tremIntent);
+		case R.id.more_service:
+			Intent tremIntent = new Intent();
+			tremIntent.setClass(this, WebViewActivity.class);
+			tremIntent.putExtra(WebViewActivity.webType, 2);
+			tremIntent.putExtra(WebViewActivity.TITLE, "服务条款");
+			tremIntent.putExtra(WebViewActivity.BACK_GROUND, R.drawable.bg_title);
+			startActivity(tremIntent);
 //			break;
 //		case R.id.more_help:
 //			new HelpView(this,Configure.screenWidth,(int)((int)Configure.screenHeight*0.8));
@@ -146,10 +142,10 @@ public class TabMore extends Activity implements OnClickListener{
 //			Intent mFeekBackActivity = new Intent(this, FeekBackActivity.class);
 //			startActivity(mFeekBackActivity);
 //			break;
-//		case R.id.more_updata:
-//			VersionManager vs = new VersionManager();
-//			vs.checkAPK(this, true, this);
-//			break;
+		case R.id.more_updata:
+			SimpleProgressDialog.show(this);
+			YouLianHttpApi.checkVersion(createCheckVersionSuccessListener(), createCheckVersionErrorListener());
+			break;
 //		case R.id.more_app_recommend:
 //			Intent mAppRecommendActivity = new Intent(this, AppRecommendActivity.class);
 //			startActivity(mAppRecommendActivity);
@@ -163,4 +159,59 @@ public class TabMore extends Activity implements OnClickListener{
 		}
 		
 	}
+	
+	
+	public void notNewVersionShow(Context context) {
+		StringBuffer sb = new StringBuffer();
+		// sb.append("当前版本:");
+		// sb.append(mVersionName);
+		sb.append("已经是最新版本");
+		Builder bd = new HuzAlertDialog.Builder(context);
+		bd.setTitle("提示")
+				.setMessage(sb.toString())// 设置内容
+				.setPositiveButton("确定",// 设置确定按钮
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								dialog.cancel();
+							}
+						}).create();// 创建
+		// 显示对话框
+		bd.show();
+	}
+	
+	
+	private Response.Listener<String> createCheckVersionSuccessListener() {
+        return new Response.Listener<String>() {
+			@Override
+            public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
+            	Log.i(TAG, "success guanggao:" + response);
+            	try {
+					JSONObject o = new JSONObject(response);
+					int status = o.optInt("status");
+					if(status == 0){
+						String msg = o.optString("msg");
+						Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+					}else{
+						
+					}
+					notNewVersionShow(TabMore.this);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+            }
+        };
+    }
+	
+    private Response.ErrorListener createCheckVersionErrorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
+            	Log.i(TAG, "error");
+            }
+        };
+    }
 }
