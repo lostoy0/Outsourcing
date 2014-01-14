@@ -75,32 +75,27 @@ public class TabHome extends TabActivity implements OnClickListener,
 				.newTabSpec(TAB_PIE)
 				.setIndicator("")
 				.setContent(
-						new Intent(this, TabFirstPage.class)
-								.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));
+						new Intent(this, TabFirstPage.class)));
 		tabHost.addTab(tabHost
 				.newTabSpec(TAB_TIER)
 				.setIndicator("")
 				.setContent(
-						new Intent(this, TabSign.class)
-								.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));
+						new Intent(this, TabSign.class)));
 		tabHost.addTab(tabHost
 				.newTabSpec(TAB_PIC)
 				.setIndicator("")
 				.setContent(
-						new Intent(this, TabShopCart.class)
-								.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));
+						new Intent(this, TabShopCart.class)));
 		tabHost.addTab(tabHost
 				.newTabSpec(TAB_SEARCH)
 				.setIndicator("")
 				.setContent(
-						new Intent(this, TabMe.class)
-								.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));
+						new Intent(this, TabMe.class)));
 		tabHost.addTab(tabHost
 				.newTabSpec(TAB_MORE)
 				.setIndicator("")
 				.setContent(
-						new Intent(this, TabMore.class)
-								.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));
+						new Intent(this, TabMore.class)));
 
 		// set tab buttons
 		mPieButton = (Button) findViewById(R.id.btn_pie);

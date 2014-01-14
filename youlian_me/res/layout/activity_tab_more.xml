@@ -232,7 +232,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="8dip"
                         android:layout_toRightOf="@id/more_feekback_img"
-                        android:text="意见反馈"
+                        android:text="@string/user_feedback"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </RelativeLayout>

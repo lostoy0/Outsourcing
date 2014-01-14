@@ -17,4 +17,10 @@ public class Pic {
 		pic.linkIds = jsonObj.optString("linkIds");
 		return pic;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "pic:" + pics + ", type:" + linkTypes + ", linkId:" + linkIds;
+	}
 }

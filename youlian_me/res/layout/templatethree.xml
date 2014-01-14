@@ -20,6 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tv_title"
             android:text="超爱电影" />
 
         <View
@@ -33,18 +34,21 @@
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
+        android:id="@+id/iv_first"
         android:background="@drawable/guanggao" />
 
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
+        android:id="@+id/iv_second"
         android:background="@drawable/guanggao" />
 
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
+        android:id="@+id/iv_third"
         android:background="@drawable/guanggao" />
 
 </LinearLayout>

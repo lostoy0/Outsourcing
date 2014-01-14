@@ -263,7 +263,7 @@ public final class R {
     public static final class id {
         public static final int account_lay=0x7f0a0027;
         public static final int account_text=0x7f0a002a;
-        public static final int action_settings=0x7f0a0087;
+        public static final int action_settings=0x7f0a008d;
         public static final int alertTitle=0x7f0a0056;
         public static final int back=0x7f0a0072;
         public static final int bt_membercard=0x7f0a0049;
@@ -298,7 +298,7 @@ public final class R {
         public static final int forget_psd=0x7f0a0075;
         public static final int gallery_image=0x7f0a0066;
         public static final int gallery_point_linear=0x7f0a004e;
-        public static final int grey_line=0x7f0a0086;
+        public static final int grey_line=0x7f0a008c;
         public static final int grey_line_a=0x7f0a003c;
         public static final int grey_line_b=0x7f0a003f;
         public static final int grey_line_c=0x7f0a0046;
@@ -307,14 +307,20 @@ public final class R {
         public static final int integral_text=0x7f0a002e;
         public static final int intergral_follow_img=0x7f0a002c;
         public static final int intergral_follow_text=0x7f0a002d;
-        public static final int iv=0x7f0a0085;
+        public static final int iv=0x7f0a008b;
+        public static final int iv_first=0x7f0a0085;
+        public static final int iv_five=0x7f0a0089;
+        public static final int iv_fourth=0x7f0a0088;
         public static final int iv_icon=0x7f0a0064;
         public static final int iv_online_chong=0x7f0a006c;
+        public static final int iv_second=0x7f0a0086;
+        public static final int iv_six=0x7f0a008a;
         public static final int iv_star_five=0x7f0a006b;
         public static final int iv_star_four=0x7f0a006a;
         public static final int iv_star_one=0x7f0a0067;
         public static final int iv_star_three=0x7f0a0069;
         public static final int iv_star_two=0x7f0a0068;
+        public static final int iv_third=0x7f0a0087;
         public static final int lay=0x7f0a007b;
         public static final int leftSpacer=0x7f0a005e;
         public static final int linear_act=0x7f0a004b;
@@ -464,6 +470,7 @@ public final class R {
         public static final int share_info=0x7f07000f;
         public static final int shared_set=0x7f070012;
         public static final int unknown_error=0x7f070007;
+        public static final int user_feedback=0x7f070016;
         public static final int youhuiquan=0x7f07000c;
     }
     public static final class style {

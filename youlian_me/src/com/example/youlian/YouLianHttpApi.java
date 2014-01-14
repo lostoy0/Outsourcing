@@ -16,8 +16,9 @@ import com.example.youlian.app.MyVolley;
 
 public class YouLianHttpApi {
 	public static final String URL_ZHENSHI = "http://www.younion.com.cn/younionmember/router/router.action";
-	public static final String URL_TEST = "http://118.244.146.145:8080/younionmember/router.do";
-	// http://test.younion.cn/younionmember/
+	public static final String URL_TEST = "http://test.younion.cn/younionmember/router.do";
+//	public static final String URL_TEST = "http://118.244.146.145:8080/younionmember/router.do";
+	// 
 	
 	
 	public static final String KEY_SERVER = "service";

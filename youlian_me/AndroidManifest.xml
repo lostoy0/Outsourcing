@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.INTERNET" /> 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -41,7 +42,7 @@
         <activity android:name=".AllSellerDetailActivity"></activity>
         <activity android:name=".more.ShareSetActivity"></activity>
         <activity android:name=".WebViewActivity"></activity>
-        
+        <activity android:name=".more.FeekBackActivity"></activity>
         
     </application>
 

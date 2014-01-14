@@ -266,25 +266,27 @@ public class TabFirstPage extends Activity implements OnClickListener {
 						case Global.TEMPLATE_ONE:
 							TemplateOne one = new TemplateOne(getApplicationContext());
 							container.addView(one);
-							
-//							one.setData(sub.pics);
+							one.setData(sub.pics);
 							break;
 						case Global.TEMPLATE_TWO:
 							TemplateTwo two = new TemplateTwo(getApplicationContext());
 							container.addView(two);
-							
+							two.setData(sub);
 							break;
 						case Global.TEMPLATE_THREE:
 							TemplateThree three = new TemplateThree(getApplicationContext());
 							container.addView(three);
+							three.setData(sub);
 							break;
 						case Global.TEMPLATE_FOUR:
 							TemplateFour four = new TemplateFour(getApplicationContext());
 							container.addView(four);
+							four.setData(sub);
 							break;
 						case Global.TEMPLATE_FIVE:
 							TemplateFive five = new TemplateFive(getApplicationContext());
 							container.addView(five);
+							five.setData(sub);
 							break;
 						case Global.TEMPLATE_SIX:
 							TemplateSix six = new TemplateSix(getApplicationContext());

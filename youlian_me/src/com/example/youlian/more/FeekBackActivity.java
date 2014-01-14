@@ -5,20 +5,23 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.youlian.R;
 import com.example.youlian.YouLianHttpApi;
+import com.example.youlian.common.Config;
+import com.example.youlian.util.Utils;
 
 /**
  * @author rome
@@ -42,10 +45,13 @@ public class FeekBackActivity extends Activity implements OnClickListener{
 	 
 	 private String feekContent;
 	 
+	 private TextView tv_title;
+	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.more_feekback);
 		initView();
 		initListener();
@@ -99,6 +105,10 @@ public class FeekBackActivity extends Activity implements OnClickListener{
 		submitBtn = (Button)findViewById(R.id.submit);
 		more_custom_service_phone = (ImageButton)findViewById(R.id.more_custom_service_phone);
 		feekback_edit = (EditText)findViewById(R.id.feekback_edit);
+		tv_title = (TextView) this.findViewById(R.id.tv_title);
+		tv_title.setText(R.string.user_feedback);
+		
+		
 	}
 	/**
 	 * �¼�����
@@ -143,13 +153,15 @@ public class FeekBackActivity extends Activity implements OnClickListener{
 				}else{
 					synConnection(feekContent);
 				}
-			}else{
+			}else{ 
 				getError(getString(R.string.not_null));
 			}
 			break;
 		case R.id.more_custom_service_phone:
+			Utils.call(this, Config.youlianPhone);
 			break;
 
 		}
 	}
+
 }
