@@ -40,6 +40,7 @@
         <activity android:name=".AllSellerActivity"></activity>
         <activity android:name=".AllSellerDetailActivity"></activity>
         <activity android:name=".more.ShareSetActivity"></activity>
+        <activity android:name=".WebViewActivity"></activity>
         
         
     </application>

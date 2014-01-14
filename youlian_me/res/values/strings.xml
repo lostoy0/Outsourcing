@@ -23,4 +23,7 @@
     <string name="retrieve_psd">输入注册时的手机号码，该手机号将会收到一条账号及密码信息的短信！</string>
    <string name="capture_tip">请将条码置于取景框内扫描</string>
    <string name="shared_set">分享设置</string>
+   <string name="service">服务条款</string>
+   <string name="not_more_than_three">内容不能超过300字</string>
+   <string name="not_null">不能为空</string>
 </resources>

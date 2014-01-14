@@ -1,20 +1,29 @@
 package com.example.youlian;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.example.youlian.view.SimpleProgressDialog;
 
 
-public class WebViewActivity extends Activity {
+public class WebViewActivity extends Activity implements OnClickListener {
 
 	private TextView txt_title,txt_content;
 //	private WebView web_view;
@@ -26,16 +35,20 @@ public class WebViewActivity extends Activity {
 	private String title;
 	private int background;
 	private ProgressBar progress_horizontal;
-	private static int type=0;
+	private int type=0;
 	private static final int ABOUT = 1;
 	private static final int SERVICE_TERM = 2;
+	protected static final String TAG = "WebViewActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.more_webview);
-		getData();
+		
 		initView();
+		
+		getData();
 	}
 
 	private void getData() {
@@ -44,54 +57,80 @@ public class WebViewActivity extends Activity {
 		if (intent.getStringExtra(TITLE) != null
 				&& !intent.getStringExtra(TITLE).equals("")) {
 			title = intent.getStringExtra(TITLE);
+			tv_title.setText(title);
 		}
-		background = intent.getIntExtra(BACK_GROUND, 0);
+		
+		switch (type) {
+		case 1:
+			YouLianHttpApi.getAbout(createGetAdSuccessListener(), createGetAdErrorListener());
+			break;
+		case 2:
+			YouLianHttpApi.getService(createGetAdSuccessListener(), createGetAdErrorListener());
+			break;
+		}
 		
 	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.back:
+			finish();
+			break;
+		
 
+		default:
+			break;
+		}
+	}
+	
+
+	private Response.Listener<String> createGetAdSuccessListener() {
+        return new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+            	Log.i(TAG, "success:" + response);
+            	try {
+					JSONObject o = new JSONObject(response);
+					int status = o.optInt("status");
+					if(status == 0){// failed
+						String msg = o.optString("msg");
+						Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+					}else{// success
+						JSONObject jB = o.optJSONObject("result");
+						if(type == SERVICE_TERM){
+							String result = jB.optString("service_term_html");
+							txt_content.setText(Html.fromHtml(result));
+						}else{
+							String result = jB.optString("about_html");
+							txt_content.setText(Html.fromHtml(result));
+						}
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+            }
+        };
+    }
+	
+	
+	private Response.ErrorListener createGetAdErrorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            	Log.i(TAG, "error");
+            }
+        };
+    }
+	private ImageButton back;
+	private TextView tv_title;
 	private void initView() {
-		txt_title = (TextView) findViewById(R.id.txt_title);
+		back = (ImageButton) this.findViewById(R.id.back);
+		back.setOnClickListener(this);
+		tv_title = (TextView) this.findViewById(R.id.tv_title);
 		txt_content = (TextView) findViewById(R.id.txt_content);
-		if (title != null && !title.equals("")) {
-			txt_title.setText(title);
-			if (background != 0) {
-				txt_title.setBackgroundResource(background);
-			} else {
-				txt_title.setBackgroundColor(R.drawable.bg_title);
-			}
-		} else {
-			txt_title.setVisibility(View.GONE);
-		}
 
 		
-	}
-
-	private void loadWeb() {
-//
-//		web_view.getSettings().setSupportZoom(true);
-//		web_view.getSettings().setBuiltInZoomControls(true);
-//		web_view.getSettings().setJavaScriptEnabled(true);
-//		web_view.getSettings().setDefaultTextEncodingName("utf-8");
-
-//		web_view.setWebChromeClient(new WebChromeClient() {
-//			@Override
-//			public void onProgressChanged(WebView view, int newProgress) {
-//				if(newProgress<100)
-//				{
-//					progress_horizontal.setVisibility(View.VISIBLE);
-//					progress_horizontal.setProgress(newProgress);
-//				}
-//				else
-//				{
-//					progress_horizontal.setVisibility(View.GONE);
-//				}
-//			}
-//			
-//		});
-//		SimpleProgressDialog.dismiss();
-//		if (url != null && !url.equals("")) {
-//			web_view.loadUrl(url);
-//		}
 	}
 
 }

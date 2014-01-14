@@ -109,7 +109,50 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
+	/**
+	 * 服务条约
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getService(Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.service.term";
+		String url = getUrl(KEY_SERVER, server);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
 	
+	
+	/**
+	 * 服务条约
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getAbout(Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.about.get";
+		String url = getUrl(KEY_SERVER, server);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	
+	public static void feedBack(String user_token, String content, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.message.add";
+		String url = getUrl(KEY_SERVER, server, "user_token", user_token, "content", content);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
 	
 	public static String getUrl(String... keyValues) {
 		// get base url

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+       <!-- title -->
+
+        <include layout="@layout/merge_title_layout" />
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="@drawable/bg"
+        >
+            <LinearLayout 
+	        android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:background="@drawable/rounded_one"
+	        android:gravity="center_vertical">
+	        <EditText
+	        android:id="@+id/feekback_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:padding="3dip"
+            android:lines="6"
+            android:gravity="top"
+            android:hint="请输入您的反馈意见(字数300以内)！"
+            android:textColorHint="@color/grey"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+            </LinearLayout>
+             <LinearLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+            android:layout_marginTop="12dip"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+	        >
+	         <Button 
+	        android:id="@+id/submit"
+	        android:layout_width="216dip"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/press_greed_btn"
+	        android:gravity="center"
+	        android:text="提交意见"
+	        android:textColor="@color/white"
+	        android:textSize="20sp"
+	        />
+	        <ImageButton 
+	        android:id="@+id/more_custom_service_phone"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="12dip"
+	        android:layout_centerHorizontal="true"
+	        android:background="@drawable/custom_service_btn"
+	        /> 
+	       
+	        
+	        </LinearLayout>
+            
+       </LinearLayout>
+       
+</LinearLayout>

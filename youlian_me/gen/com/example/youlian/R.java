@@ -292,9 +292,10 @@ public final class R {
         public static final int contentPanel=0x7f0a0058;
         public static final int custom=0x7f0a005c;
         public static final int customPanel=0x7f0a005b;
-        public static final int follow_store=0x7f0a007c;
+        public static final int feekback_edit=0x7f0a0073;
+        public static final int follow_store=0x7f0a007d;
         public static final int footer_light=0x7f0a0070;
-        public static final int forget_psd=0x7f0a0073;
+        public static final int forget_psd=0x7f0a0075;
         public static final int gallery_image=0x7f0a0066;
         public static final int gallery_point_linear=0x7f0a004e;
         public static final int grey_line=0x7f0a0086;
@@ -314,7 +315,7 @@ public final class R {
         public static final int iv_star_one=0x7f0a0067;
         public static final int iv_star_three=0x7f0a0069;
         public static final int iv_star_two=0x7f0a0068;
-        public static final int lay=0x7f0a0079;
+        public static final int lay=0x7f0a007b;
         public static final int leftSpacer=0x7f0a005e;
         public static final int linear_act=0x7f0a004b;
         public static final int linear_all_area=0x7f0a0000;
@@ -324,8 +325,8 @@ public final class R {
         public static final int listview=0x7f0a0003;
         public static final int listview_all=0x7f0a0004;
         public static final int loadingImageView=0x7f0a0050;
-        public static final int login=0x7f0a0077;
-        public static final int login_id=0x7f0a0074;
+        public static final int login=0x7f0a0079;
+        public static final int login_id=0x7f0a0076;
         public static final int login_logout_text=0x7f0a0013;
         public static final int mendian_info=0x7f0a0005;
         public static final int message=0x7f0a005a;
@@ -371,17 +372,17 @@ public final class R {
         public static final int msg_slipBtn=0x7f0a0038;
         public static final int my_select_dialog_listview=0x7f0a0063;
         public static final int parentPanel=0x7f0a0051;
-        public static final int password=0x7f0a0075;
+        public static final int password=0x7f0a0077;
         public static final int pcenterPanel=0x7f0a0052;
-        public static final int register=0x7f0a0076;
-        public static final int register_pro=0x7f0a007a;
-        public static final int rem_psd=0x7f0a0078;
+        public static final int register=0x7f0a0078;
+        public static final int register_pro=0x7f0a007c;
+        public static final int rem_psd=0x7f0a007a;
         public static final int rightSpacer=0x7f0a0062;
-        public static final int rr=0x7f0a0081;
-        public static final int rr_slipBtn=0x7f0a0082;
+        public static final int rr=0x7f0a0082;
+        public static final int rr_slipBtn=0x7f0a0083;
         public static final int scrollView=0x7f0a0059;
         public static final int search_edit=0x7f0a0048;
-        public static final int submit=0x7f0a007b;
+        public static final int submit=0x7f0a0074;
         public static final int tab_btn_layout=0x7f0a006f;
         public static final int titleDivider=0x7f0a0057;
         public static final int title_template=0x7f0a0054;
@@ -390,13 +391,12 @@ public final class R {
         public static final int tv_cardname=0x7f0a006d;
         public static final int tv_desc=0x7f0a006e;
         public static final int tv_title=0x7f0a0065;
-        public static final int tx=0x7f0a007d;
-        public static final int tx_slipBtn=0x7f0a007e;
+        public static final int tx=0x7f0a007e;
+        public static final int tx_slipBtn=0x7f0a007f;
         public static final int txt_content=0x7f0a0084;
-        public static final int txt_title=0x7f0a0083;
         public static final int user_name=0x7f0a0029;
-        public static final int xl=0x7f0a007f;
-        public static final int xl_slipBtn=0x7f0a0080;
+        public static final int xl=0x7f0a0080;
+        public static final int xl_slipBtn=0x7f0a0081;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -427,16 +427,17 @@ public final class R {
         public static final int merge_select_opts=0x7f030019;
         public static final int merge_select_tabs=0x7f03001a;
         public static final int merge_title_layout=0x7f03001b;
-        public static final int more_login=0x7f03001c;
-        public static final int more_register=0x7f03001d;
-        public static final int more_share_set=0x7f03001e;
-        public static final int more_webview=0x7f03001f;
-        public static final int templatefive=0x7f030020;
-        public static final int templatefour=0x7f030021;
-        public static final int templateone=0x7f030022;
-        public static final int templatesix=0x7f030023;
-        public static final int templatethree=0x7f030024;
-        public static final int templatetwo=0x7f030025;
+        public static final int more_feekback=0x7f03001c;
+        public static final int more_login=0x7f03001d;
+        public static final int more_register=0x7f03001e;
+        public static final int more_share_set=0x7f03001f;
+        public static final int more_webview=0x7f030020;
+        public static final int templatefive=0x7f030021;
+        public static final int templatefour=0x7f030022;
+        public static final int templateone=0x7f030023;
+        public static final int templatesix=0x7f030024;
+        public static final int templatethree=0x7f030025;
+        public static final int templatetwo=0x7f030026;
     }
     public static final class menu {
         public static final int main=0x7f090000;
@@ -456,7 +457,10 @@ public final class R {
         public static final int hello_world=0x7f070002;
         public static final int hot=0x7f07000a;
         public static final int membership=0x7f07000b;
+        public static final int not_more_than_three=0x7f070014;
+        public static final int not_null=0x7f070015;
         public static final int retrieve_psd=0x7f070010;
+        public static final int service=0x7f070013;
         public static final int share_info=0x7f07000f;
         public static final int shared_set=0x7f070012;
         public static final int unknown_error=0x7f070007;

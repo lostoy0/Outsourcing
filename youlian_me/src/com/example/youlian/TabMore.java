@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.youlian.more.FeekBackActivity;
 import com.example.youlian.more.ShareSetActivity;
 import com.example.youlian.view.SimpleProgressDialog;
 import com.example.youlian.view.dialog.HuzAlertDialog;
@@ -119,14 +120,14 @@ public class TabMore extends Activity implements OnClickListener{
 			Intent mShareSetActivity = new Intent(this, ShareSetActivity.class);
 			startActivity(mShareSetActivity);
 			break;
-//		case R.id.more_about:
-//			Intent aboutIntent = new Intent();
-//			aboutIntent.setClass(this, WebViewActivity.class);
-//			aboutIntent.putExtra(WebViewActivity.webType, 1);
-//			aboutIntent.putExtra(WebViewActivity.TITLE, "关于我们");
-//			aboutIntent.putExtra(WebViewActivity.BACK_GROUND, R.drawable.title_header_bg);
-//			startActivity(aboutIntent);
-//			break;
+		case R.id.more_about:
+			Intent aboutIntent = new Intent();
+			aboutIntent.setClass(this, WebViewActivity.class);
+			aboutIntent.putExtra(WebViewActivity.webType, 1);
+			aboutIntent.putExtra(WebViewActivity.TITLE, "关于我们");
+			aboutIntent.putExtra(WebViewActivity.BACK_GROUND, R.drawable.bg_title);
+			startActivity(aboutIntent);
+			break;
 		case R.id.more_service:
 			Intent tremIntent = new Intent();
 			tremIntent.setClass(this, WebViewActivity.class);
@@ -134,14 +135,14 @@ public class TabMore extends Activity implements OnClickListener{
 			tremIntent.putExtra(WebViewActivity.TITLE, "服务条款");
 			tremIntent.putExtra(WebViewActivity.BACK_GROUND, R.drawable.bg_title);
 			startActivity(tremIntent);
-//			break;
+			break;
 //		case R.id.more_help:
 //			new HelpView(this,Configure.screenWidth,(int)((int)Configure.screenHeight*0.8));
 //			break;
-//		case R.id.more_feekback:
-//			Intent mFeekBackActivity = new Intent(this, FeekBackActivity.class);
-//			startActivity(mFeekBackActivity);
-//			break;
+		case R.id.more_feekback:
+			Intent mFeekBackActivity = new Intent(this, FeekBackActivity.class);
+			startActivity(mFeekBackActivity);
+			break;
 		case R.id.more_updata:
 			SimpleProgressDialog.show(this);
 			YouLianHttpApi.checkVersion(createCheckVersionSuccessListener(), createCheckVersionErrorListener());
