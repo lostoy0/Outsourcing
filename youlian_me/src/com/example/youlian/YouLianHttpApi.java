@@ -34,7 +34,7 @@ public class YouLianHttpApi {
 	public static void getAdvertisement(String zone, Response.Listener<String> successListener,
 			Response.ErrorListener errorListener){
 		String server = "younion.advertisement.get";
-		String url = getUrl(KEY_SERVER, server, "zone",zone);
+		String url = getUrl(KEY_SERVER, server, "zone",zone, KEY_CLIENT_TYPE,"android");
 		Log.i(TAG, "url:" +  url);
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
@@ -154,6 +154,19 @@ public class YouLianHttpApi {
 				successListener, errorListener);
 		queue.add(myReq);
 	}
+	
+	
+	public static void getYouhuiQuan(String user_token, String req_type, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.favents.get";
+		String url = getUrl(KEY_SERVER, server, "user_token", user_token, "req_type", req_type);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 	
 	public static String getUrl(String... keyValues) {
 		// get base url

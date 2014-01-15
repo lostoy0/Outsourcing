@@ -1,12 +1,20 @@
 package com.example.youlian;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.BaseAdapter;
@@ -15,10 +23,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.youlian.app.MyVolley;
+import com.example.youlian.mode.YouhuiQuan;
 
 public class YouhuiQuanActivity extends Activity implements OnClickListener {
 
@@ -37,7 +49,9 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 	private static final int allsort = 2;
 	private static final int hot = 3;
 	private int type = allarea;
-
+	
+	public List<YouhuiQuan> youhuiQuans = new ArrayList<YouhuiQuan>();
+	ImageLoader  mImageLoader;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,7 +60,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 
 		initViews();
 
-		YouLianHttpApi.getMemberCard(null, null, createMyReqSuccessListener(),createMyReqErrorListener());
+		YouLianHttpApi.getYouhuiQuan(null, null, createMyReqSuccessListener(),createMyReqErrorListener());
 	}
 
 	private void initViews() {
@@ -72,6 +86,8 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		adapterAll = new MyAdapterAll(getApplicationContext());
 		listview_all.setAdapter(adapterAll);
 		listview_all.setVisibility(View.GONE);
+		
+		mImageLoader = MyVolley.getImageLoader();
 	}
 
 	boolean exChange = true;
@@ -119,12 +135,11 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 
 		@Override
 		public int getCount() {
-			return 10;
+			return youhuiQuans.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
-			// TODO Auto-generated method stub
 			return null;
 		}
 
@@ -140,7 +155,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 				convertView = inflater.inflate(R.layout.item_youhuiquan,
 						parent, false);
 				holder = new ViewHolder();
-				holder.iv_icon = (ImageView) convertView
+				holder.iv_icon = (NetworkImageView) convertView
 						.findViewById(R.id.iv_icon);
 				holder.tv_title = (TextView) convertView
 						.findViewById(R.id.tv_title);
@@ -157,10 +172,28 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		}
 
 		public void setValue(ViewHolder holder, int position) {
+			YouhuiQuan quan = youhuiQuans.get(position);
+			if(TextUtils.isEmpty(quan.fav_id)){
+				if(quan.nonactivatedPic != null){
+					holder.iv_icon.setDefaultImageResId(R.drawable.guanggao);
+					holder.iv_icon.setImageUrl(quan.nonactivatedPic, mImageLoader);
+				}else{
+					holder.iv_icon.setImageResource(R.drawable.guanggao);
+				}
+			}else{
+				if(quan.activatedPic != null){
+					holder.iv_icon.setDefaultImageResId(R.drawable.guanggao);
+					holder.iv_icon.setImageUrl(quan.activatedPic, mImageLoader);
+				}else{
+					holder.iv_icon.setImageResource(R.drawable.guanggao);
+				}
+			}
+			holder.tv_title.setText(quan.fav_ent_name);
+			holder.tv_desc.setText(quan.simple_description);
 		}
 
 		class ViewHolder {
-			public ImageView iv_icon;
+			public NetworkImageView iv_icon;
 			public TextView tv_title;
 			TextView  tv_desc;
 		}
@@ -223,7 +256,28 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 			@Override
 			public void onResponse(String response) {
 				Log.i(TAG, "success:" + response);
-
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if(status == 1){
+							JSONArray array = o.optJSONArray("result");
+							int len = array.length();
+							for(int i=0; i<len; i++){
+								JSONObject oo = array.getJSONObject(i);
+								youhuiQuans.add(YouhuiQuan.parse(oo));
+							}
+							adapter.notifyDataSetChanged();
+						}else{
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+						}
+						
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					
+				}
 			}
 		};
 	}

@@ -47,17 +47,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/iv_first"
-                android:scaleType="fitXY"
-                android:background="@drawable/guanggao" />
+                android:scaleType="fitXY"  />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:scaleType="fitXY"
                 android:id="@+id/iv_second"
-                android:background="@drawable/guanggao" />
+                android:scaleType="fitXY"  />
         </LinearLayout>
 
     <LinearLayout
@@ -72,8 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/iv_third"
-            android:scaleType="fitXY"
-            android:background="@drawable/guanggao" />
+            android:scaleType="fitXY"  />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -81,8 +78,7 @@
             android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:id="@+id/iv_fourth"
-            android:scaleType="fitXY"
-            android:background="@drawable/guanggao" />
+            android:scaleType="fitXY"  />
     </LinearLayout>
 
 </LinearLayout>

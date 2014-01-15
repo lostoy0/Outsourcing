@@ -263,7 +263,7 @@ public final class R {
     public static final class id {
         public static final int account_lay=0x7f0a0027;
         public static final int account_text=0x7f0a002a;
-        public static final int action_settings=0x7f0a008d;
+        public static final int action_settings=0x7f0a008c;
         public static final int alertTitle=0x7f0a0056;
         public static final int back=0x7f0a0072;
         public static final int bt_membercard=0x7f0a0049;
@@ -298,7 +298,7 @@ public final class R {
         public static final int forget_psd=0x7f0a0075;
         public static final int gallery_image=0x7f0a0066;
         public static final int gallery_point_linear=0x7f0a004e;
-        public static final int grey_line=0x7f0a008c;
+        public static final int grey_line=0x7f0a008b;
         public static final int grey_line_a=0x7f0a003c;
         public static final int grey_line_b=0x7f0a003f;
         public static final int grey_line_c=0x7f0a0046;
@@ -307,7 +307,6 @@ public final class R {
         public static final int integral_text=0x7f0a002e;
         public static final int intergral_follow_img=0x7f0a002c;
         public static final int intergral_follow_text=0x7f0a002d;
-        public static final int iv=0x7f0a008b;
         public static final int iv_first=0x7f0a0085;
         public static final int iv_five=0x7f0a0089;
         public static final int iv_fourth=0x7f0a0088;

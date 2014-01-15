@@ -40,7 +40,6 @@
             android:layout_height="200dp"
             android:layout_margin="5dp"
             android:layout_weight="2"
-            android:background="@drawable/guanggao" 
             android:id="@+id/iv_first"
             />
 
@@ -53,18 +52,20 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
+                android:scaleType="fitXY"
                 android:id="@+id/iv_second"
-                android:background="@drawable/guanggao" />
+                />
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:scaleType="fitXY"
                 android:layout_weight="1"
                 android:id="@+id/iv_third"
-                android:background="@drawable/guanggao" />
+               	/>
         </LinearLayout>
     </LinearLayout>
 
@@ -78,7 +79,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:id="@+id/iv_fourth"
-            android:background="@drawable/guanggao" />
+            />
 
         <ImageView
             android:layout_width="0dp"
@@ -86,7 +87,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:id="@+id/iv_five"
-            android:background="@drawable/guanggao" />
+            />
 
         <ImageView
             android:layout_width="0dp"
@@ -94,7 +95,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:id="@+id/iv_six"
-            android:background="@drawable/guanggao" />
+            />
     </LinearLayout>
 
 </LinearLayout>
