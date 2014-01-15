@@ -23,6 +23,7 @@ public class YouLianHttpApi {
 	
 	public static final String KEY_SERVER = "service";
 	public static final String KEY_CLIENT_TYPE = "client_type";
+	public static final String KEY_CLIENT = "client";
 	private static final String TAG = "YouLianHttpApi";
 	
 	/**
@@ -34,7 +35,7 @@ public class YouLianHttpApi {
 	public static void getAdvertisement(String zone, Response.Listener<String> successListener,
 			Response.ErrorListener errorListener){
 		String server = "younion.advertisement.get";
-		String url = getUrl(KEY_SERVER, server, "zone",zone, KEY_CLIENT_TYPE,"android");
+		String url = getUrl(KEY_SERVER, server, "zone",zone, KEY_CLIENT,"android");
 		Log.i(TAG, "url:" +  url);
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
