@@ -1,5 +1,6 @@
 package com.example.youlian.mode;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class YouhuiQuan {
+public class YouhuiQuan implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public String fav_ent_id;
 	public String fav_ent_name;
 	public String nonactivatedPic;
@@ -38,6 +43,16 @@ public class YouhuiQuan {
 	public String districtId;
 	public String nearby;
 	public List<Shop> shops = new ArrayList<Shop>();
+	public String fav_detail;
+	public String valid_time_from;
+	public String valid_time_to;
+	public String amount;
+	public String is_favorites;
+	public String sellingPrice;
+	public String comments;
+	public String customer_id;
+	public String starLevel;
+	public String fav_name;
 	
 	public static YouhuiQuan parse(JSONObject jsonObj) throws JSONException{
 		YouhuiQuan pic = new YouhuiQuan();
@@ -76,6 +91,24 @@ public class YouhuiQuan {
 				pic.shops.add(Shop.parse(o));
 			}
 		}
+		
+		
+		pic.fav_detail = jsonObj.optString("fav_detail");
+		
+		pic.valid_time_from = jsonObj.optString("valid_time_from");
+		pic.valid_time_to = jsonObj.optString("valid_time_to");
+		pic.amount = jsonObj.optString("amount");
+		
+		
+		pic.is_favorites = jsonObj.optString("is_favorites");
+		
+		pic.sellingPrice = jsonObj.optString("sellingPrice");
+		
+		
+		pic.comments = jsonObj.optString("comments");
+		pic.customer_id = jsonObj.optString("customer_id");
+		pic.starLevel = jsonObj.optString("starLevel");
+		pic.fav_name = jsonObj.optString("fav_name");
 		return pic;
 	}
 }

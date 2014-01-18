@@ -5,5 +5,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="hotbuy_size">80dp</dimen>
     <dimen name="hotbuy_margin_top">20dp</dimen>
+    <dimen name="youhuiquan_width">300dp</dimen>
+    <dimen name="youhuiquan_detail_margin_top">10dp</dimen>
 
 </resources>

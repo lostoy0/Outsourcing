@@ -43,7 +43,7 @@
         <activity android:name=".more.ShareSetActivity"></activity>
         <activity android:name=".WebViewActivity"></activity>
         <activity android:name=".more.FeekBackActivity"></activity>
-        
+        <activity android:name=".YouhuiQuanDetail"></activity>
     </application>
 
 </manifest>

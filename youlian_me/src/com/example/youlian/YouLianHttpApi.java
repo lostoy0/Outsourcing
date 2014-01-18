@@ -168,6 +168,17 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
+	public static void getYouhuiQuanDetail(String user_token, String fav_ent_id, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.favent.get";
+		String url = getUrl(KEY_SERVER, server, "user_token", user_token, "fav_ent_id", fav_ent_id);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 	
 	public static String getUrl(String... keyValues) {
 		// get base url

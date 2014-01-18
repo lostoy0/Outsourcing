@@ -27,5 +27,5 @@
    <string name="not_more_than_three">内容不能超过300字</string>
    <string name="not_null">不能为空</string>
    <string name="user_feedback">用户反馈</string>
-   
+   <string name="number_apply_use">%s人已申请</string>
 </resources>

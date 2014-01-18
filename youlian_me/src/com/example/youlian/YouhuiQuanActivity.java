@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,6 +18,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -72,6 +75,17 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		listview = (ListView) this.findViewById(R.id.listview);
 		adapter = new MyAdapter(getApplicationContext());
 		listview.setAdapter(adapter);
+		listview.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+					long arg3) {
+				YouhuiQuan quan = youhuiQuans.get(position);
+				Intent intent = new Intent(getApplicationContext(), YouhuiQuanDetail.class);
+				intent.putExtra("quan", quan);
+				startActivity(intent);
+			}
+		});
 
 		linear_all_area = (LinearLayout) this
 				.findViewById(R.id.linear_all_area);

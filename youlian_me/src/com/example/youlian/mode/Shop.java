@@ -1,5 +1,6 @@
 package com.example.youlian.mode;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Shop {
+public class Shop  implements Serializable{
 	public String id;
 	public String name;
 	public String address;
