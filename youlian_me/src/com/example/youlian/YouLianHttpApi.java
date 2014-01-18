@@ -129,7 +129,7 @@ public class YouLianHttpApi {
 	
 	
 	/**
-	 * 服务条约
+	 * 关于
 	 * @param successListener
 	 * @param errorListener
 	 */
@@ -144,7 +144,13 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
-	
+	/**
+	 * 用户反馈
+	 * @param user_token
+	 * @param content
+	 * @param successListener
+	 * @param errorListener
+	 */
 	public static void feedBack(String user_token, String content, Response.Listener<String> successListener,
 			Response.ErrorListener errorListener){
 		String server = "younion.message.add";
@@ -156,7 +162,13 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
-	
+	/**
+	 * 优惠券列表
+	 * @param user_token
+	 * @param req_type
+	 * @param successListener
+	 * @param errorListener
+	 */
 	public static void getYouhuiQuan(String user_token, String req_type, Response.Listener<String> successListener,
 			Response.ErrorListener errorListener){
 		String server = "younion.favents.get";
@@ -167,7 +179,13 @@ public class YouLianHttpApi {
 				successListener, errorListener);
 		queue.add(myReq);
 	}
-	
+	/**
+	 * 优惠券详情页
+	 * @param user_token
+	 * @param fav_ent_id
+	 * @param successListener
+	 * @param errorListener
+	 */
 	public static void getYouhuiQuanDetail(String user_token, String fav_ent_id, Response.Listener<String> successListener,
 			Response.ErrorListener errorListener){
 		String server = "younion.favent.get";
@@ -179,6 +197,40 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
+	/**
+	 * 申请优惠券
+	 * @param user_token
+	 * @param fav_ent_id
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void applyYouhuiQuan(String user_token, String fav_ent_id, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.fav.apply";
+		String url = getUrl(KEY_SERVER, server, "user_token", user_token, "fav_ent_id", fav_ent_id, KEY_CLIENT_TYPE,"android");
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 点评列表
+	 * @param customer_id
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getComment(String customer_id, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.comment.on.get";
+		String url = getUrl(KEY_SERVER, server, "customer_id", customer_id);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
 	
 	public static String getUrl(String... keyValues) {
 		// get base url

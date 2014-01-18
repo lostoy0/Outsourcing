@@ -3,10 +3,12 @@ package com.example.youlian;
 import java.util.List;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.youlian.mode.Ad;
+import com.example.youlian.mode.YouhuiQuan;
 import com.example.youlian.view.ActLeft;
 import com.example.youlian.view.ActRight;
 
@@ -24,12 +26,14 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AllSellerActivity extends Activity implements OnClickListener {
+public class CommentActivity extends Activity implements OnClickListener {
 	protected static final String TAG = "AllSellerActivity";
 	private ImageButton back;
 	private TextView tv_title;
 	private LinearLayout container_left;
 	private LinearLayout container_right;
+	
+	private YouhuiQuan quan;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +41,13 @@ public class AllSellerActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.activity_comment);
+		setContentView(R.layout.activity_seller_activities);
 		
 		initViews();
 		
-		YouLianHttpApi.getAllactivitys(createGetAdSuccessListener(), createGetAdErrorListener());
+		quan = (YouhuiQuan) getIntent().getSerializableExtra("quan");
+		
+		YouLianHttpApi.getComment(quan.customer_id, createGetCommentSuccessListener(), createMyReqErrorListener());
 		
 	}
 	
@@ -58,21 +64,43 @@ public class AllSellerActivity extends Activity implements OnClickListener {
 	
 	
 
-	private Response.Listener<String> createGetAdSuccessListener() {
-        return new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-            	Log.i(TAG, "success:" + response);
-            	
-            	addViews();
-//            	try {
-//				} catch (JSONException e) {
-//					e.printStackTrace();
-//				}
-            }
-        };
-    }
-	
+	private Response.Listener<String> createGetCommentSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if (status == 1) {
+							Toast.makeText(getApplicationContext(), "申请成功",
+									Toast.LENGTH_SHORT).show();
+						} else {
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						}
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		};
+	}
+
+	private Response.ErrorListener createMyReqErrorListener() {
+		return new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				Log.i(TAG, "error");
+				Toast.makeText(getApplicationContext(), "请求失败",
+						Toast.LENGTH_SHORT).show();
+			}
+		};
+	}
 
 
     protected void addViews() {

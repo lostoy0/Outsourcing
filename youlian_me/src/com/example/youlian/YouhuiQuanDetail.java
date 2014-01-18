@@ -5,6 +5,7 @@ import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -22,6 +23,20 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.YouhuiQuan;
+import com.umeng.socialize.bean.MultiStatus;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.bean.SocializeConfig;
+import com.umeng.socialize.bean.SocializeEntity;
+import com.umeng.socialize.controller.RequestType;
+import com.umeng.socialize.controller.UMServiceFactory;
+import com.umeng.socialize.controller.UMSocialService;
+import com.umeng.socialize.controller.listener.SocializeListeners.MulStatusListener;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMVideo;
+import com.umeng.socialize.media.UMusic;
+import com.umeng.socialize.sso.QZoneSsoHandler;
+import com.umeng.socialize.sso.SinaSsoHandler;
+import com.umeng.socialize.sso.TencentWBSsoHandler;
 
 
 public class YouhuiQuanDetail extends Activity implements OnClickListener {
@@ -46,6 +61,18 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 	private TextView apply_num;
 	
 	
+	// sdk controller
+    private UMSocialService mController = UMServiceFactory.getUMSocialService(DESCRIPTOR, RequestType.SOCIAL);;
+    // 布局view
+    private View mMainView = null;
+
+    // 要分享的文字内容
+    private String mShareContent = "";
+    private final SHARE_MEDIA mTestMedia = SHARE_MEDIA.SINA;
+    // 要分享的图片
+    private UMImage mUMImgBitmap = null;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -61,10 +88,65 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		}
 
 		initViews();
+		
+		initConfig();
 
 		YouLianHttpApi.getYouhuiQuanDetail(null, fav_ent_id,
 				createMyReqSuccessListener(), createMyReqErrorListener());
 	}
+	
+	
+	
+	 /**
+     * @功能描述 : 初始化与SDK相关的成员变量
+     */
+    private void initConfig() {
+
+        
+
+        // 要分享的文字内容
+        mShareContent = getResources().getString(
+                R.string.umeng_socialize_share_content);
+        mController.setShareContent("测试内容");
+
+        mUMImgBitmap = new UMImage(getApplicationContext(),
+                "http://www.umeng.com/images/pic/banner_module_social.png");
+        // mUMImgBitmap = new UMImage(mContext, new
+        // File("/mnt/sdcard/DCIM/Camera/1357290284463.jpg"));
+        // 设置图片
+        // 其他方式构造UMImage
+        // UMImage umImage_url = new UMImage(mContext,
+        // "http://historyhots.com/uploadfile/2013/0110/20130110064307373.jpg");
+        //
+        // mUMImgBitmap = new UMImage(mContext, new File(
+        // "mnt/sdcard/test.png"));
+
+        UMusic uMusic = new UMusic("http://sns.whalecloud.com/test_music.mp3");
+        uMusic.setAuthor("zhangliyong");
+        uMusic.setTitle("天籁之音");
+
+        UMVideo umVedio = new UMVideo(
+                "http://v.youku.com/v_show/id_XNTE5ODAwMDM2.html?f=19001023");
+        umVedio.setThumb("http://historyhots.com/uploadfile/2013/0110/20130110064307373.jpg");
+        umVedio.setTitle("哇喔喔喔！");
+
+        // 添加新浪和QQ空间的SSO授权支持
+        mController.getConfig().setSsoHandler(new SinaSsoHandler());
+        mController.getConfig().setSsoHandler(
+                new QZoneSsoHandler(this));
+        // 添加腾讯微博SSO支持
+        mController.getConfig().setSsoHandler(new TencentWBSsoHandler());
+
+    }
+    
+    /**
+     * @功能描述 : 分享(先选择平台)
+     */
+    private void openShareBoard() {
+        mController.setShareContent("默认内容");
+        mController.setShareMedia(mUMImgBitmap);
+        mController.openShare(this, false);
+    }
 
 	private Button mPieButton;
 	private Button mTierButton;
@@ -149,12 +231,17 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			break;
 
 		case R.id.bt_apply:
+			YouLianHttpApi.applyYouhuiQuan(null, quan.fav_ent_id, createApplyYouhuiQuanSuccessListener(), createMyReqErrorListener());
 			break;
 		case R.id.btn_pie:// 敲到
 			break;
 		case R.id.btn_tier:// 分享
+			openShareBoard();
 			break;
 		case R.id.btn_wigame:// 评论
+			Intent intent = new Intent(getApplicationContext(), CommentActivity.class);
+			intent.putExtra("quan", quan);
+			startActivity(intent);
 			break;
 		case R.id.btn_more:// 收藏
 			break;
@@ -192,12 +279,42 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			}
 		};
 	}
+	
+	
+	private Response.Listener<String> createApplyYouhuiQuanSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if (status == 1) {
+							Toast.makeText(getApplicationContext(), "申请成功",
+									Toast.LENGTH_SHORT).show();
+						} else {
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						}
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		};
+	}
 
 	private Response.ErrorListener createMyReqErrorListener() {
 		return new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
 				Log.i(TAG, "error");
+				Toast.makeText(getApplicationContext(), "请求失败",
+						Toast.LENGTH_SHORT).show();
 			}
 		};
 	}
