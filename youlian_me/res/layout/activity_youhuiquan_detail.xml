@@ -202,6 +202,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:scaleType="fitXY"
+                            android:id="@+id/iv_one"
                             android:src="@drawable/guanggao" />
 
                         <ImageView
@@ -210,6 +211,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:scaleType="fitXY"
+                            android:id="@+id/iv_two"
                             android:src="@drawable/guanggao" />
 
                         <ImageView
@@ -218,6 +220,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:scaleType="fitXY"
+                            android:id="@+id/iv_three"
                             android:src="@drawable/guanggao" />
                     </LinearLayout>
                 </LinearLayout>

@@ -1,5 +1,7 @@
 package com.example.youlian;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.json.JSONException;
@@ -40,7 +42,7 @@ import com.umeng.socialize.sso.TencentWBSsoHandler;
 
 
 public class YouhuiQuanDetail extends Activity implements OnClickListener {
-	protected static final String TAG = "MembershipActivity";
+	protected static final String TAG = "YouhuiQuanDetail";
 	public static final String DESCRIPTOR = "com.umeng.share";
 	private ImageButton back;
 	private TextView tv_title;
@@ -72,7 +74,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
     // 要分享的图片
     private UMImage mUMImgBitmap = null;
 	
-	
+	public List<ImageView> ivs = new ArrayList<ImageView>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -152,6 +154,9 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 	private Button mTierButton;
 	private Button mWiGameButton;
 	private Button mMoreButton;
+	private ImageView iv_one;
+	private ImageView iv_two;
+	private ImageView iv_three;
 
 	private void initViews() {
 		back = (ImageButton) this.findViewById(R.id.back);
@@ -192,6 +197,13 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 
 		mMoreButton = (Button) findViewById(R.id.btn_more);
 		mMoreButton.setOnClickListener(this);
+		
+		iv_one = (ImageView)findViewById(R.id.iv_one);
+		iv_two = (ImageView)findViewById(R.id.iv_two);
+		iv_three = (ImageView)findViewById(R.id.iv_three);
+		ivs.add(iv_one);
+		ivs.add(iv_two);
+		ivs.add(iv_three);
 	}
 	
 
@@ -220,7 +232,33 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		tv_use_desc.setText("使用说明：\n" + quan.fav_detail);
 		tv_mendian_info.setText("门店信息（" + quan.shops.size() + ")");
 		tv_user_comment.setText("用户点评(" + quan.comments + ")");
-
+		
+		List<YouhuiQuan> list = quan.moreYouHuiquan;
+		
+		if(list != null){
+			int size = list.size();
+			Log.i(TAG, "size:" + size);
+			for(int i=0; i<size; i++){
+				if(i>=3){
+					break;
+				}
+				YouhuiQuan quan = list.get(i);
+				if (TextUtils.isEmpty(quan.fav_id)) {
+					if (quan.nonactivatedPic != null) {
+						imageLoader.get(quan.nonactivatedPic, ImageLoader
+								.getImageListener(ivs.get(i), R.drawable.guanggao,
+										R.drawable.guanggao));
+					}
+				} else {
+					if (quan.activatedPic != null) {
+						imageLoader.get(quan.activatedPic, ImageLoader
+								.getImageListener(ivs.get(i), R.drawable.guanggao,
+										R.drawable.guanggao));
+					}
+				}
+			}
+		}
+		
 	}
 
 	@Override

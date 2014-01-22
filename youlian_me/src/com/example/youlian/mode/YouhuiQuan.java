@@ -54,6 +54,8 @@ public class YouhuiQuan implements Serializable{
 	public String starLevel;
 	public String fav_name;
 	
+	public List<YouhuiQuan> moreYouHuiquan = new ArrayList<YouhuiQuan>(); 
+	
 	public static YouhuiQuan parse(JSONObject jsonObj) throws JSONException{
 		YouhuiQuan pic = new YouhuiQuan();
 		pic.fav_ent_id = jsonObj.optString("fav_ent_id");
@@ -109,6 +111,18 @@ public class YouhuiQuan implements Serializable{
 		pic.customer_id = jsonObj.optString("customer_id");
 		pic.starLevel = jsonObj.optString("starLevel");
 		pic.fav_name = jsonObj.optString("fav_name");
+		
+		
+		
+		JSONArray jArray = jsonObj.optJSONArray("otherFavEntListResult");
+		if(jArray != null){
+			int len = jArray.length();
+			for(int i=0; i<len; i++){
+				JSONObject jo = jArray.getJSONObject(i);
+				pic.moreYouHuiquan.add(parse(jo));
+			}
+		}
+		
 		return pic;
 	}
 }

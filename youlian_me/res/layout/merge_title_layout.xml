@@ -23,5 +23,16 @@
             android:textSize="22sp" 
             android:id="@+id/tv_title"
             />
+        
+        
+        <ImageButton
+            android:id="@+id/ib_right"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/select_btn_sign" />
     </RelativeLayout>
 </merge>

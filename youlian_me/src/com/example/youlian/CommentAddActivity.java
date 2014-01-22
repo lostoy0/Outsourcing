@@ -24,7 +24,7 @@ import com.example.youlian.view.ActLeft;
 import com.example.youlian.view.ActRight;
 import com.example.youlian.view.CommentItem;
 
-public class CommentActivity extends Activity implements OnClickListener {
+public class CommentAddActivity extends Activity implements OnClickListener {
 	protected static final String TAG = "AllSellerActivity";
 	private ImageButton back;
 	private TextView tv_title;
@@ -40,13 +40,11 @@ public class CommentActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.activity_seller_activities);
+		setContentView(R.layout.activity_add_comment);
 		
 		initViews();
 		
 		quan = (YouhuiQuan) getIntent().getSerializableExtra("quan");
-		
-		YouLianHttpApi.getComment(quan.customer_id, createGetCommentSuccessListener(), createMyReqErrorListener());
 		
 	}
 	
@@ -61,8 +59,6 @@ public class CommentActivity extends Activity implements OnClickListener {
 		tv_title.setText(R.string.act);
 		
 		
-		container_left = (LinearLayout)this.findViewById(R.id.container_left);
-		container_right = (LinearLayout)this.findViewById(R.id.container_right);
 	}
 	
 	
