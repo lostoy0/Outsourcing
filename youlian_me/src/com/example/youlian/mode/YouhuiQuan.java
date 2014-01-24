@@ -42,7 +42,7 @@ public class YouhuiQuan implements Serializable{
 	public String cityId;
 	public String districtId;
 	public String nearby;
-	public List<Shop> shops = new ArrayList<Shop>();
+	public ArrayList<Shop> shops = new ArrayList<Shop>();
 	public String fav_detail;
 	public String valid_time_from;
 	public String valid_time_to;

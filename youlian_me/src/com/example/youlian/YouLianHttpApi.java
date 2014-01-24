@@ -26,6 +26,8 @@ public class YouLianHttpApi {
 	public static final String KEY_CLIENT_TYPE = "client_type";
 	public static final String KEY_CLIENT = "client";
 	private static final String TAG = "YouLianHttpApi";
+	
+	public static String user_token = "e9798cc075938db5060d76ac6b9eb808";
 
 	/**
 	 * 首页广告

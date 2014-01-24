@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" 
             android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
             >
 
             <TextView
@@ -29,9 +30,29 @@
                 />
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_launcher"/>
+                android:layout_width="@dimen/gou_size"
+                android:layout_height="@dimen/gou_size"
+                android:id="@+id/iv_gou"
+                android:visibility="gone"
+                android:src="@drawable/gou"/>
+            <ImageView
+                android:layout_width="@dimen/gou_size"
+                android:layout_height="@dimen/gou_size"
+                android:id="@+id/iv_qiang"
+                android:visibility="gone"
+                android:src="@drawable/qiang"/>
+            <ImageView
+                android:layout_width="@dimen/gou_size"
+                android:layout_height="@dimen/gou_size"
+                android:id="@+id/iv_xian"
+                android:visibility="gone"
+                android:src="@drawable/xian"/>
+            <ImageView
+                android:layout_width="@dimen/gou_size"
+                android:layout_height="@dimen/gou_size"
+                android:id="@+id/iv_zhe"
+                android:visibility="gone"
+                android:src="@drawable/zhe"/>
         </LinearLayout>
         
         <TextView

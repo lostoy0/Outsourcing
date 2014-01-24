@@ -180,6 +180,17 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 						.findViewById(R.id.tv_title);
 				holder.tv_desc = (TextView) convertView
 						.findViewById(R.id.tv_desc);
+				
+				holder.iv_gou = (ImageView)convertView
+						.findViewById(R.id.iv_gou);
+				holder.iv_qiang = (ImageView)convertView
+						.findViewById(R.id.iv_qiang);
+				holder.iv_xian = (ImageView)convertView
+						.findViewById(R.id.iv_xian);
+				holder.iv_zhe = (ImageView)convertView
+						.findViewById(R.id.iv_zhe);
+				
+				
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
@@ -209,12 +220,40 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 			}
 			holder.tv_title.setText(quan.fav_ent_name);
 			holder.tv_desc.setText(quan.simple_description);
+			
+			
+			if(quan.isLimitQuantity.equals("1")){
+				holder.iv_xian.setVisibility(View.VISIBLE);
+			}else{
+				holder.iv_xian.setVisibility(View.GONE);
+			}
+			if(quan.isBuy.equals("1")){
+				holder.iv_gou.setVisibility(View.VISIBLE);
+			}else{
+				holder.iv_gou.setVisibility(View.GONE);
+			}
+			if(quan.isAgio.equals("1")){
+				holder.iv_zhe.setVisibility(View.VISIBLE);
+			}else{
+				holder.iv_zhe.setVisibility(View.GONE);
+			}
+			if(quan.isHotBuy.equals("1")){
+				holder.iv_qiang.setVisibility(View.VISIBLE);
+			}else{
+				holder.iv_qiang.setVisibility(View.GONE);
+			}
 		}
 
 		class ViewHolder {
 			public NetworkImageView iv_icon;
 			public TextView tv_title;
 			TextView  tv_desc;
+			
+			public ImageView iv_gou;
+			public ImageView iv_qiang;
+			public ImageView iv_xian;
+			public ImageView iv_zhe;
+			
 		}
 	}
 
@@ -246,17 +285,20 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 			TextView tv = (TextView) convertView.findViewById(R.id.tv_title);
 			switch (type) {
 			case allarea:
-				
+				iv.setVisibility(View.GONE);
+				City city = cities.get(position);
+				tv.setText(city.areaName);
 				break;
 			case allsort:
 				iv.setVisibility(View.GONE);
+				
 				break;
 			case hot:
 				tv.setVisibility(View.GONE);
 				break;
-
 			}
-
+			
+			
 			return convertView;
 		}
 

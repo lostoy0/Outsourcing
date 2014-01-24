@@ -93,7 +93,8 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		
 		initConfig();
 
-		YouLianHttpApi.getYouhuiQuanDetail(null, fav_ent_id,
+		
+		YouLianHttpApi.getYouhuiQuanDetail(YouLianHttpApi.user_token, fav_ent_id,
 				createMyReqSuccessListener(), createMyReqErrorListener());
 	}
 	
@@ -176,13 +177,16 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		tv_use_desc = (TextView) this.findViewById(R.id.tv_use_desc);
 
 		rel_mengdian = (RelativeLayout) this.findViewById(R.id.rel_mengdian);
+		rel_mengdian.setOnClickListener(this);
 		tv_mendian_info = (TextView) this.findViewById(R.id.tv_mendian_info);
 
 		rel_user_comment = (RelativeLayout) this
 				.findViewById(R.id.rel_user_comment);
+		rel_user_comment.setOnClickListener(this);
 		tv_user_comment = (TextView) this.findViewById(R.id.tv_user_comment);
 
 		rel_shop_desc = (RelativeLayout) this.findViewById(R.id.rel_shop_desc);
+		rel_shop_desc.setOnClickListener(this);
 		tv_shop_desc = (TextView) this.findViewById(R.id.tv_shop_desc);
 
 		// set tab buttons
@@ -269,7 +273,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			break;
 
 		case R.id.bt_apply:
-			YouLianHttpApi.applyYouhuiQuan(null, quan.fav_ent_id, createApplyYouhuiQuanSuccessListener(), createMyReqErrorListener());
+			YouLianHttpApi.applyYouhuiQuan(YouLianHttpApi.user_token, quan.fav_ent_id, createApplyYouhuiQuanSuccessListener(), createMyReqErrorListener());
 			break;
 		case R.id.btn_pie:// 敲到
 			break;
@@ -283,7 +287,21 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			break;
 		case R.id.btn_more:// 收藏
 			break;
-
+			
+		case R.id.rel_mengdian:// 门店信息
+			intent = new Intent(getApplicationContext(), ShopActivity.class);
+			intent.putExtra("quan", quan);
+			startActivity(intent);
+			
+			break;
+		case R.id.rel_user_comment:// 用户点评
+			intent = new Intent(getApplicationContext(), CommentActivity.class);
+			intent.putExtra("quan", quan);
+			startActivity(intent);
+			break;
+		case R.id.rel_shop_desc:// 收藏
+			break;
+			
 		default:
 			break;
 		}
@@ -331,6 +349,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 						if (status == 1) {
 							Toast.makeText(getApplicationContext(), "申请成功",
 									Toast.LENGTH_SHORT).show();
+							bt_apply.setText("已申请");
 						} else {
 							String msg = o.optString("msg");
 							Toast.makeText(getApplicationContext(), msg,

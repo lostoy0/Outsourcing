@@ -42,9 +42,9 @@ public class CommentActivity extends Activity implements OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_seller_activities);
 		
-		initViews();
-		
 		quan = (YouhuiQuan) getIntent().getSerializableExtra("quan");
+		
+		initViews();
 		
 		YouLianHttpApi.getComment(quan.customer_id, createGetCommentSuccessListener(), createMyReqErrorListener());
 		
@@ -58,7 +58,7 @@ public class CommentActivity extends Activity implements OnClickListener {
 		ib_right.setVisibility(View.VISIBLE);
 		ib_right.setOnClickListener(this);
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
-		tv_title.setText(R.string.act);
+		tv_title.setText(quan.fav_name);
 		
 		
 		container_left = (LinearLayout)this.findViewById(R.id.container_left);

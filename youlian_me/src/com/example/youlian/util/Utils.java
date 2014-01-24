@@ -131,7 +131,7 @@ public class Utils {
 	public static void call(Context context,String number)
 	{
 		Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
-		// ��ʼ����
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(intent);
 	}
 

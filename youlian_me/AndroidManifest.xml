@@ -53,6 +53,8 @@
         <activity android:name=".YouhuiQuanDetail" android:screenOrientation="portrait"></activity>
         <activity android:name=".CommentActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".CommentAddActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ShopActivity" android:screenOrientation="portrait"></activity>
+        
 
         
         <activity android:name=".RegisterActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
