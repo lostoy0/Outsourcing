@@ -2,12 +2,9 @@ package com.example.youlian.common;
 
 import java.lang.reflect.Field;
 
-
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import android.view.Display;
 
@@ -16,17 +13,13 @@ import android.view.Display;
  * @author simon
  * @proName vipshop
  * @version 1.0
- * @Data 2012-7-25 ÏÂÎç01:19:57
+ * @Data 2012-7-25 ä¸‹åˆ01:19:57
  *
  * @Comment...
  */
 public class Configure {
 	private static Context mContext;
 
-	/**
-	 *
-	 * @param context
-	 */
 	public static void init(Activity context) {
 		mContext = context;
 		Display display= context.getWindowManager().getDefaultDisplay();
@@ -55,34 +48,34 @@ public class Configure {
 		return y;
 	}
 	/**
-	 * Êı¾İ·µ»Ø³É¹¦Óë·ñÑéÖ¤ 1 ³É¹¦  0  Ê§°Ü
+	 * æ•°æ®è¿”å›æˆåŠŸä¸å¦éªŒè¯ 1 æˆåŠŸ  0  å¤±è´¥
 	 */
 	public static final String dataType = "1";
 	
 	/**
-	 * ÆÕÍ¨ÓÃ»§ÓëÉÌ»§ 0 ÆÕÍ¨ 1 ÉÌ»§
+	 * æ™®é€šç”¨æˆ·ä¸å•†æˆ· 0 æ™®é€š 1 å•†æˆ·
 	 */
 	public static final String userType = "0";
 	
 	/**
-	 * ÓĞ¹Ø»áÔ±¿¨µÄÀàĞÍ
+	 * æœ‰å…³ä¼šå‘˜å¡çš„ç±»å‹
 	 */
 	public static final String cardType = "1";
 	
 	/**
-	 * ÓĞ¹ØµÇÂ¼Ìø×ª  ÎÒµÄ¿¨°ü¡¢¸ü¶à¡¢ÉêÇë»áÔ±¿¨¡¢·ÖÏí¡¢¹Ø×¢ 
+	 * æœ‰å…³ç™»å½•è·³è½¬  æˆ‘çš„å¡åŒ…ã€æ›´å¤šã€ç”³è¯·ä¼šå‘˜å¡ã€åˆ†äº«ã€å…³æ³¨ 
 	 */
 	public static final String MyKabao = "mykaobao",More = "more",CardManger= "cardmanger";
 	
 	/**
-	 * ¸ü¶àÖĞÏÈµÇÂ¼£ºĞŞ¸Ä¸öÈË×ÊÁÏ¡¢ĞŞ¸ÄÃÜÂë¡¢ÎÒ¹Ø×¢µÄÉÌ¼Ò
+	 * æ›´å¤šä¸­å…ˆç™»å½•ï¼šä¿®æ”¹ä¸ªäººèµ„æ–™ã€ä¿®æ”¹å¯†ç ã€æˆ‘å…³æ³¨çš„å•†å®¶
 	 */
 	public static final String UpUserInfo = "UpUserInfo",UpUserPsd = "UpUserPsd",MyFollowStore= "MyFollowStore";
 	
 	public static final int APPLY_CARD = 11,SHARE_CARD =22,FOLLOW_CARD = 33,MORE_LOGIN = 44,BAG_LOGIN=55,CARD_DET_LOGIN = 66,cityLoacl = 77
 	,TWO_CODE_SEARCH= 88;
 	/**
-	 * ÓĞ¹Ø·ÖÏíµÄapp
+	 * æœ‰å…³åˆ†äº«çš„app
 	 */
 	public static final String IS_SHARE_TX = "tx", IS_SHARE_RR = "rr",IS_SHARE_XL = "xl";
 	
@@ -91,54 +84,54 @@ public class Configure {
 	
 	public static final String USERINFO_SIAN = "USERINFO_SIAN",EXPIRES_IN_SIAN = "EXPIRES_IN_SINAN";;
 	/**
-	 * ¹ã¸æ  »î¶¯Ê×Ò³,ÁĞ±íÒ³
+	 * å¹¿å‘Š  æ´»åŠ¨é¦–é¡µ,åˆ—è¡¨é¡µ
 	 */
 	public static final int zone_home = 0,zone_list = 1;
 	/**
-	 * Ê×Ò³Í¼Æ¬±ê¼Ç¡¢³ÇÊĞ±ä¸ü±ê¼Ç¡¢³ÇÊĞ´®
+	 * é¦–é¡µå›¾ç‰‡æ ‡è®°ã€åŸå¸‚å˜æ›´æ ‡è®°ã€åŸå¸‚ä¸²
 	 */
 	public static final String home_page = "home_page",home_city = "home_city",citys = "citys";
 	
 	/**
-	 * ĞÅÏ¢ÖĞĞÄÌõÊı¡¢ÊÇ·ñÒÑ¾­²é¿´
+	 * ä¿¡æ¯ä¸­å¿ƒæ¡æ•°ã€æ˜¯å¦å·²ç»æŸ¥çœ‹
 	 */
 	public static final String msgSum = "msg_sum",isReaded = "is_readed";
-	/** ÓÃ»§»á»°ĞÅÏ¢ **/
+	/** ç”¨æˆ·ä¼šè¯ä¿¡æ¯ **/
 
-	/** ÓÃ»§ÀàĞÍ **/
+	/** ç”¨æˆ·ç±»å‹ **/
 	public static final String SESSION_USER_TYPE = "session_user_type";
-	/** ÓÃ»§session **/
+	/** ç”¨æˆ·session **/
 	public static final String SESSION_USER_TOKEN = "session_user_token";
-	/** ÓÃ»§Ãû×Ö **/
+	/** ç”¨æˆ·åå­— **/
 	public static final String SESSION_USER_NAME = "session_user_name";
-	/** ÓÃ»§»ı·Ö **/
+	/** ç”¨æˆ·ç§¯åˆ† **/
 	public static final String SESSION_USER_INTEGRAL = "session_user_integral"; 
-	/** ÓÃ»§ÊÇ·ñÍÆËÍĞÅÏ¢ **/
+	/** ç”¨æˆ·æ˜¯å¦æ¨é€ä¿¡æ¯ **/
 	public static final String SESSION_USER_IS_MSG = "session_user_is_msg";
-	/** ÓÃ»§ÊÇ·ñ¼Ç×¡ÃÜÂë **/
+	/** ç”¨æˆ·æ˜¯å¦è®°ä½å¯†ç  **/
 	public static final String SESSION_USER_IS_REMPSD = "session_user_is_rem_psd";
 	
-	/** ¶¨Î»³ÇÊĞ  Ãû×Ö **/
+	/** å®šä½åŸå¸‚  åå­— **/
 	public static final String SESSION_CITY_NAME = "session_city_name";
 	
-	/** ¶¨Î»³ÇÊĞ id **/
+	/** å®šä½åŸå¸‚ id **/
 	public static final String SESSION_CITY_ID = "session_city_id";
 	public static int screenWidth=0, screenHeight=0, screenDensity=0;
-	/**»áÔ±×ÊÁÏ **/
+	/**ä¼šå‘˜èµ„æ–™ **/
 	public static final String SESSION_NAME = "session_name";
 	public static final String SESSION_CALL = "session_call";
 	public static final String SESSION_EMAIL = "session_email";
 	public static final String SESSION_PROVINEC = "session_provinec";
 	public static final String SESSION_CITY = "session_city";
 	public static final String SESSION_DISTRICT = "session_district";
-	 //ÎÒµÄÎ»ÖÃ
+	 //æˆ‘çš„ä½ç½®
     public static double locallon;
 	public static double locallat;
 	public static int pxWidth,pxHeight;
 	public static Bitmap NO_IMAGE=null;
 	public static boolean isDatabaseOprating = false;
 	public static Bitmap[] DetailWeiboImages=null;
-	public static int statusBarHeight;	//×´Ì¬À¸¸ß¶È
-	public static int headerHeight;	//µ¼º½Ìõ¸ß¶È
+	public static int statusBarHeight;	//çŠ¶æ€æ é«˜åº¦
+	public static int headerHeight;	//å¯¼èˆªæ¡é«˜åº¦
 
 }

@@ -41,7 +41,6 @@
         <activity android:name=".TabFirstPage"></activity>
         <activity android:name=".TabMe"></activity>
         <activity android:name=".TabSign"></activity>
-        <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".MembershipActivity"></activity>
         <activity android:name=".YouhuiQuanActivity"></activity>
         <activity android:name=".MemberShipDetail"></activity>
@@ -52,6 +51,10 @@
         <activity android:name=".more.FeekBackActivity"></activity>
         <activity android:name=".YouhuiQuanDetail"></activity>
         <activity android:name=".CommentActivity"></activity>
+        
+        <activity android:name=".RegisterActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
+        <activity android:name=".FindPsdActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
         
         
         <!-- ###################注册SDK使用的Activity###################### -->

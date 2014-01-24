@@ -13,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.Request.Method;
 import com.android.volley.toolbox.StringRequest;
 import com.example.youlian.app.MyVolley;
+import com.example.youlian.util.YlUtils;
 
 public class YouLianHttpApi {
 	public static final String URL_ZHENSHI = "http://www.younion.com.cn/younionmember/router/router.action";
@@ -225,6 +226,103 @@ public class YouLianHttpApi {
 			Response.ErrorListener errorListener){
 		String server = "younion.comment.on.get";
 		String url = getUrl(KEY_SERVER, server, "customer_id", customer_id);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 注册
+	 * @param login_id 登录名（手机号码）
+	 * @param password 密码（需md5加密）
+	 * @param code验证码
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void register(String login_id, String password, String code, 
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.register";
+		String url = getUrl(KEY_SERVER, server, "login_id", login_id, "password", YlUtils.md5(password), "code", code);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 登录
+	 * @param login_id登录名（手机号码）
+	 * @param password密码
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void login(String login_id, String password, 
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.login";
+		String url = getUrl(KEY_SERVER, server, "login_id", login_id, "password", YlUtils.md5(password));
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 获取验证码
+	 * @param mobile 手机号码
+	 * @param type类型（0：短信验证码 1：IVR语音验证码）
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getVerifyCode(String mobile, String type,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.validator.code.get";
+		String url = getUrl(KEY_SERVER, server, "mobile", mobile, "type", type);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 找回密码
+	 * @param login_id登录名（手机号码）
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void seekPassword(String login_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.user.password.seek";
+		String url = getUrl(KEY_SERVER, server, "login_id", login_id);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 修改密码
+	 * @param user_token
+	 * @param old_password
+	 * @param new_password
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void modifyPassword(String user_token, String old_password, String new_password,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.user.password.modify";
+		String url = getUrl(KEY_SERVER, server, "user_token", user_token, 
+				"old_password", YlUtils.md5(old_password), "new_password", YlUtils.md5(new_password));
 		Log.i(TAG, "url:" +  url);
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),

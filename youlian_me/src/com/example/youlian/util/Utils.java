@@ -12,13 +12,10 @@ import java.util.UUID;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
@@ -240,11 +237,6 @@ public class Utils {
 	}
 
 
-	/**
-	 * ����Ϊ��
-	 * @param obj
-	 * @return
-	 */
 	public static boolean notNull(Object obj){
 		if(null != obj && obj!=""){
 			return true;
