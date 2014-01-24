@@ -425,7 +425,28 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
-
+	/**
+	 * 
+	 * 获取“我的”页面信息
+	 * @Title: modifyPassword
+	 * @param user_token
+	 * @param successListener
+	 * @param errorListener
+	 * @return void
+	 * @date 2014-1-24 下午8:44:37
+	 */
+	public static void modifyPassword(String user_token,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.my.info.get";
+		String url = getUrl(KEY_SERVER, server, "user_token", user_token);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 	public static String getUrl(String... keyValues) {
 		// get base url
 		StringBuilder buf = new StringBuilder(URL_TEST);

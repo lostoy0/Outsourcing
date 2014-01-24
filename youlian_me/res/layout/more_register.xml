@@ -7,8 +7,8 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_title" >
+        android:layout_height="48dp"
+        android:background="@drawable/head_bg" >
 
         <ImageButton
             android:id="@+id/back"
@@ -140,11 +140,12 @@
                 
                 <Button 
                     android:id="@+id/btn_get_verifycode"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
                     android:layout_marginRight="8dp"
+                    android:gravity="center"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:background="@drawable/select_btn_verifycode"

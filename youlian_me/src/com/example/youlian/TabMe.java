@@ -25,9 +25,7 @@ public class TabMe extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		
-
-		setContentView(R.layout.activity_tab_search);
+		setContentView(R.layout.activity_tab_individual);
 		
 		if(!PreferencesUtils.isLogin(this)) {
 			login();
