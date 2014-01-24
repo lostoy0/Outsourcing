@@ -64,6 +64,8 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		initViews();
 
 		YouLianHttpApi.getYouhuiQuan(null, null, createMyReqSuccessListener(),createMyReqErrorListener());
+	
+		YouLianHttpApi.getAreaByProvinceIdCid(null, null, null, creategetAreaByProvinceIdCidSuccessListener(), createMyReqErrorListener());
 	}
 
 	private void initViews() {
@@ -114,7 +116,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.linear_all_area:
 			type = allarea;
-//			exChange();
+			exChange();
 			adapterAll.notifyDataSetChanged();
 			break;
 		case R.id.linear_all_sort:
@@ -282,6 +284,32 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 								youhuiQuans.add(YouhuiQuan.parse(oo));
 							}
 							adapter.notifyDataSetChanged();
+						}else{
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+						}
+						
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					
+				}
+			}
+		};
+	}
+	
+	
+	private Response.Listener<String> creategetAreaByProvinceIdCidSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if(status == 1){
+							
 						}else{
 							String msg = o.optString("msg");
 							Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();

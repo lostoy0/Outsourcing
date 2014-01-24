@@ -2,6 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
+    android:gravity="center_horizontal"
     android:orientation="vertical" >
 
     <!-- title -->
@@ -11,37 +12,69 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" >
+        android:layout_marginTop="10dp" >
 
         <ImageView
-            android:id="@+id/iv_icon"
+            android:id="@+id/iv_icon_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/select_btn_star_red_stone" />
 
         <ImageView
-            android:id="@+id/iv_icon"
+            android:id="@+id/iv_icon_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/add_commit_start_left"
             android:src="@drawable/select_btn_star_red_stone" />
 
         <ImageView
-            android:id="@+id/iv_icon"
+            android:id="@+id/iv_icon_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/add_commit_start_left"
             android:src="@drawable/select_btn_star_red_stone" />
 
         <ImageView
-            android:id="@+id/iv_icon"
+            android:id="@+id/iv_icon_four"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/add_commit_start_left"
             android:src="@drawable/select_btn_star_huise" />
 
         <ImageView
-            android:id="@+id/iv_icon"
+            android:id="@+id/iv_icon_five"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/add_commit_start_left"
             android:src="@drawable/select_btn_star_huise" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="140" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_edit"
+        android:gravity="left|top"
+        android:padding="5dp"
+        android:hint="如果觉得不爽，说两句吧。" />
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_edit"
+        android:padding="5dp" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_btn_carame" />
     </LinearLayout>
 
 </LinearLayout>

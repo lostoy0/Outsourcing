@@ -28,6 +28,7 @@
         >
         <activity
             android:name="com.example.youlian.TabHome"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,22 +37,24 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".TabMore"></activity>
-        <activity android:name=".TabShopCart"></activity>
-        <activity android:name=".TabFirstPage"></activity>
-        <activity android:name=".TabMe"></activity>
-        <activity android:name=".TabSign"></activity>
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".MembershipActivity"></activity>
-        <activity android:name=".YouhuiQuanActivity"></activity>
-        <activity android:name=".MemberShipDetail"></activity>
-        <activity android:name=".AllSellerActivity"></activity>
-        <activity android:name=".AllSellerDetailActivity"></activity>
-        <activity android:name=".more.ShareSetActivity"></activity>
-        <activity android:name=".WebViewActivity"></activity>
-        <activity android:name=".more.FeekBackActivity"></activity>
-        <activity android:name=".YouhuiQuanDetail"></activity>
-        <activity android:name=".CommentActivity"></activity>
+        <activity android:name=".TabMore" android:screenOrientation="portrait"></activity>
+        <activity android:name=".TabShopCart" android:screenOrientation="portrait"></activity>
+        <activity android:name=".TabFirstPage" android:screenOrientation="portrait"></activity>
+        <activity android:name=".TabMe" android:screenOrientation="portrait"></activity>
+        <activity android:name=".TabSign" android:screenOrientation="portrait"></activity>
+        <activity android:name=".RegisterActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".MembershipActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".YouhuiQuanActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".MemberShipDetail" android:screenOrientation="portrait"></activity>
+        <activity android:name=".AllSellerActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".AllSellerDetailActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".more.ShareSetActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".WebViewActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".more.FeekBackActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".YouhuiQuanDetail" android:screenOrientation="portrait"></activity>
+        <activity android:name=".CommentActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".CommentAddActivity" android:screenOrientation="portrait"></activity>
+        
         
         
         <!-- ###################注册SDK使用的Activity###################### -->

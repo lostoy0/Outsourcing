@@ -162,7 +162,8 @@ public class CommentActivity extends Activity implements OnClickListener {
 			finish();
 			break;
 		case R.id.ib_right:
-			Log.i(TAG, "ddddddddd");
+			Intent i = new Intent(getApplicationContext(), CommentAddActivity.class);
+			startActivity(i);
 			break;
 			
 

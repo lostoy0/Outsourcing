@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,11 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 	
 	private YouhuiQuan quan;
 	private ImageButton ib_right;
+	private ImageView iv_icon_one;
+	private ImageView iv_icon_two;
+	private ImageView iv_icon_three;
+	private ImageView iv_icon_four;
+	private ImageView iv_icon_five;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +59,22 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 		back.setOnClickListener(this);
 		
 		ib_right = (ImageButton) this.findViewById(R.id.ib_right);
+		ib_right.setBackgroundResource(R.drawable.select_btn_sumbit);
 		ib_right.setVisibility(View.VISIBLE);
 		ib_right.setOnClickListener(this);
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
 		tv_title.setText(R.string.act);
 		
+		iv_icon_one = (ImageView)this.findViewById(R.id.iv_icon_one);
+		iv_icon_two = (ImageView)this.findViewById(R.id.iv_icon_two);
+		iv_icon_three = (ImageView)this.findViewById(R.id.iv_icon_three);
+		iv_icon_four = (ImageView)this.findViewById(R.id.iv_icon_four);
+		iv_icon_five = (ImageView)this.findViewById(R.id.iv_icon_five);
+		iv_icon_one.setOnClickListener(this);
+		iv_icon_two.setOnClickListener(this);
+		iv_icon_three.setOnClickListener(this);
+		iv_icon_four.setOnClickListener(this);
+		iv_icon_five.setOnClickListener(this);
 		
 	}
 	
@@ -159,6 +176,17 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.ib_right:
 			Log.i(TAG, "ddddddddd");
+			
+			break;
+		case R.id.iv_icon_one:
+			break;
+		case R.id.iv_icon_two:
+			break;
+		case R.id.iv_icon_three:
+			break;
+		case R.id.iv_icon_four:
+			break;
+		case R.id.iv_icon_five:
 			break;
 			
 
