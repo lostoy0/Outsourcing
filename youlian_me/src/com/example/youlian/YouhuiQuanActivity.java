@@ -33,6 +33,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.youlian.app.MyVolley;
+import com.example.youlian.mode.City;
 import com.example.youlian.mode.YouhuiQuan;
 
 public class YouhuiQuanActivity extends Activity implements OnClickListener {
@@ -54,6 +55,8 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 	private int type = allarea;
 	
 	public List<YouhuiQuan> youhuiQuans = new ArrayList<YouhuiQuan>();
+	
+	public List<City> cities = new ArrayList<City>();
 	ImageLoader  mImageLoader;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -222,7 +225,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 
 		@Override
 		public int getCount() {
-			return 1;
+			return cities.size();
 		}
 
 		@Override
@@ -309,7 +312,13 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 						JSONObject o = new JSONObject(response);
 						int status = o.optInt("status");
 						if(status == 1){
-							
+							JSONArray array = o.optJSONArray("result");
+							int len = array.length();
+							for(int i=0; i<len; i++){
+								JSONObject oo = array.getJSONObject(i);
+								cities.add(City.parse(oo));
+							}
+							adapterAll.notifyDataSetChanged();
 						}else{
 							String msg = o.optString("msg");
 							Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/lay"
+    android:id="@+id/follow_store"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="注册"
+            android:text="修改密码"
             android:textColor="#ffffff"
             android:textSize="22sp" />
     </RelativeLayout>
@@ -36,16 +36,15 @@
         android:orientation="vertical" >
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
-            android:layout_marginTop="18dip"
-            android:background="@drawable/rounded_rectangle"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/rounded_one"
             android:orientation="vertical" >
 
             <LinearLayout
-                android:id="@+id/more_account"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:gravity="center_vertical"
@@ -55,30 +54,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dip"
-                    android:text="账号:"
-                    android:textColor="@color/black"
+                    android:text="原始密码:"
+                    android:textColor="#111111"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/login_id"
+                    android:id="@+id/old_psd"
                     android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dip"
                     android:background="@null"
-                    android:hint="输入您的手机号码"
-                    android:phoneNumber="true"
+                    android:hint="请输入原始密码"
                     android:singleLine="true"
-                    android:textColorHint="@color/grey"
-                    android:textSize="18sp" />
+                    android:textColorHint="@color/grey" />
             </LinearLayout>
-            
-            <View 
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/grey"/>
+
+            <include layout="@drawable/grey_line" />
 
             <LinearLayout
-                android:id="@+id/more_integral"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:gravity="center_vertical"
@@ -88,30 +81,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dip"
-                    android:text="密码:"
-                    android:textColor="@color/black"
+                    android:text="新密码:"
+                    android:textColor="#111111"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/new_psd"
                     android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dip"
                     android:background="@null"
                     android:hint="6至20位字母或数字"
-                    android:password="true"
+                    android:inputType="textPassword"
                     android:singleLine="true"
                     android:textColorHint="@color/grey"
                     android:textSize="18sp" />
             </LinearLayout>
-            
-            <View 
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/grey"/>
+
+            <include layout="@drawable/grey_line" />
 
             <LinearLayout
-                android:id="@+id/more_integral"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:gravity="center_vertical"
@@ -121,80 +110,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dip"
-                    android:text="手机验证:"
-                    android:textColor="@color/black"
+                    android:text="确认密码:"
+                    android:textColor="#111111"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/et_verifycode"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
+                    android:id="@+id/agin_psd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dip"
-                    android:layout_marginRight="5dp"
                     android:background="@null"
-                    android:inputType="numberDecimal"
+                    android:hint="请再次确认密码"
+                    android:inputType="textPassword"
                     android:singleLine="true"
                     android:textColorHint="@color/grey"
                     android:textSize="18sp" />
-                
-                <Button 
-                    android:id="@+id/btn_get_verifycode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:background="@drawable/select_btn_verifycode"
-                    android:text="获取验证码"/>
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
-            android:gravity="center_vertical"
+            android:layout_marginLeft="60dip"
+            android:layout_marginRight="60dip"
+            android:layout_marginTop="40dip"
+            android:gravity="center"
             android:orientation="horizontal" >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dip"
-                android:text="我已阅读并同意"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/register_pro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dip"
-                android:text="注册协议"
-                android:textColor="@color/red"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:gravity="center_vertical" >
-
             <Button
-                android:id="@+id/submit"
-                android:layout_width="wrap_content"
+                android:id="@+id/ok"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dip"
-                android:layout_marginRight="40dip"
                 android:layout_weight="1"
                 android:background="@drawable/press_greed_btn"
                 android:gravity="center"
-                android:text="提    交"
+                android:text="确认"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
         </LinearLayout>
     </LinearLayout>
 
