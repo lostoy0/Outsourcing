@@ -1,5 +1,7 @@
 package com.example.youlian.mode;
 
+import org.json.JSONObject;
+
 /**
  * 
  * 登录注册返回结果
@@ -9,57 +11,34 @@ package com.example.youlian.mode;
  * @date 2014-1-24 下午2:09:33
  */
 public class LoginResult{
-
 	/**
 	 * 登陆标识
 	 */
-	private String user_token;
+	public String user_token;
 	/**
 	 * 用户昵称
 	 */
-	private String user_name;
+	public String user_name;
 	/**
 	 * 用户积分
 	 */
-	private String user_integral;
+	public String user_integral;
 	/**
 	 * 用户类型
 	 * 0普通用户1商家
 	 */
-	private String type;
-	
+	public String type;
 
-	public String getUser_token() {
-		return user_token;
+	public static LoginResult from(JSONObject json) {
+		LoginResult result = null;
+		if(json != null) {
+			result = new LoginResult();
+			result.type = json.optString("type");
+			result.user_token = json.optString("user_token");
+			result.user_name = json.optString("user_name");
+			result.user_integral = json.optString("user_integral");
+		}
+		return result;
 	}
-
-	public void setUser_token(String user_token) {
-		this.user_token = user_token;
-	}
-
-	public String getUser_name() {
-		return user_name;
-	}
-
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
-	}
-
-	public String getUser_integral() {
-		return user_integral;
-	}
-
-	public void setUser_integral(String user_integral) {
-		this.user_integral = user_integral;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-	
 	
 }

@@ -3,6 +3,7 @@
     android:id="@+id/top_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/bg"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -18,64 +19,365 @@
             android:text="我的"
             android:textColor="#ffffff"
             android:textSize="22sp" />
-        
-        <ImageButton 
-            android:id="@+id/my_setting"
+
+        <ImageButton
+            android:id="@+id/my_ib_setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/my_setting_selector"
-            android:layout_marginRight="8dp"/>
+            android:src="@drawable/my_setting_selector" />
     </RelativeLayout>
-    
-    <LinearLayout 
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        
-        <LinearLayout 
+        android:layout_height="168dp"
+        android:background="@drawable/my_border_bg"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp" >
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/my_iv_icon"
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:background="@drawable/my_icon_bg"
+                android:scaleType="fitXY" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/my_tv_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="50dp"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="优联商场"
+                        android:textColor="@color/white"
+                        android:textSize="22sp" />
+
+                    <ImageButton
+                        android:id="@+id/my_ib_msg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/my_msg_selector" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/my_tv_ucoin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/my_ucoin"
+                        android:drawablePadding="4dp"
+                        android:singleLine="true"
+                        android:text="U币：348"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/my_tv_udot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:drawableLeft="@drawable/my_udot"
+                        android:drawablePadding="4dp"
+                        android:singleLine="true"
+                        android:text="U点：1455"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-        
-        <LinearLayout 
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-            <Button 
+            android:layout_marginTop="16dp" >
+
+            <Button
                 android:id="@+id/my_ib_sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/my_sign_selector"
                 android:text="签到"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                android:background="@drawable/my_sign_selector" />
-            
-            <Button 
+                android:textSize="18sp" />
+
+            <Button
                 android:id="@+id/my_ib_exchange_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/my_exchange_score_selector"
                 android:text="兑积分"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                android:background="@drawable/my_exchange_score_selector" />
-            
-            <Button 
+                android:textSize="18sp" />
+
+            <Button
                 android:id="@+id/my_ib_recharge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/my_exchange_score_selector"
                 android:text="充值"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                android:background="@drawable/my_exchange_score_selector" />
-        </LinearLayout>
+                android:textSize="18sp" />
+        </RelativeLayout>
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_one"
+                android:padding="8dp" >
+
+                <TextView
+                    android:id="@+id/my_tv_vip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/my_vip"
+                    android:gravity="center"
+                    android:text="会员卡"
+                    android:textColor="@color/black_2"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:background="@color/grey" />
+
+                <RelativeLayout
+                    android:id="@+id/my_vip_panel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1" >
+
+                    <TextView
+                        android:id="@+id/my_tv_vip_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="3张"
+                        android:textColor="@color/black_2"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/my_tv_vip_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawablePadding="4dp"
+                        android:drawableRight="@drawable/arrow_right"
+                        android:text="x张有余额"
+                        android:textColor="@color/black_2"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_one"
+                android:padding="8dp" >
+
+                <TextView
+                    android:id="@+id/my_tv_coupon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/my_coupon"
+                    android:gravity="center"
+                    android:text="优惠券"
+                    android:textColor="@color/black_2"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:background="@color/grey" />
+
+                <RelativeLayout
+                    android:id="@+id/my_coupon_panel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1" >
+
+                    <TextView
+                        android:id="@+id/my_tv_coupon_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="3张"
+                        android:textColor="@color/black_2"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/my_tv_coupon_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawablePadding="4dp"
+                        android:drawableRight="@drawable/arrow_right"
+                        android:text="x张有余额"
+                        android:textColor="@color/black_2"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_one"
+                android:padding="8dp" >
+
+                <TextView
+                    android:id="@+id/my_tv_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/my_order"
+                    android:gravity="center"
+                    android:text="订单"
+                    android:textColor="@color/black_2"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:background="@color/grey" />
+
+                <RelativeLayout
+                    android:id="@+id/my_order_panel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1" >
+
+                    <TextView
+                        android:id="@+id/my_tv_order_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="3张"
+                        android:textColor="@color/black_2"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/my_tv_order_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawablePadding="4dp"
+                        android:drawableRight="@drawable/arrow_right"
+                        android:text="x张有余额"
+                        android:textColor="@color/black_2"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_one"
+                android:padding="8dp" >
+
+                <TextView
+                    android:id="@+id/my_tv_favourite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/my_favourite"
+                    android:gravity="center"
+                    android:text="收藏"
+                    android:textColor="@color/black_2"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:background="@color/grey" />
+
+                <RelativeLayout
+                    android:id="@+id/my_favourite_panel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1" >
+
+                    <TextView
+                        android:id="@+id/my_tv_favourite_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="3张"
+                        android:textColor="@color/black_2"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/my_tv_favourite_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawablePadding="4dp"
+                        android:drawableRight="@drawable/arrow_right"
+                        android:text="x张有余额"
+                        android:textColor="@color/black_2"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

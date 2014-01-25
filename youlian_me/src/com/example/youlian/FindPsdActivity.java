@@ -15,13 +15,9 @@ import com.example.youlian.util.YlLogger;
 public class FindPsdActivity extends BaseActivity implements OnClickListener {
 	private YlLogger mLogger = YlLogger.getLogger(this.getClass().getSimpleName());
 	
-	private final static int FIND_PASSWORD = 1;
-
 	private ImageButton mBackButton;
 	private Button mSubmitButton;
 	private EditText mLoginIdEditText;
-
-	private String mUserName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

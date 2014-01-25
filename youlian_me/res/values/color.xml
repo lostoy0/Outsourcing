@@ -29,7 +29,6 @@
 	<color name="highline">#88FFFFFF</color>
 
 	<color name="text_app_title">#FFD0E0ED</color>
-	<color name="black_2">#494949</color>
 	<color name="text_title">#FF1C7CB2</color>
 	<color name="text_dialog_content">#FF1C7CB2</color>
 	<color name="text_detail_content">#FFA0A0A0</color>
@@ -43,7 +42,6 @@
 	<color name="progress_background_center">#FF1D84C3</color>
 	<color name="dialog_background_tips">#FFEB8317</color>
 	<color name="title">#D02080</color>
-	<color name="grey">#CCCCCC</color>
 
 	<!-- TextView -->
 	<color name="pinkcolor">#CA46C4</color>

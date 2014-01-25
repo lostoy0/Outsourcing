@@ -1,6 +1,8 @@
 package com.example.youlian;
 
-import android.app.Activity;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -15,6 +17,9 @@ import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.youlian.common.Constants;
+import com.example.youlian.mode.LoginResult;
+import com.example.youlian.util.PreferencesUtils;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
 import com.example.youlian.util.YlUtils;
@@ -22,8 +27,6 @@ import com.example.youlian.util.YlUtils;
 public class RegisterActivity extends BaseActivity implements OnClickListener {
 	private YlLogger mLogger = YlLogger.getLogger(this.getClass().getSimpleName());
 
-	private static final int REGISTER_ID = 1;
-	
 	private ImageButton mBackButton;
 	private EditText mLoginIdEditText, mPasswordEditText, mVerifyCodEditText;
 	private Button mSubmitButton, mGetVerifyCodeButton;
@@ -170,6 +173,9 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 					mLogger.i("response is null");
 				} else {
 					mLogger.i(response);
+					
+					parseAndSaveLoginInfo(response);
+					
 				}
 			}
 		};
@@ -184,6 +190,24 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
         };
     }
 	
+	private void parseAndSaveLoginInfo(String response) {
+		try {
+			JSONObject jsonObject = new JSONObject(response.trim());
+			if("1".equals(jsonObject.opt(Constants.key_status))) {
+				LoginResult result = LoginResult.from(jsonObject.optJSONObject(Constants.key_result));
+				if(result != null) {//注册成功，保存登录信息
+					PreferencesUtils.saveSessionUser(RegisterActivity.this, result);
+					setResult(RESULT_OK);
+					finish();
+				}
+			} else {
+				Utils.showToast(RegisterActivity.this, "登录失败");
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
 	class YlCountDownTimer extends CountDownTimer {
 
 		public YlCountDownTimer(long millisInFuture, long countDownInterval) {
