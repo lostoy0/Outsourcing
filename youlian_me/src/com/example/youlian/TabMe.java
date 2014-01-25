@@ -1,25 +1,16 @@
 package com.example.youlian;
 
-import com.example.youlian.util.PreferencesUtils;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
+
+import com.example.youlian.util.PreferencesUtils;
 
 
 public class TabMe extends Activity {
 	private static final int REQ_CODE_LOGIN = 0x1000;
-
-	private Button mBtnSearch = null;
-	
-	private TextView mSearchTextView = null;
-	
-	private Button mBtnNearby = null;
-	private Button mBtnNewest = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +33,10 @@ public class TabMe extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == REQ_CODE_LOGIN && resultCode == RESULT_OK) {
 			//登录成功，并成功返回
-			
+			if(!TextUtils.isEmpty(Global.getUserToken(this))) {
+				//usertoken is valid, then load data
+				
+			}
 		}
 	}
 

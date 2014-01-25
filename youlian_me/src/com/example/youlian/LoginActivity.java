@@ -1,5 +1,8 @@
 package com.example.youlian;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,14 +15,14 @@ import android.widget.ImageButton;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.youlian.common.Configure;
+import com.example.youlian.common.Constants;
+import com.example.youlian.mode.LoginResult;
 import com.example.youlian.util.PreferencesUtils;
+import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
 
 public class LoginActivity extends BaseActivity implements OnClickListener {
 	private YlLogger mLogger = YlLogger.getLogger(this.getClass().getSimpleName());
-
-	private static final int LOGIN_ID = 1;
-	private static final int ADD_DE = 2;
 
 	private ImageButton mBackButton, mAutoLoginButton;;
 	private EditText mLoginIdEditText, mPasswordEditText;
@@ -152,6 +155,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 					mLogger.i("response is null");
 				} else {
 					mLogger.i(response);
+					
+					parseAndSaveLoginInfo(response);
 				}
 			}
 		};
@@ -165,4 +170,22 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
             }
         };
     }
+	
+	private void parseAndSaveLoginInfo(String response) {
+		try {
+			JSONObject jsonObject = new JSONObject(response.trim());
+			if("1".equals(jsonObject.opt(Constants.key_status))) {
+				LoginResult result = LoginResult.from(jsonObject.optJSONObject(Constants.key_result));
+				if(result != null) {//注册成功，保存登录信息
+					PreferencesUtils.saveSessionUser(LoginActivity.this, result);
+					setResult(RESULT_OK);
+					finish();
+				}
+			} else {
+				Utils.showToast(LoginActivity.this, "登录失败");
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
 }

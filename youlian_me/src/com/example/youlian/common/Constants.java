@@ -11,6 +11,9 @@ package com.example.youlian.common;
  * <b>接口管理/b>
  */
 public class Constants {
+	public static final String key_status = "status";
+	public static final String key_result = "result";
+	
 	/**
 	 * YOULian HTTP请求
 	 */

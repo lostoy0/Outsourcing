@@ -17,8 +17,6 @@ import com.example.youlian.util.YlLogger;
 public class ModifyPsdActivity extends BaseActivity implements OnClickListener {
 	private YlLogger mLogger = YlLogger.getLogger(this.getClass().getSimpleName());
 	
-	private final static int MODIFY_PASSWORD = 1;
-	
 	private ImageButton mBackButton;
 	private Button mSubmitButton;
 
