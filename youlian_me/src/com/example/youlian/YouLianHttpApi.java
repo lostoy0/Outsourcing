@@ -437,7 +437,7 @@ public class YouLianHttpApi {
 	 * @return void
 	 * @date 2014-1-24 下午8:44:37
 	 */
-	public static void modifyPassword(String user_token,
+	public static void getMyInfo(String user_token,
 			Response.Listener<String> successListener,
 			Response.ErrorListener errorListener){
 		String server = "younion.my.info.get";

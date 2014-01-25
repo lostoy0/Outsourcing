@@ -70,39 +70,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		mAutoLoginButton.setOnClickListener(this);
 	}
 
-//	private void loginSuccend(LoginResult user) {
-//		PreferencesUtils.saveSessionUser(this, user);
-//		if (Configure.userType.equals(user.getType())) { // 普通用户
-//			Intent intent = new Intent(this, MoreActivity.class);
-//			intent.putExtra("user_type", user.getType());
-//			intent.putExtra("user_name", user.getUser_name());
-//			intent.putExtra("user_integral", user.getUser_integral());
-//			setResult(RESULT_OK, intent);
-//		} else {
-//			if (Configure.More.equals(loginType)) {
-//				Intent intent = new Intent(this, YoulianActivity.class);
-//				intent.putExtra("user_type", user.getType());
-//				intent.putExtra("user_name", user.getUser_name());
-//				intent.putExtra("user_integral", user.getUser_integral());
-//				/* 将数据打包到aintent Bundle 的过程略 */
-//				setResult(Configure.MORE_LOGIN, intent);
-//			} else if (Configure.MyKabao.equals(loginType)) {
-//				Intent intent = new Intent(this, YoulianActivity.class);
-//				intent.putExtra("user_type", user.getType());
-//				/* 将数据打包到aintent Bundle 的过程略 */
-//				setResult(RESULT_OK, intent);
-//
-//			} else if (Configure.CardManger.equals(loginType)) {
-//				Intent intent = new Intent(this, CardDetailedActivity.class);
-//				intent.putExtra("user_type", user.getType());
-//				/* 将数据打包到aintent Bundle 的过程略 */
-//				setResult(RESULT_OK, intent);
-//
-//			}
-//		}
-//		finish();
-//	}
-
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
