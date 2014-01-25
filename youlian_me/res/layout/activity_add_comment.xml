@@ -18,21 +18,21 @@
             android:id="@+id/iv_icon_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/select_btn_star_red_stone" />
+            android:src="@drawable/select_btn_star_huise" />
 
         <ImageView
             android:id="@+id/iv_icon_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/add_commit_start_left"
-            android:src="@drawable/select_btn_star_red_stone" />
+            android:src="@drawable/select_btn_star_huise" />
 
         <ImageView
             android:id="@+id/iv_icon_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/add_commit_start_left"
-            android:src="@drawable/select_btn_star_red_stone" />
+            android:src="@drawable/select_btn_star_huise" />
 
         <ImageView
             android:id="@+id/iv_icon_four"
@@ -62,6 +62,7 @@
         android:background="@drawable/bg_edit"
         android:gravity="left|top"
         android:padding="5dp"
+        android:id="@+id/et_content"
         android:hint="如果觉得不爽，说两句吧。" />
 
     <LinearLayout

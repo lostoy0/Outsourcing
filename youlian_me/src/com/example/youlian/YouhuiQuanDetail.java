@@ -236,6 +236,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		tv_use_desc.setText("使用说明：\n" + quan.fav_detail);
 		tv_mendian_info.setText("门店信息（" + quan.shops.size() + ")");
 		tv_user_comment.setText("用户点评(" + quan.comments + ")");
+		tv_shop_desc.setText(quan.customer_brief);
 		
 		List<YouhuiQuan> list = quan.moreYouHuiquan;
 		
@@ -299,7 +300,22 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			intent.putExtra("quan", quan);
 			startActivity(intent);
 			break;
-		case R.id.rel_shop_desc:// 收藏
+		case R.id.rel_shop_desc:// 
+			intent = new Intent(getApplicationContext(), SellerActivity.class);
+			intent.putExtra("title", quan.fav_name);
+			
+			if (TextUtils.isEmpty(quan.fav_id)) {
+				if (quan.nonactivatedPic != null) {
+					intent.putExtra("url", quan.nonactivatedPic);
+				}
+			} else {
+				if (quan.activatedPic != null) {
+					intent.putExtra("url", quan.activatedPic);
+				}
+			}
+			
+			intent.putExtra("desc", quan.customer_brief);
+			startActivity(intent);
 			break;
 			
 		default:

@@ -85,13 +85,10 @@ public class CommentActivity extends Activity implements OnClickListener {
 								JSONObject oo = array.getJSONObject(i);
 								Comment c = Comment.parse(oo);
 								CommentItem one = new CommentItem(getApplicationContext());
-								
+								one.setData(c);
 								if(i%2 == 0){
-									c.pic = "asdf";
-									one.setData(c);
 									container_left.addView(one);
 								}else{
-									one.setData(c);
 									container_right.addView(one);
 								}
 							}
@@ -163,6 +160,7 @@ public class CommentActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.ib_right:
 			Intent i = new Intent(getApplicationContext(), CommentAddActivity.class);
+			i.putExtra("quan", quan);
 			startActivity(i);
 			break;
 			

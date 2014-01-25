@@ -1,5 +1,8 @@
 package com.example.youlian;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.youlian.mode.Comment;
 import com.example.youlian.mode.YouhuiQuan;
+import com.example.youlian.util.ExceptionUtils;
 import com.example.youlian.view.ActLeft;
 import com.example.youlian.view.ActRight;
 import com.example.youlian.view.CommentItem;
@@ -39,6 +44,8 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 	private ImageView iv_icon_three;
 	private ImageView iv_icon_four;
 	private ImageView iv_icon_five;
+	private List<ImageView> ivs = new ArrayList<ImageView>();
+	private EditText et_content;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +82,13 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 		iv_icon_three.setOnClickListener(this);
 		iv_icon_four.setOnClickListener(this);
 		iv_icon_five.setOnClickListener(this);
+		ivs.add(iv_icon_one);
+		ivs.add(iv_icon_two);
+		ivs.add(iv_icon_three);
+		ivs.add(iv_icon_four);
+		ivs.add(iv_icon_five);
 		
+		et_content = (EditText)this.findViewById(R.id.et_content);
 	}
 	
 	
@@ -92,22 +105,7 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 						if (status == 1) {
 							Toast.makeText(getApplicationContext(), "申请成功",
 									Toast.LENGTH_SHORT).show();
-							JSONArray array = o.optJSONArray("result");
-							int size = array.length();
-							for(int i=0; i<size; i++){
-								JSONObject oo = array.getJSONObject(i);
-								Comment c = Comment.parse(oo);
-								CommentItem one = new CommentItem(getApplicationContext());
-								
-								if(i%2 == 0){
-									c.pic = "asdf";
-									one.setData(c);
-									container_left.addView(one);
-								}else{
-									one.setData(c);
-									container_right.addView(one);
-								}
-							}
+							
 							
 						} else {
 							String msg = o.optString("msg");
@@ -163,11 +161,14 @@ public class CommentAddActivity extends Activity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-            	Log.i(TAG, "error");
+            	String errorMsg = ExceptionUtils.getErrorMsg(error, getApplicationContext());
+            	Toast.makeText(getApplicationContext(), errorMsg,
+						Toast.LENGTH_SHORT).show();
             }
         };
     }
 	
+	private int star_level;
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -176,17 +177,30 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.ib_right:
 			Log.i(TAG, "ddddddddd");
-			
+			String content = et_content.getText().toString();
+			YouLianHttpApi.comment(YouLianHttpApi.user_token, quan.customer_id, content, 
+					String.valueOf(star_level), null, null, "2",
+					null, null, createGetCommentSuccessListener(), createGetAdErrorListener());
 			break;
 		case R.id.iv_icon_one:
+			star_level = 1;
+			refreshStar();
 			break;
 		case R.id.iv_icon_two:
+			star_level = 2;
+			refreshStar();
 			break;
 		case R.id.iv_icon_three:
+			star_level = 3;
+			refreshStar();
 			break;
 		case R.id.iv_icon_four:
+			star_level = 4;
+			refreshStar();
 			break;
 		case R.id.iv_icon_five:
+			star_level = 5;
+			refreshStar();
 			break;
 			
 
@@ -194,4 +208,16 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 			break;
 		}
 	}
+
+	private void refreshStar() {
+		for(int i=0; i<5; i++){
+			ImageView iv = ivs.get(i);
+			if(i<star_level){
+				iv.setImageResource(R.drawable.select_btn_star_red_stone);
+			}else{
+				iv.setImageResource(R.drawable.select_btn_star_huise);
+			}
+		}
+	}
+	
 }

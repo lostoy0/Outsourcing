@@ -16,6 +16,7 @@ public class Comment {
 	public String addTime;
 	public String picCount;
 	public String pic;
+	public String userName;
 
 	public static Comment parse(JSONObject jsonObj) throws JSONException {
 		Comment ad = new Comment();
@@ -26,6 +27,8 @@ public class Comment {
 		ad.starLevel = jsonObj.optString("starLevel");
 		ad.addTime = jsonObj.optString("addTime");
 		ad.picCount = jsonObj.optString("picCount");
+		ad.userName = jsonObj.optString("userName");
+		
 		return ad;
 	}
 

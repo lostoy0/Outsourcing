@@ -1,16 +1,27 @@
 package com.example.youlian;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.impl.client.DefaultHttpClient;
+
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.Request.Method;
 import com.android.volley.toolbox.StringRequest;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.util.YlUtils;
@@ -276,18 +287,135 @@ public class YouLianHttpApi {
 	 * @param successListener
 	 * @param errorListener
 	 */
-	public static void comment(String customer_id, String user_token,
-			String content, String star_level, String user_lng,
-			String user_lat, String sign_type, String activity_id,
-			String shop_id, Response.Listener<String> successListener,
+	public static void comment(final String user_token, final String customer_id, 
+			final String content,final  String star_level, final String user_lng,
+			final String user_lat, final String sign_type, final String activity_id,
+			final String shop_id, Response.Listener<String> successListener,
 			Response.ErrorListener errorListener) {
-		String server = "younion.comment.on.add";
-		String url = getUrl(KEY_SERVER, server, "customer_id", customer_id);
+		final String server = "younion.comment.on.add";
+		String url = getUrl();
+//		String url = getUrl(KEY_SERVER, server, 
+//				"user_token", user_token,
+//				"customer_id", customer_id,
+//				"content", content,
+//				"star_level", star_level,
+//				"user_lng", user_lng,
+//				"user_lat", user_lat,
+//				KEY_CLIENT_TYPE, "android",
+//				"sign_type", sign_type,
+//				"activity_id", activity_id,
+//				"shop_id", shop_id
+//				);
 		Log.i(TAG, "url:" + url);
 		RequestQueue queue = MyVolley.getRequestQueue();
-		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
-				successListener, errorListener);
+		StringRequest myReq = new StringRequest(Method.POST, url.toString(),
+				successListener, errorListener){
+			
+			@Override
+			public String getBodyContentType() {
+				return "multipart/form-data";
+			}
+			
+			@Override
+			protected Map<String, String> getParams()
+					throws AuthFailureError {
+				Map<String, String> params = new HashMap<String, String>();
+				params.put("api_key", "87d5d0947f5cac0f96109353e64c1688");
+				params.put("api_sign", "63bd0a3d5c4e0fab882afdb994ea696c");
+				params.put(KEY_SERVER, server);
+				params.put("user_token", user_token);
+				params.put("customer_id", customer_id);
+				params.put("content", content);
+				params.put("star_level", star_level);
+				params.put("user_lng", user_lng);
+				params.put("user_lat", user_lat);
+				params.put(KEY_CLIENT_TYPE, "android");
+				params.put("sign_type", sign_type);
+				params.put("activity_id", activity_id);
+				params.put("shop_id", shop_id);
+				return params;
+			}
+		};
+		myReq.setShouldCache(false);
 		queue.add(myReq);
+	}
+	
+	
+	public static void comment2(final String user_token, final String customer_id, 
+			final String content,final  String star_level, final String user_lng,
+			final String user_lat, final String sign_type, final String activity_id,
+			final String shop_id, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		final String server = "younion.comment.on.add";
+		String url = getUrl();
+		Log.i(TAG, "url:" + url);
+//		RequestQueue queue = MyVolley.getRequestQueue();
+//		StringRequest myReq = new StringRequest(Method.POST, url.toString(),
+//				successListener, errorListener){
+//			@Override
+//			protected Map<String, String> getParams()
+//					throws AuthFailureError {
+//				Map<String, String> params = new HashMap<String, String>();
+//				params.put("api_key", "87d5d0947f5cac0f96109353e64c1688");
+//				params.put("api_sign", "63bd0a3d5c4e0fab882afdb994ea696c");
+//				params.put(KEY_SERVER, server);
+//				params.put("user_token", user_token);
+//				params.put("customer_id", customer_id);
+//				params.put("content", content);
+//				params.put("star_level", star_level);
+//				params.put("user_lng", user_lng);
+//				params.put("user_lat", user_lat);
+//				params.put(KEY_CLIENT_TYPE, "android");
+//				params.put("sign_type", sign_type);
+//				params.put("activity_id", activity_id);
+//				params.put("shop_id", shop_id);
+//				return params;
+//			}
+//			
+//		};
+//		queue.add(myReq);
+		
+		
+		
+		 HttpClient httpClient = new DefaultHttpClient();  
+		    HttpPost postRequest = new HttpPost(url);  
+		    MultipartEntity reqEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);  
+		    try {
+				reqEntity.addPart("api_key", new StringBody("87d5d0947f5cac0f96109353e64c1688"));
+				reqEntity.addPart("api_sign", new StringBody("63bd0a3d5c4e0fab882afdb994ea696c"));  
+			    reqEntity.addPart(KEY_SERVER,new StringBody(server));  
+			    
+			    reqEntity.addPart("user_token",new StringBody(user_token));
+			    reqEntity.addPart("customer_id",new StringBody(customer_id));
+			    reqEntity.addPart("content",new StringBody(content));
+			    reqEntity.addPart("star_level",new StringBody(star_level));
+			    
+			    reqEntity.addPart(KEY_CLIENT_TYPE,new StringBody("android"));
+			    reqEntity.addPart("sign_type",new StringBody(sign_type));
+//			    try{  
+//			        ByteArrayOutputStream bos = new ByteArrayOutputStream();  
+//			        bitmap.compress(CompressFormat.JPEG, 75, bos);  
+//			        byte[] data = bos.toByteArray();  
+//			        ByteArrayBody bab = new ByteArrayBody(data, "kfc.jpg");  
+//			        reqEntity.addPart("image", bab);  
+//			    }  
+//			    catch(Exception e){  
+//			        reqEntity.addPart("image", new StringBody("image error"));  
+//			    }  
+			    postRequest.setEntity(reqEntity);         
+			    HttpResponse response = httpClient.execute(postRequest);  
+			    BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));  
+			    String sResponse;  
+			    StringBuilder s = new StringBuilder();  
+			    while ((sResponse = reader.readLine()) != null) {  
+			        s = s.append(sResponse);  
+			    }
+				Log.i(TAG, s.toString());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}  
+		    
 	}
 	
 	/**

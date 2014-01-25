@@ -16,41 +16,41 @@
             android:layout_height="wrap_content" >
 
             <ImageView
-                android:id="@+id/iv_icon"
+                android:id="@+id/iv_icon_one"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/star_red" />
+                android:src="@drawable/star_white" />
 
             <ImageView
-                android:id="@+id/iv_icon"
+                android:id="@+id/iv_icon_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/star_red" />
+                android:src="@drawable/star_white" />
 
             <ImageView
-                android:id="@+id/iv_icon"
+                android:id="@+id/iv_icon_three"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/star_red" />
+                android:src="@drawable/star_white" />
 
             <ImageView
-                android:id="@+id/iv_icon"
+                android:id="@+id/iv_icon_four"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/star_red" />
+                android:src="@drawable/star_white" />
 
             <ImageView
-                android:id="@+id/iv_icon"
+                android:id="@+id/iv_icon_five"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/star_white" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:text="真功夫啊是的发生aasdfad司法所地方sdfasdf地方" />
 
         <ImageView
@@ -67,17 +67,19 @@
             android:background="@drawable/sprite_comment" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="right"
             android:text="真功夫啊" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="right"
             android:text="2013-87-98" />
     </LinearLayout>
 

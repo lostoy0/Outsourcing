@@ -157,7 +157,7 @@
                     android:padding="10dp" >
 
                     <TextView
-                        android:id="@+id/tv_shop_desc"
+                         android:id="@+id/tv_shop_desc_dd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" 
                          android:text="商家介绍"
@@ -166,8 +166,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_shop_desc"
-                        android:text="真功夫是知名的中式快餐品牌" />
+                        android:layout_below="@id/tv_shop_desc_dd"
+                        android:singleLine="true"
+                        android:id="@+id/tv_shop_desc"
+                        />
 
                     <ImageView
                         android:layout_width="wrap_content"
