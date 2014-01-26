@@ -94,7 +94,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		initConfig();
 
 		
-		YouLianHttpApi.getYouhuiQuanDetail(YouLianHttpApi.user_token, fav_ent_id,
+		YouLianHttpApi.getYouhuiQuanDetail(Global.getUserToken(getApplicationContext()), fav_ent_id,
 				createMyReqSuccessListener(), createMyReqErrorListener());
 	}
 	
@@ -265,7 +265,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		}
 		
 	}
-
+	private boolean isFav = false;
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -274,7 +274,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			break;
 
 		case R.id.bt_apply:
-			YouLianHttpApi.applyYouhuiQuan(YouLianHttpApi.user_token, quan.fav_ent_id, createApplyYouhuiQuanSuccessListener(), createMyReqErrorListener());
+			YouLianHttpApi.applyYouhuiQuan(Global.getUserToken(getApplicationContext()), quan.fav_ent_id, createApplyYouhuiQuanSuccessListener(), createMyReqErrorListener());
 			break;
 		case R.id.btn_pie:// 敲到
 			break;
@@ -287,6 +287,12 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			startActivity(intent);
 			break;
 		case R.id.btn_more:// 收藏
+			if(isFav){
+				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), quan.fav_id, "2", createDelFavSuccessListener(), createMyReqErrorListener());
+			}else{
+				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), quan.fav_id, "2", createAddFavSuccessListener(), createMyReqErrorListener());
+			}
+			isFav = !isFav;
 			break;
 			
 		case R.id.rel_mengdian:// 门店信息
@@ -380,6 +386,65 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			}
 		};
 	}
+	
+	
+	
+	private Response.Listener<String> createAddFavSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if (status == 1) {
+							Toast.makeText(getApplicationContext(), "关注成功",
+									Toast.LENGTH_SHORT).show();
+							mMoreButton.setText("已收藏");
+						} else {
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						}
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		};
+	}
+	
+	private Response.Listener<String> createDelFavSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if (status == 1) {
+							Toast.makeText(getApplicationContext(), "关注成功",
+									Toast.LENGTH_SHORT).show();
+							mMoreButton.setText("收藏");
+						} else {
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						}
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		};
+	}
+	
 
 	private Response.ErrorListener createMyReqErrorListener() {
 		return new Response.ErrorListener() {

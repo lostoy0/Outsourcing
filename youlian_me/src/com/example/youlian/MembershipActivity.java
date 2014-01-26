@@ -1,9 +1,17 @@
 package com.example.youlian;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,10 +26,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.youlian.app.MyVolley;
+import com.example.youlian.mode.Card;
+import com.example.youlian.mode.YouhuiQuan;
 
 public class MembershipActivity extends Activity implements OnClickListener {
 
@@ -40,6 +53,9 @@ public class MembershipActivity extends Activity implements OnClickListener {
 	private static final int allsort = 2;
 	private static final int hot = 3;
 	private int type = allarea;
+	
+	public List<Card> cards = new ArrayList<Card>();
+	ImageLoader  mImageLoader;;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +65,12 @@ public class MembershipActivity extends Activity implements OnClickListener {
 
 		initViews();
 
-		YouLianHttpApi.getMemberCard(null, null, createMyReqSuccessListener(),
+		YouLianHttpApi.getMemberCard(Global.getUserToken(getApplicationContext()), null, createMyReqSuccessListener(),
 				createMyReqErrorListener());
 	}
 
 	private void initViews() {
+		mImageLoader = MyVolley.getImageLoader();
 		back = (ImageButton) this.findViewById(R.id.back);
 		back.setOnClickListener(this);
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
@@ -132,7 +149,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 
 		@Override
 		public int getCount() {
-			return 10;
+			return cards.size();
 		}
 
 		@Override
@@ -153,7 +170,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 				convertView = inflater.inflate(R.layout.item_membership,
 						parent, false);
 				holder = new ViewHolder();
-				holder.iv_icon = (ImageView) convertView
+				holder.iv_icon = (NetworkImageView) convertView
 						.findViewById(R.id.iv_icon);
 				holder.tv_title = (TextView) convertView
 						.findViewById(R.id.tv_title);
@@ -167,8 +184,18 @@ public class MembershipActivity extends Activity implements OnClickListener {
 						.findViewById(R.id.iv_star_four);
 				holder.iv_star_five = (ImageView) convertView
 						.findViewById(R.id.iv_star_five);
+				holder.ivs.add(holder.iv_star_one);
+				holder.ivs.add(holder.iv_star_two);
+				holder.ivs.add(holder.iv_star_three);
+				holder.ivs.add(holder.iv_star_four);
+				holder.ivs.add(holder.iv_star_five);
+				
 				holder.iv_online_chong = (ImageView) convertView
 						.findViewById(R.id.iv_online_chong);
+				holder.iv_yi_chong = (ImageView) convertView
+						.findViewById(R.id.iv_yi_chong);
+				
+				
 				holder.tv_cardname = (TextView) convertView
 						.findViewById(R.id.tv_cardname);
 				holder.tv_desc = (TextView) convertView
@@ -184,14 +211,63 @@ public class MembershipActivity extends Activity implements OnClickListener {
 		}
 
 		public void setValue(ViewHolder holder, int position) {
+			Card c = cards.get(position);
+			if(c.nonactivatedPic != null){
+				holder.iv_icon.setDefaultImageResId(R.drawable.guanggao);
+				holder.iv_icon.setImageUrl(c.nonactivatedPic, mImageLoader);
+			}else{
+				holder.iv_icon.setImageResource(R.drawable.guanggao);
+			}
+			holder.tv_title.setText(c.card_name);
+			refreshStar(c.starLevel, holder);
+			holder.tv_cardname.setText(c.cardLevel);
+			holder.tv_desc.setText("(" + c.card_content + ")");
+			if(Integer.parseInt(c.canOnlinePay) == 1){
+				holder.iv_online_chong.setVisibility(View.VISIBLE);
+			}else{
+				holder.iv_online_chong.setVisibility(View.GONE);
+			}
+			if(Integer.parseInt(c.canBestPay) == 1){
+				holder.iv_yi_chong.setVisibility(View.VISIBLE);
+			}else{
+				holder.iv_yi_chong.setVisibility(View.GONE);
+			}
 		}
+		
+		private void refreshStar(String star_level, ViewHolder holder) {
+			float numF = Float.parseFloat(star_level);
+			System.out.println("numb:" + numF);
+			int numI = (int) numF;
+			boolean isHalf = false;
+			if(numF-numI>0){
+				isHalf = true;
+			}
+			
+			for(int i=0; i<5; i++){
+				ImageView iv = holder.ivs.get(i);
+				if(i<numI){
+					iv.setImageResource(R.drawable.star_red_card);
+				}else{
+					iv.setImageResource(R.drawable.star_huise_card);
+				}
+			}
+			if(isHalf){
+				if(numI < 5){
+					holder.ivs.get(numI).setImageResource(R.drawable.star_half_card);
+				}
+			}
+			
+		}
+		
 
 		class ViewHolder {
-			public ImageView iv_icon;
+			public NetworkImageView iv_icon;
 			public TextView tv_title;
 			public ImageView iv_star_one, iv_star_two, iv_star_three,
 					iv_star_four, iv_star_five;
+			public List<ImageView> ivs = new ArrayList<ImageView>();
 			public ImageView iv_online_chong;
+			public ImageView iv_yi_chong;
 			TextView tv_cardname, tv_desc;
 		}
 	}
@@ -253,7 +329,28 @@ public class MembershipActivity extends Activity implements OnClickListener {
 			@Override
 			public void onResponse(String response) {
 				Log.i(TAG, "success:" + response);
-
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if(status == 1){
+							JSONArray array = o.optJSONArray("result");
+							int len = array.length();
+							for(int i=0; i<len; i++){
+								JSONObject oo = array.getJSONObject(i);
+								cards.add(Card.parse(oo));
+							}
+							adapter.notifyDataSetChanged();
+						}else{
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+						}
+						
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					
+				}
 			}
 		};
 	}

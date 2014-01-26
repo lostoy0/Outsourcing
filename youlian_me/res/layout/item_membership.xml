@@ -3,11 +3,10 @@
     android:layout_height="wrap_content"
     android:padding="10dp" >
 
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:scaleType="fitXY"
-        android:src="@drawable/guanggao" 
         android:id="@+id/iv_icon"
         />
 
@@ -65,9 +64,17 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:id="@+id/iv_online_chong"
                 android:src="@drawable/online_chong" />
+            
+             <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/iv_yi_chong"
+                android:src="@drawable/yi_chong"
+                 />
         </LinearLayout>
 
         <LinearLayout
@@ -85,6 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                  android:id="@+id/tv_desc"
+                 android:singleLine="true"
                 android:text="(申请后7折优惠)" />
         </LinearLayout>
     </LinearLayout>

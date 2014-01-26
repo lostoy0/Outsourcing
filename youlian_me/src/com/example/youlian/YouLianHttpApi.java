@@ -38,7 +38,6 @@ public class YouLianHttpApi {
 	public static final String KEY_CLIENT = "client";
 	private static final String TAG = "YouLianHttpApi";
 	
-	public static String user_token = "e9798cc075938db5060d76ac6b9eb808";
 
 	/**
 	 * 首页广告
@@ -576,6 +575,48 @@ public class YouLianHttpApi {
 				successListener, errorListener);
 		queue.add(myReq);
 	}
+	/**
+	 * 
+	 * @param user_token
+	 * @param favour_id
+	 * @param type  关注的类型 1：卡 2: 优惠券 3：商家
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void addFav(String user_token,
+			String favour_id,String type,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.favorites.add";
+		String url = getUrl(KEY_SERVER, server, 
+				"user_token", user_token,
+				"favour_id", favour_id,
+				"type", type
+				);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	public static void delFav(String user_token,
+			String favour_id,String type,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.favorites.cancel";
+		String url = getUrl(KEY_SERVER, server, 
+				"user_token", user_token,
+				"favour_id", favour_id,
+				"type", type
+				);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 	
 	public static String getUrl(String... keyValues) {
 		// get base url

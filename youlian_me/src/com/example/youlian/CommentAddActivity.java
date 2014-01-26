@@ -178,7 +178,7 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 		case R.id.ib_right:
 			Log.i(TAG, "ddddddddd");
 			String content = et_content.getText().toString();
-			YouLianHttpApi.comment(YouLianHttpApi.user_token, quan.customer_id, content, 
+			YouLianHttpApi.comment(Global.getUserToken(getApplicationContext()), quan.customer_id, content, 
 					String.valueOf(star_level), null, null, "2",
 					null, null, createGetCommentSuccessListener(), createGetAdErrorListener());
 			break;

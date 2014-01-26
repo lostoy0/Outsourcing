@@ -66,7 +66,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 
 		initViews();
 
-		YouLianHttpApi.getYouhuiQuan(null, null, createMyReqSuccessListener(),createMyReqErrorListener());
+		YouLianHttpApi.getYouhuiQuan(Global.getUserToken(getApplicationContext()), null, createMyReqSuccessListener(),createMyReqErrorListener());
 	
 		YouLianHttpApi.getAreaByProvinceIdCid(null, null, null, creategetAreaByProvinceIdCidSuccessListener(), createMyReqErrorListener());
 	}
