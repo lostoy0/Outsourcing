@@ -297,7 +297,8 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			
 		case R.id.rel_mengdian:// 门店信息
 			intent = new Intent(getApplicationContext(), ShopActivity.class);
-			intent.putExtra("quan", quan);
+			intent.putExtra("title", quan.fav_name);
+			intent.putExtra("shops", quan.shops);
 			startActivity(intent);
 			
 			break;

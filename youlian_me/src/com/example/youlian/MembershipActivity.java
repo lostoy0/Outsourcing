@@ -85,7 +85,10 @@ public class MembershipActivity extends Activity implements OnClickListener {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				startActivity(new Intent(getApplicationContext(), MemberShipDetail.class));
+				Intent in = new Intent(getApplicationContext(), MemberShipDetail.class);
+				Card c = cards.get(arg2);
+				in.putExtra("card", c);
+				startActivity(in);
 			}
 		});
 

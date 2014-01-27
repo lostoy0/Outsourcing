@@ -116,6 +116,21 @@ public class YouLianHttpApi {
 				successListener, errorListener);
 		queue.add(myReq);
 	}
+	
+	
+	public static void getMemberCardDetail(String user_token, String card_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.card.get";
+		String url = getUrl("user_token", user_token, "card_id", card_id,
+				KEY_SERVER, server);
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 
 	/**
 	 * 检查版本
@@ -280,7 +295,7 @@ public class YouLianHttpApi {
 	 * @param star_level
 	 * @param user_lng
 	 * @param user_lat
-	 * @param sign_type
+	 * @param sign_type  （1：签到 2：只评论）
 	 * @param activity_id
 	 * @param shop_id
 	 * @param successListener

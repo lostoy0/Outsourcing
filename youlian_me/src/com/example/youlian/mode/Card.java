@@ -1,5 +1,6 @@
 package com.example.youlian.mode;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Card {
+public class Card implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public String card_id;
 	public String card_name;
 	public String card_content;
@@ -35,6 +40,21 @@ public class Card {
 	public String cardLevel;
 	
 	public ArrayList<Shop> shops = new ArrayList<Shop>();
+	
+	
+	public String card_num;
+	public String card_surplus_num;
+	public String time_from;
+	public String time_to;
+	public String cluber_welfare;
+	public String card_directions;
+	public String input_fileds;
+	public String comments;
+	public String customer_id;
+	public String customer_brief;
+	public String customer_introduce;
+	
+	
 
 	public static Card parse(JSONObject jsonObj) throws JSONException {
 		Card ad = new Card();
@@ -64,7 +84,7 @@ public class Card {
 		ad.districtId = jsonObj.optString("districtId");
 		ad.cardLevel = jsonObj.optString("cardLevel");
 		
-		JSONArray array = jsonObj.optJSONArray("shops");
+		JSONArray array = jsonObj.optJSONArray("shop");
 		if(array != null){
 			int len = array.length();
 			for(int i=0; i<len; i++){
@@ -72,6 +92,18 @@ public class Card {
 				ad.shops.add(Shop.parse(o));
 			}
 		}
+		
+		ad.card_num = jsonObj.optString("card_num");
+		ad.card_surplus_num = jsonObj.optString("card_surplus_num");
+		ad.time_from = jsonObj.optString("time_from");
+		ad.time_to = jsonObj.optString("time_to");
+		ad.cluber_welfare = jsonObj.optString("cluber_welfare");
+		ad.card_directions = jsonObj.optString("card_directions");
+		ad.input_fileds = jsonObj.optString("input_fileds");
+		ad.comments = jsonObj.optString("comments");
+		ad.customer_id = jsonObj.optString("customer_id");
+		ad.customer_brief = jsonObj.optString("customer_brief");
+		ad.customer_introduce = jsonObj.optString("customer_introduce");
 		
 		return ad;
 	}

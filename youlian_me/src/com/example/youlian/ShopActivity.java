@@ -31,9 +31,10 @@ public class ShopActivity extends Activity implements OnClickListener {
 	private ImageButton back;
 	private TextView tv_title;
 	
-	private YouhuiQuan quan;
 	private ImageButton ib_right;
 	private LinearLayout branch_shop_lay;
+	private String title;
+	public ArrayList<Shop> shops;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +43,15 @@ public class ShopActivity extends Activity implements OnClickListener {
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_shop);
-		
-		quan = (YouhuiQuan) getIntent().getSerializableExtra("quan");
+		title = getIntent().getStringExtra("title");
+		shops = (ArrayList<Shop>) getIntent().getSerializableExtra("shops");
 		
 		initViews();
 		
 		
 		
 		// CardDetailedActivity 以前版本
-		initBranchShop(quan.shops);
+		initBranchShop(shops);
 	}
 	
 	private void initViews() {
@@ -58,7 +59,7 @@ public class ShopActivity extends Activity implements OnClickListener {
 		back.setOnClickListener(this);
 		
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
-		tv_title.setText(quan.fav_name);
+		tv_title.setText(title);
 		
 		branch_shop_lay = (LinearLayout)this.findViewById(R.id.branch_shop_lay);
 	}

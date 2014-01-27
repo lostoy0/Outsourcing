@@ -4,28 +4,27 @@
     <string name="app_name">youlian_me</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    
-    
     <string name="error_timeout">读取数据超时</string>
     <string name="error_noconnection">服务器异常</string>
     <string name="error_authfailure">鉴权失败</string>
     <string name="error_network">网络错误</string>
     <string name="unknown_error">未知错误</string>
-    
     <string name="all_area">全部区域</string>
     <string name="all_sort">全部分类</string>
     <string name="hot">热门</string>
     <string name="membership">会员卡</string>
     <string name="youhuiquan">优惠券</string>
     <string name="act">活动</string>
-<string name="category_more">更多</string>
+    <string name="category_more">更多</string>
     <string name="share_info">亲，把您在优联的动态，与您的好友一起分享，一起享受优惠生活！设置好后,可绑定一键分享！</string>
     <string name="retrieve_psd">输入注册时的手机号码，该手机号将会收到一条账号及密码信息的短信！</string>
-   <string name="capture_tip">请将条码置于取景框内扫描</string>
-   <string name="shared_set">分享设置</string>
-   <string name="service">服务条款</string>
-   <string name="not_more_than_three">内容不能超过300字</string>
-   <string name="not_null">不能为空</string>
-   <string name="user_feedback">用户反馈</string>
-   <string name="number_apply_use">%s人已申请</string>
+    <string name="capture_tip">请将条码置于取景框内扫描</string>
+    <string name="shared_set">分享设置</string>
+    <string name="service">服务条款</string>
+    <string name="not_more_than_three">内容不能超过300字</string>
+    <string name="not_null">不能为空</string>
+    <string name="user_feedback">用户反馈</string>
+    <string name="number_apply_use">%s人已申请</string>
+    <string name="number_apply_use_card">%s人已申领了本卡</string>
+
 </resources>

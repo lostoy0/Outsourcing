@@ -1,226 +1,285 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" >
+    <!-- title -->
 
-        <!-- title -->
+    <RelativeLayout
+        android:id="@+id/layout_title"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_title" >
 
-        <include layout="@layout/merge_title_layout" />
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dip"
+            android:background="@drawable/back_btn" />
 
-        <ScrollView
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+
+        <ImageButton
+            android:id="@+id/ib_right"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/select_btn_sign"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <!-- middle -->
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/layout_title"
+        android:layout_weight="1" >
+
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
 
-            <LinearLayout
-                android:layout_width="fill_parent"
+            <FrameLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical" >
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_one" >
 
-                <FrameLayout
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="@dimen/youhuiquan_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="#ff0000" >
+                    android:padding="10dp"
+                    android:orientation="vertical" >
 
                     <LinearLayout
-                        android:layout_width="280dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="vertical" >
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-
-                            <ImageView
-                                android:layout_width="90dp"
-                                android:layout_height="70dp"
-                                android:src="@drawable/guanggao" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:orientation="vertical" >
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="70人已经申请了本卡" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="70人已经申请了本卡" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="有效期：2013-05" />
-                            </LinearLayout>
-                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="90dp"
+                            android:layout_height="70dp"
+                            android:scaleType="fitXY"
+                            android:id="@+id/iv_icon"
+                            android:src="@drawable/guanggao" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp" >
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/online_chong" />
+                            android:layout_marginLeft="10dp"
+                            android:orientation="vertical" >
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:text="剩930" />
+                                android:id="@+id/tv_apply"
+                                android:singleLine="true"
+                                android:text="70人已经申请了本卡" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tv_desc"
+                                android:singleLine="true"
+                                android:text="70人已经申请了本卡" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                               android:id="@+id/tv_date"
+                               android:singleLine="true"
+                                android:text="有效期：2013-05" />
                         </LinearLayout>
                     </LinearLayout>
 
-                    <ImageView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/membercard_biaoshi" />
-                </FrameLayout>
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp" >
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="#345345"
-                    android:padding="10dp" >
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/iv_online_chong"
+                            android:src="@drawable/online_chong" />
 
-                    <Button
-                        android:layout_width="120dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/btn_chongzhi" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:text="充值后" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/tv_left"
+                            android:text="剩930" />
+                    </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
+                <ImageView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp" >
+                    android:src="@drawable/membercard_biaoshi" 
+                    android:id="@+id/iv_biaoshi"
+                    />
+            </FrameLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="充值后" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:padding="10dp" >
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="充值后" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="充值后" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="充值后" />
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
+                <Button
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#576566"
-                    android:padding="10dp" >
+                    android:id="@+id/bt_chongzhi"
+                    android:text="充值"
+                    android:background="@drawable/btn_chongzhi" />
 
-                    <TextView
-                        android:id="@+id/mendian_info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="门店信息" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/mendian_info"
-                        android:text="啊都发生地方岁" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/arrow_right" />
-                </RelativeLayout>
-                
-                <RelativeLayout
-                    android:layout_width="fill_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#576566"
-                    android:padding="10dp" >
-
-                    <TextView
-                        android:id="@+id/mendian_info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="门店信息" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/mendian_info"
-                        android:text="啊都发生地方岁" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/arrow_right" />
-                </RelativeLayout>
-                
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#576566"
-                    android:padding="10dp" >
-
-                    <TextView
-                        android:id="@+id/mendian_info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="门店信息" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/mendian_info"
-                        android:text="啊都发生地方岁" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/arrow_right" />
-                </RelativeLayout>
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/tv_chongzhi_desc"
+                    android:text="充值后" />
             </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
 
-    <!--底部 工具栏 -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="会员福利" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_member_fuli"
+                    android:text="充值后" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="使用说明" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_use_desc"
+                    android:text="充值后" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_mengdian"
+                android:layout_width="@dimen/youhuiquan_width"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_one"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/tv_mendian_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="门店信息" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_mendian_info"
+                    android:text="查看可以光顾的门店信息" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/arrow_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_user_comment"
+                android:layout_width="@dimen/youhuiquan_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/youhuiquan_detail_margin_top"
+                android:background="@drawable/rounded_one"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/tv_user_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_user_comment"
+                    android:text="看看他们都说了什么，亲，你也可以去点评!" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/arrow_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_shop_desc"
+                android:layout_width="@dimen/youhuiquan_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/youhuiquan_detail_margin_top"
+                android:layout_marginBottom="@dimen/youhuiquan_detail_margin_top"
+                android:background="@drawable/rounded_one"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/tv_shop_desc_dd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="商家介绍" />
+
+                <TextView
+                    android:id="@+id/tv_shop_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_shop_desc_dd"
+                    android:singleLine="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/arrow_right" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 底部 工具栏 -->
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/sv"
         android:layout_gravity="bottom"
         android:background="@drawable/select_foot_bg"
         android:orientation="horizontal" >
@@ -281,4 +340,4 @@
             android:textSize="10sp" />
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>
