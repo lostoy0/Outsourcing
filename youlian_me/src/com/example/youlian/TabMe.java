@@ -76,7 +76,8 @@ public class TabMe extends BaseActivity implements OnClickListener {
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.my_ib_setting:
-			
+			Intent intent = new Intent(this, ModifyUserInfoActivity.class);
+			startActivity(intent);
 			break;
 			
 		case R.id.my_ib_msg:

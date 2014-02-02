@@ -65,6 +65,7 @@
                     android:layout_marginLeft="5dip"
                     android:background="@null"
                     android:hint="请输入原始密码"
+                    android:inputType="textPassword"
                     android:singleLine="true"
                     android:textColorHint="@color/grey" />
             </LinearLayout>

@@ -632,6 +632,56 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
+	/**
+	 * 注册用户资料获取接口
+	 * @param user_token
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getUserInfo(String user_token,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.user.info.get";
+		String url = getUrl(KEY_SERVER, server, 
+				"user_token", user_token);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 注册用户资料修改接口
+	 * @param user_token
+	 * @param userName
+	 * @param phone
+	 * @param email
+	 * @param province_id
+	 * @param city_id
+	 * @param district_id
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void updateUserInfo(String user_token, String userName, String phone, String email,
+			String province_id, String city_id, String district_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.user.info.update";
+		String url = getUrl(KEY_SERVER, server, 
+				"user_token", user_token,
+				"userName", userName,
+				"phone", phone,
+				"email", email,
+				"province_id", province_id,
+				"city_id", city_id,
+				"district_id", district_id);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
 	
 	public static String getUrl(String... keyValues) {
 		// get base url

@@ -175,7 +175,7 @@
 
                 <TextView
                     android:id="@+id/my_tv_vip"
-                    android:layout_width="wrap_content"
+                    android:layout_width="54dp"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/my_vip"
                     android:gravity="center"
@@ -228,7 +228,7 @@
 
                 <TextView
                     android:id="@+id/my_tv_coupon"
-                    android:layout_width="wrap_content"
+                    android:layout_width="54dp"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/my_coupon"
                     android:gravity="center"
@@ -281,7 +281,7 @@
 
                 <TextView
                     android:id="@+id/my_tv_order"
-                    android:layout_width="wrap_content"
+                    android:layout_width="54dp"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/my_order"
                     android:gravity="center"
@@ -334,7 +334,7 @@
 
                 <TextView
                     android:id="@+id/my_tv_favourite"
-                    android:layout_width="wrap_content"
+                    android:layout_width="54dp"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/my_favourite"
                     android:gravity="center"
