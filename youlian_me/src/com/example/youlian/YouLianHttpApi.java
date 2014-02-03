@@ -683,6 +683,191 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
+	/**
+	 * 获取收藏列表
+	 * @param user_token
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getFavouriteList(String user_token,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.favorites.get";
+		String url = getUrl(KEY_SERVER, server, 
+				"user_token", user_token);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 我的卡包会员卡列表
+	 * @param user_token
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getCardList(String user_token,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.cards.mine.get";
+		String url = getUrl(KEY_SERVER, server, 
+				"user_token", user_token);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 我的卡包会员卡详情
+	 * @param card_id
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getCardDetail(String card_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.card.mine.get";
+		String url = getUrl(KEY_SERVER, server, 
+				"card_id", card_id);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 会员卡资料获取接口
+	 * @param card_id
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getCardInfo(String card_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.mycard.info.get";
+		String url = getUrl(KEY_SERVER, server, 
+				"card_id", card_id);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * @param card_id	实例卡ID
+	 * @param memberName	名字
+	 * @param memberSex	性别 1-男 0-女
+	 * @param memberBirth	生日 
+	 * @param memberPhone	手机号码
+	 * @param memberEmail	Email
+	 * @param memberAddress	联系地址
+	 * @param memberQq	QQ
+	 * @param membeIdCard	身份证号
+	 * @param isAllowPush	是否允许推送（1：允许 0：不允许） 
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void editCardInfo(String card_id, String memberName, String memberSex, String memberBirth, String memberPhone,
+			String memberEmail, String memberAddress, String memberQq, String membeIdCard, String isAllowPush,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.mycard.info.edit";
+		String url = getUrl(KEY_SERVER, server, 
+				"card_id", card_id, "memberName", memberName, "memberSex", memberSex, 
+				"memberBirth", memberBirth, "memberPhone", memberPhone,
+				"memberEmail", memberEmail, "memberAddress", memberAddress, "memberQq", memberQq,
+				"membeIdCard", membeIdCard, "isAllowPush", isAllowPush);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 我的卡包优惠券列表
+	 * @param user_token
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getCouponList(String user_token,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.favs.get";
+		String url = getUrl(KEY_SERVER, server,
+				"user_token", user_token);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 我的卡包优惠券详情
+	 * @param user_token
+	 * @param fav_id
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getCouponDetail(String user_token, String fav_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.fav.get";
+		String url = getUrl(KEY_SERVER, server, 
+				"user_token", user_token, "fav_id", fav_id);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 移除卡包接口
+	 * @param id
+	 * @param type
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void deleteCard(String id, String type,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.mycard.delete";
+		String url = getUrl(KEY_SERVER, server, 
+				"id", id, "type", type);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 会员卡消费接口
+	 * @param card_id
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void costCard(String card_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.mycard.cost";
+		String url = getUrl(KEY_SERVER, server, 
+				"card_id", card_id);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 	public static String getUrl(String... keyValues) {
 		// get base url
 		StringBuilder buf = new StringBuilder(URL_TEST);
