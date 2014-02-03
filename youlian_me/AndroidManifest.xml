@@ -67,6 +67,8 @@
         <activity android:name=".AreaProvinceActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
         <activity android:name=".AreaCityActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
         <activity android:name=".AreaDistrictActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
+        <activity android:name=".CoinExchangeActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
+        <activity android:name=".CoinRechargeActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
         
         <!-- ###################注册SDK使用的Activity###################### -->
         <!--分享编辑页-->

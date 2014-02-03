@@ -868,6 +868,40 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
+	/**
+	 * U点U币相关规则
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getCoinRule(Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.dotcoin.rule.get";
+		String url = getUrl(KEY_SERVER, server);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * U点兑换U币
+	 * @param user_token
+	 * @param youcoin_count兑换U币数量
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void exchangeCoin(String user_token, String youcoin_count, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.exchange.coin";
+		String url = getUrl(KEY_SERVER, server, "client_type", "android", "user_token", user_token, "youcoin_count", youcoin_count);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 	public static String getUrl(String... keyValues) {
 		// get base url
 		StringBuilder buf = new StringBuilder(URL_TEST);

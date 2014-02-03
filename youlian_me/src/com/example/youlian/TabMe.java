@@ -74,9 +74,10 @@ public class TabMe extends BaseActivity implements OnClickListener {
 	
 	@Override
 	public void onClick(View v) {
+		Intent intent = null;
 		switch(v.getId()) {
 		case R.id.my_ib_setting:
-			Intent intent = new Intent(this, ModifyUserInfoActivity.class);
+			intent = new Intent(this, ModifyUserInfoActivity.class);
 			startActivity(intent);
 			break;
 			
@@ -89,11 +90,14 @@ public class TabMe extends BaseActivity implements OnClickListener {
 			break;
 			
 		case R.id.my_ib_exchange_score:
-			
+			intent = new Intent(this, CoinExchangeActivity.class);
+			intent.putExtra("udot", mInfo==null?0:mInfo.youdot);
+			startActivity(intent);
 			break;
 			
 		case R.id.my_ib_recharge:
-			
+			intent = new Intent(this, CoinRechargeActivity.class);
+			startActivity(intent);
 			break;
 			
 		case R.id.my_vip_panel:
