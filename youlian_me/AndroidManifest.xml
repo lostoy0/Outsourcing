@@ -72,6 +72,7 @@
         <activity android:name=".CardListActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
         <activity android:name=".CardActivity" android:screenOrientation="landscape" android:theme="@android:style/Theme.Black.NoTitleBar"></activity>
         <activity android:name=".CouponListActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
+        <activity android:name=".FavouriteListActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
         
         <!-- ###################注册SDK使用的Activity###################### -->
         <!--分享编辑页-->

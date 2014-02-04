@@ -23,7 +23,6 @@ import com.example.youlian.mode.MyInfo;
 import com.example.youlian.util.PreferencesUtils;
 import com.example.youlian.util.YlLogger;
 
-
 public class TabMe extends BaseActivity implements OnClickListener {
 	private YlLogger mLogger = YlLogger.getLogger(this.getClass().getSimpleName());
 	
@@ -101,21 +100,26 @@ public class TabMe extends BaseActivity implements OnClickListener {
 			break;
 			
 		case R.id.my_vip_panel:
+		case R.id.my_tv_vip:
 			intent = new Intent(this, CardListActivity.class);
 			startActivity(intent);
 			break;
 			
 		case R.id.my_coupon_panel:
+		case R.id.my_tv_coupon:
 			intent = new Intent(this, CouponListActivity.class);
 			startActivity(intent);
 			break;
 			
 		case R.id.my_order_panel:
+		case R.id.my_tv_order:
 			
 			break;
 			
 		case R.id.my_favourite_panel:
-			
+		case R.id.my_tv_favourite:
+			intent = new Intent(this, FavouriteListActivity.class);
+			startActivity(intent);
 			break;
 		}
 	}
@@ -152,9 +156,13 @@ public class TabMe extends BaseActivity implements OnClickListener {
 		mFavouriteCountTextView = (TextView) findViewById(R.id.my_tv_favourite_num);
 		
 		findViewById(R.id.my_vip_panel).setOnClickListener(this);
+		findViewById(R.id.my_tv_vip).setOnClickListener(this);
 		findViewById(R.id.my_coupon_panel).setOnClickListener(this);
+		findViewById(R.id.my_tv_coupon).setOnClickListener(this);
 		findViewById(R.id.my_favourite_panel).setOnClickListener(this);
+		findViewById(R.id.my_tv_favourite).setOnClickListener(this);
 		findViewById(R.id.my_order_panel).setOnClickListener(this);
+		findViewById(R.id.my_tv_order).setOnClickListener(this);
 	}
 	
 	private void login() {
