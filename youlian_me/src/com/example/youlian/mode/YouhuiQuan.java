@@ -129,4 +129,19 @@ public class YouhuiQuan implements Serializable{
 		
 		return pic;
 	}
+	
+	public static List<YouhuiQuan> parse(String json) throws JSONException {
+		if (json != null) {
+			JSONObject o = new JSONObject(json);
+			JSONArray array = o.optJSONArray("result");
+			int size = array.length();
+			List<YouhuiQuan> list = new ArrayList<YouhuiQuan>();
+			for (int i = 0; i < size; i++) {
+				JSONObject object = array.getJSONObject(i);
+				list.add(parse(object));
+			}
+			return list;
+		}
+		return null;
+	}
 }

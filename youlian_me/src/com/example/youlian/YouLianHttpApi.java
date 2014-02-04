@@ -832,7 +832,7 @@ public class YouLianHttpApi {
 	/**
 	 * 移除卡包接口
 	 * @param id
-	 * @param type
+	 * @param type 类型（1：将会员卡移除卡包 2：将优惠券移除卡包）
 	 * @param successListener
 	 * @param errorListener
 	 */
