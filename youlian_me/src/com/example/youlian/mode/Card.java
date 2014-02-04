@@ -9,16 +9,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Card implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	public String card_id;
 	public String card_name;
+	public String card_no;
 	public String card_content;
 	public String nonactivatedPic;
 	public String activatedPic;
-	public String agioInfo;
+	/**折扣信息*/
+	public String agioInfo;	
 	public String is_store_club;
 	public String is_follow;
 	public String is_league;
@@ -37,7 +37,6 @@ public class Card implements Serializable{
 	public String provinceId;
 	public String cityId;
 	public String districtId;
-	public String cardLevel;
 	
 	public ArrayList<Shop> shops = new ArrayList<Shop>();
 	
@@ -46,20 +45,40 @@ public class Card implements Serializable{
 	public String card_surplus_num;
 	public String time_from;
 	public String time_to;
-	public String cluber_welfare;
 	public String card_directions;
 	public String input_fileds;
 	public String comments;
+	/**商家ID*/
 	public String customer_id;
 	public String customer_brief;
 	public String customer_introduce;
 	
+	/**申请方式	1-商家自发 2-商家自发+自主申请 3-自主申请 只有2，3方式的才能进行会员卡的编辑与修改*/
+	public String applyWay;
+	/**其他来源管理余额	如果此字段不为空，则我的卡包会员卡详情里的余额需要通过请求该URL来获取*/
+	public String balanceUrl;
+	/**其他计次来源	如果此字段不为空，则我的卡包会员卡详情里的消费需要通过请求该URL来获取*/
+	public String countUrl;
+	/**积分来源	如果此字段不为空，则我的卡包会员卡详情里的积分需要通过请求该URL来获取*/
+	public String pointUrl;
+	/**商家星级*/
+	public String starLevle;
 	
+	/**余额*/
+	public String myMoney;
+	/**积分*/
+	public String myScore;
+	/**级别*/
+	public String cardLevel;
+	/**福利*/
+	public String cluber_welfare;
+
 
 	public static Card parse(JSONObject jsonObj) throws JSONException {
 		Card ad = new Card();
 		ad.card_id = jsonObj.optString("card_id");
 		ad.card_name = jsonObj.optString("card_name");
+		ad.card_no = jsonObj.optString("card_no");
 		ad.card_content = jsonObj.optString("card_content");
 		ad.nonactivatedPic = jsonObj.optString("nonactivatedPic");
 		ad.activatedPic = jsonObj.optString("activatedPic");
@@ -83,6 +102,15 @@ public class Card implements Serializable{
 		ad.cityId = jsonObj.optString("cityId");
 		ad.districtId = jsonObj.optString("districtId");
 		ad.cardLevel = jsonObj.optString("cardLevel");
+		
+		ad.applyWay = jsonObj.optString("applyWay");
+		ad.balanceUrl = jsonObj.optString("balanceUrl");
+		ad.countUrl = jsonObj.optString("countUrl");
+		ad.pointUrl = jsonObj.optString("pointUrl");
+		ad.starLevle = jsonObj.optString("starLevle");
+		
+		ad.myMoney = jsonObj.optString("myMoney");
+		ad.myScore = jsonObj.optString("myScore");
 		
 		JSONArray array = jsonObj.optJSONArray("shop");
 		if(array != null){

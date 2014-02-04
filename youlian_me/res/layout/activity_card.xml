@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/card_bg"
+    android:orientation="vertical" >
+    
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="48dp"
+	    android:orientation="horizontal">
+	    
+	    <ImageButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="8dip"
+            android:background="@drawable/back_btn" />
+
+	    <View 
+	        android:layout_width="1dp"
+	        android:layout_height="match_parent"
+	        android:layout_marginLeft="8dp"
+	        android:layout_marginRight="8dp"
+	        android:background="@color/grey"/>
+	    
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_weight="1"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+        
+        <View 
+	        android:layout_width="1dp"
+	        android:layout_height="match_parent"
+	        android:layout_marginLeft="8dp"
+	        android:layout_marginRight="8dp"
+	        android:background="@color/grey"/>
+
+        <ImageButton
+            android:id="@+id/ib_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/btn_switch_selector" />
+	</LinearLayout>
+	
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent">
+	    
+	    <LinearLayout 
+	        android:orientation="vertical"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_marginBottom="45dp">
+	        
+	        <RelativeLayout 
+	            android:layout_width="match_parent"
+	            android:layout_height="112dp"
+	            android:paddingTop="8dp"
+	            android:paddingBottom="4dp"
+	            android:paddingLeft="16dp"
+	            android:paddingRight="16dp" >
+	            
+	            <ImageView 
+	                android:id="@+id/card_iv_twodimensioncode"
+	                android:layout_width="100dp"
+	                android:layout_height="100dp"
+	                android:layout_centerHorizontal="true"
+	                android:src="@drawable/my_icon_bg"
+	                android:scaleType="fitXY"/>
+	            
+	            <LinearLayout 
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignParentRight="true"
+	                android:orientation="vertical"
+	                android:gravity="center_horizontal">
+	                
+	                <ImageView 
+	                android:id="@+id/card_iv_fav"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:src="@drawable/card_fav_hint"
+	                android:scaleType="center"/>
+	            
+	            <TextView 
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="8dp"
+	                android:background="@drawable/card_shop_detail_word_bg"
+	                android:gravity="center"
+	                android:text="商家详情"
+	                android:textColor="#64af50"
+	                android:textSize="14sp"/>
+	            </LinearLayout>
+	            
+	            <ImageView 
+	                android:id="@+id/card_iv_icon"
+	                android:layout_width="100dp"
+	                android:layout_height="54dp"
+	                android:src="@drawable/my_icon_bg"
+	                android:scaleType="fitXY"/>
+	            
+	            
+	            <RelativeLayout 
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_alignParentBottom="true">
+	                <TextView 
+	                android:id="@+id/tv_balance_pre"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="8dp"
+	                android:background="@drawable/card_word_bg"
+	                android:gravity="center"
+	                android:text="余额"
+	                android:textColor="@color/white"
+	                android:textSize="14sp"/>
+	            
+	            <TextView 
+	                android:id="@+id/card_tv_balance"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_toRightOf="@id/tv_balance_pre"
+	                android:layout_alignTop="@id/tv_balance_pre"
+	                android:layout_marginLeft="8dp"
+	                android:text="2000元"
+	                android:textColor="@color/red"
+	                android:textSize="14sp"/>
+	            
+	            <TextView 
+	                android:id="@+id/tv_score_pre"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="4dp"
+	                android:layout_below="@id/tv_balance_pre"
+	                android:background="@drawable/card_word_bg"
+	                android:gravity="center"
+	                android:text="积分"
+	                android:textColor="@color/white"
+	                android:textSize="14sp"/>
+	            
+	            <TextView 
+	                android:id="@+id/card_tv_score"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_toRightOf="@id/tv_score_pre"
+	                android:layout_alignTop="@id/tv_score_pre"
+	                android:layout_marginLeft="8dp"
+	                android:text="38480"
+	                android:textColor="@color/red"
+	                android:textSize="14sp"/>
+	            </RelativeLayout>
+	            
+	        </RelativeLayout>
+	        
+	        <RelativeLayout 
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:background="#e9e9e9"
+	            android:layout_marginLeft="1dp"
+	            android:layout_marginRight="1dp"
+	            android:paddingTop="4dp"
+	            android:paddingBottom="8dp"
+	            android:paddingLeft="16dp"
+	            android:paddingRight="16dp" >
+	            
+	            <TextView 
+	                android:id="@+id/tv_datelimit_pre"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:background="@drawable/card_word_bg"
+	                android:gravity="center"
+	                android:text="有效"
+	                android:textColor="@color/white"
+	                android:textSize="14sp"/>
+	            
+	            <TextView 
+	                android:id="@+id/card_tv_valid_date"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_toRightOf="@id/tv_datelimit_pre"
+	                android:layout_alignTop="@id/tv_datelimit_pre"
+	                android:layout_marginLeft="8dp"
+	                android:text="至2014-12-30"
+	                android:textColor="@color/black"
+	                android:textSize="14sp"/>
+	            
+	            <TextView 
+	                android:id="@+id/tv_welfare_pre"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="4dp"
+	                android:layout_below="@id/tv_datelimit_pre"
+	                android:background="@drawable/card_word_bg"
+	                android:gravity="center"
+	                android:text="福利"
+	                android:textColor="@color/white"
+	                android:textSize="14sp"/>
+	            
+	            <TextView 
+	                android:id="@+id/card_tv_welfare"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_toRightOf="@id/tv_welfare_pre"
+	                android:layout_alignTop="@id/tv_welfare_pre"
+	                android:layout_marginLeft="8dp"
+	                android:maxLines="3"
+	                android:ellipsize="end"
+	                android:text="美国加州湾区又称硅谷，这里最不合时宜的礼物是领带。因为这里是IT工程师扎堆的地方，T恤、牛仔裤大行其道，除非是企业高管，领带几乎用不上。"
+	                android:textColor="@color/black"
+	                android:textSize="14sp"/>
+	            
+	        </RelativeLayout>
+	    </LinearLayout>
+	    
+	    <LinearLayout 
+	        android:orientation="horizontal"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="8dp"
+	        android:layout_marginRight="8dp"
+	        android:layout_marginBottom="4dp"
+	        android:layout_alignParentBottom="true" >
+	        
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/vip_word_bg"
+	            android:gravity="center"
+	            android:layout_gravity="bottom"
+	            android:text="白金卡"
+	            android:textColor="@color/white"
+	            android:textSize="18sp"/>
+	        
+	        <LinearLayout 
+	            android:orientation="horizontal"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="8dp"
+	            android:gravity="center_horizontal">
+	            
+	            <TextView 
+	                android:id="@+id/card_btn_edit"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:drawableTop="@drawable/btn_card_edit_selector"
+	                android:gravity="center_horizontal"
+	                android:text="编辑"
+	                android:textColor="@color/white"
+	                android:textSize="14sp"/>
+	            
+	            <TextView 
+	                android:id="@+id/card_btn_consume"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="48dp"
+	                android:drawableTop="@drawable/btn_card_consume_selector"
+	                android:gravity="center_horizontal"
+	                android:text="次数"
+	                android:textColor="@color/white"
+	                android:textSize="14sp"/>
+	            
+	            <TextView 
+	                android:id="@+id/card_btn_remove"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="48dp"
+	                android:drawableTop="@drawable/btn_card_remove_selector"
+	                android:gravity="center_horizontal"
+	                android:text="移出卡包"
+	                android:textColor="@color/white"
+	                android:textSize="14sp"/>
+	            
+	            <TextView 
+	                android:id="@+id/card_btn_share"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="48dp"
+	                android:drawableTop="@drawable/btn_card_share_selector"
+	                android:gravity="center_horizontal"
+	                android:text="分享"
+	                android:textColor="@color/white"
+	                android:textSize="14sp"/>
+	        </LinearLayout>
+	    </LinearLayout>
+	</RelativeLayout>
+</LinearLayout>

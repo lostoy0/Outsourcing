@@ -101,7 +101,8 @@ public class TabMe extends BaseActivity implements OnClickListener {
 			break;
 			
 		case R.id.my_vip_panel:
-			
+			intent = new Intent(this, CardListActivity.class);
+			startActivity(intent);
 			break;
 			
 		case R.id.my_coupon_panel:

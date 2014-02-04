@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -42,6 +42,12 @@
         <item name="android:maxLines">1</item>
         <item name="android:scrollHorizontally">true</item>
         <item name="android:textAppearance">@android:style/TextAppearance.DialogWindowTitle</item>
+    </style>
+    
+    <style name="ratingBar" parent="@android:style/Widget.RatingBar">
+       <item name="android:progressDrawable">@drawable/ratingbar_drawable</item>
+       <item name="android:maxHeight">14dp</item>
+       <item name="android:minHeight">14dp</item>
     </style>
 
 </resources>
