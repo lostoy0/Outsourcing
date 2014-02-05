@@ -7,7 +7,8 @@
     <dimen name="hotbuy_margin_top">20dp</dimen>
     <dimen name="youhuiquan_width">300dp</dimen>
     <dimen name="youhuiquan_detail_margin_top">10dp</dimen>
-<dimen name="add_commit_start_left">10dp</dimen>
+    <dimen name="add_commit_start_left">10dp</dimen>
+    <dimen name="gou_size">15dp</dimen>
 
-<dimen name="gou_size">15dp</dimen>
+    <dimen name="tab_width">48dp</dimen>
 </resources>

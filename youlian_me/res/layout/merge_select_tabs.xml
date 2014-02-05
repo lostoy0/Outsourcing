@@ -83,9 +83,10 @@
 	    </LinearLayout>
 	    <ImageView
 	       android:id="@+id/footer_light"
-	       android:layout_width="wrap_content"
+	       android:layout_width="@dimen/tab_width"
            android:layout_height="wrap_content"
            android:src="@drawable/foot_bg_light"
-           android:layout_gravity="bottom" />
+           android:layout_gravity="bottom"
+           android:scaleType="fitXY" />
     </FrameLayout>
 </merge>

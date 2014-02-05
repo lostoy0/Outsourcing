@@ -902,6 +902,76 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
+	/**
+	 * 加入购物车
+	 * @param user_token
+	 * @param p_id 有价券ID
+	 * @param quantity 加入购物券数量
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void add2ShoppingCart(String user_token, String p_id, String quantity, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.shopping.cart.add";
+		String url = getUrl(KEY_SERVER, server, "user_token", user_token, "p_id", p_id, "quantity", quantity);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 我的购物车
+	 * @param user_token
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getShoppingCart(String user_token, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.shopping.cart.get";
+		String url = getUrl(KEY_SERVER, server, "user_token", user_token);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 修改购物车
+	 * @param ids_quantity id:数量[多个以逗号隔开，如：1:12,2:5,3:6]
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void updateShoppingCart(String ids_quantity, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.shopping.cart.update";
+		String url = getUrl(KEY_SERVER, server, "ids_quantity", ids_quantity);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 移除购物车
+	 * @param ids 多个以逗号隔开，如：1,2,3
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void deleteShoppingCart(String ids, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.shopping.cart.delete";
+		String url = getUrl(KEY_SERVER, server, "ids", ids);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 	public static String getUrl(String... keyValues) {
 		// get base url
 		StringBuilder buf = new StringBuilder(URL_TEST);
