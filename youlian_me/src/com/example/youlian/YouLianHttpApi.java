@@ -972,6 +972,95 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
+	/**
+	 * 创建订单（包含充值创建订单）
+	 * @param user_token
+	 * @param cart_ids 购物车IDS多个逗号隔开；如果是充值订单传0
+	 * @param uCoinCount 值U币数量，如果是充值订单的时候需要传递此参数
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void addOrder(String user_token, String cart_ids, int uCoinCount, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.order.add";
+		String url = getUrl(KEY_SERVER, server, "user_token", user_token, "cart_ids", cart_ids, "client_type", "android", "uCoinCount", uCoinCount+"");
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 取消订单
+	 * @param order_id
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void cancelOrder(String order_id, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.order.cancel";
+		String url = getUrl(KEY_SERVER, server, "order_id", order_id);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 我的订单
+	 * @param user_token
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getOrder(String user_token, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.order.get";
+		String url = getUrl(KEY_SERVER, server, "user_token", user_token);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 订单支付
+	 * @param user_token
+	 * @param id 订单ID
+	 * @param payType 支付方式(0：U币支付 1:WAP支付宝 2:app支付宝)
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void payOrder(String user_token, String id, int payType, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.order.pay";
+		String url = getUrl(KEY_SERVER, server, "user_token", user_token, "id", id, "payType", payType+"");
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 订单结算
+	 * @param order_id
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void orderSettle(String order_id, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.order.settle";
+		String url = getUrl(KEY_SERVER, server, "order_id", order_id);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 	public static String getUrl(String... keyValues) {
 		// get base url
 		StringBuilder buf = new StringBuilder(URL_TEST);

@@ -1,5 +1,6 @@
 package com.example.youlian;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -8,7 +9,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
 
 public class TabShopCart extends BaseActivity implements OnClickListener {
 	
@@ -48,6 +48,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		Intent intent = null;
 		switch(v.getId()) {
 		case R.id.cart_btn_edit:
 			
@@ -58,7 +59,8 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 			break;
 			
 		case R.id.cart_btn_pay:
-			
+			intent = new Intent(this, PayActivity.class);
+			startActivity(intent);
 			break;
 			
 		case R.id.cart_btn_delete:

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/merge_title_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_one"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/pay_tv_shopname"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="商户名称xxx"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <include layout="@layout/merge_line_grey_horizontal" />
+
+                <TextView
+                    android:id="@+id/pay_tv_goodsname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:paddingLeft="16dp"
+                    android:singleLine="true"
+                    android:text="商品名称xxx"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/pay_tv_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="16dp"
+                    android:singleLine="true"
+                    android:text="单价：28元"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/pay_tv_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="16dp"
+                    android:singleLine="true"
+                    android:text="数量：10"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <include layout="@layout/merge_line_grey_horizontal" />
+
+                <TextView
+                    android:id="@+id/pay_tv_money"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="16dp"
+                    android:singleLine="true"
+                    android:text="总计：280元"
+                    android:textColor="@color/red"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/rounded_one"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/pay_yi_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/pay_tv_yi"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/pay_yi"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="翼支付"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <ImageButton
+                        android:id="@+id/pay_ib_select_yi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:background="@null"
+                        android:src="@drawable/pay_selected" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@null"
+                        android:src="@drawable/arrow" />
+                </LinearLayout>
+
+                <include layout="@layout/merge_line_grey_horizontal" />
+
+                <LinearLayout
+                    android:id="@+id/pay_union_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/pay_tv_union"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/pay_union"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="银联"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <ImageButton
+                        android:id="@+id/pay_ib_select_union"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:background="@null"
+                        android:src="@drawable/pay_selected" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@null"
+                        android:src="@drawable/arrow" />
+                </LinearLayout>
+
+                <include layout="@layout/merge_line_grey_horizontal" />
+
+                <LinearLayout
+                    android:id="@+id/pay_alipay_panel_client"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/pay_tv_alipay_client"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@drawable/pay_alipay"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="支付宝客户端"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/pay_tv_alipay_client_check"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="（已安装）"
+                        android:textColor="#999"
+                        android:textSize="18sp" />
+
+                    <ImageButton
+                        android:id="@+id/pay_ib_select_alipay_client"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:background="@null"
+                        android:src="@drawable/pay_selected" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@null"
+                        android:src="@drawable/arrow" />
+                </LinearLayout>
+
+                <include layout="@layout/merge_line_grey_horizontal" />
+
+                <LinearLayout
+                    android:id="@+id/pay_alipay_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/pay_tv_alipay"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/pay_alipay"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="支付宝网页版"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <ImageButton
+                        android:id="@+id/pay_ib_select_alipay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:background="@null"
+                        android:src="@drawable/pay_selected" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@null"
+                        android:src="@drawable/arrow" />
+                </LinearLayout>
+
+                <include layout="@layout/merge_line_grey_horizontal" />
+
+                <LinearLayout
+                    android:id="@+id/pay_ucoin_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/pay_tv_ucoin"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/pay_ucoin"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="U币"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <ImageButton
+                        android:id="@+id/pay_ib_select_ucoin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:background="@null"
+                        android:src="@drawable/pay_selected" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@null"
+                        android:src="@drawable/arrow" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/pay_btn_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="48dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/pay_btn_selector"
+                android:text="去付款"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
