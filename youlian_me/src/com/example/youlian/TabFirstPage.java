@@ -23,6 +23,8 @@ import android.widget.Button;
 import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -49,6 +51,7 @@ public class TabFirstPage extends Activity implements OnClickListener {
 	private int indicatorPositon;
 	private LinearLayout linear_act;
 	private LinearLayout linear_seller;
+	private TextView search_edit;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,10 @@ public class TabFirstPage extends Activity implements OnClickListener {
 	
 	
 	private void initViews() {
+		
+		search_edit = (TextView)this.findViewById(R.id.search_edit);
+		search_edit.setOnClickListener(this);
+		
 		container = (LinearLayout)this.findViewById(R.id.container);
 		bt_membercard = (Button)this.findViewById(R.id.bt_membercard);
 		bt_membercard.setOnClickListener(this);
@@ -133,6 +140,10 @@ public class TabFirstPage extends Activity implements OnClickListener {
 			break;
 		case R.id.linear_seller:
 			 i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
+			startActivity(i);
+			break;
+		case R.id.search_edit:
+			 i = new Intent(getApplicationContext(), SearchActivity.class);
 			startActivity(i);
 			break;
 			

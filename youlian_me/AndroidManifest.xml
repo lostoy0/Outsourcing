@@ -55,6 +55,7 @@
         <activity android:name=".CommentAddActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ShopActivity" android:screenOrientation="portrait"></activity>
          <activity android:name=".SellerActivity" android:screenOrientation="portrait"></activity>
+          <activity android:name=".SearchActivity" android:screenOrientation="portrait"></activity>
         
         
 

@@ -1061,6 +1061,18 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
+	public static void searchCustomer(String search_key, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.customers.get";
+		String url = getUrl(KEY_SERVER, server, "search_key", search_key);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	
 	public static String getUrl(String... keyValues) {
 		// get base url
 		StringBuilder buf = new StringBuilder(URL_TEST);
