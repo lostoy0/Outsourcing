@@ -52,6 +52,7 @@ public class TabFirstPage extends Activity implements OnClickListener {
 	private LinearLayout linear_act;
 	private LinearLayout linear_seller;
 	private TextView search_edit;
+	private Button bt_hotbuy;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -80,6 +81,10 @@ public class TabFirstPage extends Activity implements OnClickListener {
 		
 		bt_youhuiquan = (Button)this.findViewById(R.id.bt_youhuiquan);
 		bt_youhuiquan.setOnClickListener(this);
+		
+		bt_hotbuy = (Button)this.findViewById(R.id.bt_hotbuy);
+		bt_hotbuy.setOnClickListener(this);
+		
 		
 		
 		image_wall_gallery = (Gallery)this.findViewById(R.id.image_wall_gallery);
@@ -131,15 +136,21 @@ public class TabFirstPage extends Activity implements OnClickListener {
 			break;
 		case R.id.bt_youhuiquan:
 			 i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
+			 i.putExtra("type", 0);
 			startActivity(i);
 			break;
 			
+		case R.id.bt_hotbuy:
+			 i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
+			 i.putExtra("type", 1);
+			startActivity(i);
+			break;
 		case R.id.linear_act:
 			 i = new Intent(getApplicationContext(), AllSellerActivity.class);
 			startActivity(i);
 			break;
 		case R.id.linear_seller:
-			 i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
+			 i = new Intent(getApplicationContext(), ShangjiaActivity.class);
 			startActivity(i);
 			break;
 		case R.id.search_edit:

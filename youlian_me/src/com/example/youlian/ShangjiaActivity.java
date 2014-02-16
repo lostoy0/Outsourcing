@@ -13,9 +13,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -33,12 +33,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.youlian.app.MyVolley;
-import com.example.youlian.mode.City;
+import com.example.youlian.mode.Card;
+import com.example.youlian.mode.Customer;
 import com.example.youlian.mode.YouhuiQuan;
 
-public class YouhuiQuanActivity extends Activity implements OnClickListener {
+public class ShangjiaActivity extends Activity implements OnClickListener {
 
-	protected static final String TAG = "MembershipActivity";
+	protected static final String TAG = "ShangjiaActivity";
 	private ImageButton back;
 	private TextView tv_title;
 	private ListView listview;
@@ -54,37 +55,27 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 	private static final int hot = 3;
 	private int type = allarea;
 	
-	public List<YouhuiQuan> youhuiQuans = new ArrayList<YouhuiQuan>();
-	
-	public List<City> cities = new ArrayList<City>();
-	ImageLoader  mImageLoader;
+	private List<Customer> mCustomers = new ArrayList<Customer>();
+	ImageLoader  mImageLoader;;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.activity_youhuiquan);
+		setContentView(R.layout.activity_membership);
 
 		initViews();
 
-		YouLianHttpApi.getYouhuiQuan(Global.getUserToken(getApplicationContext()), null, createMyReqSuccessListener(),createMyReqErrorListener());
-	
-		YouLianHttpApi.getAreaByProvinceIdCid(null, null, null, creategetAreaByProvinceIdCidSuccessListener(), createMyReqErrorListener());
+		YouLianHttpApi.searchCustomer(null, createMyReqSuccessListener(), createMyReqErrorListener());
+		
 	}
 
 	private void initViews() {
+		mImageLoader = MyVolley.getImageLoader();
 		back = (ImageButton) this.findViewById(R.id.back);
 		back.setOnClickListener(this);
-		
-		
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
-		int type = getIntent().getIntExtra("type", 0);
-		if(type == 0){
-			tv_title.setText(R.string.youhuiquan);
-		}else{
-			tv_title.setText("热购");
-		}
-		
-		
+		tv_title.setText(R.string.shangjia);
 		inflater = LayoutInflater.from(getApplicationContext());
 		listview = (ListView) this.findViewById(R.id.listview);
 		adapter = new MyAdapter(getApplicationContext());
@@ -92,12 +83,12 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		listview.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				YouhuiQuan quan = youhuiQuans.get(position);
-				Intent intent = new Intent(getApplicationContext(), YouhuiQuanDetail.class);
-				intent.putExtra("quan", quan);
-				startActivity(intent);
+				Intent in = new Intent(getApplicationContext(), ShangjiaDetailActivity.class);
+				Customer c = mCustomers.get(arg2);
+				in.putExtra("customer", c);
+				startActivity(in);
 			}
 		});
 
@@ -114,8 +105,6 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		adapterAll = new MyAdapterAll(getApplicationContext());
 		listview_all.setAdapter(adapterAll);
 		listview_all.setVisibility(View.GONE);
-		
-		mImageLoader = MyVolley.getImageLoader();
 	}
 
 	boolean exChange = true;
@@ -128,7 +117,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.linear_all_area:
 			type = allarea;
-			exChange();
+//			exChange();
 			adapterAll.notifyDataSetChanged();
 			break;
 		case R.id.linear_all_sort:
@@ -163,11 +152,12 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 
 		@Override
 		public int getCount() {
-			return youhuiQuans.size();
+			return mCustomers.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
+			// TODO Auto-generated method stub
 			return null;
 		}
 
@@ -180,26 +170,36 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			ViewHolder holder = null;
 			if (convertView == null) {
-				convertView = inflater.inflate(R.layout.item_youhuiquan,
+				convertView = inflater.inflate(R.layout.item_shangjia,
 						parent, false);
 				holder = new ViewHolder();
 				holder.iv_icon = (NetworkImageView) convertView
 						.findViewById(R.id.iv_icon);
 				holder.tv_title = (TextView) convertView
 						.findViewById(R.id.tv_title);
+				holder.iv_star_one = (ImageView) convertView
+						.findViewById(R.id.iv_star_one);
+				holder.iv_star_two = (ImageView) convertView
+						.findViewById(R.id.iv_star_two);
+				holder.iv_star_three = (ImageView) convertView
+						.findViewById(R.id.iv_star_three);
+				holder.iv_star_four = (ImageView) convertView
+						.findViewById(R.id.iv_star_four);
+				holder.iv_star_five = (ImageView) convertView
+						.findViewById(R.id.iv_star_five);
+				holder.ivs.add(holder.iv_star_one);
+				holder.ivs.add(holder.iv_star_two);
+				holder.ivs.add(holder.iv_star_three);
+				holder.ivs.add(holder.iv_star_four);
+				holder.ivs.add(holder.iv_star_five);
+				holder.iv_yi_chong = (ImageView) convertView
+						.findViewById(R.id.iv_yi_chong);
+				
+				
+				holder.tv_cardname = (TextView) convertView
+						.findViewById(R.id.tv_cardname);
 				holder.tv_desc = (TextView) convertView
 						.findViewById(R.id.tv_desc);
-				
-				holder.iv_gou = (ImageView)convertView
-						.findViewById(R.id.iv_gou);
-				holder.iv_qiang = (ImageView)convertView
-						.findViewById(R.id.iv_qiang);
-				holder.iv_xian = (ImageView)convertView
-						.findViewById(R.id.iv_xian);
-				holder.iv_zhe = (ImageView)convertView
-						.findViewById(R.id.iv_zhe);
-				
-				
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
@@ -211,58 +211,66 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		}
 
 		public void setValue(ViewHolder holder, int position) {
-			YouhuiQuan quan = youhuiQuans.get(position);
-			if(TextUtils.isEmpty(quan.fav_id)){
-				if(quan.nonactivatedPic != null){
-					holder.iv_icon.setDefaultImageResId(R.drawable.guanggao);
-					holder.iv_icon.setImageUrl(quan.nonactivatedPic, mImageLoader);
-				}else{
-					holder.iv_icon.setImageResource(R.drawable.guanggao);
-				}
+			Customer c = mCustomers.get(position);
+			if(c.logo != null){
+				holder.iv_icon.setDefaultImageResId(R.drawable.guanggao);
+				holder.iv_icon.setImageUrl(c.logo, mImageLoader);
 			}else{
-				if(quan.activatedPic != null){
-					holder.iv_icon.setDefaultImageResId(R.drawable.guanggao);
-					holder.iv_icon.setImageUrl(quan.activatedPic, mImageLoader);
-				}else{
-					holder.iv_icon.setImageResource(R.drawable.guanggao);
-				}
+				holder.iv_icon.setImageResource(R.drawable.guanggao);
 			}
-			holder.tv_title.setText(quan.fav_ent_name);
-			holder.tv_desc.setText(quan.simple_description);
 			
+			holder.tv_title.setText(c.name);
+			refreshStar(c.starLevel, holder);
 			
-			if(quan.isLimitQuantity.equals("1")){
-				holder.iv_xian.setVisibility(View.VISIBLE);
+			holder.tv_cardname.setText(c.favEntityCount+"张优惠券");
+			holder.tv_desc.setText(c.cardEntityCount + "张会员卡");
+			
+		
+			if(Integer.parseInt(c.canBestpay) == 1){
+				holder.iv_yi_chong.setVisibility(View.VISIBLE);
 			}else{
-				holder.iv_xian.setVisibility(View.GONE);
+				holder.iv_yi_chong.setVisibility(View.GONE);
 			}
-			if(quan.isBuy.equals("1")){
-				holder.iv_gou.setVisibility(View.VISIBLE);
-			}else{
-				holder.iv_gou.setVisibility(View.GONE);
-			}
-			if(quan.isAgio.equals("1")){
-				holder.iv_zhe.setVisibility(View.VISIBLE);
-			}else{
-				holder.iv_zhe.setVisibility(View.GONE);
-			}
-			if(quan.isHotBuy.equals("1")){
-				holder.iv_qiang.setVisibility(View.VISIBLE);
-			}else{
-				holder.iv_qiang.setVisibility(View.GONE);
-			}
+		
 		}
+		
+		
+		
+		
+		private void refreshStar(String star_level, ViewHolder holder) {
+			float numF = Float.parseFloat(star_level);
+			System.out.println("numb:" + numF);
+			int numI = (int) numF;
+			boolean isHalf = false;
+			if(numF-numI>0){
+				isHalf = true;
+			}
+			
+			for(int i=0; i<5; i++){
+				ImageView iv = holder.ivs.get(i);
+				if(i<numI){
+					iv.setImageResource(R.drawable.star_red_card);
+				}else{
+					iv.setImageResource(R.drawable.star_huise_card);
+				}
+			}
+			if(isHalf){
+				if(numI < 5){
+					holder.ivs.get(numI).setImageResource(R.drawable.star_half_card);
+				}
+			}
+			
+		}
+		
 
 		class ViewHolder {
 			public NetworkImageView iv_icon;
 			public TextView tv_title;
-			TextView  tv_desc;
-			
-			public ImageView iv_gou;
-			public ImageView iv_qiang;
-			public ImageView iv_xian;
-			public ImageView iv_zhe;
-			
+			public ImageView iv_star_one, iv_star_two, iv_star_three,
+					iv_star_four, iv_star_five;
+			public List<ImageView> ivs = new ArrayList<ImageView>();
+			public ImageView iv_yi_chong;
+			TextView tv_cardname, tv_desc;
 		}
 	}
 
@@ -273,7 +281,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 
 		@Override
 		public int getCount() {
-			return cities.size();
+			return 1;
 		}
 
 		@Override
@@ -294,20 +302,17 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 			TextView tv = (TextView) convertView.findViewById(R.id.tv_title);
 			switch (type) {
 			case allarea:
-				iv.setVisibility(View.GONE);
-				City city = cities.get(position);
-				tv.setText(city.areaName);
+				
 				break;
 			case allsort:
 				iv.setVisibility(View.GONE);
-				
 				break;
 			case hot:
 				tv.setVisibility(View.GONE);
 				break;
+
 			}
-			
-			
+
 			return convertView;
 		}
 
@@ -330,55 +335,18 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 					try {
 						JSONObject o = new JSONObject(response);
 						int status = o.optInt("status");
-						if(status == 1){
-							JSONArray array = o.optJSONArray("result");
-							int len = array.length();
-							for(int i=0; i<len; i++){
-								JSONObject oo = array.getJSONObject(i);
-								youhuiQuans.add(YouhuiQuan.parse(oo));
-							}
+						if (status == 1) {
+							mCustomers.addAll(Customer.parseList(o));
 							adapter.notifyDataSetChanged();
-						}else{
+						} else {
 							String msg = o.optString("msg");
-							Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
 						}
-						
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
-					
-				}
-			}
-		};
-	}
-	
-	
-	private Response.Listener<String> creategetAreaByProvinceIdCidSuccessListener() {
-		return new Response.Listener<String>() {
-			@Override
-			public void onResponse(String response) {
-				Log.i(TAG, "success:" + response);
-				if (response != null) {
-					try {
-						JSONObject o = new JSONObject(response);
-						int status = o.optInt("status");
-						if(status == 1){
-							JSONArray array = o.optJSONArray("result");
-							int len = array.length();
-							for(int i=0; i<len; i++){
-								JSONObject oo = array.getJSONObject(i);
-								cities.add(City.parse(oo));
-							}
-							adapterAll.notifyDataSetChanged();
-						}else{
-							String msg = o.optString("msg");
-							Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-						}
-						
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-					
+
 				}
 			}
 		};

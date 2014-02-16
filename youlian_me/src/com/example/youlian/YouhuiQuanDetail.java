@@ -304,7 +304,9 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			break;
 		case R.id.rel_user_comment:// 用户点评
 			intent = new Intent(getApplicationContext(), CommentActivity.class);
-			intent.putExtra("quan", quan);
+			intent.putExtra("title", quan.fav_name);
+			intent.putExtra("customer_id", quan.customer_id);
+			
 			startActivity(intent);
 			break;
 		case R.id.rel_shop_desc:// 

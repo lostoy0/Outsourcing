@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -66,6 +68,7 @@ public class CutomListview extends FrameLayout {
 		mListView = (ListView) this.findViewById(R.id.myListView);
 		adapter = new HomeAdapter();
 		mListView.setAdapter(adapter);
+		mListView.setOnItemClickListener(listener);
 	}
 	
 	public void setData(List<Customer> customers){
@@ -152,4 +155,14 @@ public class CutomListview extends FrameLayout {
 			return null;
 		}
 	}
+	
+	private OnItemClickListener listener = new OnItemClickListener() {
+
+		@Override
+		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+				long arg3) {
+			Customer customer = mCustomers.get(arg2);
+		}
+		
+	};
 }

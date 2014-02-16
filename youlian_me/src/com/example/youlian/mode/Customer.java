@@ -1,5 +1,6 @@
 package com.example.youlian.mode;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Customer {
+import android.util.Log;
+
+public class Customer implements Serializable{
+	private static final String TAG = "Customer";
 	public String id;
 	public String name;
 	public String logo;
@@ -31,6 +35,12 @@ public class Customer {
 	public String districtId;
 	
 	
+	public ArrayList<Shop> shops = new ArrayList<Shop>();
+	public List<String> images = new ArrayList<String>();
+	public String comments;
+	public String is_follow;
+	public String brief;
+	
 	public static Customer parse(JSONObject jsonObj) throws JSONException {
 		Customer ad = new Customer();
 		ad.id = jsonObj.optString("id");
@@ -53,6 +63,28 @@ public class Customer {
 		ad.provinceId = jsonObj.optString("provinceId");
 		ad.cityId = jsonObj.optString("cityId");
 		ad.districtId = jsonObj.optString("districtId");
+		
+		ad.comments = jsonObj.optString("comments");
+		ad.is_follow = jsonObj.optString("is_follow");
+		ad.brief = jsonObj.optString("brief");
+		
+		JSONArray array = jsonObj.optJSONArray("shops");
+		if(array != null){
+			int len = array.length();
+			for(int i=0; i<len; i++){
+				JSONObject o = array.getJSONObject(i);
+				ad.shops.add(Shop.parse(o));
+			}
+		}
+		
+		JSONArray arr = jsonObj.optJSONArray("pics");
+		if(arr != null){
+			int len = arr.length();
+			for(int j=0; j<len; j++){
+				ad.images.add(arr.get(j).toString());
+				Log.i(TAG, arr.get(j).toString());
+			}
+		}
 		
 		return ad;
 	}

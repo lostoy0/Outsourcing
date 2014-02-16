@@ -1,0 +1,297 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <!-- title -->
+
+    <RelativeLayout
+        android:id="@+id/layout_title"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_title" >
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dip"
+            android:background="@drawable/back_btn" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+
+        <ImageButton
+            android:id="@+id/ib_right"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/select_btn_sign"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <!-- middle -->
+
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/layout_title"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <Gallery
+                    android:id="@+id/image_wall_gallery"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:fadingEdge="none"
+                    android:spacing="1dip"
+                    android:unselectedAlpha="1" >
+                </Gallery>
+
+                <LinearLayout
+                    android:id="@+id/gallery_point_linear"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/youhuiquan_huiyuanka"
+                    android:text=":会员福利" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/personal_xiaofei" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/psersonal_xiaofei"
+                        android:text=":会员福利" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/liulang_count" />
+
+                    <TextView
+                        android:id="@+id/tv_use_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="浏览次数" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/fav_count" />
+
+                    <TextView
+                        android:id="@+id/tv_member_fuli"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="充值后" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_mengdian"
+                android:layout_width="@dimen/youhuiquan_width"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_one"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/tv_mendian_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="门店信息" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_mendian_info"
+                    android:text="查看可以光顾的门店信息" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/arrow_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_user_comment"
+                android:layout_width="@dimen/youhuiquan_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/youhuiquan_detail_margin_top"
+                android:background="@drawable/rounded_one"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/tv_user_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_user_comment"
+                    android:text="看看他们都说了什么，亲，你也可以去点评!" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/arrow_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_shop_desc"
+                android:layout_width="@dimen/youhuiquan_width"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/youhuiquan_detail_margin_top"
+                android:layout_marginTop="@dimen/youhuiquan_detail_margin_top"
+                android:background="@drawable/rounded_one"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/tv_shop_desc_dd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="商家介绍" />
+
+                <TextView
+                    android:id="@+id/tv_shop_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_shop_desc_dd"
+                    android:singleLine="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/arrow_right" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 底部 工具栏 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sv"
+        android:layout_gravity="bottom"
+        android:background="@drawable/select_foot_bg"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_pie"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bottom_button_bg"
+            android:drawableTop="@drawable/select_btn_pie"
+            android:paddingTop="4dp"
+            android:singleLine="true"
+            android:text="首页"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btn_tier"
+            style="@android:style/TextAppearance.Small"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bottom_button_bg"
+            android:drawableTop="@drawable/select_btn_tier"
+            android:paddingTop="4dp"
+            android:singleLine="true"
+            android:text="签到"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btn_wigame"
+            style="@android:style/TextAppearance.Small"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bottom_button_bg"
+            android:drawableTop="@drawable/btn_foot_wigame"
+            android:paddingTop="4dp"
+            android:singleLine="true"
+            android:text="我的"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btn_more"
+            style="@android:style/TextAppearance.Small"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bottom_button_bg"
+            android:drawableTop="@drawable/select_btn_more"
+            android:paddingTop="4dp"
+            android:singleLine="true"
+            android:text="更多"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+</LinearLayout>

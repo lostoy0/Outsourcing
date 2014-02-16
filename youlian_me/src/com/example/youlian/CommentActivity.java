@@ -25,14 +25,15 @@ import com.example.youlian.view.ActRight;
 import com.example.youlian.view.CommentItem;
 
 public class CommentActivity extends Activity implements OnClickListener {
-	protected static final String TAG = "AllSellerActivity";
+	protected static final String TAG = "CommentActivity";
 	private ImageButton back;
 	private TextView tv_title;
 	private LinearLayout container_left;
 	private LinearLayout container_right;
 	
-	private YouhuiQuan quan;
+	private String customer_id;
 	private ImageButton ib_right;
+	private String title;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +43,12 @@ public class CommentActivity extends Activity implements OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_seller_activities);
 		
-		quan = (YouhuiQuan) getIntent().getSerializableExtra("quan");
+		title = getIntent().getStringExtra("title");
+		customer_id = getIntent().getStringExtra("customer_id");
 		
 		initViews();
 		
-		YouLianHttpApi.getComment(quan.customer_id, createGetCommentSuccessListener(), createMyReqErrorListener());
+		YouLianHttpApi.getComment(customer_id, createGetCommentSuccessListener(), createMyReqErrorListener());
 		
 	}
 	
@@ -57,8 +59,9 @@ public class CommentActivity extends Activity implements OnClickListener {
 		ib_right = (ImageButton) this.findViewById(R.id.ib_right);
 		ib_right.setVisibility(View.VISIBLE);
 		ib_right.setOnClickListener(this);
+		
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
-		tv_title.setText(quan.fav_name);
+		tv_title.setText(title);
 		
 		
 		container_left = (LinearLayout)this.findViewById(R.id.container_left);
@@ -160,7 +163,7 @@ public class CommentActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.ib_right:
 			Intent i = new Intent(getApplicationContext(), CommentAddActivity.class);
-			i.putExtra("quan", quan);
+			i.putExtra("customer_id", customer_id);
 			startActivity(i);
 			break;
 			

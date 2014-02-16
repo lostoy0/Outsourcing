@@ -108,6 +108,7 @@
                 android:gravity="center" >
 
                 <Button
+                    android:id="@+id/bt_hotbuy"
                     android:layout_width="@dimen/hotbuy_size"
                     android:layout_height="@dimen/hotbuy_size"
                     android:background="@drawable/select_btn_hotbuy" />
