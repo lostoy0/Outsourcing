@@ -6,6 +6,8 @@
 .project
 .metadata
 bin/
+gen/
+project.properties
 tmp/
 *.tmp
 *.bak
