@@ -13,6 +13,7 @@
     <string name="all_sort">全部分类</string>
     <string name="hot">热门</string>
     <string name="membership">会员卡</string>
+    <string name="shangjia">商家</string>
     <string name="youhuiquan">优惠券</string>
     <string name="act">活动</string>
     <string name="category_more">更多</string>
@@ -26,5 +27,10 @@
     <string name="user_feedback">用户反馈</string>
     <string name="number_apply_use">%s人已申请</string>
     <string name="number_apply_use_card">%s人已申领了本卡</string>
+    
+    
+<string name="personal_custom">人均消费：￥%s</string>
+<string name="liulan_count">浏览次数：%s</string>
+<string name="fav_count">收藏人数：%s</string>
 
 </resources>

@@ -37,13 +37,13 @@
                     android:layout_weight="0.1"
                     android:src="@drawable/ads_search" />
 
-                <EditText
+                <TextView
                     android:id="@+id/search_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.8"
                     android:background="@null"
-                    android:hint="请输入商家名称"
+                    android:text="请输入商家名称"
                     android:textColorHint="@color/grey"
                     android:textSize="18dip" />
             </LinearLayout>
@@ -108,6 +108,7 @@
                 android:gravity="center" >
 
                 <Button
+                    android:id="@+id/bt_hotbuy"
                     android:layout_width="@dimen/hotbuy_size"
                     android:layout_height="@dimen/hotbuy_size"
                     android:background="@drawable/select_btn_hotbuy" />

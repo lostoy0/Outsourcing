@@ -74,8 +74,17 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 	private void initViews() {
 		back = (ImageButton) this.findViewById(R.id.back);
 		back.setOnClickListener(this);
+		
+		
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
-		tv_title.setText(R.string.youhuiquan);
+		int type = getIntent().getIntExtra("type", 0);
+		if(type == 0){
+			tv_title.setText(R.string.youhuiquan);
+		}else{
+			tv_title.setText("热购");
+		}
+		
+		
 		inflater = LayoutInflater.from(getApplicationContext());
 		listview = (ListView) this.findViewById(R.id.listview);
 		adapter = new MyAdapter(getApplicationContext());

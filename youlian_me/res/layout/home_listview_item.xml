@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/follow_store"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:padding="6dip" >
+
+        <!-- 商家图片 -->
+
+        
+        <com.android.volley.toolbox.NetworkImageView
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:scaleType="fitXY"
+        android:id="@+id/stroe_img"
+        />
+        <!-- 商家信息 -->
+
+        <LinearLayout
+            android:id="@+id/store_info"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/stroe_img"
+            android:layout_marginLeft="3dip"
+            android:layout_toRightOf="@id/stroe_img"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/stroe_name_lay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/card_name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#111111"
+                    android:textSize="20sp" />
+                <!--
+    <ImageView
+    android:id="@+id/is_store"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="2dip"
+    android:src="@drawable/nucleus_store_a"/>
+                -->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/card_content_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#8b8b8b"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/follow_active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/active_a" />
+
+                <ImageView
+                    android:id="@+id/follow_union"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dip"
+                    android:layout_weight="1"
+                    android:src="@drawable/store_union_a" />
+
+                <ImageView
+                    android:id="@+id/follow_interest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dip"
+                    android:layout_weight="1"
+                    android:src="@drawable/interest_store_a" />
+
+                <ImageView
+                    android:id="@+id/is_store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dip"
+                    android:layout_weight="1"
+                    android:src="@drawable/nucleus_store_a" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical" >
+
+        <!-- 推荐 -->
+
+        <ImageView
+            android:id="@+id/is_rem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/card_rem" />
+        <!-- 商家券 -->
+
+        <ImageView
+            android:id="@+id/is_have_fad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/juan" />
+    </LinearLayout>
+
+</RelativeLayout>

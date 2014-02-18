@@ -23,6 +23,8 @@ import android.widget.Button;
 import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -49,6 +51,8 @@ public class TabFirstPage extends Activity implements OnClickListener {
 	private int indicatorPositon;
 	private LinearLayout linear_act;
 	private LinearLayout linear_seller;
+	private TextView search_edit;
+	private Button bt_hotbuy;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -67,12 +71,20 @@ public class TabFirstPage extends Activity implements OnClickListener {
 	
 	
 	private void initViews() {
+		
+		search_edit = (TextView)this.findViewById(R.id.search_edit);
+		search_edit.setOnClickListener(this);
+		
 		container = (LinearLayout)this.findViewById(R.id.container);
 		bt_membercard = (Button)this.findViewById(R.id.bt_membercard);
 		bt_membercard.setOnClickListener(this);
 		
 		bt_youhuiquan = (Button)this.findViewById(R.id.bt_youhuiquan);
 		bt_youhuiquan.setOnClickListener(this);
+		
+		bt_hotbuy = (Button)this.findViewById(R.id.bt_hotbuy);
+		bt_hotbuy.setOnClickListener(this);
+		
 		
 		
 		image_wall_gallery = (Gallery)this.findViewById(R.id.image_wall_gallery);
@@ -124,15 +136,25 @@ public class TabFirstPage extends Activity implements OnClickListener {
 			break;
 		case R.id.bt_youhuiquan:
 			 i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
+			 i.putExtra("type", 0);
 			startActivity(i);
 			break;
 			
+		case R.id.bt_hotbuy:
+			 i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
+			 i.putExtra("type", 1);
+			startActivity(i);
+			break;
 		case R.id.linear_act:
 			 i = new Intent(getApplicationContext(), AllSellerActivity.class);
 			startActivity(i);
 			break;
 		case R.id.linear_seller:
-			 i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
+			 i = new Intent(getApplicationContext(), ShangjiaActivity.class);
+			startActivity(i);
+			break;
+		case R.id.search_edit:
+			 i = new Intent(getApplicationContext(), SearchActivity.class);
 			startActivity(i);
 			break;
 			

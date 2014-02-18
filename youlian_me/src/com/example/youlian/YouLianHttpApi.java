@@ -1060,6 +1060,43 @@ public class YouLianHttpApi {
 				successListener, errorListener);
 		queue.add(myReq);
 	}
+	/**
+	 * 
+	 * @param search_key
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void searchCustomer(String search_key, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener){
+		String server = "younion.customers.get";
+		String url = getUrl(KEY_SERVER, server, "search_key", search_key);
+		Log.i(TAG, "url:" +  url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 商家详情
+	 * @param user_token
+	 * @param customer_id
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void getCustomerDetail(String user_token, String customer_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.customer.get";
+		String url = getUrl("user_token", user_token, "customer_id", customer_id,
+				KEY_SERVER, server);
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 	
 	public static String getUrl(String... keyValues) {
 		// get base url
