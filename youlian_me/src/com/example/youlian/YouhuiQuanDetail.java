@@ -155,6 +155,8 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 	private Button mTierButton;
 	private Button mWiGameButton;
 	private Button mMoreButton;
+	
+	
 	private ImageView iv_one;
 	private ImageView iv_two;
 	private ImageView iv_three;
@@ -190,17 +192,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		tv_shop_desc = (TextView) this.findViewById(R.id.tv_shop_desc);
 
 		// set tab buttons
-		mPieButton = (Button) findViewById(R.id.btn_pie);//
-		mPieButton.setOnClickListener(this);
-
-		mTierButton = (Button) findViewById(R.id.btn_tier);
-		mTierButton.setOnClickListener(this);
-
-		mWiGameButton = (Button) findViewById(R.id.btn_wigame);
-		mWiGameButton.setOnClickListener(this);
-
-		mMoreButton = (Button) findViewById(R.id.btn_more);
-		mMoreButton.setOnClickListener(this);
+		initShareViews();
 		
 		iv_one = (ImageView)findViewById(R.id.iv_one);
 		iv_two = (ImageView)findViewById(R.id.iv_two);
@@ -208,6 +200,19 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		ivs.add(iv_one);
 		ivs.add(iv_two);
 		ivs.add(iv_three);
+	}
+
+
+
+	private void initShareViews() {
+		mPieButton = (Button) findViewById(R.id.btn_pie);//
+		mPieButton.setOnClickListener(this);
+		mTierButton = (Button) findViewById(R.id.btn_tier);
+		mTierButton.setOnClickListener(this);
+		mWiGameButton = (Button) findViewById(R.id.btn_wigame);
+		mWiGameButton.setOnClickListener(this);
+		mMoreButton = (Button) findViewById(R.id.btn_more);
+		mMoreButton.setOnClickListener(this);
 	}
 	
 

@@ -11,4 +11,5 @@
     <dimen name="gou_size">15dp</dimen>
 
     <dimen name="tab_width">48dp</dimen>
+    <dimen name="act_detail_marge_left">10dp</dimen>
 </resources>

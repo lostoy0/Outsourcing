@@ -1,114 +1,198 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" >
+    <!-- title -->
 
-        <!-- title -->
+    <!-- <include layout="@layout/merge_title_layout" /> 设置scroolview的weight的时候一定layout不能include-->
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_title" >
 
-        <include layout="@layout/merge_title_layout" />
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dip"
+            android:background="@drawable/back_btn" />
 
-        <ScrollView
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+
+        <ImageButton
+            android:id="@+id/ib_right"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/select_btn_sign"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/iv"
+                android:layout_width="fill_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/guanggao" />
+
+            <TextView
+                android:id="@+id/tv_desc"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:background="#ffffff"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="asdfdsafdsadfasdf" />
 
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="200dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/guanggao" />
+            <TextView
+                android:id="@+id/tv_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/act_detail_marge_left"
+                android:text="asdfdsafdsadfasdf" />
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#789876"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="asdfdsafdsadfasdf" />
+            <TextView
+                android:id="@+id/tv_end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/act_detail_marge_left"
+                android:text="asdfdsafdsadfasdf" />
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="300dp"
-                    android:background="#123342"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="asdfdsafdsadfasdf" />
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_eat_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/act_detail_marge_left"
+                android:layout_marginTop="20dp"
+                android:text="asdfdsafdsadfasdf" />
 
-    <!-- 底部 工具栏 -->
+            <TextView
+                android:id="@+id/tv_eat_standard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/act_detail_marge_left"
+                android:text="asdfdsafdsadfasdf" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@drawable/select_foot_bg"
-        android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/tv_eat_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/act_detail_marge_left"
+                android:text="asdfdsafdsadfasdf" />
 
-        <Button
-            android:id="@+id/btn_pie"
+            <TextView
+                android:id="@+id/tv_eat_didian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/act_detail_marge_left"
+                android:layout_marginTop="20dp"
+                android:text="asdfdsafdsadfasdf" />
+
+            <TextView
+                android:id="@+id/tv_eat_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/act_detail_marge_left"
+                android:text="asdfdsafdsadfasdf" />
+
+            <TextView
+                android:id="@+id/tv_act_rule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/act_detail_marge_left"
+                android:layout_marginTop="20dp"
+                android:text="asdfdsafdsadfasdf" />
+        </LinearLayout>
+    </ScrollView>
+
+     <!-- 底部 工具栏 -->
+
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bottom_button_bg"
-            android:drawableTop="@drawable/select_btn_pie"
-            android:paddingTop="4dp"
-            android:singleLine="true"
-            android:text="首页"
-            android:textColor="@android:color/white"
-            android:textSize="10sp" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/select_foot_bg"
+            android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/btn_tier"
-            style="@android:style/TextAppearance.Small"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bottom_button_bg"
-            android:drawableTop="@drawable/select_btn_tier"
-            android:paddingTop="4dp"
-            android:singleLine="true"
-            android:text="签到"
-            android:textColor="@android:color/white"
-            android:textSize="10sp" />
+            <Button
+                android:id="@+id/btn_pie"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_button_bg"
+                android:drawableTop="@drawable/select_btn_pie"
+                android:paddingTop="4dp"
+                android:singleLine="true"
+                android:text="签到"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
 
-        <Button
-            android:id="@+id/btn_wigame"
-            style="@android:style/TextAppearance.Small"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bottom_button_bg"
-            android:drawableTop="@drawable/btn_foot_wigame"
-            android:paddingTop="4dp"
-            android:singleLine="true"
-            android:text="我的"
-            android:textColor="@android:color/white"
-            android:textSize="10sp" />
+            <Button
+                android:id="@+id/btn_tier"
+                style="@android:style/TextAppearance.Small"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_button_bg"
+                android:drawableTop="@drawable/select_btn_tier"
+                android:paddingTop="4dp"
+                android:singleLine="true"
+                android:text="分享"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
 
-        <Button
-            android:id="@+id/btn_more"
-            style="@android:style/TextAppearance.Small"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bottom_button_bg"
-            android:drawableTop="@drawable/select_btn_more"
-            android:paddingTop="4dp"
-            android:singleLine="true"
-            android:text="更多"
-            android:textColor="@android:color/white"
-            android:textSize="10sp" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/btn_wigame"
+                style="@android:style/TextAppearance.Small"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_button_bg"
+                android:drawableTop="@drawable/btn_foot_wigame"
+                android:paddingTop="4dp"
+                android:singleLine="true"
+                android:text="评论"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
 
-</FrameLayout>
+            <Button
+                android:id="@+id/btn_more"
+                style="@android:style/TextAppearance.Small"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_button_bg"
+                android:drawableTop="@drawable/select_btn_more"
+                android:paddingTop="4dp"
+                android:singleLine="true"
+                android:text="收藏"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+</LinearLayout>

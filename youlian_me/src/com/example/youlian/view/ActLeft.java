@@ -1,17 +1,20 @@
 package com.example.youlian.view;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.youlian.AllSellerDetailActivity;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageLoader.ImageContainer;
+import com.android.volley.toolbox.ImageLoader.ImageListener;
 import com.example.youlian.R;
+import com.example.youlian.app.MyVolley;
+import com.example.youlian.mode.Act;
 
 public class ActLeft extends FrameLayout {
 	/**
@@ -54,7 +57,13 @@ public class ActLeft extends FrameLayout {
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
 	}
 	
-	public void setData(){
+	public void setData(Act act){
+		ImageLoader imageLoader = MyVolley.getImageLoader();
+        imageLoader.get(act.pic, 
+                       ImageLoader.getImageListener(iv, 
+                                                     0, 
+                                                     0));
+        tv_title.setText(act.title);
 	}
 	
 	

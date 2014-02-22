@@ -33,4 +33,15 @@
 <string name="liulan_count">浏览次数：%s</string>
 <string name="fav_count">收藏人数：%s</string>
 
+
+<string name="start_time">报名开始时间：%s</string>
+<string name="end_time">报名截止时间：%s</string>
+<string name="eat_num">试吃名额：%s人</string>
+<string name="eat_standard">试吃标准：%s</string>
+<string name="eat_time">用餐时间：%s</string>
+<string name="eat_address">用餐地点：%s</string>
+<string name="address">餐厅地址：%s</string>
+<string name="act_rule">活动规则：%s</string>
+
+
 </resources>

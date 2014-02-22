@@ -1,12 +1,17 @@
 package com.example.youlian;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.youlian.mode.Act;
 import com.example.youlian.mode.Ad;
+import com.example.youlian.mode.Card;
 import com.example.youlian.view.ActLeft;
 import com.example.youlian.view.ActRight;
 
@@ -31,6 +36,7 @@ public class AllSellerActivity extends Activity implements OnClickListener {
 	private LinearLayout container_left;
 	private LinearLayout container_right;
 
+	public List<Act> acts = new ArrayList<Act>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -64,11 +70,29 @@ public class AllSellerActivity extends Activity implements OnClickListener {
             public void onResponse(String response) {
             	Log.i(TAG, "success:" + response);
             	
-            	addViews();
-//            	try {
-//				} catch (JSONException e) {
-//					e.printStackTrace();
-//				}
+            	
+            	if (response != null) {
+				try {
+					JSONObject o = new JSONObject(response);
+					int status = o.optInt("status");
+					if(status == 1){
+						JSONArray array = o.optJSONArray("result");
+						int len = array.length();
+						for(int i=0; i<len; i++){
+							JSONObject oo = array.getJSONObject(i);
+							acts.add(Act.parse(oo));
+						}
+						addViews();
+					}else{
+						String msg = o.optString("msg");
+						Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+					}
+					
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				
+			}
             }
         };
     }
@@ -76,14 +100,21 @@ public class AllSellerActivity extends Activity implements OnClickListener {
 
 
     protected void addViews() {
-    	for(int i=0; i<5; i++){
-    		ActLeft left = new ActLeft(getApplicationContext());
-    		ActRight right = new ActRight(getApplicationContext());
-    		left.setData();
-    		left.setTag(i);
-    		left.setOnClickListener(onClickListener);
-    		container_left.addView(left);
-    		container_right.addView(right);
+    	int size = acts.size();
+    	for(int i=0; i<size; i++){
+    		if(i % 2 == 0){
+    			ActLeft left = new ActLeft(getApplicationContext());
+    			left.setData(acts.get(i));
+        		left.setTag(i);
+        		left.setOnClickListener(onClickListener);
+        		container_left.addView(left);
+    		}else{
+    			ActRight right = new ActRight(getApplicationContext());
+    			right.setData(acts.get(i));
+    			right.setTag(i);
+    			right.setOnClickListener(onClickListener);
+    			container_right.addView(right);
+    		}
     	}
 	}
     
@@ -93,7 +124,9 @@ public class AllSellerActivity extends Activity implements OnClickListener {
 		public void onClick(View v) {
 			Integer tag = (Integer)v.getTag();
 			Log.i(TAG, "tag:" + tag);
+			Act act = acts.get(tag);
 			Intent i = new Intent(getApplicationContext(), AllSellerDetailActivity.class);
+			i.putExtra("act", act);
 			startActivity(i);
 		}
 	};

@@ -6,8 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
 import com.example.youlian.R;
+import com.example.youlian.app.MyVolley;
+import com.example.youlian.mode.Act;
 
 public class ActRight extends FrameLayout {
 	/**
@@ -16,7 +20,8 @@ public class ActRight extends FrameLayout {
 	private Context mContext = null;
 	
 	private ImageView iv;
-	
+
+	private TextView tv_title;
 
 	public ActRight(Context context) {
 		super(context);
@@ -44,8 +49,16 @@ public class ActRight extends FrameLayout {
 				R.layout.item_act_right, null);
 
 		addView(view);
-//		iv = (ImageView) this.findViewById(R.id.iv);
+		iv = (ImageView) this.findViewById(R.id.iv_icon);
+		tv_title = (TextView) this.findViewById(R.id.tv_title);
 	}
 	
-	
+	public void setData(Act act){
+		ImageLoader imageLoader = MyVolley.getImageLoader();
+        imageLoader.get(act.pic, 
+                       ImageLoader.getImageListener(iv, 
+                                                     0, 
+                                                     0));
+        tv_title.setText(act.title);
+	}
 }
