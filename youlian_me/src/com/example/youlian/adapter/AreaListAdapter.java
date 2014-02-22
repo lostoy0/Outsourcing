@@ -20,7 +20,6 @@ public class AreaListAdapter extends BaseAdapter {
 	public AreaListAdapter(Context context, ArrayList<RegioninfoVO> vos) {
 		mInflater = LayoutInflater.from(context);
 		mRegioninfoVOs = vos;
-		if(mRegioninfoVOs == null) mRegioninfoVOs = new ArrayList<RegioninfoVO>();
 	}
 	
 	@Override

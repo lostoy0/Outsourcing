@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.UUID;
 
 import android.app.Activity;
@@ -257,6 +258,14 @@ public class Utils {
 		}
 		return false;
 	}
+	
+	public static <E> boolean isCollectionNotNull(Collection<E> obj){
+		if(null != obj && obj.size()>0){
+			return true;
+		}
+		return false;
+	}
+	
 	/**
 	 * InputStreamת��Ϊbyte[]����
 	 * @param is
