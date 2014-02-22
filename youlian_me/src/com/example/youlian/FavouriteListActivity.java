@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.youlian.adapter.FavouriteListAdapter;
+import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Favourite;
 import com.example.youlian.util.YlLogger;
 
@@ -62,7 +63,7 @@ public class FavouriteListActivity extends BaseActivity implements OnItemClickLi
 		
 		mListView = (ListView) findViewById(android.R.id.list);
 		mListView.setOnItemClickListener(this);
-		mAdapter = new FavouriteListAdapter(this, mList);
+		mAdapter = new FavouriteListAdapter(this, mList, MyVolley.getImageLoader());
 		mListView.setAdapter(mAdapter);
 		
 		YouLianHttpApi.getCouponList(Global.getUserToken(this), createGetFavouriteListSuccessListener(), createGetFavouriteListErrorListener());
