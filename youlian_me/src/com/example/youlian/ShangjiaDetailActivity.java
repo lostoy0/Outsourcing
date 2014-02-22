@@ -69,12 +69,12 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_shangjia_detail);
 
-		card = (Customer) getIntent().getSerializableExtra("customer");
+		String customerid = getIntent().getStringExtra("customerid");
 		
 		initViews();
 		
 		YouLianHttpApi.getCustomerDetail(
-				Global.getUserToken(getApplicationContext()), card.id,
+				Global.getUserToken(getApplicationContext()), customerid,
 				createDelFavSuccessListener(), createMyReqErrorListener());
 	}
 	private Gallery image_wall_gallery;
@@ -88,7 +88,7 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 		back = (ImageButton) this.findViewById(R.id.back); 
 		back.setOnClickListener(this);
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
-		tv_title.setText(card.name);
+		
 		
 		
 		pointLinear = (LinearLayout) this
@@ -133,6 +133,9 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 	protected void refreshView() {
 		adapter.add(card.images);
 		addPoint(card.images.size());
+		
+		tv_title.setText(card.name);
+		
 		StringBuilder sb = new StringBuilder();
 		sb.append(card.favEntityCount).append("张优惠券 ")
 		.append("  |  ")

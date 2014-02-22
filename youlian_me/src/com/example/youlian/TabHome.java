@@ -1,19 +1,24 @@
 package com.example.youlian;
 
 import android.app.TabActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 
+import com.example.youlian.common.Constants;
 
+
+@SuppressWarnings("deprecation")
 public class TabHome extends TabActivity implements OnClickListener,
 		OnTabChangeListener {
 
@@ -39,24 +44,42 @@ public class TabHome extends TabActivity implements OnClickListener,
 	private int mScreenWidth;
 	private int mFooterLeft;
 
+	private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			String action = intent.getAction();
+			if(Constants.ACTION_SIGN_FROM_PERSONALCENTER.equals(action)) {
+				getTabHost().setCurrentTabByTag(TAB_TIER);
+				setSelect(R.id.btn_tier);
+			}
+		}
+	};
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		
+		registerBroadcast();
+		
 		sTabHome = this;
 		setContentView(R.layout.activity_tabhome);
 
 		// init views
 		initViews();
 
+	}
 
+	private void registerBroadcast() {
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(Constants.ACTION_SIGN_FROM_PERSONALCENTER);
+		registerReceiver(mReceiver, filter);
 	}
 
 	@Override
 	protected void onDestroy() {
-		
 		super.onDestroy();
+		unregisterReceiver(mReceiver);
 	}
 
 	

@@ -3,6 +3,7 @@ package com.example.youlian.view;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.example.youlian.AllSellerDetailActivity;
+import com.example.youlian.MemberShipDetail;
 import com.example.youlian.R;
+import com.example.youlian.ShangjiaDetailActivity;
+import com.example.youlian.YouhuiQuanDetail;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Pic;
 import com.example.youlian.mode.SubjectActivity;
@@ -26,7 +31,7 @@ public class TemplateOne extends FrameLayout {
 
 	private ImageView iv_first;
 
-	
+	SubjectActivity sub;
 
 	public TemplateOne(Context context) {
 		super(context);
@@ -60,6 +65,7 @@ public class TemplateOne extends FrameLayout {
 	
 	public void setData(SubjectActivity sub){
 		if(sub == null) return;
+		this.sub = sub;
 		List<Pic> pics = sub.pics;
 		if(pics != null && pics.size() == 1){
 			Pic pic = pics.get(0);
@@ -70,6 +76,54 @@ public class TemplateOne extends FrameLayout {
                                                          0));
 			 
             tv_title.setText(sub.title);
+            iv_first.setTag(pic);
+            iv_first.setOnClickListener(onClickListener);
+		}
+		
+		
+	}
+	
+	OnClickListener onClickListener = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			Pic pic = (Pic)v.getTag();
+			skip(pic);
+		}
+		
+		
+	};
+	
+	private void skip(Pic pic) {
+		int type = Integer.parseInt(pic.linkTypes);
+		switch (type) {
+		case 0:
+			Intent in = new Intent(mContext, MemberShipDetail.class);
+			in.putExtra("cardid", pic.linkIds);
+			mContext.startActivity(in);
+			break;
+		case 1:
+			Intent intent = new Intent(mContext, YouhuiQuanDetail.class);
+			intent.putExtra("fav_ent_id", pic.linkIds);
+			mContext.startActivity(intent);
+			break;
+		case 2:
+			 in = new Intent(mContext, ShangjiaDetailActivity.class);
+			in.putExtra("customerid", pic.linkIds);
+			mContext.startActivity(in);
+			break;
+		case 3:
+			Intent i = new Intent(mContext, AllSellerDetailActivity.class);
+			i.putExtra("actid", pic.linkIds);
+			mContext.startActivity(i);
+			break;
+		case 4:// 站外
+			
+			break;
+
+		default:
+			break;
 		}
 	}
+	
 }

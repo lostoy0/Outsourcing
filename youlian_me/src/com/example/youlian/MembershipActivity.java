@@ -87,7 +87,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 					long arg3) {
 				Intent in = new Intent(getApplicationContext(), MemberShipDetail.class);
 				Card c = cards.get(arg2);
-				in.putExtra("card", c);
+				in.putExtra("cardid", c.card_id);
 				startActivity(in);
 			}
 		});

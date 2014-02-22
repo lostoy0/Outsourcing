@@ -83,11 +83,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_youhuiquan_detail);
 
-		quan = (YouhuiQuan) getIntent().getSerializableExtra("quan");
-		String fav_ent_id = "";
-		if (quan != null) {
-			fav_ent_id = quan.fav_ent_id;
-		}
+		String fav_ent_id = getIntent().getStringExtra("fav_ent_id");
 
 		initViews();
 		
@@ -165,7 +161,6 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		back = (ImageButton) this.findViewById(R.id.back);
 		back.setOnClickListener(this);
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
-		tv_title.setText(quan.fav_ent_name);
 
 		iv_guanggao = (ImageView) this.findViewById(R.id.iv_guanggao);
 		bt_apply = (Button) this.findViewById(R.id.bt_apply);
@@ -232,6 +227,8 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 								R.drawable.guanggao));
 			}
 		}
+		tv_title.setText(quan.fav_name);
+		
 		apply_num.setText(getString(R.string.number_apply_use,
 				quan.participate_num));
 		tv_name.setText("名称：" + quan.fav_name);

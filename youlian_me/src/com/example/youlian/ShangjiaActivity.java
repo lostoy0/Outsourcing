@@ -87,7 +87,7 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 					long arg3) {
 				Intent in = new Intent(getApplicationContext(), ShangjiaDetailActivity.class);
 				Customer c = mCustomers.get(arg2);
-				in.putExtra("customer", c);
+				in.putExtra("customerid", c.id);
 				startActivity(in);
 			}
 		});

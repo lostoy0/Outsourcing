@@ -58,12 +58,12 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_membership_detail);
 
-		card = (Card) getIntent().getSerializableExtra("card");
+		String card_id = getIntent().getStringExtra("cardid");
 		
 		initViews();
 		
 		YouLianHttpApi.getMemberCardDetail(
-				Global.getUserToken(getApplicationContext()), card.card_id,
+				Global.getUserToken(getApplicationContext()), card_id,
 				createDelFavSuccessListener(), createMyReqErrorListener());
 	}
 
@@ -71,7 +71,7 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 		back = (ImageButton) this.findViewById(R.id.back); 
 		back.setOnClickListener(this);
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
-		tv_title.setText(card.card_name);
+		
 		
 		iv_biaoshi = (ImageView)this.findViewById(R.id.iv_biaoshi);
 		iv_icon = (ImageView)this.findViewById(R.id.iv_icon);
@@ -102,6 +102,8 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 		imageLoader.get(card.activatedPic, ImageLoader
 				.getImageListener(iv_icon, R.drawable.guanggao,
 						R.drawable.guanggao));
+		tv_title.setText(card.card_name);
+		
 		tv_apply.setText(getString(R.string.number_apply_use_card, card.card_num));
 		tv_desc.setText(card.agioInfo);
 		tv_date.setText("有效期：" + card.time_from + "至" + card.time_to);

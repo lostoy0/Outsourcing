@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:paddingBottom="8dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingBottom="8dp"
     android:paddingTop="8dp" >
 
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/card_item_iv_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/my_icon_bg" />
+        android:src="@drawable/default_img" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,16 +31,37 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-        <RatingBar
-            android:id="@+id/ratingBar1"
-            style="@style/ratingBar"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:layout_marginTop="8dp"
-            android:isIndicator="true"
-            android:numStars="5"
-            android:rating="2.5"
-            android:stepSize="0.05" />
+            android:orientation="horizontal" >
+
+            <RatingBar
+                android:id="@+id/ratingBar1"
+                style="@style/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:rating="2.5"
+                android:stepSize="0.05" />
+
+            <ImageView
+                android:id="@+id/iv_online_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/online_pay_small" />
+
+            <ImageView
+                android:id="@+id/iv_yi_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/yi_chong" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,7 +78,7 @@
                 android:text="白金卡"
                 android:textColor="#333"
                 android:textSize="16sp" />
-            
+
             <TextView
                 android:id="@+id/card_item_tv_coupon"
                 android:layout_width="match_parent"

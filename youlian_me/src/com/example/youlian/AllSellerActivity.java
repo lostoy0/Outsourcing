@@ -126,7 +126,7 @@ public class AllSellerActivity extends Activity implements OnClickListener {
 			Log.i(TAG, "tag:" + tag);
 			Act act = acts.get(tag);
 			Intent i = new Intent(getApplicationContext(), AllSellerDetailActivity.class);
-			i.putExtra("act", act);
+			i.putExtra("actid", act.id);
 			startActivity(i);
 		}
 	};

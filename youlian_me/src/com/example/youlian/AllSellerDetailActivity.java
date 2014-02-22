@@ -53,13 +53,13 @@ public class AllSellerDetailActivity extends Activity implements OnClickListener
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_seller_activities_detail);
 		
-		act = (Act) getIntent().getSerializableExtra("act");
+		String actid = getIntent().getStringExtra("actid");
 		
 		initViews();
 		
 		
-//		YouLianHttpApi.getActDetail(act.id, createGetAdSuccessListener(), createGetAdErrorListener());
-		refresh();
+		YouLianHttpApi.getActDetail(actid, createGetAdSuccessListener(), createGetAdErrorListener());
+//		refresh();
 	}
 	
 	
@@ -68,7 +68,7 @@ public class AllSellerDetailActivity extends Activity implements OnClickListener
 		back = (ImageButton) this.findViewById(R.id.back);
 		back.setOnClickListener(this);
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
-		tv_title.setText(act.title);
+		
 		
 		iv = (ImageView)this.findViewById(R.id.iv);
 		tv_desc = (TextView) this.findViewById(R.id.tv_desc);
@@ -123,6 +123,8 @@ public class AllSellerDetailActivity extends Activity implements OnClickListener
                                                      0, 
                                                      0));
         tv_desc.setText(act.description);
+        
+        tv_title.setText(act.title);
         
         tv_start_time.setText(getString(R.string.start_time, act.startTime));
         tv_end_time.setText(getString(R.string.end_time, act.endTime));
@@ -187,12 +189,9 @@ public class AllSellerDetailActivity extends Activity implements OnClickListener
 					JSONObject o = new JSONObject(response);
 					int status = o.optInt("status");
 					if(status == 1){
-//						JSONArray array = o.optJSONArray("result");
-//						int len = array.length();
-//						for(int i=0; i<len; i++){
-//							JSONObject oo = array.getJSONObject(i);
-//							acts.add(Act.parse(oo));
-//						}
+						JSONObject jsonObject = o.optJSONObject("result");
+						act = Act.parse(jsonObject);
+						refresh();
 					}else{
 						String msg = o.optString("msg");
 						Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();

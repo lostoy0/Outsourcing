@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -24,12 +25,15 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.example.youlian.app.MyVolley;
+import com.example.youlian.mode.Act;
 import com.example.youlian.mode.Ad;
+import com.example.youlian.mode.Card;
+import com.example.youlian.mode.Customer;
+import com.example.youlian.mode.RegioninfoVO;
 import com.example.youlian.mode.SubjectActivity;
 import com.example.youlian.view.TemplateFive;
 import com.example.youlian.view.TemplateFour;
@@ -38,9 +42,8 @@ import com.example.youlian.view.TemplateSix;
 import com.example.youlian.view.TemplateThree;
 import com.example.youlian.view.TemplateTwo;
 
-
 public class TabFirstPage extends Activity implements OnClickListener {
-	
+
 	protected static final String TAG = "TabPie";
 	private LinearLayout container;
 	private Button bt_membercard;
@@ -53,68 +56,118 @@ public class TabFirstPage extends Activity implements OnClickListener {
 	private LinearLayout linear_seller;
 	private TextView search_edit;
 	private Button bt_hotbuy;
+	private LinearLayout linear_area;
+	private RegioninfoVO mProvince;
+	private RegioninfoVO mCity;
+	private RegioninfoVO mDistrict;
+	private TextView tv_area;
+
+	private static final int REQ_ADDR = 0x1000;
+	private List<Ad> ads = new ArrayList<Ad>();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		
 
-		setContentView(R.layout.activity_tab_pie);	
-		
-		initViews(); 
+		setContentView(R.layout.activity_tab_pie);
+
+		initViews();
 		// 获取广告轮播图
-		YouLianHttpApi.getAdvertisement("0", createGetAdSuccessListener(), createGetAdErrorListener());
-        // 活动主题
-        YouLianHttpApi.getSubjectActivity(createMyReqSuccessListener(), createMyReqErrorListener());
+		YouLianHttpApi.getAdvertisement("0", createGetAdSuccessListener(),
+				createGetAdErrorListener());
+		// 活动主题
+		YouLianHttpApi.getSubjectActivity(createMyReqSuccessListener(),
+				createMyReqErrorListener());
 	}
-	
-	
+
 	private void initViews() {
-		
-		search_edit = (TextView)this.findViewById(R.id.search_edit);
+
+		search_edit = (TextView) this.findViewById(R.id.search_edit);
 		search_edit.setOnClickListener(this);
-		
-		container = (LinearLayout)this.findViewById(R.id.container);
-		bt_membercard = (Button)this.findViewById(R.id.bt_membercard);
+
+		linear_area = (LinearLayout) this.findViewById(R.id.linear_area);
+		linear_area.setOnClickListener(this);
+		tv_area = (TextView) this.findViewById(R.id.tv_area);
+
+		container = (LinearLayout) this.findViewById(R.id.container);
+		bt_membercard = (Button) this.findViewById(R.id.bt_membercard);
 		bt_membercard.setOnClickListener(this);
-		
-		bt_youhuiquan = (Button)this.findViewById(R.id.bt_youhuiquan);
+
+		bt_youhuiquan = (Button) this.findViewById(R.id.bt_youhuiquan);
 		bt_youhuiquan.setOnClickListener(this);
-		
-		bt_hotbuy = (Button)this.findViewById(R.id.bt_hotbuy);
+
+		bt_hotbuy = (Button) this.findViewById(R.id.bt_hotbuy);
 		bt_hotbuy.setOnClickListener(this);
-		
-		
-		
-		image_wall_gallery = (Gallery)this.findViewById(R.id.image_wall_gallery);
+
+		image_wall_gallery = (Gallery) this
+				.findViewById(R.id.image_wall_gallery);
 		adapter = new ImageAdapter(getApplicationContext());
 		image_wall_gallery.setAdapter(adapter);
-		
-		image_wall_gallery.setOnItemSelectedListener(new OnItemSelectedListener() {
 
-			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				changePointView(arg2);
-			}
+		image_wall_gallery
+				.setOnItemSelectedListener(new OnItemSelectedListener() {
 
+					@Override
+					public void onItemSelected(AdapterView<?> arg0, View arg1,
+							int arg2, long arg3) {
+						changePointView(arg2);
+					}
+
+					@Override
+					public void onNothingSelected(AdapterView<?> arg0) {
+					}
+				});
+
+		image_wall_gallery.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				int nPosition = arg2;
+				Log.i("nPosition", nPosition + "");
+				Ad ad = ads.get(nPosition);
+				int type = Integer.parseInt(ad.linkType);
+				switch (type) {
+				case 0:
+					Intent in = new Intent(getApplicationContext(), MemberShipDetail.class);
+					in.putExtra("cardid", ad.linkId);
+					startActivity(in);
+					break;
+				case 1:
+					Intent intent = new Intent(getApplicationContext(), YouhuiQuanDetail.class);
+					intent.putExtra("fav_ent_id", ad.linkId);
+					startActivity(intent);
+					break;
+				case 2:
+					 in = new Intent(getApplicationContext(), ShangjiaDetailActivity.class);
+					in.putExtra("customerid", ad.linkId);
+					startActivity(in);
+					break;
+				case 3:
+					Intent i = new Intent(getApplicationContext(), AllSellerDetailActivity.class);
+					i.putExtra("actid", ad.linkId);
+					startActivity(i);
+					break;
+				case 4:// 站外
+					
+					break;
+
+				default:
+					break;
+				}
 			}
 		});
 
 		pointLinear = (LinearLayout) this
 				.findViewById(R.id.gallery_point_linear);
-		
-		linear_act = (LinearLayout)this.findViewById(R.id.linear_act);
+
+		linear_act = (LinearLayout) this.findViewById(R.id.linear_act);
 		linear_act.setOnClickListener(this);
-		linear_seller = (LinearLayout)this.findViewById(R.id.linear_seller);
+		linear_seller = (LinearLayout) this.findViewById(R.id.linear_seller);
 		linear_seller.setOnClickListener(this);
-		
+
 	}
-	
-	
+
 	public void changePointView(int cur) {
 		View view = pointLinear.getChildAt(indicatorPositon);
 		View curView = pointLinear.getChildAt(cur);
@@ -126,47 +179,49 @@ public class TabFirstPage extends Activity implements OnClickListener {
 			indicatorPositon = cur;
 		}
 	}
-	
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.linear_area:
+			Intent i = new Intent(this, AreaProvinceActivity.class);
+			startActivityForResult(i, REQ_ADDR);
+			break;
 		case R.id.bt_membercard:
-			Intent i = new Intent(getApplicationContext(), MembershipActivity.class);
+			i = new Intent(getApplicationContext(), MembershipActivity.class);
 			startActivity(i);
 			break;
 		case R.id.bt_youhuiquan:
-			 i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
-			 i.putExtra("type", 0);
+			i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
+			i.putExtra("type", 0);
 			startActivity(i);
 			break;
-			
+
 		case R.id.bt_hotbuy:
-			 i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
-			 i.putExtra("type", 1);
+			i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
+			i.putExtra("type", 1);
 			startActivity(i);
 			break;
 		case R.id.linear_act:
-			 i = new Intent(getApplicationContext(), AllSellerActivity.class);
+			i = new Intent(getApplicationContext(), AllSellerActivity.class);
 			startActivity(i);
 			break;
-		case R.id.linear_seller:
-			 i = new Intent(getApplicationContext(), ShangjiaActivity.class);
+		case R.id.linear_seller:// 商家
+			i = new Intent(getApplicationContext(), ShangjiaActivity.class);
 			startActivity(i);
 			break;
 		case R.id.search_edit:
-			 i = new Intent(getApplicationContext(), SearchActivity.class);
+			i = new Intent(getApplicationContext(), SearchActivity.class);
 			startActivity(i);
 			break;
-			
+
 		default:
 			break;
 		}
 	}
-	
-	
+
 	class ImageAdapter extends BaseAdapter {
 		private LayoutInflater inflater;
-		private List<Ad> ads = new ArrayList<Ad>();
 
 		public ImageAdapter(Context context) {
 			inflater = LayoutInflater.from(context);
@@ -199,50 +254,47 @@ public class TabFirstPage extends Activity implements OnClickListener {
 			setValue(vh, position);
 			return convertView;
 		}
-		
-		public void add(List<Ad> ads){
-			this.ads.addAll(ads);
+
+		public void add(List<Ad> ds) {
+			ads.addAll(ds);
 			notifyDataSetChanged();
 		}
 
 		private void setValue(ViewHolder vh, int position) {
 			Ad ad = ads.get(position);
-			if(!TextUtils.isEmpty(ad.pic)){
+			if (!TextUtils.isEmpty(ad.pic)) {
 				ImageLoader imageLoader = MyVolley.getImageLoader();
-	            imageLoader.get(ad.pic, 
-	                           ImageLoader.getImageListener(vh.imageView, 
-	                                                         R.drawable.guanggao, 
-	                                                         R.drawable.guanggao));
+				imageLoader
+						.get(ad.pic, ImageLoader.getImageListener(vh.imageView,
+								R.drawable.guanggao, R.drawable.guanggao));
 			}
-			
+
 			changePointView(position);
 		}
 
-		protected  class ViewHolder {
+		protected class ViewHolder {
 			int tag;
 			ImageView imageView;
 		}
 	}
 
-
 	private Response.Listener<String> createGetAdSuccessListener() {
-        return new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-            	Log.i(TAG, "success guanggao:" + response);
-            	try {
-            		List<Ad> ads = Ad.parse(response);
-            		adapter.add(ads);
-            		
-            		addPoint(ads.size());
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success guanggao:" + response);
+				try {
+					List<Ad> ads = Ad.parse(response);
+					adapter.add(ads);
+
+					addPoint(ads.size());
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
-            }
+			}
 
-        };
-    }
-	
+		};
+	}
 
 	private void addPoint(int size) {
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -250,12 +302,10 @@ public class TabFirstPage extends Activity implements OnClickListener {
 				LinearLayout.LayoutParams.WRAP_CONTENT);
 		params.setMargins(10, 0, 0, 0);
 		for (int i = 0; i < size; i++) {
-			ImageView pointView = new ImageView(
-					getApplicationContext());
+			ImageView pointView = new ImageView(getApplicationContext());
 			pointView.setLayoutParams(params);
 			if (i == 0) {
-				pointView
-						.setBackgroundResource(R.drawable.screen_indicator_on);
+				pointView.setBackgroundResource(R.drawable.screen_indicator_on);
 			} else
 				pointView
 						.setBackgroundResource(R.drawable.screen_indicator_off);
@@ -263,77 +313,96 @@ public class TabFirstPage extends Activity implements OnClickListener {
 		}
 	}
 
+	private Response.ErrorListener createGetAdErrorListener() {
+		return new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				Log.i(TAG, "error");
+			}
+		};
+	}
 
-    private Response.ErrorListener createGetAdErrorListener() {
-        return new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            	Log.i(TAG, "error");
-            }
-        };
-    }
-    
-    
-    private Response.Listener<String> createMyReqSuccessListener() {
-        return new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-            	Log.i(TAG, "success:" + response);
-            	try {
-            		List<SubjectActivity> list = SubjectActivity.parse(response);
-            		if(list != null)
-            		for(int i=0; i<list.size(); i++){
-            			SubjectActivity sub = list.get(i);
-            			switch (sub.activeTemplate) {
-						case Global.TEMPLATE_ONE:
-							TemplateOne one = new TemplateOne(getApplicationContext());
-							container.addView(one);
-							one.setData(sub);
-							break;
-						case Global.TEMPLATE_TWO:
-							TemplateTwo two = new TemplateTwo(getApplicationContext());
-							container.addView(two);
-							two.setData(sub);
-							break;
-						case Global.TEMPLATE_THREE:
-							TemplateThree three = new TemplateThree(getApplicationContext());
-							container.addView(three);
-							three.setData(sub);
-							break;
-						case Global.TEMPLATE_FOUR:
-							TemplateFour four = new TemplateFour(getApplicationContext());
-							container.addView(four);
-							four.setData(sub);
-							break;
-						case Global.TEMPLATE_FIVE:
-							TemplateFive five = new TemplateFive(getApplicationContext());
-							container.addView(five);
-							five.setData(sub);
-							break;
-						case Global.TEMPLATE_SIX:
-							TemplateSix six = new TemplateSix(getApplicationContext());
-							container.addView(six);
-							break;
+	private Response.Listener<String> createMyReqSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				try {
+					List<SubjectActivity> list = SubjectActivity
+							.parse(response);
+					if (list != null)
+						for (int i = 0; i < list.size(); i++) {
+							SubjectActivity sub = list.get(i);
+							switch (sub.activeTemplate) {
+							case Global.TEMPLATE_ONE:
+								TemplateOne one = new TemplateOne(
+										getApplicationContext());
+								container.addView(one);
+								one.setData(sub);
+								break;
+							case Global.TEMPLATE_TWO:
+								TemplateTwo two = new TemplateTwo(
+										getApplicationContext());
+								container.addView(two);
+								two.setData(sub);
+								break;
+							case Global.TEMPLATE_THREE:
+								TemplateThree three = new TemplateThree(
+										getApplicationContext());
+								container.addView(three);
+								three.setData(sub);
+								break;
+							case Global.TEMPLATE_FOUR:
+								TemplateFour four = new TemplateFour(
+										getApplicationContext());
+								container.addView(four);
+								four.setData(sub);
+								break;
+							case Global.TEMPLATE_FIVE:
+								TemplateFive five = new TemplateFive(
+										getApplicationContext());
+								container.addView(five);
+								five.setData(sub);
+								break;
+							case Global.TEMPLATE_SIX:
+								TemplateSix six = new TemplateSix(
+										getApplicationContext());
+								container.addView(six);
+								break;
 
-						default:
-							break;
+							default:
+								break;
+							}
+
 						}
-            			
-            		}
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
-            }
-        };
-    }
+			}
+		};
+	}
 
+	private Response.ErrorListener createMyReqErrorListener() {
+		return new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				Log.i(TAG, "error");
+			}
+		};
+	}
 
-    private Response.ErrorListener createMyReqErrorListener() {
-        return new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            	Log.i(TAG, "error");
-            }
-        };
-    }
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+
+		if (requestCode == REQ_ADDR && resultCode == RESULT_OK) {
+			mProvince = (RegioninfoVO) data
+					.getSerializableExtra(AreaProvinceActivity.key_province);
+			mCity = (RegioninfoVO) data
+					.getSerializableExtra(AreaProvinceActivity.key_city);
+			mDistrict = (RegioninfoVO) data
+					.getSerializableExtra(AreaProvinceActivity.key_district);
+			tv_area.setText(mDistrict.areaName);
+		}
+	}
 }

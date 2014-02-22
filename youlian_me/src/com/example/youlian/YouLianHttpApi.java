@@ -100,7 +100,7 @@ public class YouLianHttpApi {
 			Response.Listener<String> successListener,
 			Response.ErrorListener errorListener) {
 		String server = "younion.activity.get";
-		String url = getUrl(KEY_SERVER, server, "card_id", id);
+		String url = getUrl(KEY_SERVER, server, "id", id);
 		Log.i(TAG, "url:" + url);
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
@@ -486,7 +486,7 @@ public class YouLianHttpApi {
 	
 	
 	
-	/* 注册
+	/** 注册
 	 * @param login_id 登录名（手机号码）
 	 * @param password 密码（需md5加密）
 	 * @param code验证码
@@ -1110,6 +1110,48 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
+	/**
+	 * 
+	 * 获取签到活动列表
+	 * @Title: getSignActivitys
+	 * @param city_id 非必须
+	 * @param successListener
+	 * @param errorListener
+	 * @return void
+	 * @date 2014-2-21 下午8:51:23
+	 */
+	public static void getSignActivitys(String city_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.sign.activity.get";
+		String url = getUrl("city_id", city_id, KEY_SERVER, server);
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 
+	 * 所有商家活动接口
+	 * @Title: getSubjectActivitys
+	 * @param city_id 非必须
+	 * @param successListener
+	 * @param errorListener
+	 * @return void
+	 * @date 2014-2-21 下午8:53:06
+	 */
+	public static void getAllActivitys(String city_id, Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.allactivitys.get";
+		String url = getUrl("city_id", city_id, KEY_SERVER, server);
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
 	
 	public static String getUrl(String... keyValues) {
 		// get base url

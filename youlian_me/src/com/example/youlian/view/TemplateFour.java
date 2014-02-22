@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.example.youlian.AllSellerDetailActivity;
+import com.example.youlian.MemberShipDetail;
 import com.example.youlian.R;
+import com.example.youlian.ShangjiaDetailActivity;
+import com.example.youlian.YouhuiQuanDetail;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Pic;
 import com.example.youlian.mode.SubjectActivity;
@@ -100,8 +105,43 @@ public class TemplateFour extends FrameLayout {
 			Pic p = (Pic)v.getTag();
 			if(p != null){
 				Log.i(TAG, "p:" + p);
+				skip(p);
 			}
 		}
 	};
+	private void skip(Pic pic) {
+		int type = Integer.parseInt(pic.linkTypes);
+		switch (type) {
+		case 0:
+			Intent in = new Intent(mContext, MemberShipDetail.class);
+			in.putExtra("cardid", pic.linkIds);
+			in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			mContext.startActivity(in);
+			break;
+		case 1:
+			in = new Intent(mContext, YouhuiQuanDetail.class);
+			in.putExtra("fav_ent_id", pic.linkIds);
+			in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			mContext.startActivity(in);
+			break;
+		case 2:
+			 in = new Intent(mContext, ShangjiaDetailActivity.class);
+			in.putExtra("customerid", pic.linkIds);
+			in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			mContext.startActivity(in);
+			break;
+		case 3:
+			Intent i = new Intent(mContext, AllSellerDetailActivity.class);
+			i.putExtra("actid", pic.linkIds);
+			i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			mContext.startActivity(i);
+			break;
+		case 4:// 站外
+			
+			break;
 
+		default:
+			break;
+		}
+	}
 }

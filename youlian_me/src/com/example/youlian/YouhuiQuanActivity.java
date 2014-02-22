@@ -96,7 +96,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 					long arg3) {
 				YouhuiQuan quan = youhuiQuans.get(position);
 				Intent intent = new Intent(getApplicationContext(), YouhuiQuanDetail.class);
-				intent.putExtra("quan", quan);
+				intent.putExtra("fav_ent_id", quan.fav_ent_id);
 				startActivity(intent);
 			}
 		});

@@ -54,11 +54,14 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
-                android:gravity="center_vertical" >
+                android:gravity="center_vertical" 
+                android:id="@+id/linear_area"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/tv_area"
                     android:text="乌鲁木齐" />
 
                 <ImageView

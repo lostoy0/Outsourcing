@@ -3,11 +3,69 @@
     android:id="@+id/top_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/bg"
     android:orientation="vertical" >
 
-    <TextView
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:text="tier" />
+        android:layout_height="48dp"
+        android:background="@drawable/head_bg" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="签到"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/shell_foot_Layout"
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:background="@drawable/title_menu_bg"
+        android:gravity="center" >
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:checkedButton="@+id/radio_subject"
+            android:clickable="true"
+            android:clipChildren="true"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/radio_subject"
+                style="@style/radioButton"
+                android:text="专题" />
+
+            <RadioButton
+                android:id="@+id/radio_sign"
+                style="@style/radioButton"
+                android:text="签到" />
+
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/cursor"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:scaleType="matrix"
+            android:src="@drawable/second_goto" />
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1.0"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation" />
 
 </LinearLayout>

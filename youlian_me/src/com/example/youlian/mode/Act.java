@@ -29,7 +29,12 @@ public class Act implements Serializable {
 	public String shareContent;
 	public String customerId;
 	public String customerName;
+	
+	public String top;
+	
 	public ArrayList<Shop> shops = new ArrayList<Shop>();
+	private String is_follow;
+	private String telphone; 
 	
 	
 	
@@ -50,7 +55,13 @@ public class Act implements Serializable {
 		pic.instruction = jsonObj.optString("instruction");
 		pic.shareContent = jsonObj.optString("shareContent");
 		pic.customerId = jsonObj.optString("customerId");
-		pic.customerName = jsonObj.optString("customerName");
+		pic.customerName = jsonObj.optString("customerName"); 
+		pic.top = jsonObj.optString("top");
+		pic.is_follow = jsonObj.optString("is_follow");
+		pic.telphone = jsonObj.optString("telphone");
+		
+		
+		
 		
 		JSONArray array = jsonObj.optJSONArray("shops");
 		if(array != null){

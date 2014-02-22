@@ -24,6 +24,1357 @@ public final class R {
         public static final int umeng_socialize_slide_out_from_bottom=0x7f04000c;
     }
     public static final class attr {
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int absListViewStyle=0x7f010000;
+        /**  @hide Controls whether this view can take accessibility focus. 
+         <p>May be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+<p>May be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>auto</code></td><td>0</td><td>
+                 The system determines whether the view can take accessibility focus - default
+                 (recommended).
+                 <p>
+                 Such a view is consideted by the focus search if it is:
+                 <ul>
+                 <li>
+                 Important for accessibility and actionable (clickable, long clickable, focusable)
+                 </li>
+                 <li>
+                 Important for accessibility, not actionable (clickable, long clickable, focusable),
+                 and does not have an actionable predecessor.
+                 </li>
+                 </ul>
+                 An accessibility srvice can request putting accessibility focus on such a view.
+                 </p>
+            </td></tr>
+<tr><td><code>yes</code></td><td>1</td><td>
+                 The view can take accessibility focus.
+                 <p>
+                 A view that can take accessibility focus is always considered during focus
+                 search and an accessibility service can request putting accessibility focus
+                 on it.
+                 </p>
+            </td></tr>
+<tr><td><code>no</code></td><td>2</td><td>
+                 The view can not take accessibility focus.
+                 <p>
+                 A view that can not take accessibility focus is never considered during focus
+                 search and an accessibility service can not request putting accessibility focus
+                 on it.
+                 </p>
+            </td></tr>
+</table>
+         */
+        public static final int accessibilityFocusable=0x7f010048;
+        /** 
+             Sets whether this ViewGroup's drawable states also include
+             its children's drawable states.  This is used, for example, to
+             make a group appear to be focused when its child EditText or button
+             is focused.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int addStatesFromChildren=0x7f010050;
+        /** 
+             alpha property of the view, as a value between 0 (completely transparent) and 1
+             (completely opaque).
+        
+         <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int alpha=0x7f010038;
+        /** 
+             Defines whether the ViewGroup should always draw its children using their
+             drawing cache or not. The default value is true.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int alwaysDrawnWithCache=0x7f01004f;
+        /** 
+             Defines whether changes in layout (caused by adding and removing items) should
+             cause a LayoutTransition to run. When this flag is set to true, a default
+             LayoutTransition object will be set on the ViewGroup container and default
+             animations will run when these layout changes occur.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int animateLayoutChanges=0x7f010049;
+        /** 
+             Defines whether layout animations should create a drawing cache for their
+             children. Enabling the animation cache consumes more memory and requires
+             a longer initialization but provides better performance. The animation
+             cache is enabled by default.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int animationCache=0x7f01004d;
+        /** 
+             Indicates that this list will always be drawn on top of solid, single-color
+             opaque background. This allows the list to optimize drawing.
+        
+         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int cacheColorHint=0x7f010059;
+        /** 
+             Defines the choice behavior for the view. By default, lists do not have
+             any choice behavior. By setting the choiceMode to singleChoice, the list
+             allows up to one item to be in a chosen state. By setting the choiceMode to
+             multipleChoice, the list allows any number of items to be chosen.
+             Finally, by setting the choiceMode to multipleChoiceModal the list allows
+             any number of items to be chosen in a special selection mode.
+             The application will supply a
+             {@link android.widget.AbsListView.MultiChoiceModeListener} using
+             {@link android.widget.AbsListView#setMultiChoiceModeListener} to control the
+             selection mode. This uses the {@link android.view.ActionMode} API.
+        
+         <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0</td><td> Normal list that does not indicate choices. </td></tr>
+<tr><td><code>singleChoice</code></td><td>1</td><td> The list allows up to one choice. </td></tr>
+<tr><td><code>multipleChoice</code></td><td>2</td><td> The list allows multiple choices. </td></tr>
+<tr><td><code>multipleChoiceModal</code></td><td>3</td><td> The list allows multiple choices in a custom selection mode. </td></tr>
+</table>
+         */
+        public static final int choiceMode=0x7f01005c;
+        /**  Defines whether this view reacts to click events. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int clickable=0x7f01002a;
+        /** 
+             Defines whether a child is limited to draw inside of its bounds or not.
+             This is useful with animations that scale the size of the children to more
+             than 100% for instance. In such a case, this property should be set to false
+             to allow the children to draw outside of their bounds. The default value of
+             this property is true.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int clipChildren=0x7f01004a;
+        /** 
+             Defines whether the ViewGroup will clip its drawing surface so as to exclude
+             the padding area. This property is set to true by default.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int clipToPadding=0x7f01004b;
+        /** 
+             Defines text that briefly describes content of the view. This property is used
+             primarily for accessibility. Since some views do not have textual
+             representation this attribute can be used for providing such.
+        
+         <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int contentDescription=0x7f010035;
+        /** 
+             Defines the relationship between the ViewGroup and its descendants
+             when looking for a View to take focus.
+        
+         <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>beforeDescendants</code></td><td>0</td><td> The ViewGroup will get focus before any of its descendants. </td></tr>
+<tr><td><code>afterDescendants</code></td><td>1</td><td> The ViewGroup will get focus only if none of its descendants want it. </td></tr>
+<tr><td><code>blocksDescendants</code></td><td>2</td><td> The ViewGroup will block its descendants from receiving focus. </td></tr>
+</table>
+         */
+        public static final int descendantFocusability=0x7f010051;
+        /**  Drawable or color to draw between list items. 
+ <attr name="divider" format="reference|color" /> 
+
+             Height of the divider. Will use the intrinsic height of the divider if this
+             is not specified.
+        
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int dividerHeight=0x7f01005e;
+        /** 
+             When set to true, the selector will be drawn over the selected item.
+             Otherwise the selector is drawn behind the selected item. The default
+             value is false.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int drawSelectorOnTop=0x7f010054;
+        /** 
+             Defines the quality of translucent drawing caches. This property is used
+             only when the drawing cache is enabled and translucent. The default value is auto.
+        
+         <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>auto</code></td><td>0</td><td>
+                 Lets the framework decide what quality level should be used
+                 for the drawing cache.
+            </td></tr>
+<tr><td><code>low</code></td><td>1</td><td>
+                 Low quality. When set to low quality, the drawing cache uses a lower color
+                 depth, thus losing precision in rendering gradients, but uses less memory.
+            </td></tr>
+<tr><td><code>high</code></td><td>2</td><td>
+                 High quality. When set to high quality, the drawing cache uses a higher
+                 color depth but uses more memory.
+            </td></tr>
+</table>
+         */
+        public static final int drawingCacheQuality=0x7f01002e;
+        /** 
+             When this attribute is set to true, the view gets its drawable state
+             (focused, pressed, etc.) from its direct parent rather than from itself.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int duplicateParentState=0x7f010030;
+        /**  Defines whether to fade out scrollbars when they are not in use. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int fadeScrollbars=0x7f010018;
+        /** 
+             This attribute is deprecated and will be ignored as of
+             API level 14 ({@link android.os.Build.VERSION_CODES#ICE_CREAM_SANDWICH}).
+             Using fading edges may introduce noticeable performance
+             degradations and should be used only when required by the application's
+             visual design. To request fading edges with API level 14 and above,
+             use the <code>android:requiresFadingEdge</code> attribute instead.
+        
+         <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0x00000000</td><td> No edge is faded. </td></tr>
+<tr><td><code>horizontal</code></td><td>0x00001000</td><td> Fades horizontal edges only. </td></tr>
+<tr><td><code>vertical</code></td><td>0x00002000</td><td> Fades vertical edges only. </td></tr>
+</table>
+         */
+        public static final int fadingEdge=0x7f010022;
+        /**  Defines the length of the fading edges. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int fadingEdgeLength=0x7f010024;
+        /** 
+             When set to true, the list will always show the fast scroll interface.
+             This setting implies fastScrollEnabled.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int fastScrollAlwaysVisible=0x7f01005d;
+        /** 
+             Enables the fast scroll thumb that can be dragged to quickly scroll through
+             the list.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int fastScrollEnabled=0x7f01005a;
+        /** 
+             Specifies whether to filter touches when the view's window is obscured by
+             another visible window.  When set to true, the view will not receive touches
+             whenever a toast, dialog or other window appears above the view's window.
+             Refer to the {@link android.view.View} security documentation for more details.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int filterTouchesWhenObscured=0x7f01002d;
+        /** 
+             Boolean internal attribute to adjust view layout based on
+             system windows such as the status bar.
+             If true, adjusts the padding of this view to leave space for the system windows.
+             Will only take effect if this view is in a non-embedded activity.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int fitsSystemWindows=0x7f010014;
+        /** 
+             Boolean that controls whether a view can take focus.  By default the user can not
+             move focus to a view; by setting this attribute to true the view is
+             allowed to take focus.  This value does not impact the behavior of
+             directly calling {@link android.view.View#requestFocus}, which will
+             always request focus regardless of this view.  It only impacts where
+             focus navigation will try to move focus.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int focusable=0x7f010011;
+        /** 
+             Boolean that controls whether a view can take focus while in touch mode.
+             If this is true for a view, that view can gain focus when clicked on, and can keep
+             focus if another view is clicked on that doesn't have this attribute set to true.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int focusableInTouchMode=0x7f010012;
+        /** 
+             When set to false, the ListView will not draw the divider before each footer view.
+             The default value is true.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int footerDividersEnabled=0x7f010060;
+        /** 
+             Boolean that controls whether a view should have haptic feedback
+             enabled for events such as long presses.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int hapticFeedbackEnabled=0x7f010034;
+        /** 
+             When set to false, the ListView will not draw the divider after each header view.
+             The default value is true.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int headerDividersEnabled=0x7f01005f;
+        /** 
+             Supply an identifier name for this view, to later retrieve it
+             with {@link android.view.View#findViewById View.findViewById()} or
+             {@link android.app.Activity#findViewById Activity.findViewById()}.
+             This must be a
+             resource reference; typically you set this using the
+             <code>@+</code> syntax to create a new ID resources.
+             For example: <code>android:id="@+id/my_id"</code> which
+             allows you to later retrieve the view
+             with <code>findViewById(R.id.my_id)</code>.
+        
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int id=0x7f010006;
+        /** 
+             Controls how this View is important for accessibility which is if it fires
+             accessibility events and if it is reported to accessibility services that
+             query the screen. Note: While not recommended, an accessibility service may
+             decide to ignore this attribute and operate on all views in the view tree.
+        
+         <p>May be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+<p>May be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>auto</code></td><td>0</td><td>
+                 The system determines whether the view is important for accessibility - default
+                 (recommended).
+            </td></tr>
+<tr><td><code>yes</code></td><td>1</td><td> The view is important for accessibility. </td></tr>
+<tr><td><code>no</code></td><td>2</td><td> The view is not important for accessibility. </td></tr>
+</table>
+         */
+        public static final int importantForAccessibility=0x7f010047;
+        /** 
+             Set this if the view will serve as a scrolling container, meaing
+             that it can be resized to shrink its overall window so that there
+             will be space for an input method.  If not set, the default
+             value will be true if "scrollbars" has the vertical scrollbar
+             set, else it will be false.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int isScrollContainer=0x7f010017;
+        /** 
+             Controls whether the view's window should keep the screen on
+             while visible.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int keepScreenOn=0x7f01002f;
+        /** 
+             Specifies the type of layer backing this view. The default value is none.
+             Refer to {@link android.view.View#setLayerType(int, android.graphics.Paint)}
+             for more information.
+        
+         <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0</td><td> Don't use a layer. </td></tr>
+<tr><td><code>software</code></td><td>1</td><td>
+                 Use a software layer. Refer to
+                 {@link android.view.View#setLayerType(int, android.graphics.Paint) for
+                 more information.
+            </td></tr>
+<tr><td><code>hardware</code></td><td>2</td><td>
+                 Use a hardware layer. Refer to
+                 {@link android.view.View#setLayerType(int, android.graphics.Paint) for
+                 more information.
+            </td></tr>
+</table>
+         */
+        public static final int layerType=0x7f010043;
+        /** 
+             Defines the layout animation to use the first time the ViewGroup is laid out.
+             Layout animations can also be started manually after the first layout.
+        
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int layoutAnimation=0x7f01004c;
+        /** 
+             Defines the direction of layout drawing. This typically is associated with writing
+             direction of the language script used. The possible values are "ltr" for Left-to-Right,
+             "rtl" for Right-to-Left, "locale" and "inherit" from parent view. If there is nothing
+             to inherit, "locale" is used. "locale" falls back to "en-US". "ltr" is the direction
+             used in "en-US". The default for this attribute is "inherit".
+        
+         <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>ltr</code></td><td>0</td><td> Left-to-Right </td></tr>
+<tr><td><code>rtl</code></td><td>1</td><td> Right-to-Left </td></tr>
+<tr><td><code>inherit</code></td><td>2</td><td> Inherit from parent </td></tr>
+<tr><td><code>locale</code></td><td>3</td><td> Locale </td></tr>
+</table>
+         */
+        public static final int layoutDirection=0x7f010044;
+        /**  Drawable used to indicate the currently selected item in the list. 
+         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int listSelector=0x7f010053;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int listViewStyle=0x7f010001;
+        /**  Defines whether this view reacts to long click events. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int longClickable=0x7f01002b;
+        /** 
+             Defines the minimum height of the view. It is not guaranteed
+             the view will be able to achieve this minimum height (for example,
+             if its parent layout constrains it with less available height).
+        
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int minHeight=0x7f010031;
+        /** 
+             Defines the minimum width of the view. It is not guaranteed
+             the view will be able to achieve this minimum width (for example,
+             if its parent layout constrains it with less available width).
+        
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int minWidth=0x7f010032;
+        /** 
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_DOWN}
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.
+        
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int nextFocusDown=0x7f010028;
+        /** 
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_FORWARD}
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.
+        
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int nextFocusForward=0x7f010029;
+        /** 
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_LEFT}.
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.
+        
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int nextFocusLeft=0x7f010025;
+        /** 
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_RIGHT}
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.
+        
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int nextFocusRight=0x7f010026;
+        /** 
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_UP}
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.
+        
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int nextFocusUp=0x7f010027;
+        /** 
+             Name of the method in this View's context to invoke when the view is
+             clicked. This name must correspond to a public method that takes
+             exactly one parameter of type View. For instance, if you specify
+             <code>android:onClick="sayHello"</code>, you must declare a
+             <code>public void sayHello(View v)</code> method of your context
+             (typically, your Activity).
+        
+         <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int onClick=0x7f010036;
+        /**  Drawable to draw below list content. 
+         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int overScrollFooter=0x7f010062;
+        /**  Drawable to draw above list content. 
+         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int overScrollHeader=0x7f010061;
+        /** 
+             Defines over-scrolling behavior. This property is used only if the
+             View is scrollable. Over-scrolling is the ability for the user to
+             receive feedback when attempting to scroll beyond meaningful content.
+        
+         <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>always</code></td><td>0</td><td>
+                 Always show over-scroll effects, even if the content fits entirely
+                 within the available space.
+            </td></tr>
+<tr><td><code>ifContentScrolls</code></td><td>1</td><td>
+                 Only show over-scroll effects if the content is large
+                 enough to meaningfully scroll.
+            </td></tr>
+<tr><td><code>never</code></td><td>2</td><td> Never show over-scroll effects. </td></tr>
+</table>
+         */
+        public static final int overScrollMode=0x7f010037;
+        /** 
+             A drawable to use as the background.  This can be either a reference
+             to a full drawable resource (such as a PNG image, 9-patch,
+             XML state list description, etc), or a solid color such as "#ff000000"
+            (black).
+        
+ <attr name="background" format="reference|color" /> 
+
+             Sets the padding, in pixels, of all four edges.  Padding is defined as
+             space between the edges of the view and the view's content. A views size
+             will include it's padding.  If a {@link android.R.attr#background}
+             is provided, the padding will initially be set to that (0 if the
+             drawable does not have padding).  Explicitly setting a padding value
+             will override the corresponding padding found in the background.
+        
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int padding=0x7f01000a;
+        /**  Sets the padding, in pixels, of the bottom edge; see {@link android.R.attr#padding}. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int paddingBottom=0x7f01000e;
+        /**  Sets the padding, in pixels, of the end edge; see {@link android.R.attr#padding}. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int paddingEnd=0x7f010010;
+        /**  Sets the padding, in pixels, of the left edge; see {@link android.R.attr#padding}. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int paddingLeft=0x7f01000b;
+        /**  Sets the padding, in pixels, of the right edge; see {@link android.R.attr#padding}. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int paddingRight=0x7f01000d;
+        /**  Sets the padding, in pixels, of the start edge; see {@link android.R.attr#padding}. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int paddingStart=0x7f01000f;
+        /**  Sets the padding, in pixels, of the top edge; see {@link android.R.attr#padding}. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int paddingTop=0x7f01000c;
+        /** 
+             Defines the persistence of the drawing cache. The drawing cache might be
+             enabled by a ViewGroup for all its children in specific situations (for
+             instance during a scrolling.) This property lets you persist the cache
+             in memory after its initial usage. Persisting the cache consumes more
+             memory but may prevent frequent garbage collection is the cache is created
+             over and over again. By default the persistence is set to scrolling.
+        
+         <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0x0</td><td> The drawing cache is not persisted after use. </td></tr>
+<tr><td><code>animation</code></td><td>0x1</td><td> The drawing cache is persisted after a layout animation. </td></tr>
+<tr><td><code>scrolling</code></td><td>0x2</td><td> The drawing cache is persisted after a scroll. </td></tr>
+<tr><td><code>all</code></td><td>0x3</td><td> The drawing cache is always persisted. </td></tr>
+</table>
+         */
+        public static final int persistentDrawingCache=0x7f01004e;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int plaColumnNumber=0x7f010002;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int plaColumnPaddingLeft=0x7f010004;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int plaColumnPaddingRight=0x7f010005;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int plaLandscapeColumnNumber=0x7f010003;
+        /**  Defines which edges should be faded on scrolling. 
+         <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0x00000000</td><td> No edge is faded. </td></tr>
+<tr><td><code>horizontal</code></td><td>0x00001000</td><td> Fades horizontal edges only. </td></tr>
+<tr><td><code>vertical</code></td><td>0x00002000</td><td> Fades vertical edges only. </td></tr>
+</table>
+         */
+        public static final int requiresFadingEdge=0x7f010023;
+        /**  rotation of the view, in degrees. 
+         <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int rotation=0x7f01003d;
+        /**  rotation of the view around the x axis, in degrees. 
+         <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int rotationX=0x7f01003e;
+        /**  rotation of the view around the y axis, in degrees. 
+         <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int rotationY=0x7f01003f;
+        /** 
+             If unset, no state will be saved for this view when it is being
+             frozen. The default is true, allowing the view to be saved
+             (however it also must have an ID assigned to it for its
+             state to be saved).  Setting this to false only disables the
+             state for this view, not for its children which may still
+             be saved.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int saveEnabled=0x7f01002c;
+        /**  scale of the view in the x direction. 
+         <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int scaleX=0x7f010040;
+        /**  scale of the view in the y direction. 
+         <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int scaleY=0x7f010041;
+        /**  The initial horizontal scroll offset, in pixels. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int scrollX=0x7f010008;
+        /**  The initial vertical scroll offset, in pixels. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int scrollY=0x7f010009;
+        /**  Defines whether the horizontal scrollbar track should always be drawn. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int scrollbarAlwaysDrawHorizontalTrack=0x7f010020;
+        /**  Defines whether the vertical scrollbar track should always be drawn. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int scrollbarAlwaysDrawVerticalTrack=0x7f010021;
+        /**  Defines the delay in milliseconds that a scrollbar waits before fade out. 
+         <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int scrollbarDefaultDelayBeforeFade=0x7f01001a;
+        /**  Defines the delay in milliseconds that a scrollbar takes to fade out. 
+         <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int scrollbarFadeDuration=0x7f010019;
+        /**  Sets the width of vertical scrollbars and height of horizontal scrollbars. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int scrollbarSize=0x7f01001b;
+        /** 
+             Controls the scrollbar style and position. The scrollbars can be overlaid or
+             inset. When inset, they add to the padding of the view. And the
+             scrollbars can be drawn inside the padding area or on the edge of
+             the view. For example, if a view has a background drawable and you
+             want to draw the scrollbars inside the padding specified by the
+             drawable, you can use insideOverlay or insideInset. If you want them
+             to appear at the edge of the view, ignoring the padding, then you can
+             use outsideOverlay or outsideInset.
+        
+         <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>insideOverlay</code></td><td>0x0</td><td> Inside the padding and overlaid </td></tr>
+<tr><td><code>insideInset</code></td><td>0x01000000</td><td> Inside the padding and inset </td></tr>
+<tr><td><code>outsideOverlay</code></td><td>0x02000000</td><td> Edge of the view and overlaid </td></tr>
+<tr><td><code>outsideInset</code></td><td>0x03000000</td><td> Edge of the view and inset </td></tr>
+</table>
+         */
+        public static final int scrollbarStyle=0x7f010016;
+        /**  Defines the horizontal scrollbar thumb drawable. 
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int scrollbarThumbHorizontal=0x7f01001c;
+        /**  Defines the vertical scrollbar thumb drawable. 
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int scrollbarThumbVertical=0x7f01001d;
+        /**  Defines the horizontal scrollbar track drawable. 
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int scrollbarTrackHorizontal=0x7f01001e;
+        /**  Defines the vertical scrollbar track drawable. 
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int scrollbarTrackVertical=0x7f01001f;
+        /**  Defines which scrollbars should be displayed on scrolling or not. 
+         <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0x00000000</td><td> No scrollbar is displayed. </td></tr>
+<tr><td><code>horizontal</code></td><td>0x00000100</td><td> Displays horizontal scrollbar only. </td></tr>
+<tr><td><code>vertical</code></td><td>0x00000200</td><td> Displays vertical scrollbar only. </td></tr>
+</table>
+         */
+        public static final int scrollbars=0x7f010015;
+        /** 
+             When set to true, the list uses a drawing cache during scrolling.
+             This makes the rendering faster but uses more memory. The default
+             value is true.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int scrollingCache=0x7f010056;
+        /** 
+             When set to true, the list will use a more refined calculation
+             method based on the pixels height of the items visible on screen. This
+             property is set to true by default but should be set to false if your adapter
+             will display items of varying heights. When this property is set to true and
+             your adapter displays items of varying heights, the scrollbar thumb will
+             change size as the user scrolls through the list. When set to fale, the list
+             will use only the number of items in the adapter and the number of items visible
+             on screen to determine the scrollbar's properties.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int smoothScrollbar=0x7f01005b;
+        /** 
+             Boolean that controls whether a view should have sound effects
+             enabled for events such as clicking and touching.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int soundEffectsEnabled=0x7f010033;
+        /** 
+             Sets whether this ViewGroup should split MotionEvents
+             to separate child views during touch event dispatch.
+             If false (default), touch events will be dispatched to
+             the child view where the first pointer went down until
+             the last pointer goes up.
+             If true, touch events may be dispatched to multiple children.
+             MotionEvents for each pointer will be dispatched to the child
+             view where the initial ACTION_DOWN event happened.
+             See {@link android.view.ViewGroup#setMotionEventSplittingEnabled(boolean)}
+             for more information.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int splitMotionEvents=0x7f010052;
+        /**  Used by ListView and GridView to stack their content from the bottom. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int stackFromBottom=0x7f010055;
+        /** 
+             Supply a tag for this view containing a String, to be retrieved
+             later with {@link android.view.View#getTag View.getTag()} or
+             searched for with {@link android.view.View#findViewWithTag
+             View.findViewWithTag()}.  It is generally preferable to use
+             IDs (through the android:id attribute) instead of tags because
+             they are faster and allow for compile-time type checking.
+        
+         <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int tag=0x7f010007;
+        /** 
+             Alignment of the text. A heuristic is used to determine the resolved
+            text alignment.
+        
+         <p>May be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+<p>May be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>inherit</code></td><td>0</td><td> Default </td></tr>
+<tr><td><code>gravity</code></td><td>1</td><td>
+                 Default for the root view. The gravity determines the alignment, ALIGN_NORMAL,
+                ALIGN_CENTER, or ALIGN_OPPOSITE, which are relative to each paragraph’s
+                text direction
+            </td></tr>
+<tr><td><code>textStart</code></td><td>2</td><td> Align to the start of the paragraph, e.g. ALIGN_NORMAL. </td></tr>
+<tr><td><code>textEnd</code></td><td>3</td><td> Align to the end of the paragraph, e.g. ALIGN_OPPOSITE. </td></tr>
+<tr><td><code>center</code></td><td>4</td><td> Center the paragraph, e.g. ALIGN_CENTER. </td></tr>
+<tr><td><code>viewStart</code></td><td>5</td><td>
+                 Align to the start of the view, which is ALIGN_LEFT if the view’s resolved
+                layoutDirection is LTR, and ALIGN_RIGHT otherwise.
+            </td></tr>
+<tr><td><code>viewEnd</code></td><td>6</td><td>
+                 Align to the end of the view, which is ALIGN_RIGHT if the view’s resolved
+                layoutDirection is LTR, and ALIGN_LEFT otherwise
+            </td></tr>
+</table>
+         */
+        public static final int textAlignment=0x7f010046;
+        /** 
+             Direction of the text. A heuristic is used to determine the resolved text direction
+             of paragraphs.
+        
+         <p>May be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+<p>May be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>inherit</code></td><td>0</td><td> Default </td></tr>
+<tr><td><code>firstStrong</code></td><td>1</td><td>
+                 Default for the root view. The first strong directional character determines the
+                 paragraph direction.  If there is no strong directional character, the paragraph
+                 direction is the view’s resolved layout direction.
+            </td></tr>
+<tr><td><code>anyRtl</code></td><td>2</td><td>
+                 The paragraph direction is RTL if it contains any strong RTL character, otherwise
+                 it is LTR if it contains any strong LTR characters.  If there are neither, the
+                 paragraph direction is the view’s resolved layout direction.
+            </td></tr>
+<tr><td><code>ltr</code></td><td>3</td><td> The paragraph direction is left to right. </td></tr>
+<tr><td><code>rtl</code></td><td>4</td><td> The paragraph direction is right to left. </td></tr>
+<tr><td><code>locale</code></td><td>5</td><td> The paragraph direction is coming from the system Locale. </td></tr>
+</table>
+         */
+        public static final int textDirection=0x7f010045;
+        /** 
+             When set to true, the list will filter results as the user types. The
+             List's adapter must support the Filterable interface for this to work.
+        
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int textFilterEnabled=0x7f010057;
+        /** 
+             Sets the transcript mode for the list. In transcript mode, the list
+             scrolls to the bottom to make new items visible when they are added.
+        
+         <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>disabled</code></td><td>0</td><td> Disables transcript mode. This is the default value. </td></tr>
+<tr><td><code>normal</code></td><td>1</td><td>
+                 The list will automatically scroll to the bottom when
+                 a data set change notification is received and only if the last item is
+                 already visible on screen.
+            </td></tr>
+<tr><td><code>alwaysScroll</code></td><td>2</td><td>
+                 The list will automatically scroll to the bottom, no matter what items
+                 are currently visible.
+            </td></tr>
+</table>
+         */
+        public static final int transcriptMode=0x7f010058;
+        /** 
+             x location of the pivot point around which the view will rotate and scale.
+             This xml attribute sets the pivotX property of the View.
+        
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int transformPivotX=0x7f01003b;
+        /** 
+             y location of the pivot point around which the view will rotate and scale.
+             This xml attribute sets the pivotY property of the View.
+        
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int transformPivotY=0x7f01003c;
+        /** 
+             translation in x of the view. This value is added post-layout to the left
+             property of the view, which is set by its layout.
+        
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int translationX=0x7f010039;
+        /** 
+             translation in y of the view. This value is added post-layout to the left
+             property of the view, which is set by its layout.
+        
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int translationY=0x7f01003a;
+        /**  Determines which side the vertical scroll bar should be placed on. 
+         <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>defaultPosition</code></td><td>0</td><td> Place the scroll bar wherever the system default determines. </td></tr>
+<tr><td><code>left</code></td><td>1</td><td> Place the scroll bar on the left. </td></tr>
+<tr><td><code>right</code></td><td>2</td><td> Place the scroll bar on the right. </td></tr>
+</table>
+         */
+        public static final int verticalScrollbarPosition=0x7f010042;
+        /**  Controls the initial visibility of the view. 
+         <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>visible</code></td><td>0</td><td> Visible on screen; the default value. </td></tr>
+<tr><td><code>invisible</code></td><td>1</td><td> Not displayed, but taken into account during layout (space is left for it). </td></tr>
+<tr><td><code>gone</code></td><td>2</td><td> Completely hidden, as if the view had not been added. </td></tr>
+</table>
+         */
+        public static final int visibility=0x7f010013;
     }
     public static final class color {
         public static final int black=0x7f07000e;
@@ -200,874 +1551,953 @@ public final class R {
         public static final int card_switch_press=0x7f02003d;
         public static final int card_times_bg=0x7f02003e;
         public static final int card_word_bg=0x7f02003f;
-        public static final int cart_btn_pay_bg_normal=0x7f020040;
-        public static final int cart_btn_pay_bg_press=0x7f020041;
-        public static final int cart_edit_normal=0x7f020042;
-        public static final int cart_edit_press=0x7f020043;
-        public static final int cart_edit_selector=0x7f020044;
-        public static final int cart_minus_normal=0x7f020045;
-        public static final int cart_minus_press=0x7f020046;
-        public static final int cart_minus_selector=0x7f020047;
-        public static final int cart_number_bg=0x7f020048;
-        public static final int cart_pay_selector=0x7f020049;
-        public static final int cart_plus_normal=0x7f02004a;
-        public static final int cart_plus_press=0x7f02004b;
-        public static final int cart_plus_selector=0x7f02004c;
-        public static final int cart_select_normal=0x7f02004d;
-        public static final int cart_select_press=0x7f02004e;
-        public static final int cart_select_selector=0x7f02004f;
-        public static final int cart_selected_normal=0x7f020050;
-        public static final int cart_selected_press=0x7f020051;
-        public static final int cart_selected_selector=0x7f020052;
-        public static final int cart_yes_btn_normal=0x7f020053;
-        public static final int cart_yes_btn_press=0x7f020054;
-        public static final int cart_yes_selector=0x7f020055;
-        public static final int close=0x7f020056;
-        public static final int coupon=0x7f020057;
-        public static final int coupon_pressed=0x7f020058;
-        public static final int custom_service_btn=0x7f020059;
-        public static final int custom_service_btn_a=0x7f02005a;
-        public static final int custom_service_btn_b=0x7f02005b;
-        public static final int exchange_normal=0x7f02005c;
-        public static final int exchange_press=0x7f02005d;
-        public static final int fav_count=0x7f02005e;
-        public static final int foot_bg_focused=0x7f02005f;
-        public static final int foot_bg_light=0x7f020060;
-        public static final int foot_bg_normal=0x7f020061;
-        public static final int foot_bg_pressed=0x7f020062;
-        public static final int foot_bg_tile_focused=0x7f020063;
-        public static final int foot_bg_tile_normal=0x7f020064;
-        public static final int foot_bg_tile_pressed=0x7f020065;
-        public static final int foot_more_normal=0x7f020066;
-        public static final int foot_more_pressed=0x7f020067;
-        public static final int foot_pic_normal=0x7f020068;
-        public static final int foot_pic_pressed=0x7f020069;
-        public static final int foot_pie_normal=0x7f02006a;
-        public static final int foot_pie_pressed=0x7f02006b;
-        public static final int foot_search_normal=0x7f02006c;
-        public static final int foot_search_pressed=0x7f02006d;
-        public static final int foot_tier_normal=0x7f02006e;
-        public static final int foot_tier_pressed=0x7f02006f;
-        public static final int foot_wigame_normal=0x7f020070;
-        public static final int foot_wigame_pressed=0x7f020071;
-        public static final int gou=0x7f020072;
-        public static final int grey_line=0x7f020073;
-        public static final int guanggao=0x7f020074;
-        public static final int head_bg=0x7f020075;
-        public static final int hotbuy=0x7f020076;
-        public static final int hotbuy_pressed=0x7f020077;
-        public static final int huodong=0x7f020078;
-        public static final int huodong_pressed=0x7f020079;
-        public static final int huz_bg_blue=0x7f02007a;
-        public static final int huz_bg_white=0x7f02007b;
-        public static final int huz_btn_bg=0x7f02007c;
-        public static final int huz_btn_check=0x7f02007d;
-        public static final int huz_btn_check_buttonless_off=0x7f02007e;
-        public static final int huz_btn_check_buttonless_on=0x7f02007f;
-        public static final int huz_btn_check_label_background=0x7f020080;
-        public static final int huz_btn_check_off=0x7f020081;
-        public static final int huz_btn_check_off_disable=0x7f020082;
-        public static final int huz_btn_check_off_disable_focused=0x7f020083;
-        public static final int huz_btn_check_off_pressed=0x7f020084;
-        public static final int huz_btn_check_off_selected=0x7f020085;
-        public static final int huz_btn_check_on=0x7f020086;
-        public static final int huz_btn_check_on_disable=0x7f020087;
-        public static final int huz_btn_check_on_disable_focused=0x7f020088;
-        public static final int huz_btn_check_on_pressed=0x7f020089;
-        public static final int huz_btn_check_on_selected=0x7f02008a;
-        public static final int huz_popup_bottom=0x7f02008b;
-        public static final int huz_popup_center=0x7f02008c;
-        public static final int huz_popup_full=0x7f02008d;
-        public static final int huz_popup_top=0x7f02008e;
-        public static final int ic_launcher=0x7f02008f;
-        public static final int icon_style=0x7f020090;
-        public static final int interest_store_a=0x7f020091;
-        public static final int interest_store_b=0x7f020092;
-        public static final int item_delete_normal=0x7f020093;
-        public static final int item_delete_press=0x7f020094;
-        public static final int juan=0x7f020095;
-        public static final int laod_fail=0x7f020096;
-        public static final int liulang_count=0x7f020097;
-        public static final int map_a=0x7f020098;
-        public static final int map_b=0x7f020099;
-        public static final int map_btn=0x7f02009a;
-        public static final int member=0x7f02009b;
-        public static final int member_pressed=0x7f02009c;
-        public static final int membercard_biaoshi=0x7f02009d;
-        public static final int more_about=0x7f02009e;
-        public static final int more_account=0x7f02009f;
-        public static final int more_account_logout=0x7f0200a0;
-        public static final int more_app_recommend=0x7f0200a1;
-        public static final int more_delect_a=0x7f0200a2;
-        public static final int more_delect_b=0x7f0200a3;
-        public static final int more_feekback=0x7f0200a4;
-        public static final int more_follow_store=0x7f0200a5;
-        public static final int more_help=0x7f0200a6;
-        public static final int more_integral=0x7f0200a7;
-        public static final int more_message_center=0x7f0200a8;
-        public static final int more_message_point=0x7f0200a9;
-        public static final int more_message_propelling=0x7f0200aa;
-        public static final int more_normal=0x7f0200ab;
-        public static final int more_pressed=0x7f0200ac;
-        public static final int more_quit=0x7f0200ad;
-        public static final int more_service=0x7f0200ae;
-        public static final int more_share_set=0x7f0200af;
-        public static final int more_show_us=0x7f0200b0;
-        public static final int more_updata=0x7f0200b1;
-        public static final int more_updata_info=0x7f0200b2;
-        public static final int more_updata_passowrd=0x7f0200b3;
-        public static final int my_border_bg=0x7f0200b4;
-        public static final int my_coupon=0x7f0200b5;
-        public static final int my_exchange_score_normal=0x7f0200b6;
-        public static final int my_exchange_score_press=0x7f0200b7;
-        public static final int my_exchange_score_selector=0x7f0200b8;
-        public static final int my_favourite=0x7f0200b9;
-        public static final int my_icon_bg=0x7f0200ba;
-        public static final int my_msg_normal=0x7f0200bb;
-        public static final int my_msg_press=0x7f0200bc;
-        public static final int my_msg_selector=0x7f0200bd;
-        public static final int my_order=0x7f0200be;
-        public static final int my_profile_setting_normal=0x7f0200bf;
-        public static final int my_profile_setting_press=0x7f0200c0;
-        public static final int my_recharge_selector=0x7f0200c1;
-        public static final int my_setting_selector=0x7f0200c2;
-        public static final int my_sign_normal=0x7f0200c3;
-        public static final int my_sign_press=0x7f0200c4;
-        public static final int my_sign_selector=0x7f0200c5;
-        public static final int my_ucoin=0x7f0200c6;
-        public static final int my_udot=0x7f0200c7;
-        public static final int my_vip=0x7f0200c8;
-        public static final int no_card=0x7f0200c9;
-        public static final int nucleus_store_a=0x7f0200ca;
-        public static final int nucleus_store_b=0x7f0200cb;
-        public static final int online_chong=0x7f0200cc;
-        public static final int open=0x7f0200cd;
-        public static final int pay_alipay=0x7f0200ce;
-        public static final int pay_btn_bg_normal=0x7f0200cf;
-        public static final int pay_btn_bg_press=0x7f0200d0;
-        public static final int pay_btn_selector=0x7f0200d1;
-        public static final int pay_selected=0x7f0200d2;
-        public static final int pay_ucoin=0x7f0200d3;
-        public static final int pay_union=0x7f0200d4;
-        public static final int pay_yi=0x7f0200d5;
-        public static final int personal_xiaofei=0x7f0200d6;
-        public static final int press_greed_a=0x7f0200d7;
-        public static final int press_greed_b=0x7f0200d8;
-        public static final int press_greed_btn=0x7f0200d9;
-        public static final int press_white_a=0x7f0200da;
-        public static final int press_white_b=0x7f0200db;
-        public static final int press_white_btn=0x7f0200dc;
-        public static final int progress_1=0x7f0200dd;
-        public static final int progress_2=0x7f0200de;
-        public static final int progress_3=0x7f0200df;
-        public static final int progress_4=0x7f0200e0;
-        public static final int progress_5=0x7f0200e1;
-        public static final int progress_6=0x7f0200e2;
-        public static final int progress_7=0x7f0200e3;
-        public static final int progress_8=0x7f0200e4;
-        public static final int qiang=0x7f0200e5;
-        public static final int quit_normal=0x7f0200e6;
-        public static final int quit_pressed=0x7f0200e7;
-        public static final int ratingbar_drawable=0x7f0200e8;
-        public static final int recharge_normal=0x7f0200e9;
-        public static final int recharge_press=0x7f0200ea;
-        public static final int remember_psd_a=0x7f0200eb;
-        public static final int remember_psd_b=0x7f0200ec;
-        public static final int rounded_buttom=0x7f0200ed;
-        public static final int rounded_one=0x7f0200ee;
-        public static final int rounded_rectangle=0x7f0200ef;
-        public static final int rounded_top=0x7f0200f0;
-        public static final int rr=0x7f0200f1;
-        public static final int screen_indicator_off=0x7f0200f2;
-        public static final int screen_indicator_on=0x7f0200f3;
-        public static final int search_a=0x7f0200f4;
-        public static final int search_b=0x7f0200f5;
-        public static final int search_btn=0x7f0200f6;
-        public static final int search_edit=0x7f0200f7;
-        public static final int second_goto=0x7f0200f8;
-        public static final int select_btn_carame=0x7f0200f9;
-        public static final int select_btn_coupon=0x7f0200fa;
-        public static final int select_btn_hotbuy=0x7f0200fb;
-        public static final int select_btn_huodong=0x7f0200fc;
-        public static final int select_btn_memenber=0x7f0200fd;
-        public static final int select_btn_more=0x7f0200fe;
-        public static final int select_btn_pic=0x7f0200ff;
-        public static final int select_btn_pie=0x7f020100;
-        public static final int select_btn_scan=0x7f020101;
-        public static final int select_btn_search=0x7f020102;
-        public static final int select_btn_shangjia=0x7f020103;
-        public static final int select_btn_sign=0x7f020104;
-        public static final int select_btn_star_huise=0x7f020105;
-        public static final int select_btn_star_red_stone=0x7f020106;
-        public static final int select_btn_sumbit=0x7f020107;
-        public static final int select_btn_tier=0x7f020108;
-        public static final int select_btn_verifycode=0x7f020109;
-        public static final int select_foot_bg=0x7f02010a;
-        public static final int shake_umeng_socialize_close=0x7f02010b;
-        public static final int shake_umeng_socialize_close_button_style=0x7f02010c;
-        public static final int shake_umeng_socialize_close_pressed=0x7f02010d;
-        public static final int shake_umeng_socialize_edittext_corner=0x7f02010e;
-        public static final int shake_umeng_socialize_imgview_border=0x7f02010f;
-        public static final int shake_umeng_socialize_preview_edit_corners_style=0x7f020110;
-        public static final int shake_umeng_socialize_shake_layout_corner=0x7f020111;
-        public static final int shake_umeng_socialize_share_btn_style=0x7f020112;
-        public static final int shangjia=0x7f020113;
-        public static final int shangjia_pressed=0x7f020114;
-        public static final int sign_default=0x7f020115;
-        public static final int sign_pressed=0x7f020116;
-        public static final int slipping=0x7f020117;
-        public static final int sprite_comment=0x7f020118;
-        public static final int sprite_left=0x7f020119;
-        public static final int sprite_line_vertic=0x7f02011a;
-        public static final int sprite_right=0x7f02011b;
-        public static final int star_half=0x7f02011c;
-        public static final int star_half_card=0x7f02011d;
-        public static final int star_huise=0x7f02011e;
-        public static final int star_huise_card=0x7f02011f;
-        public static final int star_red=0x7f020120;
-        public static final int star_red_card=0x7f020121;
-        public static final int star_white=0x7f020122;
-        public static final int start_huise_default=0x7f020123;
-        public static final int start_huise_pressed=0x7f020124;
-        public static final int start_read_default=0x7f020125;
-        public static final int start_read_pressed=0x7f020126;
-        public static final int store_union_a=0x7f020127;
-        public static final int store_union_b=0x7f020128;
-        public static final int style_normal=0x7f020129;
-        public static final int style_pressed=0x7f02012a;
-        public static final int title_header_bg=0x7f02012b;
-        public static final int title_menu_bg=0x7f02012c;
-        public static final int two_code=0x7f02012d;
-        public static final int tx=0x7f02012e;
-        public static final int umeng_socialize_action_back=0x7f02012f;
-        public static final int umeng_socialize_action_back_normal=0x7f020130;
-        public static final int umeng_socialize_action_back_selected=0x7f020131;
-        public static final int umeng_socialize_action_comment_normal=0x7f020132;
-        public static final int umeng_socialize_action_comment_selected=0x7f020133;
-        public static final int umeng_socialize_action_item_bg=0x7f020134;
-        public static final int umeng_socialize_action_like=0x7f020135;
-        public static final int umeng_socialize_action_personal_icon=0x7f020136;
-        public static final int umeng_socialize_action_personal_normal=0x7f020137;
-        public static final int umeng_socialize_action_personal_selected=0x7f020138;
-        public static final int umeng_socialize_action_share_icon=0x7f020139;
-        public static final int umeng_socialize_action_share_normal=0x7f02013a;
-        public static final int umeng_socialize_action_share_selected=0x7f02013b;
-        public static final int umeng_socialize_action_unlike=0x7f02013c;
-        public static final int umeng_socialize_actionbar_bg=0x7f02013d;
-        public static final int umeng_socialize_at_button=0x7f02013e;
-        public static final int umeng_socialize_at_label_bg=0x7f02013f;
-        public static final int umeng_socialize_at_normal=0x7f020140;
-        public static final int umeng_socialize_at_search_bg=0x7f020141;
-        public static final int umeng_socialize_at_selected=0x7f020142;
-        public static final int umeng_socialize_bind_bg=0x7f020143;
-        public static final int umeng_socialize_bind_bt=0x7f020144;
-        public static final int umeng_socialize_bind_select_bg=0x7f020145;
-        public static final int umeng_socialize_button_blue=0x7f020146;
-        public static final int umeng_socialize_button_grey=0x7f020147;
-        public static final int umeng_socialize_button_grey_blue=0x7f020148;
-        public static final int umeng_socialize_button_login=0x7f020149;
-        public static final int umeng_socialize_button_login_normal=0x7f02014a;
-        public static final int umeng_socialize_button_login_pressed=0x7f02014b;
-        public static final int umeng_socialize_button_red=0x7f02014c;
-        public static final int umeng_socialize_button_red_blue=0x7f02014d;
-        public static final int umeng_socialize_button_white=0x7f02014e;
-        public static final int umeng_socialize_button_white_blue=0x7f02014f;
-        public static final int umeng_socialize_checked=0x7f020150;
-        public static final int umeng_socialize_comment_bg=0x7f020151;
-        public static final int umeng_socialize_comment_icon=0x7f020152;
-        public static final int umeng_socialize_comment_item_bg_shape=0x7f020153;
-        public static final int umeng_socialize_comment_normal=0x7f020154;
-        public static final int umeng_socialize_comment_selected=0x7f020155;
-        public static final int umeng_socialize_commnet_header_bg=0x7f020156;
-        public static final int umeng_socialize_default_avatar=0x7f020157;
-        public static final int umeng_socialize_divider_line=0x7f020158;
-        public static final int umeng_socialize_douban_off=0x7f020159;
-        public static final int umeng_socialize_douban_on=0x7f02015a;
-        public static final int umeng_socialize_facebook=0x7f02015b;
-        public static final int umeng_socialize_facebook_close=0x7f02015c;
-        public static final int umeng_socialize_facebook_off=0x7f02015d;
-        public static final int umeng_socialize_fetch_image=0x7f02015e;
-        public static final int umeng_socialize_fetch_image_disabled=0x7f02015f;
-        public static final int umeng_socialize_fetch_location=0x7f020160;
-        public static final int umeng_socialize_fetch_location_disabled=0x7f020161;
-        public static final int umeng_socialize_follow_check=0x7f020162;
-        public static final int umeng_socialize_follow_off=0x7f020163;
-        public static final int umeng_socialize_follow_on=0x7f020164;
-        public static final int umeng_socialize_gmail=0x7f020165;
-        public static final int umeng_socialize_gmail_off=0x7f020166;
-        public static final int umeng_socialize_google=0x7f020167;
-        public static final int umeng_socialize_google_off=0x7f020168;
-        public static final int umeng_socialize_input_bar=0x7f020169;
-        public static final int umeng_socialize_laiwang=0x7f02016a;
-        public static final int umeng_socialize_laiwang_dynamic=0x7f02016b;
-        public static final int umeng_socialize_laiwang_dynamic_gray=0x7f02016c;
-        public static final int umeng_socialize_laiwang_gray=0x7f02016d;
-        public static final int umeng_socialize_light_bar_bg=0x7f02016e;
-        public static final int umeng_socialize_light_bar_bg_pad=0x7f02016f;
-        public static final int umeng_socialize_location_grey=0x7f020170;
-        public static final int umeng_socialize_location_ic=0x7f020171;
-        public static final int umeng_socialize_location_mark=0x7f020172;
-        public static final int umeng_socialize_location_off=0x7f020173;
-        public static final int umeng_socialize_location_on=0x7f020174;
-        public static final int umeng_socialize_nav_bar_bg=0x7f020175;
-        public static final int umeng_socialize_nav_bar_bg_pad=0x7f020176;
-        public static final int umeng_socialize_oauth_check=0x7f020177;
-        public static final int umeng_socialize_oauth_check_off=0x7f020178;
-        public static final int umeng_socialize_oauth_check_on=0x7f020179;
-        public static final int umeng_socialize_pulltorefresh_arrow=0x7f02017a;
-        public static final int umeng_socialize_pv=0x7f02017b;
-        public static final int umeng_socialize_qq_login=0x7f02017c;
-        public static final int umeng_socialize_qq_off=0x7f02017d;
-        public static final int umeng_socialize_qq_on=0x7f02017e;
-        public static final int umeng_socialize_qzone_off=0x7f02017f;
-        public static final int umeng_socialize_qzone_on=0x7f020180;
-        public static final int umeng_socialize_refersh=0x7f020181;
-        public static final int umeng_socialize_renren_off=0x7f020182;
-        public static final int umeng_socialize_renren_on=0x7f020183;
-        public static final int umeng_socialize_search_icon=0x7f020184;
-        public static final int umeng_socialize_shape_bt=0x7f020185;
-        public static final int umeng_socialize_shape_cyan=0x7f020186;
-        public static final int umeng_socialize_shape_hollow_grey=0x7f020187;
-        public static final int umeng_socialize_shape_red=0x7f020188;
-        public static final int umeng_socialize_shape_solid_black=0x7f020189;
-        public static final int umeng_socialize_shape_solid_grey=0x7f02018a;
-        public static final int umeng_socialize_shape_yellow=0x7f02018b;
-        public static final int umeng_socialize_share_music=0x7f02018c;
-        public static final int umeng_socialize_share_pic=0x7f02018d;
-        public static final int umeng_socialize_share_to_button=0x7f02018e;
-        public static final int umeng_socialize_share_transparent_corner=0x7f02018f;
-        public static final int umeng_socialize_share_video=0x7f020190;
-        public static final int umeng_socialize_shareboard_item_background=0x7f020191;
-        public static final int umeng_socialize_sidebar_normal=0x7f020192;
-        public static final int umeng_socialize_sidebar_selected=0x7f020193;
-        public static final int umeng_socialize_sidebar_selector=0x7f020194;
-        public static final int umeng_socialize_sina_off=0x7f020195;
-        public static final int umeng_socialize_sina_on=0x7f020196;
-        public static final int umeng_socialize_slate_bg=0x7f020197;
-        public static final int umeng_socialize_sms=0x7f020198;
-        public static final int umeng_socialize_sms_off=0x7f020199;
-        public static final int umeng_socialize_switchbutton_bottom=0x7f02019a;
-        public static final int umeng_socialize_switchbutton_btn_pressed=0x7f02019b;
-        public static final int umeng_socialize_switchbutton_btn_unpressed=0x7f02019c;
-        public static final int umeng_socialize_switchbutton_frame=0x7f02019d;
-        public static final int umeng_socialize_switchbutton_mask=0x7f02019e;
-        public static final int umeng_socialize_switchimage_choose=0x7f02019f;
-        public static final int umeng_socialize_switchimage_unchoose=0x7f0201a0;
-        public static final int umeng_socialize_title_back_bt=0x7f0201a1;
-        public static final int umeng_socialize_title_back_bt_normal=0x7f0201a2;
-        public static final int umeng_socialize_title_back_bt_selected=0x7f0201a3;
-        public static final int umeng_socialize_title_right_bt=0x7f0201a4;
-        public static final int umeng_socialize_title_right_bt_normal=0x7f0201a5;
-        public static final int umeng_socialize_title_right_bt_selected=0x7f0201a6;
-        public static final int umeng_socialize_title_tab_button_left=0x7f0201a7;
-        public static final int umeng_socialize_title_tab_button_right=0x7f0201a8;
-        public static final int umeng_socialize_title_tab_left_normal=0x7f0201a9;
-        public static final int umeng_socialize_title_tab_left_pressed=0x7f0201aa;
-        public static final int umeng_socialize_title_tab_right_normal=0x7f0201ab;
-        public static final int umeng_socialize_title_tab_right_pressed=0x7f0201ac;
-        public static final int umeng_socialize_twitter=0x7f0201ad;
-        public static final int umeng_socialize_twitter_off=0x7f0201ae;
-        public static final int umeng_socialize_tx_off=0x7f0201af;
-        public static final int umeng_socialize_tx_on=0x7f0201b0;
-        public static final int umeng_socialize_ucenter_hbg=0x7f0201b1;
-        public static final int umeng_socialize_wechat=0x7f0201b2;
-        public static final int umeng_socialize_wechat_gray=0x7f0201b3;
-        public static final int umeng_socialize_window_shadow_pad=0x7f0201b4;
-        public static final int umeng_socialize_wxcircle=0x7f0201b5;
-        public static final int umeng_socialize_wxcircle_gray=0x7f0201b6;
-        public static final int umeng_socialize_x_button=0x7f0201b7;
-        public static final int umeng_socialize_yixin=0x7f0201b8;
-        public static final int umeng_socialize_yixin_circle=0x7f0201b9;
-        public static final int umeng_socialize_yixin_circle_gray=0x7f0201ba;
-        public static final int umeng_socialize_yixin_gray=0x7f0201bb;
-        public static final int verify_code_normal=0x7f0201bc;
-        public static final int verify_code_pressed=0x7f0201bd;
-        public static final int vip_word_bg=0x7f0201be;
-        public static final int xian=0x7f0201bf;
-        public static final int xl=0x7f0201c0;
-        public static final int yi_chong=0x7f0201c1;
-        public static final int zhe=0x7f0201c2;
+        public static final int card_zen=0x7f020040;
+        public static final int cart_btn_pay_bg_normal=0x7f020041;
+        public static final int cart_btn_pay_bg_press=0x7f020042;
+        public static final int cart_edit_normal=0x7f020043;
+        public static final int cart_edit_press=0x7f020044;
+        public static final int cart_edit_selector=0x7f020045;
+        public static final int cart_minus_normal=0x7f020046;
+        public static final int cart_minus_press=0x7f020047;
+        public static final int cart_minus_selector=0x7f020048;
+        public static final int cart_number_bg=0x7f020049;
+        public static final int cart_pay_selector=0x7f02004a;
+        public static final int cart_plus_normal=0x7f02004b;
+        public static final int cart_plus_press=0x7f02004c;
+        public static final int cart_plus_selector=0x7f02004d;
+        public static final int cart_select_normal=0x7f02004e;
+        public static final int cart_select_press=0x7f02004f;
+        public static final int cart_select_selector=0x7f020050;
+        public static final int cart_selected_normal=0x7f020051;
+        public static final int cart_selected_press=0x7f020052;
+        public static final int cart_selected_selector=0x7f020053;
+        public static final int cart_yes_btn_normal=0x7f020054;
+        public static final int cart_yes_btn_press=0x7f020055;
+        public static final int cart_yes_selector=0x7f020056;
+        public static final int close=0x7f020057;
+        public static final int coupon=0x7f020058;
+        public static final int coupon_pressed=0x7f020059;
+        public static final int custom_service_btn=0x7f02005a;
+        public static final int custom_service_btn_a=0x7f02005b;
+        public static final int custom_service_btn_b=0x7f02005c;
+        public static final int default_img=0x7f02005d;
+        public static final int exchange_normal=0x7f02005e;
+        public static final int exchange_press=0x7f02005f;
+        public static final int fav_count=0x7f020060;
+        public static final int foot_bg_focused=0x7f020061;
+        public static final int foot_bg_light=0x7f020062;
+        public static final int foot_bg_normal=0x7f020063;
+        public static final int foot_bg_pressed=0x7f020064;
+        public static final int foot_bg_tile_focused=0x7f020065;
+        public static final int foot_bg_tile_normal=0x7f020066;
+        public static final int foot_bg_tile_pressed=0x7f020067;
+        public static final int foot_more_normal=0x7f020068;
+        public static final int foot_more_pressed=0x7f020069;
+        public static final int foot_pic_normal=0x7f02006a;
+        public static final int foot_pic_pressed=0x7f02006b;
+        public static final int foot_pie_normal=0x7f02006c;
+        public static final int foot_pie_pressed=0x7f02006d;
+        public static final int foot_search_normal=0x7f02006e;
+        public static final int foot_search_pressed=0x7f02006f;
+        public static final int foot_tier_normal=0x7f020070;
+        public static final int foot_tier_pressed=0x7f020071;
+        public static final int foot_wigame_normal=0x7f020072;
+        public static final int foot_wigame_pressed=0x7f020073;
+        public static final int gou=0x7f020074;
+        public static final int grey_line=0x7f020075;
+        public static final int guanggao=0x7f020076;
+        public static final int head_bg=0x7f020077;
+        public static final int hotbuy=0x7f020078;
+        public static final int hotbuy_pressed=0x7f020079;
+        public static final int huodong=0x7f02007a;
+        public static final int huodong_pressed=0x7f02007b;
+        public static final int huz_bg_blue=0x7f02007c;
+        public static final int huz_bg_white=0x7f02007d;
+        public static final int huz_btn_bg=0x7f02007e;
+        public static final int huz_btn_check=0x7f02007f;
+        public static final int huz_btn_check_buttonless_off=0x7f020080;
+        public static final int huz_btn_check_buttonless_on=0x7f020081;
+        public static final int huz_btn_check_label_background=0x7f020082;
+        public static final int huz_btn_check_off=0x7f020083;
+        public static final int huz_btn_check_off_disable=0x7f020084;
+        public static final int huz_btn_check_off_disable_focused=0x7f020085;
+        public static final int huz_btn_check_off_pressed=0x7f020086;
+        public static final int huz_btn_check_off_selected=0x7f020087;
+        public static final int huz_btn_check_on=0x7f020088;
+        public static final int huz_btn_check_on_disable=0x7f020089;
+        public static final int huz_btn_check_on_disable_focused=0x7f02008a;
+        public static final int huz_btn_check_on_pressed=0x7f02008b;
+        public static final int huz_btn_check_on_selected=0x7f02008c;
+        public static final int huz_popup_bottom=0x7f02008d;
+        public static final int huz_popup_center=0x7f02008e;
+        public static final int huz_popup_full=0x7f02008f;
+        public static final int huz_popup_top=0x7f020090;
+        public static final int ic_launcher=0x7f020091;
+        public static final int icon_shop=0x7f020092;
+        public static final int icon_style=0x7f020093;
+        public static final int interest_store_a=0x7f020094;
+        public static final int interest_store_b=0x7f020095;
+        public static final int item_delete_normal=0x7f020096;
+        public static final int item_delete_press=0x7f020097;
+        public static final int juan=0x7f020098;
+        public static final int laod_fail=0x7f020099;
+        public static final int liulang_count=0x7f02009a;
+        public static final int map_a=0x7f02009b;
+        public static final int map_b=0x7f02009c;
+        public static final int map_btn=0x7f02009d;
+        public static final int member=0x7f02009e;
+        public static final int member_pressed=0x7f02009f;
+        public static final int membercard_biaoshi=0x7f0200a0;
+        public static final int more_about=0x7f0200a1;
+        public static final int more_account=0x7f0200a2;
+        public static final int more_account_logout=0x7f0200a3;
+        public static final int more_app_recommend=0x7f0200a4;
+        public static final int more_delect_a=0x7f0200a5;
+        public static final int more_delect_b=0x7f0200a6;
+        public static final int more_feekback=0x7f0200a7;
+        public static final int more_follow_store=0x7f0200a8;
+        public static final int more_help=0x7f0200a9;
+        public static final int more_integral=0x7f0200aa;
+        public static final int more_message_center=0x7f0200ab;
+        public static final int more_message_point=0x7f0200ac;
+        public static final int more_message_propelling=0x7f0200ad;
+        public static final int more_normal=0x7f0200ae;
+        public static final int more_pressed=0x7f0200af;
+        public static final int more_quit=0x7f0200b0;
+        public static final int more_service=0x7f0200b1;
+        public static final int more_share_set=0x7f0200b2;
+        public static final int more_show_us=0x7f0200b3;
+        public static final int more_updata=0x7f0200b4;
+        public static final int more_updata_info=0x7f0200b5;
+        public static final int more_updata_passowrd=0x7f0200b6;
+        public static final int my_border_bg=0x7f0200b7;
+        public static final int my_coupon=0x7f0200b8;
+        public static final int my_exchange_score_normal=0x7f0200b9;
+        public static final int my_exchange_score_press=0x7f0200ba;
+        public static final int my_exchange_score_selector=0x7f0200bb;
+        public static final int my_favourite=0x7f0200bc;
+        public static final int my_icon_bg=0x7f0200bd;
+        public static final int my_msg_normal=0x7f0200be;
+        public static final int my_msg_press=0x7f0200bf;
+        public static final int my_msg_selector=0x7f0200c0;
+        public static final int my_order=0x7f0200c1;
+        public static final int my_profile_setting_normal=0x7f0200c2;
+        public static final int my_profile_setting_press=0x7f0200c3;
+        public static final int my_recharge_selector=0x7f0200c4;
+        public static final int my_setting_selector=0x7f0200c5;
+        public static final int my_sign_normal=0x7f0200c6;
+        public static final int my_sign_press=0x7f0200c7;
+        public static final int my_sign_selector=0x7f0200c8;
+        public static final int my_ucoin=0x7f0200c9;
+        public static final int my_udot=0x7f0200ca;
+        public static final int my_vip=0x7f0200cb;
+        public static final int no_card=0x7f0200cc;
+        public static final int nucleus_store_a=0x7f0200cd;
+        public static final int nucleus_store_b=0x7f0200ce;
+        public static final int online_chong=0x7f0200cf;
+        public static final int online_pay_small=0x7f0200d0;
+        public static final int open=0x7f0200d1;
+        public static final int pay_alipay=0x7f0200d2;
+        public static final int pay_btn_bg_normal=0x7f0200d3;
+        public static final int pay_btn_bg_press=0x7f0200d4;
+        public static final int pay_btn_selector=0x7f0200d5;
+        public static final int pay_selected=0x7f0200d6;
+        public static final int pay_ucoin=0x7f0200d7;
+        public static final int pay_union=0x7f0200d8;
+        public static final int pay_yi=0x7f0200d9;
+        public static final int personal_xiaofei=0x7f0200da;
+        public static final int press_greed_a=0x7f0200db;
+        public static final int press_greed_b=0x7f0200dc;
+        public static final int press_greed_btn=0x7f0200dd;
+        public static final int press_white_a=0x7f0200de;
+        public static final int press_white_b=0x7f0200df;
+        public static final int press_white_btn=0x7f0200e0;
+        public static final int progress_1=0x7f0200e1;
+        public static final int progress_2=0x7f0200e2;
+        public static final int progress_3=0x7f0200e3;
+        public static final int progress_4=0x7f0200e4;
+        public static final int progress_5=0x7f0200e5;
+        public static final int progress_6=0x7f0200e6;
+        public static final int progress_7=0x7f0200e7;
+        public static final int progress_8=0x7f0200e8;
+        public static final int qiang=0x7f0200e9;
+        public static final int quit_normal=0x7f0200ea;
+        public static final int quit_pressed=0x7f0200eb;
+        public static final int ratingbar_drawable=0x7f0200ec;
+        public static final int recharge_normal=0x7f0200ed;
+        public static final int recharge_press=0x7f0200ee;
+        public static final int remember_psd_a=0x7f0200ef;
+        public static final int remember_psd_b=0x7f0200f0;
+        public static final int rounded_buttom=0x7f0200f1;
+        public static final int rounded_one=0x7f0200f2;
+        public static final int rounded_rectangle=0x7f0200f3;
+        public static final int rounded_top=0x7f0200f4;
+        public static final int rr=0x7f0200f5;
+        public static final int screen_indicator_off=0x7f0200f6;
+        public static final int screen_indicator_on=0x7f0200f7;
+        public static final int search_a=0x7f0200f8;
+        public static final int search_b=0x7f0200f9;
+        public static final int search_btn=0x7f0200fa;
+        public static final int search_edit=0x7f0200fb;
+        public static final int second_goto=0x7f0200fc;
+        public static final int select_btn_carame=0x7f0200fd;
+        public static final int select_btn_coupon=0x7f0200fe;
+        public static final int select_btn_hotbuy=0x7f0200ff;
+        public static final int select_btn_huodong=0x7f020100;
+        public static final int select_btn_memenber=0x7f020101;
+        public static final int select_btn_more=0x7f020102;
+        public static final int select_btn_pic=0x7f020103;
+        public static final int select_btn_pie=0x7f020104;
+        public static final int select_btn_scan=0x7f020105;
+        public static final int select_btn_search=0x7f020106;
+        public static final int select_btn_shangjia=0x7f020107;
+        public static final int select_btn_sign=0x7f020108;
+        public static final int select_btn_star_huise=0x7f020109;
+        public static final int select_btn_star_red_stone=0x7f02010a;
+        public static final int select_btn_sumbit=0x7f02010b;
+        public static final int select_btn_tier=0x7f02010c;
+        public static final int select_btn_verifycode=0x7f02010d;
+        public static final int select_foot_bg=0x7f02010e;
+        public static final int shake_umeng_socialize_close=0x7f02010f;
+        public static final int shake_umeng_socialize_close_button_style=0x7f020110;
+        public static final int shake_umeng_socialize_close_pressed=0x7f020111;
+        public static final int shake_umeng_socialize_edittext_corner=0x7f020112;
+        public static final int shake_umeng_socialize_imgview_border=0x7f020113;
+        public static final int shake_umeng_socialize_preview_edit_corners_style=0x7f020114;
+        public static final int shake_umeng_socialize_shake_layout_corner=0x7f020115;
+        public static final int shake_umeng_socialize_share_btn_style=0x7f020116;
+        public static final int shangjia=0x7f020117;
+        public static final int shangjia_pressed=0x7f020118;
+        public static final int sign_default=0x7f020119;
+        public static final int sign_pressed=0x7f02011a;
+        public static final int slipping=0x7f02011b;
+        public static final int sprite_comment=0x7f02011c;
+        public static final int sprite_left=0x7f02011d;
+        public static final int sprite_line_vertic=0x7f02011e;
+        public static final int sprite_right=0x7f02011f;
+        public static final int star_half=0x7f020120;
+        public static final int star_half_card=0x7f020121;
+        public static final int star_huise=0x7f020122;
+        public static final int star_huise_card=0x7f020123;
+        public static final int star_red=0x7f020124;
+        public static final int star_red_card=0x7f020125;
+        public static final int star_white=0x7f020126;
+        public static final int start_huise_default=0x7f020127;
+        public static final int start_huise_pressed=0x7f020128;
+        public static final int start_read_default=0x7f020129;
+        public static final int start_read_pressed=0x7f02012a;
+        public static final int store_union_a=0x7f02012b;
+        public static final int store_union_b=0x7f02012c;
+        public static final int style_normal=0x7f02012d;
+        public static final int style_pressed=0x7f02012e;
+        public static final int title_header_bg=0x7f02012f;
+        public static final int title_menu_bg=0x7f020130;
+        public static final int two_code=0x7f020131;
+        public static final int tx=0x7f020132;
+        public static final int umeng_socialize_action_back=0x7f020133;
+        public static final int umeng_socialize_action_back_normal=0x7f020134;
+        public static final int umeng_socialize_action_back_selected=0x7f020135;
+        public static final int umeng_socialize_action_comment_normal=0x7f020136;
+        public static final int umeng_socialize_action_comment_selected=0x7f020137;
+        public static final int umeng_socialize_action_item_bg=0x7f020138;
+        public static final int umeng_socialize_action_like=0x7f020139;
+        public static final int umeng_socialize_action_personal_icon=0x7f02013a;
+        public static final int umeng_socialize_action_personal_normal=0x7f02013b;
+        public static final int umeng_socialize_action_personal_selected=0x7f02013c;
+        public static final int umeng_socialize_action_share_icon=0x7f02013d;
+        public static final int umeng_socialize_action_share_normal=0x7f02013e;
+        public static final int umeng_socialize_action_share_selected=0x7f02013f;
+        public static final int umeng_socialize_action_unlike=0x7f020140;
+        public static final int umeng_socialize_actionbar_bg=0x7f020141;
+        public static final int umeng_socialize_at_button=0x7f020142;
+        public static final int umeng_socialize_at_label_bg=0x7f020143;
+        public static final int umeng_socialize_at_normal=0x7f020144;
+        public static final int umeng_socialize_at_search_bg=0x7f020145;
+        public static final int umeng_socialize_at_selected=0x7f020146;
+        public static final int umeng_socialize_bind_bg=0x7f020147;
+        public static final int umeng_socialize_bind_bt=0x7f020148;
+        public static final int umeng_socialize_bind_select_bg=0x7f020149;
+        public static final int umeng_socialize_button_blue=0x7f02014a;
+        public static final int umeng_socialize_button_grey=0x7f02014b;
+        public static final int umeng_socialize_button_grey_blue=0x7f02014c;
+        public static final int umeng_socialize_button_login=0x7f02014d;
+        public static final int umeng_socialize_button_login_normal=0x7f02014e;
+        public static final int umeng_socialize_button_login_pressed=0x7f02014f;
+        public static final int umeng_socialize_button_red=0x7f020150;
+        public static final int umeng_socialize_button_red_blue=0x7f020151;
+        public static final int umeng_socialize_button_white=0x7f020152;
+        public static final int umeng_socialize_button_white_blue=0x7f020153;
+        public static final int umeng_socialize_checked=0x7f020154;
+        public static final int umeng_socialize_comment_bg=0x7f020155;
+        public static final int umeng_socialize_comment_icon=0x7f020156;
+        public static final int umeng_socialize_comment_item_bg_shape=0x7f020157;
+        public static final int umeng_socialize_comment_normal=0x7f020158;
+        public static final int umeng_socialize_comment_selected=0x7f020159;
+        public static final int umeng_socialize_commnet_header_bg=0x7f02015a;
+        public static final int umeng_socialize_default_avatar=0x7f02015b;
+        public static final int umeng_socialize_divider_line=0x7f02015c;
+        public static final int umeng_socialize_douban_off=0x7f02015d;
+        public static final int umeng_socialize_douban_on=0x7f02015e;
+        public static final int umeng_socialize_facebook=0x7f02015f;
+        public static final int umeng_socialize_facebook_close=0x7f020160;
+        public static final int umeng_socialize_facebook_off=0x7f020161;
+        public static final int umeng_socialize_fetch_image=0x7f020162;
+        public static final int umeng_socialize_fetch_image_disabled=0x7f020163;
+        public static final int umeng_socialize_fetch_location=0x7f020164;
+        public static final int umeng_socialize_fetch_location_disabled=0x7f020165;
+        public static final int umeng_socialize_follow_check=0x7f020166;
+        public static final int umeng_socialize_follow_off=0x7f020167;
+        public static final int umeng_socialize_follow_on=0x7f020168;
+        public static final int umeng_socialize_gmail=0x7f020169;
+        public static final int umeng_socialize_gmail_off=0x7f02016a;
+        public static final int umeng_socialize_google=0x7f02016b;
+        public static final int umeng_socialize_google_off=0x7f02016c;
+        public static final int umeng_socialize_input_bar=0x7f02016d;
+        public static final int umeng_socialize_laiwang=0x7f02016e;
+        public static final int umeng_socialize_laiwang_dynamic=0x7f02016f;
+        public static final int umeng_socialize_laiwang_dynamic_gray=0x7f020170;
+        public static final int umeng_socialize_laiwang_gray=0x7f020171;
+        public static final int umeng_socialize_light_bar_bg=0x7f020172;
+        public static final int umeng_socialize_light_bar_bg_pad=0x7f020173;
+        public static final int umeng_socialize_location_grey=0x7f020174;
+        public static final int umeng_socialize_location_ic=0x7f020175;
+        public static final int umeng_socialize_location_mark=0x7f020176;
+        public static final int umeng_socialize_location_off=0x7f020177;
+        public static final int umeng_socialize_location_on=0x7f020178;
+        public static final int umeng_socialize_nav_bar_bg=0x7f020179;
+        public static final int umeng_socialize_nav_bar_bg_pad=0x7f02017a;
+        public static final int umeng_socialize_oauth_check=0x7f02017b;
+        public static final int umeng_socialize_oauth_check_off=0x7f02017c;
+        public static final int umeng_socialize_oauth_check_on=0x7f02017d;
+        public static final int umeng_socialize_pulltorefresh_arrow=0x7f02017e;
+        public static final int umeng_socialize_pv=0x7f02017f;
+        public static final int umeng_socialize_qq_login=0x7f020180;
+        public static final int umeng_socialize_qq_off=0x7f020181;
+        public static final int umeng_socialize_qq_on=0x7f020182;
+        public static final int umeng_socialize_qzone_off=0x7f020183;
+        public static final int umeng_socialize_qzone_on=0x7f020184;
+        public static final int umeng_socialize_refersh=0x7f020185;
+        public static final int umeng_socialize_renren_off=0x7f020186;
+        public static final int umeng_socialize_renren_on=0x7f020187;
+        public static final int umeng_socialize_search_icon=0x7f020188;
+        public static final int umeng_socialize_shape_bt=0x7f020189;
+        public static final int umeng_socialize_shape_cyan=0x7f02018a;
+        public static final int umeng_socialize_shape_hollow_grey=0x7f02018b;
+        public static final int umeng_socialize_shape_red=0x7f02018c;
+        public static final int umeng_socialize_shape_solid_black=0x7f02018d;
+        public static final int umeng_socialize_shape_solid_grey=0x7f02018e;
+        public static final int umeng_socialize_shape_yellow=0x7f02018f;
+        public static final int umeng_socialize_share_music=0x7f020190;
+        public static final int umeng_socialize_share_pic=0x7f020191;
+        public static final int umeng_socialize_share_to_button=0x7f020192;
+        public static final int umeng_socialize_share_transparent_corner=0x7f020193;
+        public static final int umeng_socialize_share_video=0x7f020194;
+        public static final int umeng_socialize_shareboard_item_background=0x7f020195;
+        public static final int umeng_socialize_sidebar_normal=0x7f020196;
+        public static final int umeng_socialize_sidebar_selected=0x7f020197;
+        public static final int umeng_socialize_sidebar_selector=0x7f020198;
+        public static final int umeng_socialize_sina_off=0x7f020199;
+        public static final int umeng_socialize_sina_on=0x7f02019a;
+        public static final int umeng_socialize_slate_bg=0x7f02019b;
+        public static final int umeng_socialize_sms=0x7f02019c;
+        public static final int umeng_socialize_sms_off=0x7f02019d;
+        public static final int umeng_socialize_switchbutton_bottom=0x7f02019e;
+        public static final int umeng_socialize_switchbutton_btn_pressed=0x7f02019f;
+        public static final int umeng_socialize_switchbutton_btn_unpressed=0x7f0201a0;
+        public static final int umeng_socialize_switchbutton_frame=0x7f0201a1;
+        public static final int umeng_socialize_switchbutton_mask=0x7f0201a2;
+        public static final int umeng_socialize_switchimage_choose=0x7f0201a3;
+        public static final int umeng_socialize_switchimage_unchoose=0x7f0201a4;
+        public static final int umeng_socialize_title_back_bt=0x7f0201a5;
+        public static final int umeng_socialize_title_back_bt_normal=0x7f0201a6;
+        public static final int umeng_socialize_title_back_bt_selected=0x7f0201a7;
+        public static final int umeng_socialize_title_right_bt=0x7f0201a8;
+        public static final int umeng_socialize_title_right_bt_normal=0x7f0201a9;
+        public static final int umeng_socialize_title_right_bt_selected=0x7f0201aa;
+        public static final int umeng_socialize_title_tab_button_left=0x7f0201ab;
+        public static final int umeng_socialize_title_tab_button_right=0x7f0201ac;
+        public static final int umeng_socialize_title_tab_left_normal=0x7f0201ad;
+        public static final int umeng_socialize_title_tab_left_pressed=0x7f0201ae;
+        public static final int umeng_socialize_title_tab_right_normal=0x7f0201af;
+        public static final int umeng_socialize_title_tab_right_pressed=0x7f0201b0;
+        public static final int umeng_socialize_twitter=0x7f0201b1;
+        public static final int umeng_socialize_twitter_off=0x7f0201b2;
+        public static final int umeng_socialize_tx_off=0x7f0201b3;
+        public static final int umeng_socialize_tx_on=0x7f0201b4;
+        public static final int umeng_socialize_ucenter_hbg=0x7f0201b5;
+        public static final int umeng_socialize_wechat=0x7f0201b6;
+        public static final int umeng_socialize_wechat_gray=0x7f0201b7;
+        public static final int umeng_socialize_window_shadow_pad=0x7f0201b8;
+        public static final int umeng_socialize_wxcircle=0x7f0201b9;
+        public static final int umeng_socialize_wxcircle_gray=0x7f0201ba;
+        public static final int umeng_socialize_x_button=0x7f0201bb;
+        public static final int umeng_socialize_yixin=0x7f0201bc;
+        public static final int umeng_socialize_yixin_circle=0x7f0201bd;
+        public static final int umeng_socialize_yixin_circle_gray=0x7f0201be;
+        public static final int umeng_socialize_yixin_gray=0x7f0201bf;
+        public static final int verify_code_normal=0x7f0201c0;
+        public static final int verify_code_pressed=0x7f0201c1;
+        public static final int vip_word_bg=0x7f0201c2;
+        public static final int xian=0x7f0201c3;
+        public static final int xl=0x7f0201c4;
+        public static final int xlistview_arrow=0x7f0201c5;
+        public static final int yi_chong=0x7f0201c6;
+        public static final int zhe=0x7f0201c7;
     }
     public static final class id {
-        public static final int account_lay=0x7f0b0099;
-        public static final int account_text=0x7f0b009c;
-        public static final int action_settings=0x7f0b01de;
-        public static final int agin_psd=0x7f0b0128;
-        public static final int alertTitle=0x7f0b00e5;
-        public static final int apply_num=0x7f0b00cc;
-        public static final int back=0x7f0b0006;
-        public static final int branch_shop_lay=0x7f0b0056;
-        public static final int bt_apply=0x7f0b00cb;
-        public static final int bt_chongzhi=0x7f0b0031;
-        public static final int bt_hotbuy=0x7f0b00bd;
-        public static final int bt_membercard=0x7f0b00bb;
-        public static final int bt_youhuiquan=0x7f0b00bc;
-        public static final int btn_cate=0x7f0b0142;
-        public static final int btn_exchange=0x7f0b001b;
-        public static final int btn_get_verifycode=0x7f0b012b;
-        public static final int btn_more=0x7f0b003f;
-        public static final int btn_pic=0x7f0b011c;
-        public static final int btn_pie=0x7f0b003c;
-        public static final int btn_recharge=0x7f0b001e;
-        public static final int btn_right=0x7f0b0018;
-        public static final int btn_tier=0x7f0b003d;
-        public static final int btn_wigame=0x7f0b003e;
-        public static final int bus_center_lay=0x7f0b00a1;
-        public static final int bus_consume_manger=0x7f0b00a6;
-        public static final int bus_consume_manger_img=0x7f0b00a7;
-        public static final int bus_data_recode=0x7f0b00a8;
-        public static final int bus_data_recode_img=0x7f0b00a9;
-        public static final int bus_recognition_card=0x7f0b00a4;
-        public static final int bus_recognition_card_img=0x7f0b00a5;
-        public static final int bus_send_card=0x7f0b00a2;
-        public static final int bus_send_card_img=0x7f0b00a3;
-        public static final int button1=0x7f0b00ee;
-        public static final int button2=0x7f0b00f0;
-        public static final int button3=0x7f0b00ef;
-        public static final int buttonPanel=0x7f0b00ec;
-        public static final int cancelBtn=0x7f0b0153;
-        public static final int card_btn_consume=0x7f0b0015;
-        public static final int card_btn_edit=0x7f0b0014;
-        public static final int card_btn_remove=0x7f0b0016;
-        public static final int card_btn_share=0x7f0b0017;
-        public static final int card_content_text=0x7f0b00d9;
-        public static final int card_item_iv_icon=0x7f0b00f3;
-        public static final int card_item_tv_coupon=0x7f0b00f7;
-        public static final int card_item_tv_name=0x7f0b00f4;
-        public static final int card_item_tv_type=0x7f0b00f6;
-        public static final int card_iv_fav=0x7f0b000a;
-        public static final int card_iv_icon=0x7f0b000b;
-        public static final int card_iv_twodimensioncode=0x7f0b0009;
-        public static final int card_name_text=0x7f0b00d8;
-        public static final int card_tv_balance=0x7f0b000d;
-        public static final int card_tv_score=0x7f0b000f;
-        public static final int card_tv_valid_date=0x7f0b0011;
-        public static final int card_tv_welfare=0x7f0b0013;
-        public static final int cart_btn_delete=0x7f0b00c4;
-        public static final int cart_btn_edit=0x7f0b00c2;
-        public static final int cart_btn_pay=0x7f0b00c5;
-        public static final int cart_btn_yes=0x7f0b00c1;
-        public static final int cart_tv_amount=0x7f0b00c8;
-        public static final int cart_tv_amount_pre=0x7f0b00c9;
-        public static final int cart_tv_goodsname=0x7f0b00c0;
-        public static final int cart_tv_money=0x7f0b00c6;
-        public static final int cart_tv_money_pre=0x7f0b00c7;
-        public static final int com_facebook_login_activity_progress_bar=0x7f0b0198;
-        public static final int container=0x7f0b00b9;
-        public static final int container_left=0x7f0b0020;
-        public static final int container_right=0x7f0b0021;
-        public static final int contentBtnLayout=0x7f0b0152;
-        public static final int contentEdit=0x7f0b015a;
-        public static final int contentLayout=0x7f0b0151;
-        public static final int contentPanel=0x7f0b00e7;
-        public static final int coupon_item_ib_delete=0x7f0b00fb;
-        public static final int coupon_item_iv_icon=0x7f0b00fc;
-        public static final int coupon_item_tv_name=0x7f0b00fd;
-        public static final int coupon_item_tv_number=0x7f0b00fe;
-        public static final int coupon_item_tv_price=0x7f0b00ff;
-        public static final int coupon_item_tv_validdate=0x7f0b0100;
-        public static final int cursor=0x7f0b014a;
-        public static final int custom=0x7f0b00eb;
-        public static final int customPanel=0x7f0b00ea;
-        public static final int et_content=0x7f0b0005;
-        public static final int et_ucoin_count=0x7f0b001a;
-        public static final int et_verifycode=0x7f0b012a;
-        public static final int favourite_item_ib_delete=0x7f0b0101;
-        public static final int favourite_item_iv_icon=0x7f0b0102;
-        public static final int favourite_item_tv_name=0x7f0b0103;
-        public static final int favourite_item_tv_number=0x7f0b0104;
-        public static final int favourite_item_tv_price=0x7f0b0105;
-        public static final int favourite_item_tv_validdate=0x7f0b0106;
-        public static final int feekback_edit=0x7f0b011d;
-        public static final int follow_active=0x7f0b00da;
-        public static final int follow_interest=0x7f0b00dc;
-        public static final int follow_store=0x7f0b00d4;
-        public static final int follow_union=0x7f0b00db;
-        public static final int footer_light=0x7f0b011b;
-        public static final int forget_psd=0x7f0b0121;
-        public static final int gallery_image=0x7f0b0107;
-        public static final int gallery_point_linear=0x7f0b0061;
-        public static final int goods_item_ib_select=0x7f0b0108;
-        public static final int goods_item_ib_selected=0x7f0b0109;
-        public static final int goods_item_iv_icon=0x7f0b010a;
-        public static final int goods_item_tv_amount=0x7f0b010d;
-        public static final int goods_item_tv_name=0x7f0b010b;
-        public static final int goods_item_tv_price=0x7f0b010c;
-        public static final int grey_line=0x7f0b01dd;
-        public static final int grey_line_a=0x7f0b00ae;
-        public static final int grey_line_b=0x7f0b00b1;
-        public static final int grey_line_c=0x7f0b00b8;
-        public static final int half_textview=0x7f0b0150;
-        public static final int header=0x7f0b0197;
-        public static final int ib_right=0x7f0b0028;
-        public static final int ib_switch=0x7f0b0008;
-        public static final int icon=0x7f0b00e4;
-        public static final int image_wall_gallery=0x7f0b0060;
-        public static final int integral_text=0x7f0b00a0;
-        public static final int intergral_follow_img=0x7f0b009e;
-        public static final int intergral_follow_text=0x7f0b009f;
-        public static final int is_have_fad=0x7f0b00df;
-        public static final int is_rem=0x7f0b00de;
-        public static final int is_store=0x7f0b00dd;
-        public static final int iv=0x7f0b0057;
-        public static final int iv_biaoshi=0x7f0b0030;
-        public static final int iv_first=0x7f0b015b;
-        public static final int iv_five=0x7f0b015f;
-        public static final int iv_fourth=0x7f0b015e;
-        public static final int iv_gou=0x7f0b0115;
-        public static final int iv_guanggao=0x7f0b00ca;
-        public static final int iv_icon=0x7f0b002a;
-        public static final int iv_icon_five=0x7f0b0004;
-        public static final int iv_icon_four=0x7f0b0003;
-        public static final int iv_icon_one=0x7f0b0000;
-        public static final int iv_icon_three=0x7f0b0002;
-        public static final int iv_icon_two=0x7f0b0001;
-        public static final int iv_image=0x7f0b00f9;
-        public static final int iv_one=0x7f0b00d0;
-        public static final int iv_online_chong=0x7f0b002e;
-        public static final int iv_qiang=0x7f0b0116;
-        public static final int iv_second=0x7f0b015c;
-        public static final int iv_six=0x7f0b0160;
-        public static final int iv_star_five=0x7f0b0112;
-        public static final int iv_star_four=0x7f0b0111;
-        public static final int iv_star_one=0x7f0b010e;
-        public static final int iv_star_three=0x7f0b0110;
-        public static final int iv_star_two=0x7f0b010f;
-        public static final int iv_third=0x7f0b015d;
-        public static final int iv_three=0x7f0b00d2;
-        public static final int iv_two=0x7f0b00d1;
-        public static final int iv_xian=0x7f0b0117;
-        public static final int iv_yi_chong=0x7f0b0113;
-        public static final int iv_zhe=0x7f0b0118;
-        public static final int lay=0x7f0b0129;
-        public static final int layout_title=0x7f0b0027;
-        public static final int leftSpacer=0x7f0b00ed;
-        public static final int linear_act=0x7f0b00be;
-        public static final int linear_all_area=0x7f0b0022;
-        public static final int linear_all_hot=0x7f0b0024;
-        public static final int linear_all_sort=0x7f0b0023;
-        public static final int linear_seller=0x7f0b00bf;
-        public static final int list=0x7f0b00c3;
-        public static final int listView=0x7f0b0177;
-        public static final int listview=0x7f0b0025;
-        public static final int listview_all=0x7f0b0026;
-        public static final int loadingImageView=0x7f0b00d3;
-        public static final int login=0x7f0b0124;
-        public static final int login_id=0x7f0b011f;
-        public static final int login_logout_text=0x7f0b0085;
-        public static final int main_title=0x7f0b0141;
-        public static final int message=0x7f0b00e9;
-        public static final int modify_addr_panel=0x7f0b013d;
-        public static final int modify_addr_tv=0x7f0b013e;
-        public static final int modify_btn_save=0x7f0b0134;
-        public static final int modify_email_et=0x7f0b013c;
-        public static final int modify_email_panel=0x7f0b013b;
-        public static final int modify_icon_panel=0x7f0b0135;
-        public static final int modify_iv_icon=0x7f0b0136;
-        public static final int modify_nickname_et=0x7f0b0138;
-        public static final int modify_pass_panel=0x7f0b013f;
-        public static final int modify_phone_et=0x7f0b013a;
-        public static final int modify_phone_panel=0x7f0b0139;
-        public static final int modify_tv_userid=0x7f0b0137;
-        public static final int more=0x7f0b007e;
-        public static final int more_about=0x7f0b0090;
-        public static final int more_about_img=0x7f0b0091;
-        public static final int more_account=0x7f0b009a;
-        public static final int more_account_logout=0x7f0b0084;
-        public static final int more_account_logout_img=0x7f0b00ab;
-        public static final int more_app_recommend=0x7f0b008e;
-        public static final int more_app_recommend_img=0x7f0b008f;
-        public static final int more_attention=0x7f0b0088;
-        public static final int more_attention_img=0x7f0b0089;
-        public static final int more_clearcache=0x7f0b0083;
-        public static final int more_custom_service=0x7f0b0096;
-        public static final int more_custom_service_phone=0x7f0b0097;
-        public static final int more_feekback=0x7f0b008c;
-        public static final int more_feekback_img=0x7f0b008d;
-        public static final int more_follow_store=0x7f0b00b6;
-        public static final int more_follow_store_img=0x7f0b00b7;
-        public static final int more_help=0x7f0b0094;
-        public static final int more_help_img=0x7f0b0095;
-        public static final int more_integral=0x7f0b009d;
-        public static final int more_message_center=0x7f0b00b2;
-        public static final int more_message_center_arrow=0x7f0b00b4;
-        public static final int more_message_center_img=0x7f0b00b3;
-        public static final int more_message_propelling=0x7f0b0081;
-        public static final int more_message_propelling_img=0x7f0b0082;
-        public static final int more_quit=0x7f0b0098;
-        public static final int more_recommend_youlian=0x7f0b008a;
-        public static final int more_recommend_youlian_img=0x7f0b008b;
-        public static final int more_service=0x7f0b0092;
-        public static final int more_service_img=0x7f0b0093;
-        public static final int more_share_set=0x7f0b007f;
-        public static final int more_share_set_img=0x7f0b0080;
-        public static final int more_updata=0x7f0b0086;
-        public static final int more_updata_img=0x7f0b0087;
-        public static final int more_updata_info=0x7f0b00ac;
-        public static final int more_updata_info_img=0x7f0b00ad;
-        public static final int more_updata_passowrd=0x7f0b00af;
-        public static final int more_updata_password_img=0x7f0b00b0;
-        public static final int msg_size=0x7f0b00b5;
-        public static final int msg_slipBtn=0x7f0b00aa;
-        public static final int myListView=0x7f0b0119;
-        public static final int my_Radiogroup=0x7f0b0145;
-        public static final int my_coupon_panel=0x7f0b0073;
-        public static final int my_favourite_panel=0x7f0b007b;
-        public static final int my_ib_exchange_score=0x7f0b006c;
-        public static final int my_ib_msg=0x7f0b0068;
-        public static final int my_ib_recharge=0x7f0b006d;
-        public static final int my_ib_setting=0x7f0b0065;
-        public static final int my_ib_sign=0x7f0b006b;
-        public static final int my_iv_icon=0x7f0b0066;
-        public static final int my_order_panel=0x7f0b0077;
-        public static final int my_select_dialog_listview=0x7f0b00f2;
-        public static final int my_tv_coupon=0x7f0b0072;
-        public static final int my_tv_coupon_info=0x7f0b0075;
-        public static final int my_tv_coupon_num=0x7f0b0074;
-        public static final int my_tv_favourite=0x7f0b007a;
-        public static final int my_tv_favourite_info=0x7f0b007d;
-        public static final int my_tv_favourite_num=0x7f0b007c;
-        public static final int my_tv_order=0x7f0b0076;
-        public static final int my_tv_order_info=0x7f0b0079;
-        public static final int my_tv_order_num=0x7f0b0078;
-        public static final int my_tv_ucoin=0x7f0b0069;
-        public static final int my_tv_udot=0x7f0b006a;
-        public static final int my_tv_username=0x7f0b0067;
-        public static final int my_tv_vip=0x7f0b006e;
-        public static final int my_tv_vip_info=0x7f0b0071;
-        public static final int my_tv_vip_num=0x7f0b0070;
-        public static final int my_vip_panel=0x7f0b006f;
-        public static final int new_psd=0x7f0b0127;
-        public static final int ok=0x7f0b0120;
-        public static final int old_psd=0x7f0b0126;
-        public static final int parentPanel=0x7f0b00e0;
-        public static final int password=0x7f0b0122;
-        public static final int pay_alipay_panel=0x7f0b004f;
-        public static final int pay_alipay_panel_client=0x7f0b004b;
-        public static final int pay_btn_pay=0x7f0b0055;
-        public static final int pay_ib_select_alipay=0x7f0b0051;
-        public static final int pay_ib_select_alipay_client=0x7f0b004e;
-        public static final int pay_ib_select_ucoin=0x7f0b0054;
-        public static final int pay_ib_select_union=0x7f0b004a;
-        public static final int pay_ib_select_yi=0x7f0b0047;
-        public static final int pay_tv_alipay=0x7f0b0050;
-        public static final int pay_tv_alipay_client=0x7f0b004c;
-        public static final int pay_tv_alipay_client_check=0x7f0b004d;
-        public static final int pay_tv_amount=0x7f0b0043;
-        public static final int pay_tv_goodsname=0x7f0b0041;
-        public static final int pay_tv_money=0x7f0b0044;
-        public static final int pay_tv_price=0x7f0b0042;
-        public static final int pay_tv_shopname=0x7f0b0040;
-        public static final int pay_tv_ucoin=0x7f0b0053;
-        public static final int pay_tv_union=0x7f0b0049;
-        public static final int pay_tv_yi=0x7f0b0046;
-        public static final int pay_ucoin_panel=0x7f0b0052;
-        public static final int pay_union_panel=0x7f0b0048;
-        public static final int pay_yi_panel=0x7f0b0045;
-        public static final int pcenterPanel=0x7f0b00e1;
-        public static final int platform_btn1=0x7f0b0154;
-        public static final int platform_btn2=0x7f0b0155;
-        public static final int platform_btn3=0x7f0b0156;
-        public static final int platform_btn4=0x7f0b0157;
-        public static final int platform_btn5=0x7f0b0158;
-        public static final int progress_bar_parent=0x7f0b01a7;
-        public static final int psersonal_xiaofei=0x7f0b0063;
-        public static final int pull_to_refresh_image=0x7f0b01c0;
-        public static final int pull_to_refresh_progress=0x7f0b01bf;
-        public static final int pull_to_refresh_text=0x7f0b01c1;
-        public static final int pull_to_refresh_updated_at=0x7f0b01c2;
-        public static final int radio_action=0x7f0b0148;
-        public static final int radio_card=0x7f0b0149;
-        public static final int radio_store=0x7f0b0147;
-        public static final int ratingBar1=0x7f0b00f5;
-        public static final int register=0x7f0b0123;
-        public static final int register_pro=0x7f0b012c;
-        public static final int rel_mengdian=0x7f0b0035;
-        public static final int rel_shop_desc=0x7f0b0039;
-        public static final int rel_user_comment=0x7f0b0037;
-        public static final int rem_psd=0x7f0b0125;
-        public static final int rightSpacer=0x7f0b00f1;
-        public static final int rr=0x7f0b0131;
-        public static final int rr_slipBtn=0x7f0b0132;
-        public static final int screen_snapshot_imageview=0x7f0b014d;
-        public static final int scrollView=0x7f0b00e8;
-        public static final int scrshot_previewImg=0x7f0b014e;
-        public static final int search_btn=0x7f0b014b;
-        public static final int search_edit=0x7f0b00ba;
-        public static final int search_text=0x7f0b0176;
-        public static final int section=0x7f0b0172;
-        public static final int sendBtn=0x7f0b0159;
-        public static final int shell_foot_Layout=0x7f0b0144;
-        public static final int slideBar=0x7f0b0178;
-        public static final int store_info=0x7f0b00d6;
-        public static final int stroe_img=0x7f0b00d5;
-        public static final int stroe_name_lay=0x7f0b00d7;
-        public static final int submit=0x7f0b011e;
-        public static final int sv=0x7f0b0029;
-        public static final int tab_btn_layout=0x7f0b011a;
-        public static final int tab_home=0x7f0b0146;
-        public static final int title=0x7f0b0133;
-        public static final int titleDivider=0x7f0b00e6;
-        public static final int title_template=0x7f0b00e3;
-        public static final int toolbar_layout=0x7f0b014f;
-        public static final int topPanel=0x7f0b00e2;
-        public static final int top_layout=0x7f0b0064;
-        public static final int tv_act_rule=0x7f0b005f;
-        public static final int tv_apply=0x7f0b002b;
-        public static final int tv_balance_pre=0x7f0b000c;
-        public static final int tv_cardname=0x7f0b0114;
-        public static final int tv_chongzhi_desc=0x7f0b0032;
-        public static final int tv_content=0x7f0b00f8;
-        public static final int tv_date=0x7f0b002d;
-        public static final int tv_datelimit_pre=0x7f0b0010;
-        public static final int tv_desc=0x7f0b002c;
-        public static final int tv_eat_address=0x7f0b005e;
-        public static final int tv_eat_didian=0x7f0b005d;
-        public static final int tv_eat_num=0x7f0b005a;
-        public static final int tv_eat_standard=0x7f0b005b;
-        public static final int tv_eat_time=0x7f0b005c;
-        public static final int tv_end_time=0x7f0b0059;
-        public static final int tv_exchange_rule=0x7f0b001c;
-        public static final int tv_left=0x7f0b002f;
-        public static final int tv_member_fuli=0x7f0b0033;
-        public static final int tv_mendian_info=0x7f0b0036;
-        public static final int tv_name=0x7f0b00cd;
-        public static final int tv_need_money=0x7f0b001f;
-        public static final int tv_need_udot=0x7f0b001d;
-        public static final int tv_score_pre=0x7f0b000e;
-        public static final int tv_shenling=0x7f0b00ce;
-        public static final int tv_shop_desc=0x7f0b003b;
-        public static final int tv_shop_desc_dd=0x7f0b003a;
-        public static final int tv_start_time=0x7f0b0058;
-        public static final int tv_title=0x7f0b0007;
-        public static final int tv_total_dot=0x7f0b0019;
-        public static final int tv_use=0x7f0b00cf;
-        public static final int tv_use_desc=0x7f0b0034;
-        public static final int tv_user_comment=0x7f0b0038;
-        public static final int tv_username=0x7f0b00fa;
-        public static final int tv_welfare_pre=0x7f0b0012;
-        public static final int two_code=0x7f0b0143;
-        public static final int tx=0x7f0b012d;
-        public static final int tx_slipBtn=0x7f0b012e;
-        public static final int txt_content=0x7f0b0140;
-        public static final int umeng_socialize_action_comment_im=0x7f0b0163;
-        public static final int umeng_socialize_action_comment_tv=0x7f0b0164;
-        public static final int umeng_socialize_action_like_tv=0x7f0b0168;
-        public static final int umeng_socialize_action_pv_im=0x7f0b0170;
-        public static final int umeng_socialize_action_pv_tv=0x7f0b0171;
-        public static final int umeng_socialize_action_share_im=0x7f0b016b;
-        public static final int umeng_socialize_action_share_tv=0x7f0b016c;
-        public static final int umeng_socialize_action_user_center_im=0x7f0b016e;
-        public static final int umeng_socialize_action_user_center_tv=0x7f0b016f;
-        public static final int umeng_socialize_alert_body=0x7f0b017b;
-        public static final int umeng_socialize_alert_button=0x7f0b017d;
-        public static final int umeng_socialize_alert_footer=0x7f0b017c;
-        public static final int umeng_socialize_avatar_imv=0x7f0b0173;
-        public static final int umeng_socialize_bind_cancel=0x7f0b0184;
-        public static final int umeng_socialize_bind_douban=0x7f0b0182;
-        public static final int umeng_socialize_bind_no_tip=0x7f0b0183;
-        public static final int umeng_socialize_bind_qzone=0x7f0b017e;
-        public static final int umeng_socialize_bind_renren=0x7f0b0181;
-        public static final int umeng_socialize_bind_sina=0x7f0b0180;
-        public static final int umeng_socialize_bind_tel=0x7f0b017f;
-        public static final int umeng_socialize_comment_avatar=0x7f0b0187;
-        public static final int umeng_socialize_comment_bt=0x7f0b0162;
-        public static final int umeng_socialize_comment_item=0x7f0b0185;
-        public static final int umeng_socialize_comment_item_content=0x7f0b0189;
-        public static final int umeng_socialize_comment_item_has_location=0x7f0b018b;
-        public static final int umeng_socialize_comment_item_name=0x7f0b0188;
-        public static final int umeng_socialize_comment_item_profile_gp=0x7f0b0186;
-        public static final int umeng_socialize_comment_item_time=0x7f0b018a;
-        public static final int umeng_socialize_comment_list=0x7f0b0195;
-        public static final int umeng_socialize_comment_list_progress=0x7f0b0196;
-        public static final int umeng_socialize_comment_more_root=0x7f0b018f;
-        public static final int umeng_socialize_comment_write=0x7f0b0194;
-        public static final int umeng_socialize_content=0x7f0b0190;
-        public static final int umeng_socialize_divider=0x7f0b01dc;
-        public static final int umeng_socialize_first_area=0x7f0b019c;
-        public static final int umeng_socialize_first_area_title=0x7f0b019b;
-        public static final int umeng_socialize_follow=0x7f0b01a4;
-        public static final int umeng_socialize_follow_check=0x7f0b01a5;
-        public static final int umeng_socialize_follow_layout=0x7f0b01b7;
-        public static final int umeng_socialize_full_alert_dialog_divider=0x7f0b01a2;
-        public static final int umeng_socialize_full_alert_dialog_item_icon=0x7f0b019f;
-        public static final int umeng_socialize_full_alert_dialog_item_status=0x7f0b01a1;
-        public static final int umeng_socialize_full_alert_dialog_item_text=0x7f0b01a0;
-        public static final int umeng_socialize_funcation_area=0x7f0b0161;
-        public static final int umeng_socialize_ic=0x7f0b01d0;
-        public static final int umeng_socialize_icon=0x7f0b01d9;
-        public static final int umeng_socialize_info=0x7f0b018e;
-        public static final int umeng_socialize_like_bt=0x7f0b0165;
-        public static final int umeng_socialize_like_bt_progress=0x7f0b0169;
-        public static final int umeng_socialize_like_bt_show=0x7f0b0166;
-        public static final int umeng_socialize_like_icon=0x7f0b0167;
-        public static final int umeng_socialize_line_edit=0x7f0b0193;
-        public static final int umeng_socialize_line_serach=0x7f0b0175;
-        public static final int umeng_socialize_load_error=0x7f0b01ce;
-        public static final int umeng_socialize_location_ic=0x7f0b01ad;
-        public static final int umeng_socialize_location_progressbar=0x7f0b01ae;
-        public static final int umeng_socialize_loginAddr=0x7f0b01d5;
-        public static final int umeng_socialize_loginButton=0x7f0b01d4;
-        public static final int umeng_socialize_loginNm=0x7f0b01d2;
-        public static final int umeng_socialize_login_switch=0x7f0b01d3;
-        public static final int umeng_socialize_map=0x7f0b018c;
-        public static final int umeng_socialize_map_invisable=0x7f0b018d;
-        public static final int umeng_socialize_msg=0x7f0b01da;
-        public static final int umeng_socialize_pb=0x7f0b0192;
-        public static final int umeng_socialize_post_comment_bottom_area=0x7f0b01a9;
-        public static final int umeng_socialize_post_comment_edittext=0x7f0b01b0;
-        public static final int umeng_socialize_post_comment_fetch_img=0x7f0b01aa;
-        public static final int umeng_socialize_post_comment_location=0x7f0b01ab;
-        public static final int umeng_socialize_post_comment_previewImg=0x7f0b01ac;
-        public static final int umeng_socialize_post_comment_titlebar=0x7f0b01a8;
-        public static final int umeng_socialize_post_cws_ic=0x7f0b01b1;
-        public static final int umeng_socialize_post_cws_selected=0x7f0b01b2;
-        public static final int umeng_socialize_post_fetch_image=0x7f0b01b6;
-        public static final int umeng_socialize_post_ws_area=0x7f0b01af;
-        public static final int umeng_socialize_progress=0x7f0b0179;
-        public static final int umeng_socialize_second_area=0x7f0b019e;
-        public static final int umeng_socialize_second_area_title=0x7f0b019d;
-        public static final int umeng_socialize_share_area=0x7f0b01d6;
-        public static final int umeng_socialize_share_at=0x7f0b01b9;
-        public static final int umeng_socialize_share_bottom_area=0x7f0b01b5;
-        public static final int umeng_socialize_share_bt=0x7f0b016a;
-        public static final int umeng_socialize_share_config_area=0x7f0b01d8;
-        public static final int umeng_socialize_share_edittext=0x7f0b01bd;
-        public static final int umeng_socialize_share_location=0x7f0b01b8;
-        public static final int umeng_socialize_share_previewImg=0x7f0b01ba;
-        public static final int umeng_socialize_share_previewImg_progressbar=0x7f0b01bc;
-        public static final int umeng_socialize_share_previewImg_remove=0x7f0b01bb;
-        public static final int umeng_socialize_share_root=0x7f0b01b3;
-        public static final int umeng_socialize_share_titlebar=0x7f0b01b4;
-        public static final int umeng_socialize_share_tv=0x7f0b01d7;
-        public static final int umeng_socialize_share_word_num=0x7f0b01be;
-        public static final int umeng_socialize_shareboard_image=0x7f0b01c3;
-        public static final int umeng_socialize_shareboard_pltform_name=0x7f0b01c4;
-        public static final int umeng_socialize_spinner_img=0x7f0b01c5;
-        public static final int umeng_socialize_spinner_txt=0x7f0b01c6;
-        public static final int umeng_socialize_text=0x7f0b0191;
-        public static final int umeng_socialize_text_view=0x7f0b0174;
-        public static final int umeng_socialize_tipinfo=0x7f0b017a;
-        public static final int umeng_socialize_title=0x7f0b0199;
-        public static final int umeng_socialize_title_bar_leftBt=0x7f0b01c7;
-        public static final int umeng_socialize_title_bar_middleTv=0x7f0b01c8;
-        public static final int umeng_socialize_title_bar_middle_tab=0x7f0b01c9;
-        public static final int umeng_socialize_title_bar_rightBt=0x7f0b01cc;
-        public static final int umeng_socialize_title_bar_rightBt_progress=0x7f0b01cd;
-        public static final int umeng_socialize_title_middle_left=0x7f0b01ca;
-        public static final int umeng_socialize_title_middle_right=0x7f0b01cb;
-        public static final int umeng_socialize_title_tv=0x7f0b01d1;
-        public static final int umeng_socialize_titlebar=0x7f0b01a3;
-        public static final int umeng_socialize_toggle=0x7f0b01db;
-        public static final int umeng_socialize_ucenter_info=0x7f0b01cf;
-        public static final int umeng_socialize_user_center_bt=0x7f0b016d;
-        public static final int umeng_xp_ScrollView=0x7f0b019a;
-        public static final int user_name=0x7f0b009b;
-        public static final int vPager=0x7f0b014c;
-        public static final int webView=0x7f0b01a6;
-        public static final int xl=0x7f0b012f;
-        public static final int xl_slipBtn=0x7f0b0130;
-        public static final int youhuiquan_huiyuanka=0x7f0b0062;
+        public static final int account_lay=0x7f0a00c9;
+        public static final int account_text=0x7f0a00cc;
+        public static final int action_settings=0x7f0a0228;
+        public static final int afterDescendants=0x7f0a0028;
+        public static final int agin_psd=0x7f0a0165;
+        public static final int alertTitle=0x7f0a011d;
+        public static final int all=0x7f0a0026;
+        public static final int always=0x7f0a000e;
+        public static final int alwaysScroll=0x7f0a002c;
+        public static final int animation=0x7f0a0024;
+        public static final int anyRtl=0x7f0a001b;
+        public static final int apply_num=0x7f0a0104;
+        public static final int auto=0x7f0a000b;
+        public static final int back=0x7f0a0036;
+        public static final int beforeDescendants=0x7f0a0027;
+        public static final int blocksDescendants=0x7f0a0029;
+        public static final int branch_shop_lay=0x7f0a0086;
+        public static final int bt_apply=0x7f0a0103;
+        public static final int bt_chongzhi=0x7f0a0061;
+        public static final int bt_hotbuy=0x7f0a00ef;
+        public static final int bt_membercard=0x7f0a00ed;
+        public static final int bt_youhuiquan=0x7f0a00ee;
+        public static final int btn_cate=0x7f0a0185;
+        public static final int btn_exchange=0x7f0a004b;
+        public static final int btn_get_verifycode=0x7f0a0168;
+        public static final int btn_more=0x7f0a006f;
+        public static final int btn_pic=0x7f0a0159;
+        public static final int btn_pie=0x7f0a006c;
+        public static final int btn_recharge=0x7f0a004e;
+        public static final int btn_right=0x7f0a0048;
+        public static final int btn_tier=0x7f0a006d;
+        public static final int btn_wigame=0x7f0a006e;
+        public static final int bus_center_lay=0x7f0a00d1;
+        public static final int bus_consume_manger=0x7f0a00d6;
+        public static final int bus_consume_manger_img=0x7f0a00d7;
+        public static final int bus_data_recode=0x7f0a00d8;
+        public static final int bus_data_recode_img=0x7f0a00d9;
+        public static final int bus_recognition_card=0x7f0a00d4;
+        public static final int bus_recognition_card_img=0x7f0a00d5;
+        public static final int bus_send_card=0x7f0a00d2;
+        public static final int bus_send_card_img=0x7f0a00d3;
+        public static final int button1=0x7f0a0126;
+        public static final int button2=0x7f0a0128;
+        public static final int button3=0x7f0a0127;
+        public static final int buttonPanel=0x7f0a0124;
+        public static final int cancelBtn=0x7f0a0194;
+        public static final int card_btn_consume=0x7f0a0045;
+        public static final int card_btn_edit=0x7f0a0044;
+        public static final int card_btn_remove=0x7f0a0046;
+        public static final int card_btn_share=0x7f0a0047;
+        public static final int card_content_text=0x7f0a0111;
+        public static final int card_item_iv_icon=0x7f0a012f;
+        public static final int card_item_tv_coupon=0x7f0a0135;
+        public static final int card_item_tv_name=0x7f0a0130;
+        public static final int card_item_tv_type=0x7f0a0134;
+        public static final int card_iv_fav=0x7f0a003a;
+        public static final int card_iv_icon=0x7f0a003b;
+        public static final int card_iv_twodimensioncode=0x7f0a0039;
+        public static final int card_name_text=0x7f0a0110;
+        public static final int card_tv_balance=0x7f0a003d;
+        public static final int card_tv_score=0x7f0a003f;
+        public static final int card_tv_valid_date=0x7f0a0041;
+        public static final int card_tv_welfare=0x7f0a0043;
+        public static final int cart_btn_delete=0x7f0a00f6;
+        public static final int cart_btn_edit=0x7f0a00f4;
+        public static final int cart_btn_pay=0x7f0a00f7;
+        public static final int cart_btn_yes=0x7f0a00f3;
+        public static final int cart_tv_amount=0x7f0a00fa;
+        public static final int cart_tv_amount_pre=0x7f0a00fb;
+        public static final int cart_tv_goodsname=0x7f0a00f2;
+        public static final int cart_tv_money=0x7f0a00f8;
+        public static final int cart_tv_money_pre=0x7f0a00f9;
+        public static final int center=0x7f0a001f;
+        public static final int com_facebook_login_activity_progress_bar=0x7f0a01d9;
+        public static final int container=0x7f0a00e9;
+        public static final int container_left=0x7f0a0050;
+        public static final int container_right=0x7f0a0051;
+        public static final int contentBtnLayout=0x7f0a0193;
+        public static final int contentEdit=0x7f0a019b;
+        public static final int contentLayout=0x7f0a0192;
+        public static final int contentPanel=0x7f0a011f;
+        public static final int coupon_item_ib_delete=0x7f0a0138;
+        public static final int coupon_item_iv_icon=0x7f0a0139;
+        public static final int coupon_item_iv_present=0x7f0a013d;
+        public static final int coupon_item_tv_name=0x7f0a013a;
+        public static final int coupon_item_tv_price=0x7f0a013b;
+        public static final int coupon_item_tv_validdate=0x7f0a013c;
+        public static final int cursor=0x7f0a0100;
+        public static final int custom=0x7f0a0123;
+        public static final int customPanel=0x7f0a0122;
+        public static final int defaultPosition=0x7f0a0011;
+        public static final int disabled=0x7f0a002a;
+        public static final int et_content=0x7f0a0035;
+        public static final int et_ucoin_count=0x7f0a004a;
+        public static final int et_verifycode=0x7f0a0167;
+        public static final int favourite_item_ib_delete=0x7f0a013e;
+        public static final int favourite_item_iv_icon=0x7f0a013f;
+        public static final int favourite_item_tv_name=0x7f0a0140;
+        public static final int favourite_item_tv_number=0x7f0a0141;
+        public static final int favourite_item_tv_price=0x7f0a0142;
+        public static final int favourite_item_tv_validdate=0x7f0a0143;
+        public static final int feekback_edit=0x7f0a015a;
+        public static final int firstStrong=0x7f0a001a;
+        public static final int follow_active=0x7f0a0112;
+        public static final int follow_interest=0x7f0a0114;
+        public static final int follow_store=0x7f0a010c;
+        public static final int follow_union=0x7f0a0113;
+        public static final int footer_light=0x7f0a0158;
+        public static final int forget_psd=0x7f0a015e;
+        public static final int gallery_image=0x7f0a0144;
+        public static final int gallery_point_linear=0x7f0a0091;
+        public static final int gone=0x7f0a0003;
+        public static final int goods_item_ib_select=0x7f0a0145;
+        public static final int goods_item_ib_selected=0x7f0a0146;
+        public static final int goods_item_iv_icon=0x7f0a0147;
+        public static final int goods_item_tv_amount=0x7f0a014a;
+        public static final int goods_item_tv_name=0x7f0a0148;
+        public static final int goods_item_tv_price=0x7f0a0149;
+        public static final int gravity=0x7f0a001c;
+        public static final int grey_line=0x7f0a0227;
+        public static final int grey_line_a=0x7f0a00de;
+        public static final int grey_line_b=0x7f0a00e1;
+        public static final int grey_line_c=0x7f0a00e8;
+        public static final int half_textview=0x7f0a0191;
+        public static final int hardware=0x7f0a0015;
+        public static final int header=0x7f0a01d8;
+        public static final int high=0x7f0a000d;
+        public static final int horizontal=0x7f0a0005;
+        public static final int ib_right=0x7f0a0058;
+        public static final int ib_switch=0x7f0a0038;
+        public static final int icon=0x7f0a011c;
+        public static final int ifContentScrolls=0x7f0a000f;
+        public static final int image_wall_gallery=0x7f0a0090;
+        public static final int inherit=0x7f0a0018;
+        public static final int insideInset=0x7f0a0008;
+        public static final int insideOverlay=0x7f0a0007;
+        public static final int integral_text=0x7f0a00d0;
+        public static final int intergral_follow_img=0x7f0a00ce;
+        public static final int intergral_follow_text=0x7f0a00cf;
+        public static final int invisible=0x7f0a0002;
+        public static final int is_have_fad=0x7f0a0117;
+        public static final int is_rem=0x7f0a0116;
+        public static final int is_store=0x7f0a0115;
+        public static final int iv=0x7f0a0087;
+        public static final int iv_biaoshi=0x7f0a0060;
+        public static final int iv_first=0x7f0a019c;
+        public static final int iv_five=0x7f0a01a0;
+        public static final int iv_fourth=0x7f0a019f;
+        public static final int iv_gou=0x7f0a0152;
+        public static final int iv_guanggao=0x7f0a0102;
+        public static final int iv_icon=0x7f0a005a;
+        public static final int iv_icon_five=0x7f0a0034;
+        public static final int iv_icon_four=0x7f0a0033;
+        public static final int iv_icon_one=0x7f0a0030;
+        public static final int iv_icon_three=0x7f0a0032;
+        public static final int iv_icon_two=0x7f0a0031;
+        public static final int iv_image=0x7f0a0136;
+        public static final int iv_one=0x7f0a0108;
+        public static final int iv_online_chong=0x7f0a005e;
+        public static final int iv_online_pay=0x7f0a0132;
+        public static final int iv_qiang=0x7f0a0153;
+        public static final int iv_second=0x7f0a019d;
+        public static final int iv_six=0x7f0a01a1;
+        public static final int iv_star_five=0x7f0a014f;
+        public static final int iv_star_four=0x7f0a014e;
+        public static final int iv_star_one=0x7f0a014b;
+        public static final int iv_star_three=0x7f0a014d;
+        public static final int iv_star_two=0x7f0a014c;
+        public static final int iv_third=0x7f0a019e;
+        public static final int iv_three=0x7f0a010a;
+        public static final int iv_two=0x7f0a0109;
+        public static final int iv_xian=0x7f0a0154;
+        public static final int iv_yi_chong=0x7f0a0150;
+        public static final int iv_yi_pay=0x7f0a0133;
+        public static final int iv_zhe=0x7f0a0155;
+        public static final int lay=0x7f0a0166;
+        public static final int layout_title=0x7f0a0057;
+        public static final int left=0x7f0a0012;
+        public static final int leftSpacer=0x7f0a0125;
+        public static final int linear_act=0x7f0a00f0;
+        public static final int linear_all_area=0x7f0a0052;
+        public static final int linear_all_hot=0x7f0a0054;
+        public static final int linear_all_sort=0x7f0a0053;
+        public static final int linear_area=0x7f0a00eb;
+        public static final int linear_seller=0x7f0a00f1;
+        public static final int list=0x7f0a00f5;
+        public static final int listView=0x7f0a01b8;
+        public static final int listview=0x7f0a0055;
+        public static final int listview_all=0x7f0a0056;
+        public static final int loadingImageView=0x7f0a010b;
+        public static final int locale=0x7f0a0019;
+        public static final int login=0x7f0a0161;
+        public static final int login_id=0x7f0a015c;
+        public static final int login_logout_text=0x7f0a00b5;
+        public static final int low=0x7f0a000c;
+        public static final int ltr=0x7f0a0016;
+        public static final int main_title=0x7f0a0184;
+        public static final int message=0x7f0a0121;
+        public static final int modify_addr_panel=0x7f0a017a;
+        public static final int modify_addr_tv=0x7f0a017b;
+        public static final int modify_btn_save=0x7f0a0171;
+        public static final int modify_email_et=0x7f0a0179;
+        public static final int modify_email_panel=0x7f0a0178;
+        public static final int modify_icon_panel=0x7f0a0172;
+        public static final int modify_iv_icon=0x7f0a0173;
+        public static final int modify_nickname_et=0x7f0a0175;
+        public static final int modify_pass_panel=0x7f0a017c;
+        public static final int modify_phone_et=0x7f0a0177;
+        public static final int modify_phone_panel=0x7f0a0176;
+        public static final int modify_tv_userid=0x7f0a0174;
+        public static final int more=0x7f0a00ae;
+        public static final int more_about=0x7f0a00c0;
+        public static final int more_about_img=0x7f0a00c1;
+        public static final int more_account=0x7f0a00ca;
+        public static final int more_account_logout=0x7f0a00b4;
+        public static final int more_account_logout_img=0x7f0a00db;
+        public static final int more_app_recommend=0x7f0a00be;
+        public static final int more_app_recommend_img=0x7f0a00bf;
+        public static final int more_attention=0x7f0a00b8;
+        public static final int more_attention_img=0x7f0a00b9;
+        public static final int more_clearcache=0x7f0a00b3;
+        public static final int more_custom_service=0x7f0a00c6;
+        public static final int more_custom_service_phone=0x7f0a00c7;
+        public static final int more_feekback=0x7f0a00bc;
+        public static final int more_feekback_img=0x7f0a00bd;
+        public static final int more_follow_store=0x7f0a00e6;
+        public static final int more_follow_store_img=0x7f0a00e7;
+        public static final int more_help=0x7f0a00c4;
+        public static final int more_help_img=0x7f0a00c5;
+        public static final int more_integral=0x7f0a00cd;
+        public static final int more_message_center=0x7f0a00e2;
+        public static final int more_message_center_arrow=0x7f0a00e4;
+        public static final int more_message_center_img=0x7f0a00e3;
+        public static final int more_message_propelling=0x7f0a00b1;
+        public static final int more_message_propelling_img=0x7f0a00b2;
+        public static final int more_quit=0x7f0a00c8;
+        public static final int more_recommend_youlian=0x7f0a00ba;
+        public static final int more_recommend_youlian_img=0x7f0a00bb;
+        public static final int more_service=0x7f0a00c2;
+        public static final int more_service_img=0x7f0a00c3;
+        public static final int more_share_set=0x7f0a00af;
+        public static final int more_share_set_img=0x7f0a00b0;
+        public static final int more_updata=0x7f0a00b6;
+        public static final int more_updata_img=0x7f0a00b7;
+        public static final int more_updata_info=0x7f0a00dc;
+        public static final int more_updata_info_img=0x7f0a00dd;
+        public static final int more_updata_passowrd=0x7f0a00df;
+        public static final int more_updata_password_img=0x7f0a00e0;
+        public static final int msg_size=0x7f0a00e5;
+        public static final int msg_slipBtn=0x7f0a00da;
+        public static final int multipleChoice=0x7f0a002e;
+        public static final int multipleChoiceModal=0x7f0a002f;
+        public static final int myListView=0x7f0a0156;
+        public static final int my_Radiogroup=0x7f0a0187;
+        public static final int my_coupon_panel=0x7f0a00a3;
+        public static final int my_favourite_panel=0x7f0a00ab;
+        public static final int my_ib_exchange_score=0x7f0a009c;
+        public static final int my_ib_msg=0x7f0a0098;
+        public static final int my_ib_recharge=0x7f0a009d;
+        public static final int my_ib_setting=0x7f0a0095;
+        public static final int my_ib_sign=0x7f0a009b;
+        public static final int my_iv_icon=0x7f0a0096;
+        public static final int my_order_panel=0x7f0a00a7;
+        public static final int my_select_dialog_listview=0x7f0a012a;
+        public static final int my_tv_coupon=0x7f0a00a2;
+        public static final int my_tv_coupon_info=0x7f0a00a5;
+        public static final int my_tv_coupon_num=0x7f0a00a4;
+        public static final int my_tv_favourite=0x7f0a00aa;
+        public static final int my_tv_favourite_info=0x7f0a00ad;
+        public static final int my_tv_favourite_num=0x7f0a00ac;
+        public static final int my_tv_order=0x7f0a00a6;
+        public static final int my_tv_order_info=0x7f0a00a9;
+        public static final int my_tv_order_num=0x7f0a00a8;
+        public static final int my_tv_ucoin=0x7f0a0099;
+        public static final int my_tv_udot=0x7f0a009a;
+        public static final int my_tv_username=0x7f0a0097;
+        public static final int my_tv_vip=0x7f0a009e;
+        public static final int my_tv_vip_info=0x7f0a00a1;
+        public static final int my_tv_vip_num=0x7f0a00a0;
+        public static final int my_vip_panel=0x7f0a009f;
+        public static final int never=0x7f0a0010;
+        public static final int new_psd=0x7f0a0164;
+        public static final int no=0x7f0a0023;
+        public static final int none=0x7f0a0004;
+        public static final int normal=0x7f0a002b;
+        public static final int ok=0x7f0a015d;
+        public static final int old_psd=0x7f0a0163;
+        public static final int outsideInset=0x7f0a000a;
+        public static final int outsideOverlay=0x7f0a0009;
+        public static final int pager=0x7f0a0101;
+        public static final int parentPanel=0x7f0a0118;
+        public static final int password=0x7f0a015f;
+        public static final int pay_alipay_panel=0x7f0a007f;
+        public static final int pay_alipay_panel_client=0x7f0a007b;
+        public static final int pay_btn_pay=0x7f0a0085;
+        public static final int pay_ib_select_alipay=0x7f0a0081;
+        public static final int pay_ib_select_alipay_client=0x7f0a007e;
+        public static final int pay_ib_select_ucoin=0x7f0a0084;
+        public static final int pay_ib_select_union=0x7f0a007a;
+        public static final int pay_ib_select_yi=0x7f0a0077;
+        public static final int pay_tv_alipay=0x7f0a0080;
+        public static final int pay_tv_alipay_client=0x7f0a007c;
+        public static final int pay_tv_alipay_client_check=0x7f0a007d;
+        public static final int pay_tv_amount=0x7f0a0073;
+        public static final int pay_tv_goodsname=0x7f0a0071;
+        public static final int pay_tv_money=0x7f0a0074;
+        public static final int pay_tv_price=0x7f0a0072;
+        public static final int pay_tv_shopname=0x7f0a0070;
+        public static final int pay_tv_ucoin=0x7f0a0083;
+        public static final int pay_tv_union=0x7f0a0079;
+        public static final int pay_tv_yi=0x7f0a0076;
+        public static final int pay_ucoin_panel=0x7f0a0082;
+        public static final int pay_union_panel=0x7f0a0078;
+        public static final int pay_yi_panel=0x7f0a0075;
+        public static final int pcenterPanel=0x7f0a0119;
+        public static final int platform_btn1=0x7f0a0195;
+        public static final int platform_btn2=0x7f0a0196;
+        public static final int platform_btn3=0x7f0a0197;
+        public static final int platform_btn4=0x7f0a0198;
+        public static final int platform_btn5=0x7f0a0199;
+        public static final int progress_bar_parent=0x7f0a01e8;
+        public static final int psersonal_xiaofei=0x7f0a0093;
+        public static final int ptr_id_header=0x7f0a017e;
+        public static final int ptr_id_image=0x7f0a017f;
+        public static final int ptr_id_last_updated=0x7f0a0183;
+        public static final int ptr_id_spinner=0x7f0a0180;
+        public static final int ptr_id_text=0x7f0a0182;
+        public static final int ptr_id_textwrapper=0x7f0a0181;
+        public static final int pull_to_refresh_image=0x7f0a0201;
+        public static final int pull_to_refresh_progress=0x7f0a0200;
+        public static final int pull_to_refresh_text=0x7f0a0202;
+        public static final int pull_to_refresh_updated_at=0x7f0a0203;
+        public static final int radioGroup=0x7f0a00fd;
+        public static final int radio_action=0x7f0a018a;
+        public static final int radio_card=0x7f0a018b;
+        public static final int radio_sign=0x7f0a00ff;
+        public static final int radio_store=0x7f0a0189;
+        public static final int radio_subject=0x7f0a00fe;
+        public static final int ratingBar1=0x7f0a0131;
+        public static final int register=0x7f0a0160;
+        public static final int register_pro=0x7f0a0169;
+        public static final int rel_mengdian=0x7f0a0065;
+        public static final int rel_shop_desc=0x7f0a0069;
+        public static final int rel_user_comment=0x7f0a0067;
+        public static final int rem_psd=0x7f0a0162;
+        public static final int right=0x7f0a0013;
+        public static final int rightSpacer=0x7f0a0129;
+        public static final int rr=0x7f0a016e;
+        public static final int rr_slipBtn=0x7f0a016f;
+        public static final int rtl=0x7f0a0017;
+        public static final int scrapped_view=0x7f0a0000;
+        public static final int screen_snapshot_imageview=0x7f0a018e;
+        public static final int scrollView=0x7f0a0120;
+        public static final int scrolling=0x7f0a0025;
+        public static final int scrshot_previewImg=0x7f0a018f;
+        public static final int search_btn=0x7f0a018c;
+        public static final int search_edit=0x7f0a00ea;
+        public static final int search_text=0x7f0a01b7;
+        public static final int section=0x7f0a01b3;
+        public static final int sendBtn=0x7f0a019a;
+        public static final int shell_foot_Layout=0x7f0a00fc;
+        public static final int singleChoice=0x7f0a002d;
+        public static final int slideBar=0x7f0a01b9;
+        public static final int software=0x7f0a0014;
+        public static final int store_info=0x7f0a010e;
+        public static final int stroe_img=0x7f0a010d;
+        public static final int stroe_name_lay=0x7f0a010f;
+        public static final int submit=0x7f0a015b;
+        public static final int sv=0x7f0a0059;
+        public static final int tab_btn_layout=0x7f0a0157;
+        public static final int tab_home=0x7f0a0188;
+        public static final int textEnd=0x7f0a001e;
+        public static final int textStart=0x7f0a001d;
+        public static final int title=0x7f0a0170;
+        public static final int titleDivider=0x7f0a011e;
+        public static final int title_template=0x7f0a011b;
+        public static final int toolbar_layout=0x7f0a0190;
+        public static final int topPanel=0x7f0a011a;
+        public static final int top_layout=0x7f0a0094;
+        public static final int tv_act_rule=0x7f0a008f;
+        public static final int tv_apply=0x7f0a005b;
+        public static final int tv_area=0x7f0a00ec;
+        public static final int tv_balance_pre=0x7f0a003c;
+        public static final int tv_cardname=0x7f0a0151;
+        public static final int tv_chongzhi_desc=0x7f0a0062;
+        public static final int tv_content=0x7f0a012b;
+        public static final int tv_date=0x7f0a005d;
+        public static final int tv_datelimit_pre=0x7f0a0040;
+        public static final int tv_desc=0x7f0a005c;
+        public static final int tv_distance=0x7f0a012e;
+        public static final int tv_eat_address=0x7f0a008e;
+        public static final int tv_eat_didian=0x7f0a008d;
+        public static final int tv_eat_num=0x7f0a008a;
+        public static final int tv_eat_standard=0x7f0a008b;
+        public static final int tv_eat_time=0x7f0a008c;
+        public static final int tv_end_time=0x7f0a0089;
+        public static final int tv_exchange_rule=0x7f0a004c;
+        public static final int tv_left=0x7f0a005f;
+        public static final int tv_member_fuli=0x7f0a0063;
+        public static final int tv_mendian_info=0x7f0a0066;
+        public static final int tv_name=0x7f0a0105;
+        public static final int tv_need_money=0x7f0a004f;
+        public static final int tv_need_udot=0x7f0a004d;
+        public static final int tv_score_pre=0x7f0a003e;
+        public static final int tv_shenling=0x7f0a0106;
+        public static final int tv_shop_desc=0x7f0a006b;
+        public static final int tv_shop_desc_dd=0x7f0a006a;
+        public static final int tv_shop_name=0x7f0a012c;
+        public static final int tv_start_time=0x7f0a0088;
+        public static final int tv_title=0x7f0a0037;
+        public static final int tv_total_dot=0x7f0a0049;
+        public static final int tv_use=0x7f0a0107;
+        public static final int tv_use_desc=0x7f0a0064;
+        public static final int tv_user_comment=0x7f0a0068;
+        public static final int tv_username=0x7f0a0137;
+        public static final int tv_valid_date=0x7f0a012d;
+        public static final int tv_welfare_pre=0x7f0a0042;
+        public static final int two_code=0x7f0a0186;
+        public static final int tx=0x7f0a016a;
+        public static final int tx_slipBtn=0x7f0a016b;
+        public static final int txt_content=0x7f0a017d;
+        public static final int umeng_socialize_action_comment_im=0x7f0a01a4;
+        public static final int umeng_socialize_action_comment_tv=0x7f0a01a5;
+        public static final int umeng_socialize_action_like_tv=0x7f0a01a9;
+        public static final int umeng_socialize_action_pv_im=0x7f0a01b1;
+        public static final int umeng_socialize_action_pv_tv=0x7f0a01b2;
+        public static final int umeng_socialize_action_share_im=0x7f0a01ac;
+        public static final int umeng_socialize_action_share_tv=0x7f0a01ad;
+        public static final int umeng_socialize_action_user_center_im=0x7f0a01af;
+        public static final int umeng_socialize_action_user_center_tv=0x7f0a01b0;
+        public static final int umeng_socialize_alert_body=0x7f0a01bc;
+        public static final int umeng_socialize_alert_button=0x7f0a01be;
+        public static final int umeng_socialize_alert_footer=0x7f0a01bd;
+        public static final int umeng_socialize_avatar_imv=0x7f0a01b4;
+        public static final int umeng_socialize_bind_cancel=0x7f0a01c5;
+        public static final int umeng_socialize_bind_douban=0x7f0a01c3;
+        public static final int umeng_socialize_bind_no_tip=0x7f0a01c4;
+        public static final int umeng_socialize_bind_qzone=0x7f0a01bf;
+        public static final int umeng_socialize_bind_renren=0x7f0a01c2;
+        public static final int umeng_socialize_bind_sina=0x7f0a01c1;
+        public static final int umeng_socialize_bind_tel=0x7f0a01c0;
+        public static final int umeng_socialize_comment_avatar=0x7f0a01c8;
+        public static final int umeng_socialize_comment_bt=0x7f0a01a3;
+        public static final int umeng_socialize_comment_item=0x7f0a01c6;
+        public static final int umeng_socialize_comment_item_content=0x7f0a01ca;
+        public static final int umeng_socialize_comment_item_has_location=0x7f0a01cc;
+        public static final int umeng_socialize_comment_item_name=0x7f0a01c9;
+        public static final int umeng_socialize_comment_item_profile_gp=0x7f0a01c7;
+        public static final int umeng_socialize_comment_item_time=0x7f0a01cb;
+        public static final int umeng_socialize_comment_list=0x7f0a01d6;
+        public static final int umeng_socialize_comment_list_progress=0x7f0a01d7;
+        public static final int umeng_socialize_comment_more_root=0x7f0a01d0;
+        public static final int umeng_socialize_comment_write=0x7f0a01d5;
+        public static final int umeng_socialize_content=0x7f0a01d1;
+        public static final int umeng_socialize_divider=0x7f0a021d;
+        public static final int umeng_socialize_first_area=0x7f0a01dd;
+        public static final int umeng_socialize_first_area_title=0x7f0a01dc;
+        public static final int umeng_socialize_follow=0x7f0a01e5;
+        public static final int umeng_socialize_follow_check=0x7f0a01e6;
+        public static final int umeng_socialize_follow_layout=0x7f0a01f8;
+        public static final int umeng_socialize_full_alert_dialog_divider=0x7f0a01e3;
+        public static final int umeng_socialize_full_alert_dialog_item_icon=0x7f0a01e0;
+        public static final int umeng_socialize_full_alert_dialog_item_status=0x7f0a01e2;
+        public static final int umeng_socialize_full_alert_dialog_item_text=0x7f0a01e1;
+        public static final int umeng_socialize_funcation_area=0x7f0a01a2;
+        public static final int umeng_socialize_ic=0x7f0a0211;
+        public static final int umeng_socialize_icon=0x7f0a021a;
+        public static final int umeng_socialize_info=0x7f0a01cf;
+        public static final int umeng_socialize_like_bt=0x7f0a01a6;
+        public static final int umeng_socialize_like_bt_progress=0x7f0a01aa;
+        public static final int umeng_socialize_like_bt_show=0x7f0a01a7;
+        public static final int umeng_socialize_like_icon=0x7f0a01a8;
+        public static final int umeng_socialize_line_edit=0x7f0a01d4;
+        public static final int umeng_socialize_line_serach=0x7f0a01b6;
+        public static final int umeng_socialize_load_error=0x7f0a020f;
+        public static final int umeng_socialize_location_ic=0x7f0a01ee;
+        public static final int umeng_socialize_location_progressbar=0x7f0a01ef;
+        public static final int umeng_socialize_loginAddr=0x7f0a0216;
+        public static final int umeng_socialize_loginButton=0x7f0a0215;
+        public static final int umeng_socialize_loginNm=0x7f0a0213;
+        public static final int umeng_socialize_login_switch=0x7f0a0214;
+        public static final int umeng_socialize_map=0x7f0a01cd;
+        public static final int umeng_socialize_map_invisable=0x7f0a01ce;
+        public static final int umeng_socialize_msg=0x7f0a021b;
+        public static final int umeng_socialize_pb=0x7f0a01d3;
+        public static final int umeng_socialize_post_comment_bottom_area=0x7f0a01ea;
+        public static final int umeng_socialize_post_comment_edittext=0x7f0a01f1;
+        public static final int umeng_socialize_post_comment_fetch_img=0x7f0a01eb;
+        public static final int umeng_socialize_post_comment_location=0x7f0a01ec;
+        public static final int umeng_socialize_post_comment_previewImg=0x7f0a01ed;
+        public static final int umeng_socialize_post_comment_titlebar=0x7f0a01e9;
+        public static final int umeng_socialize_post_cws_ic=0x7f0a01f2;
+        public static final int umeng_socialize_post_cws_selected=0x7f0a01f3;
+        public static final int umeng_socialize_post_fetch_image=0x7f0a01f7;
+        public static final int umeng_socialize_post_ws_area=0x7f0a01f0;
+        public static final int umeng_socialize_progress=0x7f0a01ba;
+        public static final int umeng_socialize_second_area=0x7f0a01df;
+        public static final int umeng_socialize_second_area_title=0x7f0a01de;
+        public static final int umeng_socialize_share_area=0x7f0a0217;
+        public static final int umeng_socialize_share_at=0x7f0a01fa;
+        public static final int umeng_socialize_share_bottom_area=0x7f0a01f6;
+        public static final int umeng_socialize_share_bt=0x7f0a01ab;
+        public static final int umeng_socialize_share_config_area=0x7f0a0219;
+        public static final int umeng_socialize_share_edittext=0x7f0a01fe;
+        public static final int umeng_socialize_share_location=0x7f0a01f9;
+        public static final int umeng_socialize_share_previewImg=0x7f0a01fb;
+        public static final int umeng_socialize_share_previewImg_progressbar=0x7f0a01fd;
+        public static final int umeng_socialize_share_previewImg_remove=0x7f0a01fc;
+        public static final int umeng_socialize_share_root=0x7f0a01f4;
+        public static final int umeng_socialize_share_titlebar=0x7f0a01f5;
+        public static final int umeng_socialize_share_tv=0x7f0a0218;
+        public static final int umeng_socialize_share_word_num=0x7f0a01ff;
+        public static final int umeng_socialize_shareboard_image=0x7f0a0204;
+        public static final int umeng_socialize_shareboard_pltform_name=0x7f0a0205;
+        public static final int umeng_socialize_spinner_img=0x7f0a0206;
+        public static final int umeng_socialize_spinner_txt=0x7f0a0207;
+        public static final int umeng_socialize_text=0x7f0a01d2;
+        public static final int umeng_socialize_text_view=0x7f0a01b5;
+        public static final int umeng_socialize_tipinfo=0x7f0a01bb;
+        public static final int umeng_socialize_title=0x7f0a01da;
+        public static final int umeng_socialize_title_bar_leftBt=0x7f0a0208;
+        public static final int umeng_socialize_title_bar_middleTv=0x7f0a0209;
+        public static final int umeng_socialize_title_bar_middle_tab=0x7f0a020a;
+        public static final int umeng_socialize_title_bar_rightBt=0x7f0a020d;
+        public static final int umeng_socialize_title_bar_rightBt_progress=0x7f0a020e;
+        public static final int umeng_socialize_title_middle_left=0x7f0a020b;
+        public static final int umeng_socialize_title_middle_right=0x7f0a020c;
+        public static final int umeng_socialize_title_tv=0x7f0a0212;
+        public static final int umeng_socialize_titlebar=0x7f0a01e4;
+        public static final int umeng_socialize_toggle=0x7f0a021c;
+        public static final int umeng_socialize_ucenter_info=0x7f0a0210;
+        public static final int umeng_socialize_user_center_bt=0x7f0a01ae;
+        public static final int umeng_xp_ScrollView=0x7f0a01db;
+        public static final int user_name=0x7f0a00cb;
+        public static final int vPager=0x7f0a018d;
+        public static final int vertical=0x7f0a0006;
+        public static final int viewEnd=0x7f0a0021;
+        public static final int viewStart=0x7f0a0020;
+        public static final int visible=0x7f0a0001;
+        public static final int webView=0x7f0a01e7;
+        public static final int xl=0x7f0a016c;
+        public static final int xl_slipBtn=0x7f0a016d;
+        public static final int xlistview_footer_content=0x7f0a021e;
+        public static final int xlistview_footer_hint_textview=0x7f0a0220;
+        public static final int xlistview_footer_progressbar=0x7f0a021f;
+        public static final int xlistview_header_arrow=0x7f0a0225;
+        public static final int xlistview_header_content=0x7f0a0221;
+        public static final int xlistview_header_hint_textview=0x7f0a0223;
+        public static final int xlistview_header_progressbar=0x7f0a0226;
+        public static final int xlistview_header_text=0x7f0a0222;
+        public static final int xlistview_header_time=0x7f0a0224;
+        public static final int yes=0x7f0a0022;
+        public static final int youhuiquan_huiyuanka=0x7f0a0092;
     }
     public static final class layout {
         public static final int activity_add_comment=0x7f030000;
@@ -1096,81 +2526,87 @@ public final class R {
         public static final int activity_youhuiquan=0x7f030017;
         public static final int activity_youhuiquan_detail=0x7f030018;
         public static final int customprogressdialog=0x7f030019;
-        public static final int home_listview_item=0x7f03001a;
-        public static final int huz_alert_dialog=0x7f03001b;
-        public static final int huz_select_dialog=0x7f03001c;
-        public static final int huz_select_dialog_item=0x7f03001d;
-        public static final int huz_select_dialog_multichoice=0x7f03001e;
-        public static final int huz_select_dialog_singlechoice=0x7f03001f;
-        public static final int item_act_left=0x7f030020;
-        public static final int item_act_right=0x7f030021;
-        public static final int item_all=0x7f030022;
-        public static final int item_area_list=0x7f030023;
-        public static final int item_card_list=0x7f030024;
-        public static final int item_comment=0x7f030025;
-        public static final int item_coupon_list=0x7f030026;
-        public static final int item_favourite_list=0x7f030027;
-        public static final int item_gallery=0x7f030028;
-        public static final int item_goods_list=0x7f030029;
-        public static final int item_membership=0x7f03002a;
-        public static final int item_shangjia=0x7f03002b;
-        public static final int item_youhuiquan=0x7f03002c;
-        public static final int listview=0x7f03002d;
-        public static final int merge_line_grey_horizontal=0x7f03002e;
-        public static final int merge_line_grey_vertical=0x7f03002f;
-        public static final int merge_select_opts=0x7f030030;
-        public static final int merge_select_tabs=0x7f030031;
-        public static final int merge_title_layout=0x7f030032;
-        public static final int more_feekback=0x7f030033;
-        public static final int more_find_psd=0x7f030034;
-        public static final int more_login=0x7f030035;
-        public static final int more_modify_psd=0x7f030036;
-        public static final int more_register=0x7f030037;
-        public static final int more_share_set=0x7f030038;
-        public static final int more_user_info=0x7f030039;
-        public static final int more_webview=0x7f03003a;
-        public static final int search=0x7f03003b;
-        public static final int shake_umeng_socialize_scrshot_snapshot=0x7f03003c;
-        public static final int shake_umeng_socialize_share_dlg=0x7f03003d;
-        public static final int templatefive=0x7f03003e;
-        public static final int templatefour=0x7f03003f;
-        public static final int templateone=0x7f030040;
-        public static final int templatesix=0x7f030041;
-        public static final int templatethree=0x7f030042;
-        public static final int templatetwo=0x7f030043;
-        public static final int umeng_socialize_actionbar=0x7f030044;
-        public static final int umeng_socialize_at_item=0x7f030045;
-        public static final int umeng_socialize_at_overlay=0x7f030046;
-        public static final int umeng_socialize_at_view=0x7f030047;
-        public static final int umeng_socialize_base_alert_dialog=0x7f030048;
-        public static final int umeng_socialize_base_alert_dialog_button=0x7f030049;
-        public static final int umeng_socialize_bind_select_dialog=0x7f03004a;
-        public static final int umeng_socialize_comment_content=0x7f03004b;
-        public static final int umeng_socialize_comment_detail=0x7f03004c;
-        public static final int umeng_socialize_comment_detail_nomap=0x7f03004d;
-        public static final int umeng_socialize_comment_item=0x7f03004e;
-        public static final int umeng_socialize_comment_more=0x7f03004f;
-        public static final int umeng_socialize_comment_view=0x7f030050;
-        public static final int umeng_socialize_composer_header=0x7f030051;
-        public static final int umeng_socialize_facebook_login_activity_layout=0x7f030052;
-        public static final int umeng_socialize_failed_load_page=0x7f030053;
-        public static final int umeng_socialize_full_alert_dialog=0x7f030054;
-        public static final int umeng_socialize_full_alert_dialog_item=0x7f030055;
-        public static final int umeng_socialize_full_curtain=0x7f030056;
-        public static final int umeng_socialize_oauth_dialog=0x7f030057;
-        public static final int umeng_socialize_post_comment=0x7f030058;
-        public static final int umeng_socialize_post_comment_platform=0x7f030059;
-        public static final int umeng_socialize_post_share=0x7f03005a;
-        public static final int umeng_socialize_pull_to_refresh_header=0x7f03005b;
-        public static final int umeng_socialize_shareboard_item=0x7f03005c;
-        public static final int umeng_socialize_simple_spinner_item=0x7f03005d;
-        public static final int umeng_socialize_titile_bar=0x7f03005e;
-        public static final int umeng_socialize_titile_bar_comment=0x7f03005f;
-        public static final int umeng_socialize_ucenter=0x7f030060;
-        public static final int umeng_socialize_ucenter_platform_item=0x7f030061;
+        public static final int fragment_activity=0x7f03001a;
+        public static final int home_listview_item=0x7f03001b;
+        public static final int huz_alert_dialog=0x7f03001c;
+        public static final int huz_select_dialog=0x7f03001d;
+        public static final int huz_select_dialog_item=0x7f03001e;
+        public static final int huz_select_dialog_multichoice=0x7f03001f;
+        public static final int huz_select_dialog_singlechoice=0x7f030020;
+        public static final int item_act_left=0x7f030021;
+        public static final int item_act_right=0x7f030022;
+        public static final int item_activity_all=0x7f030023;
+        public static final int item_activity_sign=0x7f030024;
+        public static final int item_all=0x7f030025;
+        public static final int item_area_list=0x7f030026;
+        public static final int item_card_list=0x7f030027;
+        public static final int item_comment=0x7f030028;
+        public static final int item_coupon_list=0x7f030029;
+        public static final int item_favourite_list=0x7f03002a;
+        public static final int item_gallery=0x7f03002b;
+        public static final int item_goods_list=0x7f03002c;
+        public static final int item_membership=0x7f03002d;
+        public static final int item_shangjia=0x7f03002e;
+        public static final int item_youhuiquan=0x7f03002f;
+        public static final int listview=0x7f030030;
+        public static final int merge_line_grey_horizontal=0x7f030031;
+        public static final int merge_line_grey_vertical=0x7f030032;
+        public static final int merge_select_opts=0x7f030033;
+        public static final int merge_select_tabs=0x7f030034;
+        public static final int merge_title_layout=0x7f030035;
+        public static final int more_feekback=0x7f030036;
+        public static final int more_find_psd=0x7f030037;
+        public static final int more_login=0x7f030038;
+        public static final int more_modify_psd=0x7f030039;
+        public static final int more_register=0x7f03003a;
+        public static final int more_share_set=0x7f03003b;
+        public static final int more_user_info=0x7f03003c;
+        public static final int more_webview=0x7f03003d;
+        public static final int ptr_header=0x7f03003e;
+        public static final int search=0x7f03003f;
+        public static final int shake_umeng_socialize_scrshot_snapshot=0x7f030040;
+        public static final int shake_umeng_socialize_share_dlg=0x7f030041;
+        public static final int templatefive=0x7f030042;
+        public static final int templatefour=0x7f030043;
+        public static final int templateone=0x7f030044;
+        public static final int templatesix=0x7f030045;
+        public static final int templatethree=0x7f030046;
+        public static final int templatetwo=0x7f030047;
+        public static final int umeng_socialize_actionbar=0x7f030048;
+        public static final int umeng_socialize_at_item=0x7f030049;
+        public static final int umeng_socialize_at_overlay=0x7f03004a;
+        public static final int umeng_socialize_at_view=0x7f03004b;
+        public static final int umeng_socialize_base_alert_dialog=0x7f03004c;
+        public static final int umeng_socialize_base_alert_dialog_button=0x7f03004d;
+        public static final int umeng_socialize_bind_select_dialog=0x7f03004e;
+        public static final int umeng_socialize_comment_content=0x7f03004f;
+        public static final int umeng_socialize_comment_detail=0x7f030050;
+        public static final int umeng_socialize_comment_detail_nomap=0x7f030051;
+        public static final int umeng_socialize_comment_item=0x7f030052;
+        public static final int umeng_socialize_comment_more=0x7f030053;
+        public static final int umeng_socialize_comment_view=0x7f030054;
+        public static final int umeng_socialize_composer_header=0x7f030055;
+        public static final int umeng_socialize_facebook_login_activity_layout=0x7f030056;
+        public static final int umeng_socialize_failed_load_page=0x7f030057;
+        public static final int umeng_socialize_full_alert_dialog=0x7f030058;
+        public static final int umeng_socialize_full_alert_dialog_item=0x7f030059;
+        public static final int umeng_socialize_full_curtain=0x7f03005a;
+        public static final int umeng_socialize_oauth_dialog=0x7f03005b;
+        public static final int umeng_socialize_post_comment=0x7f03005c;
+        public static final int umeng_socialize_post_comment_platform=0x7f03005d;
+        public static final int umeng_socialize_post_share=0x7f03005e;
+        public static final int umeng_socialize_pull_to_refresh_header=0x7f03005f;
+        public static final int umeng_socialize_shareboard_item=0x7f030060;
+        public static final int umeng_socialize_simple_spinner_item=0x7f030061;
+        public static final int umeng_socialize_titile_bar=0x7f030062;
+        public static final int umeng_socialize_titile_bar_comment=0x7f030063;
+        public static final int umeng_socialize_ucenter=0x7f030064;
+        public static final int umeng_socialize_ucenter_platform_item=0x7f030065;
+        public static final int xlistview_footer=0x7f030066;
+        public static final int xlistview_header=0x7f030067;
     }
     public static final class menu {
-        public static final int main=0x7f0a0000;
+        public static final int main=0x7f0b0000;
     }
     public static final class raw {
         public static final int shake_sound=0x7f050000;
@@ -1300,6 +2736,12 @@ public final class R {
         public static final int umeng_socialize_ucenter_login_title_platform=0x7f08002c;
         public static final int unknown_error=0x7f08005d;
         public static final int user_feedback=0x7f08006d;
+        public static final int xlistview_footer_hint_normal=0x7f08007f;
+        public static final int xlistview_footer_hint_ready=0x7f080080;
+        public static final int xlistview_header_hint_loading=0x7f08007d;
+        public static final int xlistview_header_hint_normal=0x7f08007b;
+        public static final int xlistview_header_hint_ready=0x7f08007c;
+        public static final int xlistview_header_last_time=0x7f08007e;
         public static final int youhuiquan=0x7f080063;
     }
     public static final class style {
@@ -1326,18 +2768,18 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060013;
+        public static final int AppBaseTheme=0x7f06001a;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060014;
-        public static final int CustomDialog=0x7f060016;
+        public static final int AppTheme=0x7f06001b;
+        public static final int CustomDialog=0x7f06001d;
         /**  进度条 
          */
-        public static final int CustomProgressDialog=0x7f060015;
-        public static final int DialogWindowTitle=0x7f060018;
+        public static final int CustomProgressDialog=0x7f06001c;
+        public static final int DialogWindowTitle=0x7f06001f;
         public static final int Dialog_Fullscreen=0x7f060004;
-        public static final int My_Theme_Dialog_Alert=0x7f060017;
+        public static final int My_Theme_Dialog_Alert=0x7f06001e;
         public static final int Notitle_Fullscreen=0x7f060005;
         public static final int Theme_UMDefault=0x7f06000f;
         public static final int Theme_UMDialog=0x7f06000e;
@@ -1345,8 +2787,15 @@ public final class R {
          */
         public static final int lan_DialogWindowAnim=0x7f060001;
         public static final int notitleDialog=0x7f060003;
-        public static final int radioButton=0x7f06001a;
-        public static final int ratingBar=0x7f060019;
+        public static final int ptr_arrow=0x7f060015;
+        public static final int ptr_header=0x7f060014;
+        public static final int ptr_headerContainer=0x7f060013;
+        public static final int ptr_last_updated=0x7f060019;
+        public static final int ptr_spinner=0x7f060016;
+        public static final int ptr_text=0x7f060018;
+        public static final int ptr_textwrapper=0x7f060017;
+        public static final int radioButton=0x7f060021;
+        public static final int ratingBar=0x7f060020;
         /**  摇一摇相关style 
          */
         public static final int scrshot_dlg_style=0x7f060000;
@@ -1363,4 +2812,2405 @@ public final class R {
         public static final int umeng_socialize_popup_dialog_anim=0x7f060009;
         public static final int umeng_socialize_shareboard_animation=0x7f06000d;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a AbsListView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #AbsListView_cacheColorHint com.example.youlian:cacheColorHint}</code></td><td>
+             Indicates that this list will always be drawn on top of solid, single-color
+             opaque background.</td></tr>
+           <tr><td><code>{@link #AbsListView_choiceMode com.example.youlian:choiceMode}</code></td><td>
+             Defines the choice behavior for the view.</td></tr>
+           <tr><td><code>{@link #AbsListView_drawSelectorOnTop com.example.youlian:drawSelectorOnTop}</code></td><td>
+             When set to true, the selector will be drawn over the selected item.</td></tr>
+           <tr><td><code>{@link #AbsListView_fastScrollAlwaysVisible com.example.youlian:fastScrollAlwaysVisible}</code></td><td>
+             When set to true, the list will always show the fast scroll interface.</td></tr>
+           <tr><td><code>{@link #AbsListView_fastScrollEnabled com.example.youlian:fastScrollEnabled}</code></td><td>
+             Enables the fast scroll thumb that can be dragged to quickly scroll through
+             the list.</td></tr>
+           <tr><td><code>{@link #AbsListView_listSelector com.example.youlian:listSelector}</code></td><td> Drawable used to indicate the currently selected item in the list.</td></tr>
+           <tr><td><code>{@link #AbsListView_scrollingCache com.example.youlian:scrollingCache}</code></td><td>
+             When set to true, the list uses a drawing cache during scrolling.</td></tr>
+           <tr><td><code>{@link #AbsListView_smoothScrollbar com.example.youlian:smoothScrollbar}</code></td><td>
+             When set to true, the list will use a more refined calculation
+             method based on the pixels height of the items visible on screen.</td></tr>
+           <tr><td><code>{@link #AbsListView_stackFromBottom com.example.youlian:stackFromBottom}</code></td><td> Used by ListView and GridView to stack their content from the bottom.</td></tr>
+           <tr><td><code>{@link #AbsListView_textFilterEnabled com.example.youlian:textFilterEnabled}</code></td><td>
+             When set to true, the list will filter results as the user types.</td></tr>
+           <tr><td><code>{@link #AbsListView_transcriptMode com.example.youlian:transcriptMode}</code></td><td>
+             Sets the transcript mode for the list.</td></tr>
+           </table>
+           @see #AbsListView_cacheColorHint
+           @see #AbsListView_choiceMode
+           @see #AbsListView_drawSelectorOnTop
+           @see #AbsListView_fastScrollAlwaysVisible
+           @see #AbsListView_fastScrollEnabled
+           @see #AbsListView_listSelector
+           @see #AbsListView_scrollingCache
+           @see #AbsListView_smoothScrollbar
+           @see #AbsListView_stackFromBottom
+           @see #AbsListView_textFilterEnabled
+           @see #AbsListView_transcriptMode
+         */
+        public static final int[] AbsListView = {
+            0x7f010053, 0x7f010054, 0x7f010055, 0x7f010056,
+            0x7f010057, 0x7f010058, 0x7f010059, 0x7f01005a,
+            0x7f01005b, 0x7f01005c, 0x7f01005d
+        };
+        /**
+          <p>
+          @attr description
+          
+             Indicates that this list will always be drawn on top of solid, single-color
+             opaque background. This allows the list to optimize drawing.
+        
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:cacheColorHint
+        */
+        public static final int AbsListView_cacheColorHint = 6;
+        /**
+          <p>
+          @attr description
+          
+             Defines the choice behavior for the view. By default, lists do not have
+             any choice behavior. By setting the choiceMode to singleChoice, the list
+             allows up to one item to be in a chosen state. By setting the choiceMode to
+             multipleChoice, the list allows any number of items to be chosen.
+             Finally, by setting the choiceMode to multipleChoiceModal the list allows
+             any number of items to be chosen in a special selection mode.
+             The application will supply a
+             {@link android.widget.AbsListView.MultiChoiceModeListener} using
+             {@link android.widget.AbsListView#setMultiChoiceModeListener} to control the
+             selection mode. This uses the {@link android.view.ActionMode} API.
+        
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0</td><td> Normal list that does not indicate choices. </td></tr>
+<tr><td><code>singleChoice</code></td><td>1</td><td> The list allows up to one choice. </td></tr>
+<tr><td><code>multipleChoice</code></td><td>2</td><td> The list allows multiple choices. </td></tr>
+<tr><td><code>multipleChoiceModal</code></td><td>3</td><td> The list allows multiple choices in a custom selection mode. </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:choiceMode
+        */
+        public static final int AbsListView_choiceMode = 9;
+        /**
+          <p>
+          @attr description
+          
+             When set to true, the selector will be drawn over the selected item.
+             Otherwise the selector is drawn behind the selected item. The default
+             value is false.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:drawSelectorOnTop
+        */
+        public static final int AbsListView_drawSelectorOnTop = 1;
+        /**
+          <p>
+          @attr description
+          
+             When set to true, the list will always show the fast scroll interface.
+             This setting implies fastScrollEnabled.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:fastScrollAlwaysVisible
+        */
+        public static final int AbsListView_fastScrollAlwaysVisible = 10;
+        /**
+          <p>
+          @attr description
+          
+             Enables the fast scroll thumb that can be dragged to quickly scroll through
+             the list.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:fastScrollEnabled
+        */
+        public static final int AbsListView_fastScrollEnabled = 7;
+        /**
+          <p>
+          @attr description
+           Drawable used to indicate the currently selected item in the list. 
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          <p>This is a private symbol.
+          @attr name android:listSelector
+        */
+        public static final int AbsListView_listSelector = 0;
+        /**
+          <p>
+          @attr description
+          
+             When set to true, the list uses a drawing cache during scrolling.
+             This makes the rendering faster but uses more memory. The default
+             value is true.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:scrollingCache
+        */
+        public static final int AbsListView_scrollingCache = 3;
+        /**
+          <p>
+          @attr description
+          
+             When set to true, the list will use a more refined calculation
+             method based on the pixels height of the items visible on screen. This
+             property is set to true by default but should be set to false if your adapter
+             will display items of varying heights. When this property is set to true and
+             your adapter displays items of varying heights, the scrollbar thumb will
+             change size as the user scrolls through the list. When set to fale, the list
+             will use only the number of items in the adapter and the number of items visible
+             on screen to determine the scrollbar's properties.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:smoothScrollbar
+        */
+        public static final int AbsListView_smoothScrollbar = 8;
+        /**
+          <p>
+          @attr description
+           Used by ListView and GridView to stack their content from the bottom. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:stackFromBottom
+        */
+        public static final int AbsListView_stackFromBottom = 2;
+        /**
+          <p>
+          @attr description
+          
+             When set to true, the list will filter results as the user types. The
+             List's adapter must support the Filterable interface for this to work.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:textFilterEnabled
+        */
+        public static final int AbsListView_textFilterEnabled = 4;
+        /**
+          <p>
+          @attr description
+          
+             Sets the transcript mode for the list. In transcript mode, the list
+             scrolls to the bottom to make new items visible when they are added.
+        
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>disabled</code></td><td>0</td><td> Disables transcript mode. This is the default value. </td></tr>
+<tr><td><code>normal</code></td><td>1</td><td>
+                 The list will automatically scroll to the bottom when
+                 a data set change notification is received and only if the last item is
+                 already visible on screen.
+            </td></tr>
+<tr><td><code>alwaysScroll</code></td><td>2</td><td>
+                 The list will automatically scroll to the bottom, no matter what items
+                 are currently visible.
+            </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:transcriptMode
+        */
+        public static final int AbsListView_transcriptMode = 5;
+        /** Attributes that can be used with a ListView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ListView_dividerHeight com.example.youlian:dividerHeight}</code></td><td> Drawable or color to draw between list items.</td></tr>
+           <tr><td><code>{@link #ListView_footerDividersEnabled com.example.youlian:footerDividersEnabled}</code></td><td>
+             When set to false, the ListView will not draw the divider before each footer view.</td></tr>
+           <tr><td><code>{@link #ListView_headerDividersEnabled com.example.youlian:headerDividersEnabled}</code></td><td>
+             When set to false, the ListView will not draw the divider after each header view.</td></tr>
+           <tr><td><code>{@link #ListView_overScrollFooter com.example.youlian:overScrollFooter}</code></td><td> Drawable to draw below list content.</td></tr>
+           <tr><td><code>{@link #ListView_overScrollHeader com.example.youlian:overScrollHeader}</code></td><td> Drawable to draw above list content.</td></tr>
+           </table>
+           @see #ListView_dividerHeight
+           @see #ListView_footerDividersEnabled
+           @see #ListView_headerDividersEnabled
+           @see #ListView_overScrollFooter
+           @see #ListView_overScrollHeader
+         */
+        public static final int[] ListView = {
+            0x7f01005e, 0x7f01005f, 0x7f010060, 0x7f010061,
+            0x7f010062
+        };
+        /**
+          <p>
+          @attr description
+           Drawable or color to draw between list items. 
+ <attr name="divider" format="reference|color" /> 
+
+             Height of the divider. Will use the intrinsic height of the divider if this
+             is not specified.
+        
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:dividerHeight
+        */
+        public static final int ListView_dividerHeight = 0;
+        /**
+          <p>
+          @attr description
+          
+             When set to false, the ListView will not draw the divider before each footer view.
+             The default value is true.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:footerDividersEnabled
+        */
+        public static final int ListView_footerDividersEnabled = 2;
+        /**
+          <p>
+          @attr description
+          
+             When set to false, the ListView will not draw the divider after each header view.
+             The default value is true.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:headerDividersEnabled
+        */
+        public static final int ListView_headerDividersEnabled = 1;
+        /**
+          <p>
+          @attr description
+           Drawable to draw below list content. 
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          <p>This is a private symbol.
+          @attr name android:overScrollFooter
+        */
+        public static final int ListView_overScrollFooter = 4;
+        /**
+          <p>
+          @attr description
+           Drawable to draw above list content. 
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          <p>This is a private symbol.
+          @attr name android:overScrollHeader
+        */
+        public static final int ListView_overScrollHeader = 3;
+        /** Attributes that can be used with a PinterestLikeAdapterView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #PinterestLikeAdapterView_plaColumnNumber com.example.youlian:plaColumnNumber}</code></td><td></td></tr>
+           <tr><td><code>{@link #PinterestLikeAdapterView_plaColumnPaddingLeft com.example.youlian:plaColumnPaddingLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #PinterestLikeAdapterView_plaColumnPaddingRight com.example.youlian:plaColumnPaddingRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #PinterestLikeAdapterView_plaLandscapeColumnNumber com.example.youlian:plaLandscapeColumnNumber}</code></td><td></td></tr>
+           </table>
+           @see #PinterestLikeAdapterView_plaColumnNumber
+           @see #PinterestLikeAdapterView_plaColumnPaddingLeft
+           @see #PinterestLikeAdapterView_plaColumnPaddingRight
+           @see #PinterestLikeAdapterView_plaLandscapeColumnNumber
+         */
+        public static final int[] PinterestLikeAdapterView = {
+            0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.example.youlian.R.attr#plaColumnNumber}
+          attribute's value can be found in the {@link #PinterestLikeAdapterView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:plaColumnNumber
+        */
+        public static final int PinterestLikeAdapterView_plaColumnNumber = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.example.youlian.R.attr#plaColumnPaddingLeft}
+          attribute's value can be found in the {@link #PinterestLikeAdapterView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:plaColumnPaddingLeft
+        */
+        public static final int PinterestLikeAdapterView_plaColumnPaddingLeft = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.example.youlian.R.attr#plaColumnPaddingRight}
+          attribute's value can be found in the {@link #PinterestLikeAdapterView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:plaColumnPaddingRight
+        */
+        public static final int PinterestLikeAdapterView_plaColumnPaddingRight = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.example.youlian.R.attr#plaLandscapeColumnNumber}
+          attribute's value can be found in the {@link #PinterestLikeAdapterView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:plaLandscapeColumnNumber
+        */
+        public static final int PinterestLikeAdapterView_plaLandscapeColumnNumber = 1;
+        /** Attributes that can be used with a View.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #View_accessibilityFocusable com.example.youlian:accessibilityFocusable}</code></td><td> @hide Controls whether this view can take accessibility focus.</td></tr>
+           <tr><td><code>{@link #View_alpha com.example.youlian:alpha}</code></td><td>
+             alpha property of the view, as a value between 0 (completely transparent) and 1
+             (completely opaque).</td></tr>
+           <tr><td><code>{@link #View_clickable com.example.youlian:clickable}</code></td><td> Defines whether this view reacts to click events.</td></tr>
+           <tr><td><code>{@link #View_contentDescription com.example.youlian:contentDescription}</code></td><td>
+             Defines text that briefly describes content of the view.</td></tr>
+           <tr><td><code>{@link #View_drawingCacheQuality com.example.youlian:drawingCacheQuality}</code></td><td>
+             Defines the quality of translucent drawing caches.</td></tr>
+           <tr><td><code>{@link #View_duplicateParentState com.example.youlian:duplicateParentState}</code></td><td>
+             When this attribute is set to true, the view gets its drawable state
+             (focused, pressed, etc.</td></tr>
+           <tr><td><code>{@link #View_fadeScrollbars com.example.youlian:fadeScrollbars}</code></td><td> Defines whether to fade out scrollbars when they are not in use.</td></tr>
+           <tr><td><code>{@link #View_fadingEdge com.example.youlian:fadingEdge}</code></td><td>
+             This attribute is deprecated and will be ignored as of
+             API level 14 ({@link android.os.Build.VERSION_CODES#ICE_CREAM_SANDWICH}).</td></tr>
+           <tr><td><code>{@link #View_fadingEdgeLength com.example.youlian:fadingEdgeLength}</code></td><td> Defines the length of the fading edges.</td></tr>
+           <tr><td><code>{@link #View_filterTouchesWhenObscured com.example.youlian:filterTouchesWhenObscured}</code></td><td>
+             Specifies whether to filter touches when the view's window is obscured by
+             another visible window.</td></tr>
+           <tr><td><code>{@link #View_fitsSystemWindows com.example.youlian:fitsSystemWindows}</code></td><td>
+             Boolean internal attribute to adjust view layout based on
+             system windows such as the status bar.</td></tr>
+           <tr><td><code>{@link #View_focusable com.example.youlian:focusable}</code></td><td>
+             Boolean that controls whether a view can take focus.</td></tr>
+           <tr><td><code>{@link #View_focusableInTouchMode com.example.youlian:focusableInTouchMode}</code></td><td>
+             Boolean that controls whether a view can take focus while in touch mode.</td></tr>
+           <tr><td><code>{@link #View_hapticFeedbackEnabled com.example.youlian:hapticFeedbackEnabled}</code></td><td>
+             Boolean that controls whether a view should have haptic feedback
+             enabled for events such as long presses.</td></tr>
+           <tr><td><code>{@link #View_id com.example.youlian:id}</code></td><td>
+             Supply an identifier name for this view, to later retrieve it
+             with {@link android.view.View#findViewById View.findViewById()} or
+             {@link android.app.Activity#findViewById Activity.findViewById()}.</td></tr>
+           <tr><td><code>{@link #View_importantForAccessibility com.example.youlian:importantForAccessibility}</code></td><td>
+             Controls how this View is important for accessibility which is if it fires
+             accessibility events and if it is reported to accessibility services that
+             query the screen.</td></tr>
+           <tr><td><code>{@link #View_isScrollContainer com.example.youlian:isScrollContainer}</code></td><td>
+             Set this if the view will serve as a scrolling container, meaing
+             that it can be resized to shrink its overall window so that there
+             will be space for an input method.</td></tr>
+           <tr><td><code>{@link #View_keepScreenOn com.example.youlian:keepScreenOn}</code></td><td>
+             Controls whether the view's window should keep the screen on
+             while visible.</td></tr>
+           <tr><td><code>{@link #View_layerType com.example.youlian:layerType}</code></td><td>
+             Specifies the type of layer backing this view.</td></tr>
+           <tr><td><code>{@link #View_layoutDirection com.example.youlian:layoutDirection}</code></td><td>
+             Defines the direction of layout drawing.</td></tr>
+           <tr><td><code>{@link #View_longClickable com.example.youlian:longClickable}</code></td><td> Defines whether this view reacts to long click events.</td></tr>
+           <tr><td><code>{@link #View_minHeight com.example.youlian:minHeight}</code></td><td>
+             Defines the minimum height of the view.</td></tr>
+           <tr><td><code>{@link #View_minWidth com.example.youlian:minWidth}</code></td><td>
+             Defines the minimum width of the view.</td></tr>
+           <tr><td><code>{@link #View_nextFocusDown com.example.youlian:nextFocusDown}</code></td><td>
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_DOWN}
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.</td></tr>
+           <tr><td><code>{@link #View_nextFocusForward com.example.youlian:nextFocusForward}</code></td><td>
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_FORWARD}
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.</td></tr>
+           <tr><td><code>{@link #View_nextFocusLeft com.example.youlian:nextFocusLeft}</code></td><td>
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_LEFT}.</td></tr>
+           <tr><td><code>{@link #View_nextFocusRight com.example.youlian:nextFocusRight}</code></td><td>
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_RIGHT}
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.</td></tr>
+           <tr><td><code>{@link #View_nextFocusUp com.example.youlian:nextFocusUp}</code></td><td>
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_UP}
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.</td></tr>
+           <tr><td><code>{@link #View_onClick com.example.youlian:onClick}</code></td><td>
+             Name of the method in this View's context to invoke when the view is
+             clicked.</td></tr>
+           <tr><td><code>{@link #View_overScrollMode com.example.youlian:overScrollMode}</code></td><td>
+             Defines over-scrolling behavior.</td></tr>
+           <tr><td><code>{@link #View_padding com.example.youlian:padding}</code></td><td>
+             A drawable to use as the background.</td></tr>
+           <tr><td><code>{@link #View_paddingBottom com.example.youlian:paddingBottom}</code></td><td> Sets the padding, in pixels, of the bottom edge; see {@link android.R.attr#padding}.</td></tr>
+           <tr><td><code>{@link #View_paddingEnd com.example.youlian:paddingEnd}</code></td><td> Sets the padding, in pixels, of the end edge; see {@link android.R.attr#padding}.</td></tr>
+           <tr><td><code>{@link #View_paddingLeft com.example.youlian:paddingLeft}</code></td><td> Sets the padding, in pixels, of the left edge; see {@link android.R.attr#padding}.</td></tr>
+           <tr><td><code>{@link #View_paddingRight com.example.youlian:paddingRight}</code></td><td> Sets the padding, in pixels, of the right edge; see {@link android.R.attr#padding}.</td></tr>
+           <tr><td><code>{@link #View_paddingStart com.example.youlian:paddingStart}</code></td><td> Sets the padding, in pixels, of the start edge; see {@link android.R.attr#padding}.</td></tr>
+           <tr><td><code>{@link #View_paddingTop com.example.youlian:paddingTop}</code></td><td> Sets the padding, in pixels, of the top edge; see {@link android.R.attr#padding}.</td></tr>
+           <tr><td><code>{@link #View_requiresFadingEdge com.example.youlian:requiresFadingEdge}</code></td><td> Defines which edges should be faded on scrolling.</td></tr>
+           <tr><td><code>{@link #View_rotation com.example.youlian:rotation}</code></td><td> rotation of the view, in degrees.</td></tr>
+           <tr><td><code>{@link #View_rotationX com.example.youlian:rotationX}</code></td><td> rotation of the view around the x axis, in degrees.</td></tr>
+           <tr><td><code>{@link #View_rotationY com.example.youlian:rotationY}</code></td><td> rotation of the view around the y axis, in degrees.</td></tr>
+           <tr><td><code>{@link #View_saveEnabled com.example.youlian:saveEnabled}</code></td><td>
+             If unset, no state will be saved for this view when it is being
+             frozen.</td></tr>
+           <tr><td><code>{@link #View_scaleX com.example.youlian:scaleX}</code></td><td> scale of the view in the x direction.</td></tr>
+           <tr><td><code>{@link #View_scaleY com.example.youlian:scaleY}</code></td><td> scale of the view in the y direction.</td></tr>
+           <tr><td><code>{@link #View_scrollX com.example.youlian:scrollX}</code></td><td> The initial horizontal scroll offset, in pixels.</td></tr>
+           <tr><td><code>{@link #View_scrollY com.example.youlian:scrollY}</code></td><td> The initial vertical scroll offset, in pixels.</td></tr>
+           <tr><td><code>{@link #View_scrollbarAlwaysDrawHorizontalTrack com.example.youlian:scrollbarAlwaysDrawHorizontalTrack}</code></td><td> Defines whether the horizontal scrollbar track should always be drawn.</td></tr>
+           <tr><td><code>{@link #View_scrollbarAlwaysDrawVerticalTrack com.example.youlian:scrollbarAlwaysDrawVerticalTrack}</code></td><td> Defines whether the vertical scrollbar track should always be drawn.</td></tr>
+           <tr><td><code>{@link #View_scrollbarDefaultDelayBeforeFade com.example.youlian:scrollbarDefaultDelayBeforeFade}</code></td><td> Defines the delay in milliseconds that a scrollbar waits before fade out.</td></tr>
+           <tr><td><code>{@link #View_scrollbarFadeDuration com.example.youlian:scrollbarFadeDuration}</code></td><td> Defines the delay in milliseconds that a scrollbar takes to fade out.</td></tr>
+           <tr><td><code>{@link #View_scrollbarSize com.example.youlian:scrollbarSize}</code></td><td> Sets the width of vertical scrollbars and height of horizontal scrollbars.</td></tr>
+           <tr><td><code>{@link #View_scrollbarStyle com.example.youlian:scrollbarStyle}</code></td><td>
+             Controls the scrollbar style and position.</td></tr>
+           <tr><td><code>{@link #View_scrollbarThumbHorizontal com.example.youlian:scrollbarThumbHorizontal}</code></td><td> Defines the horizontal scrollbar thumb drawable.</td></tr>
+           <tr><td><code>{@link #View_scrollbarThumbVertical com.example.youlian:scrollbarThumbVertical}</code></td><td> Defines the vertical scrollbar thumb drawable.</td></tr>
+           <tr><td><code>{@link #View_scrollbarTrackHorizontal com.example.youlian:scrollbarTrackHorizontal}</code></td><td> Defines the horizontal scrollbar track drawable.</td></tr>
+           <tr><td><code>{@link #View_scrollbarTrackVertical com.example.youlian:scrollbarTrackVertical}</code></td><td> Defines the vertical scrollbar track drawable.</td></tr>
+           <tr><td><code>{@link #View_scrollbars com.example.youlian:scrollbars}</code></td><td> Defines which scrollbars should be displayed on scrolling or not.</td></tr>
+           <tr><td><code>{@link #View_soundEffectsEnabled com.example.youlian:soundEffectsEnabled}</code></td><td>
+             Boolean that controls whether a view should have sound effects
+             enabled for events such as clicking and touching.</td></tr>
+           <tr><td><code>{@link #View_tag com.example.youlian:tag}</code></td><td>
+             Supply a tag for this view containing a String, to be retrieved
+             later with {@link android.view.View#getTag View.getTag()} or
+             searched for with {@link android.view.View#findViewWithTag
+             View.findViewWithTag()}.</td></tr>
+           <tr><td><code>{@link #View_textAlignment com.example.youlian:textAlignment}</code></td><td>
+             Alignment of the text.</td></tr>
+           <tr><td><code>{@link #View_textDirection com.example.youlian:textDirection}</code></td><td>
+             Direction of the text.</td></tr>
+           <tr><td><code>{@link #View_transformPivotX com.example.youlian:transformPivotX}</code></td><td>
+             x location of the pivot point around which the view will rotate and scale.</td></tr>
+           <tr><td><code>{@link #View_transformPivotY com.example.youlian:transformPivotY}</code></td><td>
+             y location of the pivot point around which the view will rotate and scale.</td></tr>
+           <tr><td><code>{@link #View_translationX com.example.youlian:translationX}</code></td><td>
+             translation in x of the view.</td></tr>
+           <tr><td><code>{@link #View_translationY com.example.youlian:translationY}</code></td><td>
+             translation in y of the view.</td></tr>
+           <tr><td><code>{@link #View_verticalScrollbarPosition com.example.youlian:verticalScrollbarPosition}</code></td><td> Determines which side the vertical scroll bar should be placed on.</td></tr>
+           <tr><td><code>{@link #View_visibility com.example.youlian:visibility}</code></td><td> Controls the initial visibility of the view.</td></tr>
+           </table>
+           @see #View_accessibilityFocusable
+           @see #View_alpha
+           @see #View_clickable
+           @see #View_contentDescription
+           @see #View_drawingCacheQuality
+           @see #View_duplicateParentState
+           @see #View_fadeScrollbars
+           @see #View_fadingEdge
+           @see #View_fadingEdgeLength
+           @see #View_filterTouchesWhenObscured
+           @see #View_fitsSystemWindows
+           @see #View_focusable
+           @see #View_focusableInTouchMode
+           @see #View_hapticFeedbackEnabled
+           @see #View_id
+           @see #View_importantForAccessibility
+           @see #View_isScrollContainer
+           @see #View_keepScreenOn
+           @see #View_layerType
+           @see #View_layoutDirection
+           @see #View_longClickable
+           @see #View_minHeight
+           @see #View_minWidth
+           @see #View_nextFocusDown
+           @see #View_nextFocusForward
+           @see #View_nextFocusLeft
+           @see #View_nextFocusRight
+           @see #View_nextFocusUp
+           @see #View_onClick
+           @see #View_overScrollMode
+           @see #View_padding
+           @see #View_paddingBottom
+           @see #View_paddingEnd
+           @see #View_paddingLeft
+           @see #View_paddingRight
+           @see #View_paddingStart
+           @see #View_paddingTop
+           @see #View_requiresFadingEdge
+           @see #View_rotation
+           @see #View_rotationX
+           @see #View_rotationY
+           @see #View_saveEnabled
+           @see #View_scaleX
+           @see #View_scaleY
+           @see #View_scrollX
+           @see #View_scrollY
+           @see #View_scrollbarAlwaysDrawHorizontalTrack
+           @see #View_scrollbarAlwaysDrawVerticalTrack
+           @see #View_scrollbarDefaultDelayBeforeFade
+           @see #View_scrollbarFadeDuration
+           @see #View_scrollbarSize
+           @see #View_scrollbarStyle
+           @see #View_scrollbarThumbHorizontal
+           @see #View_scrollbarThumbVertical
+           @see #View_scrollbarTrackHorizontal
+           @see #View_scrollbarTrackVertical
+           @see #View_scrollbars
+           @see #View_soundEffectsEnabled
+           @see #View_tag
+           @see #View_textAlignment
+           @see #View_textDirection
+           @see #View_transformPivotX
+           @see #View_transformPivotY
+           @see #View_translationX
+           @see #View_translationY
+           @see #View_verticalScrollbarPosition
+           @see #View_visibility
+         */
+        public static final int[] View = {
+            0x7f010006, 0x7f010007, 0x7f010008, 0x7f010009,
+            0x7f01000a, 0x7f01000b, 0x7f01000c, 0x7f01000d,
+            0x7f01000e, 0x7f01000f, 0x7f010010, 0x7f010011,
+            0x7f010012, 0x7f010013, 0x7f010014, 0x7f010015,
+            0x7f010016, 0x7f010017, 0x7f010018, 0x7f010019,
+            0x7f01001a, 0x7f01001b, 0x7f01001c, 0x7f01001d,
+            0x7f01001e, 0x7f01001f, 0x7f010020, 0x7f010021,
+            0x7f010022, 0x7f010023, 0x7f010024, 0x7f010025,
+            0x7f010026, 0x7f010027, 0x7f010028, 0x7f010029,
+            0x7f01002a, 0x7f01002b, 0x7f01002c, 0x7f01002d,
+            0x7f01002e, 0x7f01002f, 0x7f010030, 0x7f010031,
+            0x7f010032, 0x7f010033, 0x7f010034, 0x7f010035,
+            0x7f010036, 0x7f010037, 0x7f010038, 0x7f010039,
+            0x7f01003a, 0x7f01003b, 0x7f01003c, 0x7f01003d,
+            0x7f01003e, 0x7f01003f, 0x7f010040, 0x7f010041,
+            0x7f010042, 0x7f010043, 0x7f010044, 0x7f010045,
+            0x7f010046, 0x7f010047, 0x7f010048
+        };
+        /**
+          <p>
+          @attr description
+           @hide Controls whether this view can take accessibility focus. 
+
+
+          <p>May be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+<p>May be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>auto</code></td><td>0</td><td>
+                 The system determines whether the view can take accessibility focus - default
+                 (recommended).
+                 <p>
+                 Such a view is consideted by the focus search if it is:
+                 <ul>
+                 <li>
+                 Important for accessibility and actionable (clickable, long clickable, focusable)
+                 </li>
+                 <li>
+                 Important for accessibility, not actionable (clickable, long clickable, focusable),
+                 and does not have an actionable predecessor.
+                 </li>
+                 </ul>
+                 An accessibility srvice can request putting accessibility focus on such a view.
+                 </p>
+            </td></tr>
+<tr><td><code>yes</code></td><td>1</td><td>
+                 The view can take accessibility focus.
+                 <p>
+                 A view that can take accessibility focus is always considered during focus
+                 search and an accessibility service can request putting accessibility focus
+                 on it.
+                 </p>
+            </td></tr>
+<tr><td><code>no</code></td><td>2</td><td>
+                 The view can not take accessibility focus.
+                 <p>
+                 A view that can not take accessibility focus is never considered during focus
+                 search and an accessibility service can not request putting accessibility focus
+                 on it.
+                 </p>
+            </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:accessibilityFocusable
+        */
+        public static final int View_accessibilityFocusable = 66;
+        /**
+          <p>
+          @attr description
+          
+             alpha property of the view, as a value between 0 (completely transparent) and 1
+             (completely opaque).
+        
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:alpha
+        */
+        public static final int View_alpha = 50;
+        /**
+          <p>
+          @attr description
+           Defines whether this view reacts to click events. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:clickable
+        */
+        public static final int View_clickable = 36;
+        /**
+          <p>
+          @attr description
+          
+             Defines text that briefly describes content of the view. This property is used
+             primarily for accessibility. Since some views do not have textual
+             representation this attribute can be used for providing such.
+        
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:contentDescription
+        */
+        public static final int View_contentDescription = 47;
+        /**
+          <p>
+          @attr description
+          
+             Defines the quality of translucent drawing caches. This property is used
+             only when the drawing cache is enabled and translucent. The default value is auto.
+        
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>auto</code></td><td>0</td><td>
+                 Lets the framework decide what quality level should be used
+                 for the drawing cache.
+            </td></tr>
+<tr><td><code>low</code></td><td>1</td><td>
+                 Low quality. When set to low quality, the drawing cache uses a lower color
+                 depth, thus losing precision in rendering gradients, but uses less memory.
+            </td></tr>
+<tr><td><code>high</code></td><td>2</td><td>
+                 High quality. When set to high quality, the drawing cache uses a higher
+                 color depth but uses more memory.
+            </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:drawingCacheQuality
+        */
+        public static final int View_drawingCacheQuality = 40;
+        /**
+          <p>
+          @attr description
+          
+             When this attribute is set to true, the view gets its drawable state
+             (focused, pressed, etc.) from its direct parent rather than from itself.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:duplicateParentState
+        */
+        public static final int View_duplicateParentState = 42;
+        /**
+          <p>
+          @attr description
+           Defines whether to fade out scrollbars when they are not in use. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:fadeScrollbars
+        */
+        public static final int View_fadeScrollbars = 18;
+        /**
+          <p>
+          @attr description
+          
+             This attribute is deprecated and will be ignored as of
+             API level 14 ({@link android.os.Build.VERSION_CODES#ICE_CREAM_SANDWICH}).
+             Using fading edges may introduce noticeable performance
+             degradations and should be used only when required by the application's
+             visual design. To request fading edges with API level 14 and above,
+             use the <code>android:requiresFadingEdge</code> attribute instead.
+        
+
+
+          <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0x00000000</td><td> No edge is faded. </td></tr>
+<tr><td><code>horizontal</code></td><td>0x00001000</td><td> Fades horizontal edges only. </td></tr>
+<tr><td><code>vertical</code></td><td>0x00002000</td><td> Fades vertical edges only. </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:fadingEdge
+        */
+        public static final int View_fadingEdge = 28;
+        /**
+          <p>
+          @attr description
+           Defines the length of the fading edges. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:fadingEdgeLength
+        */
+        public static final int View_fadingEdgeLength = 30;
+        /**
+          <p>
+          @attr description
+          
+             Specifies whether to filter touches when the view's window is obscured by
+             another visible window.  When set to true, the view will not receive touches
+             whenever a toast, dialog or other window appears above the view's window.
+             Refer to the {@link android.view.View} security documentation for more details.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:filterTouchesWhenObscured
+        */
+        public static final int View_filterTouchesWhenObscured = 39;
+        /**
+          <p>
+          @attr description
+          
+             Boolean internal attribute to adjust view layout based on
+             system windows such as the status bar.
+             If true, adjusts the padding of this view to leave space for the system windows.
+             Will only take effect if this view is in a non-embedded activity.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:fitsSystemWindows
+        */
+        public static final int View_fitsSystemWindows = 14;
+        /**
+          <p>
+          @attr description
+          
+             Boolean that controls whether a view can take focus.  By default the user can not
+             move focus to a view; by setting this attribute to true the view is
+             allowed to take focus.  This value does not impact the behavior of
+             directly calling {@link android.view.View#requestFocus}, which will
+             always request focus regardless of this view.  It only impacts where
+             focus navigation will try to move focus.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:focusable
+        */
+        public static final int View_focusable = 11;
+        /**
+          <p>
+          @attr description
+          
+             Boolean that controls whether a view can take focus while in touch mode.
+             If this is true for a view, that view can gain focus when clicked on, and can keep
+             focus if another view is clicked on that doesn't have this attribute set to true.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:focusableInTouchMode
+        */
+        public static final int View_focusableInTouchMode = 12;
+        /**
+          <p>
+          @attr description
+          
+             Boolean that controls whether a view should have haptic feedback
+             enabled for events such as long presses.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:hapticFeedbackEnabled
+        */
+        public static final int View_hapticFeedbackEnabled = 46;
+        /**
+          <p>
+          @attr description
+          
+             Supply an identifier name for this view, to later retrieve it
+             with {@link android.view.View#findViewById View.findViewById()} or
+             {@link android.app.Activity#findViewById Activity.findViewById()}.
+             This must be a
+             resource reference; typically you set this using the
+             <code>@+</code> syntax to create a new ID resources.
+             For example: <code>android:id="@+id/my_id"</code> which
+             allows you to later retrieve the view
+             with <code>findViewById(R.id.my_id)</code>.
+        
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name android:id
+        */
+        public static final int View_id = 0;
+        /**
+          <p>
+          @attr description
+          
+             Controls how this View is important for accessibility which is if it fires
+             accessibility events and if it is reported to accessibility services that
+             query the screen. Note: While not recommended, an accessibility service may
+             decide to ignore this attribute and operate on all views in the view tree.
+        
+
+
+          <p>May be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+<p>May be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>auto</code></td><td>0</td><td>
+                 The system determines whether the view is important for accessibility - default
+                 (recommended).
+            </td></tr>
+<tr><td><code>yes</code></td><td>1</td><td> The view is important for accessibility. </td></tr>
+<tr><td><code>no</code></td><td>2</td><td> The view is not important for accessibility. </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:importantForAccessibility
+        */
+        public static final int View_importantForAccessibility = 65;
+        /**
+          <p>
+          @attr description
+          
+             Set this if the view will serve as a scrolling container, meaing
+             that it can be resized to shrink its overall window so that there
+             will be space for an input method.  If not set, the default
+             value will be true if "scrollbars" has the vertical scrollbar
+             set, else it will be false.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:isScrollContainer
+        */
+        public static final int View_isScrollContainer = 17;
+        /**
+          <p>
+          @attr description
+          
+             Controls whether the view's window should keep the screen on
+             while visible.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:keepScreenOn
+        */
+        public static final int View_keepScreenOn = 41;
+        /**
+          <p>
+          @attr description
+          
+             Specifies the type of layer backing this view. The default value is none.
+             Refer to {@link android.view.View#setLayerType(int, android.graphics.Paint)}
+             for more information.
+        
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0</td><td> Don't use a layer. </td></tr>
+<tr><td><code>software</code></td><td>1</td><td>
+                 Use a software layer. Refer to
+                 {@link android.view.View#setLayerType(int, android.graphics.Paint) for
+                 more information.
+            </td></tr>
+<tr><td><code>hardware</code></td><td>2</td><td>
+                 Use a hardware layer. Refer to
+                 {@link android.view.View#setLayerType(int, android.graphics.Paint) for
+                 more information.
+            </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:layerType
+        */
+        public static final int View_layerType = 61;
+        /**
+          <p>
+          @attr description
+          
+             Defines the direction of layout drawing. This typically is associated with writing
+             direction of the language script used. The possible values are "ltr" for Left-to-Right,
+             "rtl" for Right-to-Left, "locale" and "inherit" from parent view. If there is nothing
+             to inherit, "locale" is used. "locale" falls back to "en-US". "ltr" is the direction
+             used in "en-US". The default for this attribute is "inherit".
+        
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>ltr</code></td><td>0</td><td> Left-to-Right </td></tr>
+<tr><td><code>rtl</code></td><td>1</td><td> Right-to-Left </td></tr>
+<tr><td><code>inherit</code></td><td>2</td><td> Inherit from parent </td></tr>
+<tr><td><code>locale</code></td><td>3</td><td> Locale </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:layoutDirection
+        */
+        public static final int View_layoutDirection = 62;
+        /**
+          <p>
+          @attr description
+           Defines whether this view reacts to long click events. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:longClickable
+        */
+        public static final int View_longClickable = 37;
+        /**
+          <p>
+          @attr description
+          
+             Defines the minimum height of the view. It is not guaranteed
+             the view will be able to achieve this minimum height (for example,
+             if its parent layout constrains it with less available height).
+        
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:minHeight
+        */
+        public static final int View_minHeight = 43;
+        /**
+          <p>
+          @attr description
+          
+             Defines the minimum width of the view. It is not guaranteed
+             the view will be able to achieve this minimum width (for example,
+             if its parent layout constrains it with less available width).
+        
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:minWidth
+        */
+        public static final int View_minWidth = 44;
+        /**
+          <p>
+          @attr description
+          
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_DOWN}
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.
+        
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name android:nextFocusDown
+        */
+        public static final int View_nextFocusDown = 34;
+        /**
+          <p>
+          @attr description
+          
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_FORWARD}
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.
+        
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name android:nextFocusForward
+        */
+        public static final int View_nextFocusForward = 35;
+        /**
+          <p>
+          @attr description
+          
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_LEFT}.
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.
+        
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name android:nextFocusLeft
+        */
+        public static final int View_nextFocusLeft = 31;
+        /**
+          <p>
+          @attr description
+          
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_RIGHT}
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.
+        
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name android:nextFocusRight
+        */
+        public static final int View_nextFocusRight = 32;
+        /**
+          <p>
+          @attr description
+          
+             Defines the next view to give focus to when the next focus is
+             {@link android.view.View#FOCUS_UP}
+
+             If the reference refers to a view that does not exist or is part
+             of a hierarchy that is invisible, a {@link java.lang.RuntimeException}
+             will result when the reference is accessed.
+        
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name android:nextFocusUp
+        */
+        public static final int View_nextFocusUp = 33;
+        /**
+          <p>
+          @attr description
+          
+             Name of the method in this View's context to invoke when the view is
+             clicked. This name must correspond to a public method that takes
+             exactly one parameter of type View. For instance, if you specify
+             <code>android:onClick="sayHello"</code>, you must declare a
+             <code>public void sayHello(View v)</code> method of your context
+             (typically, your Activity).
+        
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:onClick
+        */
+        public static final int View_onClick = 48;
+        /**
+          <p>
+          @attr description
+          
+             Defines over-scrolling behavior. This property is used only if the
+             View is scrollable. Over-scrolling is the ability for the user to
+             receive feedback when attempting to scroll beyond meaningful content.
+        
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>always</code></td><td>0</td><td>
+                 Always show over-scroll effects, even if the content fits entirely
+                 within the available space.
+            </td></tr>
+<tr><td><code>ifContentScrolls</code></td><td>1</td><td>
+                 Only show over-scroll effects if the content is large
+                 enough to meaningfully scroll.
+            </td></tr>
+<tr><td><code>never</code></td><td>2</td><td> Never show over-scroll effects. </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:overScrollMode
+        */
+        public static final int View_overScrollMode = 49;
+        /**
+          <p>
+          @attr description
+          
+             A drawable to use as the background.  This can be either a reference
+             to a full drawable resource (such as a PNG image, 9-patch,
+             XML state list description, etc), or a solid color such as "#ff000000"
+            (black).
+        
+ <attr name="background" format="reference|color" /> 
+
+             Sets the padding, in pixels, of all four edges.  Padding is defined as
+             space between the edges of the view and the view's content. A views size
+             will include it's padding.  If a {@link android.R.attr#background}
+             is provided, the padding will initially be set to that (0 if the
+             drawable does not have padding).  Explicitly setting a padding value
+             will override the corresponding padding found in the background.
+        
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:padding
+        */
+        public static final int View_padding = 4;
+        /**
+          <p>
+          @attr description
+           Sets the padding, in pixels, of the bottom edge; see {@link android.R.attr#padding}. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:paddingBottom
+        */
+        public static final int View_paddingBottom = 8;
+        /**
+          <p>
+          @attr description
+           Sets the padding, in pixels, of the end edge; see {@link android.R.attr#padding}. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:paddingEnd
+        */
+        public static final int View_paddingEnd = 10;
+        /**
+          <p>
+          @attr description
+           Sets the padding, in pixels, of the left edge; see {@link android.R.attr#padding}. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:paddingLeft
+        */
+        public static final int View_paddingLeft = 5;
+        /**
+          <p>
+          @attr description
+           Sets the padding, in pixels, of the right edge; see {@link android.R.attr#padding}. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:paddingRight
+        */
+        public static final int View_paddingRight = 7;
+        /**
+          <p>
+          @attr description
+           Sets the padding, in pixels, of the start edge; see {@link android.R.attr#padding}. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:paddingStart
+        */
+        public static final int View_paddingStart = 9;
+        /**
+          <p>
+          @attr description
+           Sets the padding, in pixels, of the top edge; see {@link android.R.attr#padding}. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:paddingTop
+        */
+        public static final int View_paddingTop = 6;
+        /**
+          <p>
+          @attr description
+           Defines which edges should be faded on scrolling. 
+
+
+          <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0x00000000</td><td> No edge is faded. </td></tr>
+<tr><td><code>horizontal</code></td><td>0x00001000</td><td> Fades horizontal edges only. </td></tr>
+<tr><td><code>vertical</code></td><td>0x00002000</td><td> Fades vertical edges only. </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:requiresFadingEdge
+        */
+        public static final int View_requiresFadingEdge = 29;
+        /**
+          <p>
+          @attr description
+           rotation of the view, in degrees. 
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:rotation
+        */
+        public static final int View_rotation = 55;
+        /**
+          <p>
+          @attr description
+           rotation of the view around the x axis, in degrees. 
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:rotationX
+        */
+        public static final int View_rotationX = 56;
+        /**
+          <p>
+          @attr description
+           rotation of the view around the y axis, in degrees. 
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:rotationY
+        */
+        public static final int View_rotationY = 57;
+        /**
+          <p>
+          @attr description
+          
+             If unset, no state will be saved for this view when it is being
+             frozen. The default is true, allowing the view to be saved
+             (however it also must have an ID assigned to it for its
+             state to be saved).  Setting this to false only disables the
+             state for this view, not for its children which may still
+             be saved.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:saveEnabled
+        */
+        public static final int View_saveEnabled = 38;
+        /**
+          <p>
+          @attr description
+           scale of the view in the x direction. 
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:scaleX
+        */
+        public static final int View_scaleX = 58;
+        /**
+          <p>
+          @attr description
+           scale of the view in the y direction. 
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:scaleY
+        */
+        public static final int View_scaleY = 59;
+        /**
+          <p>
+          @attr description
+           The initial horizontal scroll offset, in pixels. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:scrollX
+        */
+        public static final int View_scrollX = 2;
+        /**
+          <p>
+          @attr description
+           The initial vertical scroll offset, in pixels. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:scrollY
+        */
+        public static final int View_scrollY = 3;
+        /**
+          <p>
+          @attr description
+           Defines whether the horizontal scrollbar track should always be drawn. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:scrollbarAlwaysDrawHorizontalTrack
+        */
+        public static final int View_scrollbarAlwaysDrawHorizontalTrack = 26;
+        /**
+          <p>
+          @attr description
+           Defines whether the vertical scrollbar track should always be drawn. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:scrollbarAlwaysDrawVerticalTrack
+        */
+        public static final int View_scrollbarAlwaysDrawVerticalTrack = 27;
+        /**
+          <p>
+          @attr description
+           Defines the delay in milliseconds that a scrollbar waits before fade out. 
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:scrollbarDefaultDelayBeforeFade
+        */
+        public static final int View_scrollbarDefaultDelayBeforeFade = 20;
+        /**
+          <p>
+          @attr description
+           Defines the delay in milliseconds that a scrollbar takes to fade out. 
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:scrollbarFadeDuration
+        */
+        public static final int View_scrollbarFadeDuration = 19;
+        /**
+          <p>
+          @attr description
+           Sets the width of vertical scrollbars and height of horizontal scrollbars. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:scrollbarSize
+        */
+        public static final int View_scrollbarSize = 21;
+        /**
+          <p>
+          @attr description
+          
+             Controls the scrollbar style and position. The scrollbars can be overlaid or
+             inset. When inset, they add to the padding of the view. And the
+             scrollbars can be drawn inside the padding area or on the edge of
+             the view. For example, if a view has a background drawable and you
+             want to draw the scrollbars inside the padding specified by the
+             drawable, you can use insideOverlay or insideInset. If you want them
+             to appear at the edge of the view, ignoring the padding, then you can
+             use outsideOverlay or outsideInset.
+        
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>insideOverlay</code></td><td>0x0</td><td> Inside the padding and overlaid </td></tr>
+<tr><td><code>insideInset</code></td><td>0x01000000</td><td> Inside the padding and inset </td></tr>
+<tr><td><code>outsideOverlay</code></td><td>0x02000000</td><td> Edge of the view and overlaid </td></tr>
+<tr><td><code>outsideInset</code></td><td>0x03000000</td><td> Edge of the view and inset </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:scrollbarStyle
+        */
+        public static final int View_scrollbarStyle = 16;
+        /**
+          <p>
+          @attr description
+           Defines the horizontal scrollbar thumb drawable. 
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name android:scrollbarThumbHorizontal
+        */
+        public static final int View_scrollbarThumbHorizontal = 22;
+        /**
+          <p>
+          @attr description
+           Defines the vertical scrollbar thumb drawable. 
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name android:scrollbarThumbVertical
+        */
+        public static final int View_scrollbarThumbVertical = 23;
+        /**
+          <p>
+          @attr description
+           Defines the horizontal scrollbar track drawable. 
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name android:scrollbarTrackHorizontal
+        */
+        public static final int View_scrollbarTrackHorizontal = 24;
+        /**
+          <p>
+          @attr description
+           Defines the vertical scrollbar track drawable. 
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name android:scrollbarTrackVertical
+        */
+        public static final int View_scrollbarTrackVertical = 25;
+        /**
+          <p>
+          @attr description
+           Defines which scrollbars should be displayed on scrolling or not. 
+
+
+          <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0x00000000</td><td> No scrollbar is displayed. </td></tr>
+<tr><td><code>horizontal</code></td><td>0x00000100</td><td> Displays horizontal scrollbar only. </td></tr>
+<tr><td><code>vertical</code></td><td>0x00000200</td><td> Displays vertical scrollbar only. </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:scrollbars
+        */
+        public static final int View_scrollbars = 15;
+        /**
+          <p>
+          @attr description
+          
+             Boolean that controls whether a view should have sound effects
+             enabled for events such as clicking and touching.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:soundEffectsEnabled
+        */
+        public static final int View_soundEffectsEnabled = 45;
+        /**
+          <p>
+          @attr description
+          
+             Supply a tag for this view containing a String, to be retrieved
+             later with {@link android.view.View#getTag View.getTag()} or
+             searched for with {@link android.view.View#findViewWithTag
+             View.findViewWithTag()}.  It is generally preferable to use
+             IDs (through the android:id attribute) instead of tags because
+             they are faster and allow for compile-time type checking.
+        
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:tag
+        */
+        public static final int View_tag = 1;
+        /**
+          <p>
+          @attr description
+          
+             Alignment of the text. A heuristic is used to determine the resolved
+            text alignment.
+        
+
+
+          <p>May be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+<p>May be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>inherit</code></td><td>0</td><td> Default </td></tr>
+<tr><td><code>gravity</code></td><td>1</td><td>
+                 Default for the root view. The gravity determines the alignment, ALIGN_NORMAL,
+                ALIGN_CENTER, or ALIGN_OPPOSITE, which are relative to each paragraph’s
+                text direction
+            </td></tr>
+<tr><td><code>textStart</code></td><td>2</td><td> Align to the start of the paragraph, e.g. ALIGN_NORMAL. </td></tr>
+<tr><td><code>textEnd</code></td><td>3</td><td> Align to the end of the paragraph, e.g. ALIGN_OPPOSITE. </td></tr>
+<tr><td><code>center</code></td><td>4</td><td> Center the paragraph, e.g. ALIGN_CENTER. </td></tr>
+<tr><td><code>viewStart</code></td><td>5</td><td>
+                 Align to the start of the view, which is ALIGN_LEFT if the view’s resolved
+                layoutDirection is LTR, and ALIGN_RIGHT otherwise.
+            </td></tr>
+<tr><td><code>viewEnd</code></td><td>6</td><td>
+                 Align to the end of the view, which is ALIGN_RIGHT if the view’s resolved
+                layoutDirection is LTR, and ALIGN_LEFT otherwise
+            </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:textAlignment
+        */
+        public static final int View_textAlignment = 64;
+        /**
+          <p>
+          @attr description
+          
+             Direction of the text. A heuristic is used to determine the resolved text direction
+             of paragraphs.
+        
+
+
+          <p>May be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+<p>May be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>inherit</code></td><td>0</td><td> Default </td></tr>
+<tr><td><code>firstStrong</code></td><td>1</td><td>
+                 Default for the root view. The first strong directional character determines the
+                 paragraph direction.  If there is no strong directional character, the paragraph
+                 direction is the view’s resolved layout direction.
+            </td></tr>
+<tr><td><code>anyRtl</code></td><td>2</td><td>
+                 The paragraph direction is RTL if it contains any strong RTL character, otherwise
+                 it is LTR if it contains any strong LTR characters.  If there are neither, the
+                 paragraph direction is the view’s resolved layout direction.
+            </td></tr>
+<tr><td><code>ltr</code></td><td>3</td><td> The paragraph direction is left to right. </td></tr>
+<tr><td><code>rtl</code></td><td>4</td><td> The paragraph direction is right to left. </td></tr>
+<tr><td><code>locale</code></td><td>5</td><td> The paragraph direction is coming from the system Locale. </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:textDirection
+        */
+        public static final int View_textDirection = 63;
+        /**
+          <p>
+          @attr description
+          
+             x location of the pivot point around which the view will rotate and scale.
+             This xml attribute sets the pivotX property of the View.
+        
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:transformPivotX
+        */
+        public static final int View_transformPivotX = 53;
+        /**
+          <p>
+          @attr description
+          
+             y location of the pivot point around which the view will rotate and scale.
+             This xml attribute sets the pivotY property of the View.
+        
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:transformPivotY
+        */
+        public static final int View_transformPivotY = 54;
+        /**
+          <p>
+          @attr description
+          
+             translation in x of the view. This value is added post-layout to the left
+             property of the view, which is set by its layout.
+        
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:translationX
+        */
+        public static final int View_translationX = 51;
+        /**
+          <p>
+          @attr description
+          
+             translation in y of the view. This value is added post-layout to the left
+             property of the view, which is set by its layout.
+        
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:translationY
+        */
+        public static final int View_translationY = 52;
+        /**
+          <p>
+          @attr description
+           Determines which side the vertical scroll bar should be placed on. 
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>defaultPosition</code></td><td>0</td><td> Place the scroll bar wherever the system default determines. </td></tr>
+<tr><td><code>left</code></td><td>1</td><td> Place the scroll bar on the left. </td></tr>
+<tr><td><code>right</code></td><td>2</td><td> Place the scroll bar on the right. </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:verticalScrollbarPosition
+        */
+        public static final int View_verticalScrollbarPosition = 60;
+        /**
+          <p>
+          @attr description
+           Controls the initial visibility of the view. 
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>visible</code></td><td>0</td><td> Visible on screen; the default value. </td></tr>
+<tr><td><code>invisible</code></td><td>1</td><td> Not displayed, but taken into account during layout (space is left for it). </td></tr>
+<tr><td><code>gone</code></td><td>2</td><td> Completely hidden, as if the view had not been added. </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:visibility
+        */
+        public static final int View_visibility = 13;
+        /** 
+         Attributes that can be used with a {@link android.view.ViewGroup} or any
+         of its subclasses.  Also see {@link #ViewGroup_Layout} for
+         attributes that this class processes in its children.
+    
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ViewGroup_addStatesFromChildren com.example.youlian:addStatesFromChildren}</code></td><td>
+             Sets whether this ViewGroup's drawable states also include
+             its children's drawable states.</td></tr>
+           <tr><td><code>{@link #ViewGroup_alwaysDrawnWithCache com.example.youlian:alwaysDrawnWithCache}</code></td><td>
+             Defines whether the ViewGroup should always draw its children using their
+             drawing cache or not.</td></tr>
+           <tr><td><code>{@link #ViewGroup_animateLayoutChanges com.example.youlian:animateLayoutChanges}</code></td><td>
+             Defines whether changes in layout (caused by adding and removing items) should
+             cause a LayoutTransition to run.</td></tr>
+           <tr><td><code>{@link #ViewGroup_animationCache com.example.youlian:animationCache}</code></td><td>
+             Defines whether layout animations should create a drawing cache for their
+             children.</td></tr>
+           <tr><td><code>{@link #ViewGroup_clipChildren com.example.youlian:clipChildren}</code></td><td>
+             Defines whether a child is limited to draw inside of its bounds or not.</td></tr>
+           <tr><td><code>{@link #ViewGroup_clipToPadding com.example.youlian:clipToPadding}</code></td><td>
+             Defines whether the ViewGroup will clip its drawing surface so as to exclude
+             the padding area.</td></tr>
+           <tr><td><code>{@link #ViewGroup_descendantFocusability com.example.youlian:descendantFocusability}</code></td><td>
+             Defines the relationship between the ViewGroup and its descendants
+             when looking for a View to take focus.</td></tr>
+           <tr><td><code>{@link #ViewGroup_layoutAnimation com.example.youlian:layoutAnimation}</code></td><td>
+             Defines the layout animation to use the first time the ViewGroup is laid out.</td></tr>
+           <tr><td><code>{@link #ViewGroup_persistentDrawingCache com.example.youlian:persistentDrawingCache}</code></td><td>
+             Defines the persistence of the drawing cache.</td></tr>
+           <tr><td><code>{@link #ViewGroup_splitMotionEvents com.example.youlian:splitMotionEvents}</code></td><td>
+             Sets whether this ViewGroup should split MotionEvents
+             to separate child views during touch event dispatch.</td></tr>
+           </table>
+           @see #ViewGroup_addStatesFromChildren
+           @see #ViewGroup_alwaysDrawnWithCache
+           @see #ViewGroup_animateLayoutChanges
+           @see #ViewGroup_animationCache
+           @see #ViewGroup_clipChildren
+           @see #ViewGroup_clipToPadding
+           @see #ViewGroup_descendantFocusability
+           @see #ViewGroup_layoutAnimation
+           @see #ViewGroup_persistentDrawingCache
+           @see #ViewGroup_splitMotionEvents
+         */
+        public static final int[] ViewGroup = {
+            0x7f010049, 0x7f01004a, 0x7f01004b, 0x7f01004c,
+            0x7f01004d, 0x7f01004e, 0x7f01004f, 0x7f010050,
+            0x7f010051, 0x7f010052
+        };
+        /**
+          <p>
+          @attr description
+          
+             Sets whether this ViewGroup's drawable states also include
+             its children's drawable states.  This is used, for example, to
+             make a group appear to be focused when its child EditText or button
+             is focused.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:addStatesFromChildren
+        */
+        public static final int ViewGroup_addStatesFromChildren = 7;
+        /**
+          <p>
+          @attr description
+          
+             Defines whether the ViewGroup should always draw its children using their
+             drawing cache or not. The default value is true.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:alwaysDrawnWithCache
+        */
+        public static final int ViewGroup_alwaysDrawnWithCache = 6;
+        /**
+          <p>
+          @attr description
+          
+             Defines whether changes in layout (caused by adding and removing items) should
+             cause a LayoutTransition to run. When this flag is set to true, a default
+             LayoutTransition object will be set on the ViewGroup container and default
+             animations will run when these layout changes occur.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:animateLayoutChanges
+        */
+        public static final int ViewGroup_animateLayoutChanges = 0;
+        /**
+          <p>
+          @attr description
+          
+             Defines whether layout animations should create a drawing cache for their
+             children. Enabling the animation cache consumes more memory and requires
+             a longer initialization but provides better performance. The animation
+             cache is enabled by default.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:animationCache
+        */
+        public static final int ViewGroup_animationCache = 4;
+        /**
+          <p>
+          @attr description
+          
+             Defines whether a child is limited to draw inside of its bounds or not.
+             This is useful with animations that scale the size of the children to more
+             than 100% for instance. In such a case, this property should be set to false
+             to allow the children to draw outside of their bounds. The default value of
+             this property is true.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:clipChildren
+        */
+        public static final int ViewGroup_clipChildren = 1;
+        /**
+          <p>
+          @attr description
+          
+             Defines whether the ViewGroup will clip its drawing surface so as to exclude
+             the padding area. This property is set to true by default.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:clipToPadding
+        */
+        public static final int ViewGroup_clipToPadding = 2;
+        /**
+          <p>
+          @attr description
+          
+             Defines the relationship between the ViewGroup and its descendants
+             when looking for a View to take focus.
+        
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>beforeDescendants</code></td><td>0</td><td> The ViewGroup will get focus before any of its descendants. </td></tr>
+<tr><td><code>afterDescendants</code></td><td>1</td><td> The ViewGroup will get focus only if none of its descendants want it. </td></tr>
+<tr><td><code>blocksDescendants</code></td><td>2</td><td> The ViewGroup will block its descendants from receiving focus. </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:descendantFocusability
+        */
+        public static final int ViewGroup_descendantFocusability = 8;
+        /**
+          <p>
+          @attr description
+          
+             Defines the layout animation to use the first time the ViewGroup is laid out.
+             Layout animations can also be started manually after the first layout.
+        
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name android:layoutAnimation
+        */
+        public static final int ViewGroup_layoutAnimation = 3;
+        /**
+          <p>
+          @attr description
+          
+             Defines the persistence of the drawing cache. The drawing cache might be
+             enabled by a ViewGroup for all its children in specific situations (for
+             instance during a scrolling.) This property lets you persist the cache
+             in memory after its initial usage. Persisting the cache consumes more
+             memory but may prevent frequent garbage collection is the cache is created
+             over and over again. By default the persistence is set to scrolling.
+        
+
+
+          <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0x0</td><td> The drawing cache is not persisted after use. </td></tr>
+<tr><td><code>animation</code></td><td>0x1</td><td> The drawing cache is persisted after a layout animation. </td></tr>
+<tr><td><code>scrolling</code></td><td>0x2</td><td> The drawing cache is persisted after a scroll. </td></tr>
+<tr><td><code>all</code></td><td>0x3</td><td> The drawing cache is always persisted. </td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name android:persistentDrawingCache
+        */
+        public static final int ViewGroup_persistentDrawingCache = 5;
+        /**
+          <p>
+          @attr description
+          
+             Sets whether this ViewGroup should split MotionEvents
+             to separate child views during touch event dispatch.
+             If false (default), touch events will be dispatched to
+             the child view where the first pointer went down until
+             the last pointer goes up.
+             If true, touch events may be dispatched to multiple children.
+             MotionEvents for each pointer will be dispatched to the child
+             view where the initial ACTION_DOWN event happened.
+             See {@link android.view.ViewGroup#setMotionEventSplittingEnabled(boolean)}
+             for more information.
+        
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name android:splitMotionEvents
+        */
+        public static final int ViewGroup_splitMotionEvents = 9;
+    };
 }

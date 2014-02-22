@@ -116,4 +116,9 @@ public class Constants {
 	public final static String youlian_app_iphone_device_add = "younion.app.iphone.device.add";
 	
 	
+	//======================================
+	//       各种action
+	//======================================
+	
+	public static final String ACTION_SIGN_FROM_PERSONALCENTER = "com.youlian.sign.from.center";
 }
