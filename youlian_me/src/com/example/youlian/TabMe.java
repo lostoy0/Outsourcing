@@ -3,6 +3,8 @@ package com.example.youlian;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -39,7 +41,7 @@ public class TabMe extends BaseActivity implements OnClickListener {
 	private TextView mFavouriteCountTextView;
 	
 	private MyInfo mInfo = null;
-
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -85,7 +87,9 @@ public class TabMe extends BaseActivity implements OnClickListener {
 			break;
 			
 		case R.id.my_ib_sign:
-			
+			Intent broadcastIntent = new Intent();
+			broadcastIntent.setAction(Constants.ACTION_SIGN_FROM_PERSONALCENTER);
+			sendBroadcast(broadcastIntent);
 			break;
 			
 		case R.id.my_ib_exchange_score:

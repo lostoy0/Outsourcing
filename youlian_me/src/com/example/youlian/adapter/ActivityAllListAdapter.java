@@ -3,6 +3,7 @@ package com.example.youlian.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,10 +76,14 @@ public class ActivityAllListAdapter extends BaseAdapter {
 	private void setData(ViewHolder holder, ActivityAll activityAll) {
 		if(holder != null && activityAll != null) {
 			holder.contentTextView.setText(activityAll.title);
-			holder.iconImageView.setMinimumWidth(mImageWidth);
-			int height = mImageWidth*activityAll.pic_height/activityAll.pic_width;
-			holder.iconImageView.setMinimumHeight(height);
-			holder.iconImageView.setImageUrl(activityAll.pic, mImageLoader);
+			if(TextUtils.isEmpty(activityAll.pic)) {
+				holder.iconImageView.setImageResource(R.drawable.default_img);
+			} else {
+				holder.iconImageView.setMinimumWidth(mImageWidth);
+				int height = mImageWidth*activityAll.pic_height/activityAll.pic_width;
+				holder.iconImageView.setMinimumHeight(height);
+				holder.iconImageView.setImageUrl(activityAll.pic, mImageLoader);
+			}
 		}
 	}
 

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.youlian.adapter.CouponListAdapter;
+import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.YouhuiQuan;
 import com.example.youlian.util.YlLogger;
 
@@ -64,7 +65,7 @@ public class CouponListActivity extends BaseActivity implements OnItemClickListe
 		
 		mListView = (ListView) findViewById(android.R.id.list);
 		mListView.setOnItemClickListener(this);
-		mAdapter = new CouponListAdapter(this, mCouponList);
+		mAdapter = new CouponListAdapter(this, mCouponList, MyVolley.getImageLoader());
 		mListView.setAdapter(mAdapter);
 		
 		YouLianHttpApi.getCouponList(Global.getUserToken(this), createGetCardListSuccessListener(), createGetCardListErrorListener());

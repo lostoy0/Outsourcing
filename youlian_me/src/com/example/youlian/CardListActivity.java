@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.youlian.adapter.CardListAdapter;
+import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Card;
 import com.example.youlian.util.YlLogger;
 
@@ -52,7 +53,7 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 		
 		mListView = (ListView) findViewById(android.R.id.list);
 		mListView.setOnItemClickListener(this);
-		mAdapter = new CardListAdapter(this, mCards);
+		mAdapter = new CardListAdapter(this, mCards, MyVolley.getImageLoader());
 		mListView.setAdapter(mAdapter);
 		
 		YouLianHttpApi.getCardList(Global.getUserToken(this), createGetCardListSuccessListener(), createGetCardListErrorListener());

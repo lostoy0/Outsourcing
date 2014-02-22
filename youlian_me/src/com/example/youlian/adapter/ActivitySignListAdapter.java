@@ -3,6 +3,7 @@ package com.example.youlian.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,11 +69,15 @@ public class ActivitySignListAdapter extends BaseAdapter {
 
 	private void setData(ViewHolder holder, ActivitySign activitySign) {
 		if(holder != null && activitySign != null) {
-			holder.iconImageView.setImageUrl(activitySign.logo, mImageLoader);
+			if(TextUtils.isEmpty(activitySign.logo)) {
+				holder.iconImageView.setImageResource(R.drawable.default_img);
+			} else {
+				holder.iconImageView.setImageUrl(activitySign.logo, mImageLoader);
+			}
 			holder.titleTextView.setText(activitySign.title);
 			holder.contentTextView.setText(activitySign.content);
 			holder.shopNameTextView.setText(activitySign.customerName);
-			holder.validDateTextView.setText(activitySign.begtime + "至" + activitySign.endtime);
+			holder.validDateTextView.setText("有效期：" + activitySign.begtime.substring(0, 10) + "\n至" + activitySign.endtime.substring(0, 10));
 		}
 	}
 
