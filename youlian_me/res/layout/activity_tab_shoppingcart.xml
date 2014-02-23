@@ -68,12 +68,6 @@
         
         <include layout="@layout/merge_line_grey_horizontal"/>
         
-        <include layout="@layout/item_goods_list"/>
-        <include layout="@layout/merge_line_grey_horizontal"/>
-        <include layout="@layout/item_goods_list"/>
-        <include layout="@layout/merge_line_grey_horizontal"/>
-        <include layout="@layout/item_goods_list"/>
-        
         <ListView 
             android:id="@+id/list"
             android:layout_width="match_parent"

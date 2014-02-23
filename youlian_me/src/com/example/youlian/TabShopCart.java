@@ -1,7 +1,15 @@
 package com.example.youlian;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -10,13 +18,32 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.example.youlian.adapter.GoodsListAdapter;
+import com.example.youlian.app.MyVolley;
+import com.example.youlian.common.Constants;
+import com.example.youlian.mode.Goods;
+import com.example.youlian.util.PreferencesUtils;
+import com.example.youlian.util.Utils;
+import com.example.youlian.util.YlLogger;
+
 public class TabShopCart extends BaseActivity implements OnClickListener {
+	private YlLogger mLogger = YlLogger.getLogger(TabShopCart.class.getSimpleName());
 	
 	private TextView mShopNameTextView, mCostMoneyTextView, mAmountTextView;
 	private Button mEditButton, mYesButton, mPayButton, mDeleteButton;
 	
 	private ListView mListView;
+	private GoodsListAdapter mAdapter;
+	private ArrayList<Goods> mGoodsList;
+	private HashMap<String, Boolean> mStateMap;
 
+	private boolean mIsEditing = false;
+	public boolean isEditing() {
+		return mIsEditing;
+	}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,11 +52,35 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 
 		setContentView(R.layout.activity_tab_shoppingcart);
 		
+		mGoodsList = new ArrayList<Goods>();
+		mStateMap = new HashMap<String, Boolean>();
+		
 		initViews();
+		
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		if(!PreferencesUtils.isLogin(this)) {
+			login();
+		} else {
+			loadData();
+		}
+	}
+	
+	private void loadData() {
+		YouLianHttpApi.getShoppingCart(Global.getUserToken(this), createGetGoodsListSuccessListener(), createGetGoodsListErrorListener());
+	}
+
+	private void login() {
+		Intent intent = new Intent(this, LoginActivity.class);
+		startActivityForResult(intent, Constants.REQ_CODE_LOGIN);
 	}
 
 	private void initViews() {
 		mShopNameTextView = (TextView) findViewById(R.id.cart_tv_goodsname);
+		mShopNameTextView.setText("");
 		mCostMoneyTextView = (TextView) findViewById(R.id.cart_tv_money);
 		mAmountTextView = (TextView) findViewById(R.id.cart_tv_amount);
 		
@@ -43,30 +94,152 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 		mDeleteButton.setOnClickListener(this);
 		
 		mListView = (ListView) findViewById(R.id.list);
-		
+		mAdapter = new GoodsListAdapter(this, mGoodsList, mStateMap, MyVolley.getImageLoader());
+		mListView.setAdapter(mAdapter);
 	}
-
+	
 	@Override
 	public void onClick(View v) {
 		Intent intent = null;
 		switch(v.getId()) {
 		case R.id.cart_btn_edit:
-			
+			edit();
 			break;
 			
 		case R.id.cart_btn_yes: 
-			
+			editComplete();
 			break;
 			
 		case R.id.cart_btn_pay:
-			intent = new Intent(this, PayActivity.class);
-			startActivity(intent);
+			if(!mGoodsList.isEmpty()) {
+				intent = new Intent(this, PayActivity.class);
+				startActivity(intent);
+			} else {
+				Utils.showToast(this, "购物车还没有物品不需要支付哦");
+			}
 			break;
 			
 		case R.id.cart_btn_delete:
-			
+			deleteSelectedGoods();
 			break;
 		}
 	}
 
+	private void deleteSelectedGoods() {
+		ArrayList<Goods> goodsList = new ArrayList<Goods>();
+		for(int i=0; i<mGoodsList.size(); i++) {
+			if(mStateMap.get(mGoodsList.get(i).goodsId)) {
+				mStateMap.remove(mGoodsList.get(i).goodsId);
+				continue;
+			}
+			goodsList.add(mGoodsList.get(i));
+		}
+		mGoodsList.clear();
+		mGoodsList.addAll(goodsList);
+		mAdapter.notifyDataSetChanged();
+	}
+
+	private void editComplete() {
+		mIsEditing = false;
+		mEditButton.setVisibility(View.VISIBLE);
+		mYesButton.setVisibility(View.GONE);
+		mPayButton.setVisibility(View.VISIBLE);
+		mDeleteButton.setVisibility(View.GONE);
+		mAdapter.notifyDataSetChanged();
+	}
+
+	private void edit() {
+		mIsEditing = true;
+		mEditButton.setVisibility(View.GONE);
+		mYesButton.setVisibility(View.VISIBLE);
+		mPayButton.setVisibility(View.GONE);
+		mDeleteButton.setVisibility(View.VISIBLE);
+		resetDeleteButton();
+		mAdapter.notifyDataSetChanged();
+	}
+	
+	public void resetQuantityAndMoney() {
+		int totalQuantity = 0;
+		int totalMoney = 0;
+		for(int i=0; i<mGoodsList.size(); i++) {
+			if(!mStateMap.get(mGoodsList.get(i).goodsId)) continue; 
+			Goods goods = mGoodsList.get(i);
+			if(goods != null) {
+				totalQuantity += goods.quantity;
+				totalMoney += goods.goodsPrice*goods.quantity;
+			}
+		}
+		resetMoney(totalMoney);
+		resetQuantity(totalQuantity);
+	}
+	
+	public void resetDeleteButton() {
+		mDeleteButton.setText("删除(" + getSelectGoodsCount() + ")");
+	}
+	
+	private void resetMoney(int money) {
+		mCostMoneyTextView.setText(money + "元");
+	}
+	
+	private void resetQuantity(int quantity) {
+		mAmountTextView.setText(quantity + "");
+	}
+	
+	private int getSelectGoodsCount() {
+		int selectQuantity = 0;
+		for(int i=0; i<mGoodsList.size(); i++) {
+			if(mStateMap.get(mGoodsList.get(i).goodsId)) selectQuantity ++;
+		}
+		return selectQuantity;
+	}
+	
+	private Response.Listener<String> createGetGoodsListSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				if(TextUtils.isEmpty(response)) {
+					mLogger.i("response is null");
+				} else {
+					mLogger.i(response);
+					
+					try {
+						JSONObject object = new JSONObject(response);
+						List<Goods> goodsList = Goods.get(object);
+						if(Utils.isCollectionNotNull(goodsList)) {
+							mGoodsList.addAll(goodsList);
+							for(int i=0; i<mGoodsList.size(); i++) {
+								mStateMap.put(mGoodsList.get(i).goodsId, true);
+							}
+							mAdapter.notifyDataSetChanged();
+							resetQuantityAndMoney();
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+	}
+	
+	private Response.ErrorListener createGetGoodsListErrorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            	mLogger.e(error.getMessage());
+            }
+        };
+    }
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == Constants.REQ_CODE_LOGIN && resultCode == RESULT_OK) {
+			//登录成功，并成功返回
+			if(!TextUtils.isEmpty(Global.getUserToken(this))) {
+				//usertoken is valid, then load data
+				loadData();
+			}
+		}
+	}
+	
 }
