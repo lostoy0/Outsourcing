@@ -115,7 +115,8 @@ public class TabMe extends BaseActivity implements OnClickListener {
 			
 		case R.id.my_order_panel:
 		case R.id.my_tv_order:
-			
+			intent = new Intent(this, MyOrderActivity.class);
+			startActivity(intent);
 			break;
 			
 		case R.id.my_favourite_panel:
