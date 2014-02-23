@@ -35,39 +35,13 @@
 
                 <include layout="@layout/merge_line_grey_horizontal" />
 
-                <TextView
-                    android:id="@+id/pay_tv_goodsname"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:paddingLeft="16dp"
-                    android:singleLine="true"
-                    android:text="商品名称xxx"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/pay_tv_price"
+                <ListView 
+                    android:id="@+id/list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:paddingLeft="16dp"
-                    android:singleLine="true"
-                    android:text="单价：28元"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/pay_tv_amount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginTop="8dp"
-                    android:paddingLeft="16dp"
-                    android:singleLine="true"
-                    android:text="数量：10"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:layout_marginBottom="8dp"
+                    android:scrollbars="none" />
 
                 <include layout="@layout/merge_line_grey_horizontal" />
 

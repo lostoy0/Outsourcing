@@ -24,6 +24,7 @@ import com.example.youlian.adapter.GoodsListAdapter;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.common.Constants;
 import com.example.youlian.mode.Goods;
+import com.example.youlian.mode.Order;
 import com.example.youlian.util.PreferencesUtils;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
@@ -38,6 +39,9 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 	private GoodsListAdapter mAdapter;
 	private ArrayList<Goods> mGoodsList;
 	private HashMap<String, Boolean> mStateMap;
+	
+	private String mSelectCartIds;
+	private int mUcoinCount;
 
 	private boolean mIsEditing = false;
 	public boolean isEditing() {
@@ -100,7 +104,6 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 	
 	@Override
 	public void onClick(View v) {
-		Intent intent = null;
 		switch(v.getId()) {
 		case R.id.cart_btn_edit:
 			edit();
@@ -111,9 +114,10 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 			break;
 			
 		case R.id.cart_btn_pay:
-			if(!mGoodsList.isEmpty()) {
-				intent = new Intent(this, PayActivity.class);
-				startActivity(intent);
+			if(!mGoodsList.isEmpty() && selectAtLeastOne()) {
+				resetPayingData();
+				YouLianHttpApi.addOrder(Global.getUserToken(this), mSelectCartIds, mUcoinCount, 
+						createAddOrderSuccessListener(), createAddOrderErrorListener());
 			} else {
 				Utils.showToast(this, "购物车还没有物品不需要支付哦");
 			}
@@ -123,6 +127,35 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 			deleteSelectedGoods();
 			break;
 		}
+	}
+	
+	private void resetPayingData() {
+		mUcoinCount = 0;
+		mSelectCartIds = "";
+		StringBuilder builder = new StringBuilder();
+		for(Goods goods : mGoodsList) {
+			if(mStateMap.get(goods.goodsId)) {
+				builder.append(goods.id).append(",");
+				mUcoinCount += goods.goodsPrice*goods.quantity;
+			}
+		}
+		if(builder.length() > 0) {
+			builder.deleteCharAt(builder.length()-1);
+			mSelectCartIds = builder.toString();
+		}
+	}
+	
+	private boolean selectAtLeastOne() {
+		for(Goods goods: mGoodsList) {
+			if(mStateMap.get(goods.goodsId)) return true;
+		}
+		return false;
+	}
+
+	private void startPay(Order order) {
+		Intent intent = new Intent(this, PayActivity.class);
+		intent.putExtra(PayActivity.KEY_ORDER, order);
+		startActivity(intent);
 	}
 
 	private void deleteSelectedGoods() {
@@ -222,6 +255,38 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 	}
 	
 	private Response.ErrorListener createGetGoodsListErrorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            	mLogger.e(error.getMessage());
+            }
+        };
+    }
+	
+	private Response.Listener<String> createAddOrderSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				if(TextUtils.isEmpty(response)) {
+					mLogger.i("response is null");
+				} else {
+					mLogger.i(response);
+					
+					try {
+						JSONObject object = new JSONObject(response);
+						Order order = Order.from(object.optJSONObject(Constants.key_result));
+						if(order != null) {
+							startPay(order);
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+	}
+	
+	private Response.ErrorListener createAddOrderErrorListener() {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
