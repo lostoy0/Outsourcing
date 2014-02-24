@@ -41,7 +41,6 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 	private HashMap<String, Boolean> mStateMap;
 	
 	private String mSelectCartIds;
-	private int mUcoinCount;
 
 	private boolean mIsEditing = false;
 	public boolean isEditing() {
@@ -116,7 +115,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 		case R.id.cart_btn_pay:
 			if(!mGoodsList.isEmpty() && selectAtLeastOne()) {
 				resetPayingData();
-				YouLianHttpApi.addOrder(Global.getUserToken(this), mSelectCartIds, mUcoinCount, 
+				YouLianHttpApi.addOrder(Global.getUserToken(this), mSelectCartIds, 0, 
 						createAddOrderSuccessListener(), createAddOrderErrorListener());
 			} else {
 				Utils.showToast(this, "购物车还没有物品不需要支付哦");
@@ -130,13 +129,11 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 	}
 	
 	private void resetPayingData() {
-		mUcoinCount = 0;
 		mSelectCartIds = "";
 		StringBuilder builder = new StringBuilder();
 		for(Goods goods : mGoodsList) {
 			if(mStateMap.get(goods.goodsId)) {
 				builder.append(goods.id).append(",");
-				mUcoinCount += goods.goodsPrice*goods.quantity;
 			}
 		}
 		if(builder.length() > 0) {
