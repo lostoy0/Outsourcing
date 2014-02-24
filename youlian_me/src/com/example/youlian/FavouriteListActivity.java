@@ -3,6 +3,7 @@ package com.example.youlian;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -21,7 +22,7 @@ import com.example.youlian.mode.Favourite;
 import com.example.youlian.util.YlLogger;
 
 /**
- * 我的优惠券列表
+ * 我的收藏列表
  * @author raymond
  *
  */
@@ -92,7 +93,40 @@ public class FavouriteListActivity extends BaseActivity implements OnItemClickLi
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+		Favourite favourite = mList.get(position);
+		if(favourite != null) {
+			String favorId = favourite.favour_id;
+			if(TextUtils.isEmpty(favorId)) return;
+			
+			Intent intent = null;
+			
+			//关注的类型：1为会员卡2为优惠券 3为商家 4为普通活动 5 签到活动
+			int type = favourite.type;
+			switch(type) {
+			case 1:
+				intent = new Intent(this, MemberShipDetail.class);
+				intent.putExtra("cardid", favorId);
+				break;
+				
+			case 2:
+				intent = new Intent(this, YouhuiQuanDetail.class);
+				intent.putExtra("fav_ent_id", favorId);
+				break;
+				
+			case 3:
+				intent = new Intent(this, ShangjiaDetailActivity.class);
+				intent.putExtra("customerid", favorId);
+				break;
+				
+			case 4:
+			case 5:
+				intent = new Intent(this, AllSellerDetailActivity.class);
+				intent.putExtra("actid", favorId);
+				break;
+			}
+			
+			startActivity(intent);
+		}
 	}
 
 	private Response.Listener<String> createGetFavouriteListSuccessListener() {
