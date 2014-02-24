@@ -58,6 +58,21 @@ public class YouLianHttpApi {
 				successListener, errorListener);
 		queue.add(myReq);
 	}
+	
+	public static void getInitInfo(String resolution,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+//		resolution=480_800
+				
+		String server = "younion.app.init";
+		String url = getUrl(KEY_SERVER, server, "resolution", resolution);
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 
 	/**
 	 * 主题活动

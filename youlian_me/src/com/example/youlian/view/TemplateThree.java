@@ -19,6 +19,7 @@ import com.example.youlian.AllSellerDetailActivity;
 import com.example.youlian.MemberShipDetail;
 import com.example.youlian.R;
 import com.example.youlian.ShangjiaDetailActivity;
+import com.example.youlian.WebViewActivityByMe;
 import com.example.youlian.YouhuiQuanDetail;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Pic;
@@ -135,7 +136,10 @@ public class TemplateThree extends FrameLayout {
 			mContext.startActivity(i);
 			break;
 		case 4:// 站外
-			
+			in = new Intent(mContext, WebViewActivityByMe.class);
+			in.putExtra(WebViewActivityByMe.URL, pic.linkIds);
+			in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			mContext.startActivity(in);
 			break;
 
 		default:
