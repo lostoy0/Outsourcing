@@ -30,6 +30,8 @@ import com.example.youlian.util.YlLogger;
 public class CardListActivity extends BaseActivity implements OnItemClickListener {
 	private static YlLogger mLogger = YlLogger.getLogger(CardListActivity.class.getSimpleName());
 
+	private static final int REQ_CODE = 0x1000;
+	
 	private ListView mListView;
 	private CardListAdapter mAdapter;
 	
@@ -56,6 +58,11 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 		mAdapter = new CardListAdapter(this, mCards, MyVolley.getImageLoader());
 		mListView.setAdapter(mAdapter);
 		
+		refreshData();
+	}
+	
+	private void refreshData() {
+		mCards.clear();
 		YouLianHttpApi.getCardList(Global.getUserToken(this), createGetCardListSuccessListener(), createGetCardListErrorListener());
 	}
 
@@ -67,9 +74,18 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
+		
 		Intent intent = new Intent(this, CardActivity.class);
-//		intent.putExtra("card_id", mAdapter.getItem(position).card_id);
-		startActivity(intent);
+		
+		Card card = mCards.get(position);
+		
+		intent.putExtra("card_id", card.card_id);
+		intent.putExtra("card_name", card.card_name);
+		intent.putExtra("applyWay", card.applyWay);
+		intent.putExtra("balanceUrl", card.balanceUrl);
+		intent.putExtra("countUrl", card.countUrl);
+		
+		startActivityForResult(intent, REQ_CODE);
 	}
 
 	private Response.Listener<String> createGetCardListSuccessListener() {
@@ -103,5 +119,13 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
             }
         };
     }
-
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == REQ_CODE && resultCode == RESULT_OK) {
+			if(data.getBooleanExtra("rm", false)) {
+				refreshData();
+			}
+		}
+	}
 }
