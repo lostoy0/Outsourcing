@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.youlian.AllSellerDetailActivity;
 import com.example.youlian.R;
 import com.example.youlian.TabSign;
 import com.example.youlian.YouLianHttpApi;
@@ -129,6 +131,23 @@ public class ActivityFragment extends BaseFragment {
 		public void onItemClick(PLA_AdapterView<?> parent, View view,
 				int position, long id) {
 			
+			String actid = null;
+			if(isSign()) {
+				ActivitySign sign = mSignList.get(position);
+				if(sign == null) return;
+				actid = sign.id;
+			} else {
+				ActivityAll all = mAllList.get(position);
+				if(all == null) return;
+				actid = all.id;
+			}
+			
+			if(!TextUtils.isEmpty(actid)) {
+				Intent i = new Intent(getActivity(), AllSellerDetailActivity.class);
+				i.putExtra("actid", actid);
+				startActivity(i);
+			}
+
 		}
 	};
 	

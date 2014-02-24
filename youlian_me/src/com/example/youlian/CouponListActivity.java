@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.json.JSONException;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -95,8 +96,14 @@ public class CouponListActivity extends BaseActivity implements OnItemClickListe
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-//		Intent intent = new Intent(this, CardActivity.class);
-//		startActivity(intent);
+		
+		YouhuiQuan quan = mCouponList.get(position);
+		if(quan != null && !TextUtils.isEmpty(quan.fav_ent_id)) {
+			Intent intent = new Intent(this, YouhuiQuanDetail.class);
+			intent.putExtra("fav_ent_id", quan.fav_ent_id);
+			startActivity(intent);
+		}
+		
 	}
 
 	private Response.Listener<String> createGetCardListSuccessListener() {
