@@ -2932,7 +2932,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:cacheColorHint
+          @attr name com.example.youlian:cacheColorHint
         */
         public static final int AbsListView_cacheColorHint = 6;
         /**
@@ -2964,7 +2964,7 @@ containing a value of this type.
 <tr><td><code>multipleChoiceModal</code></td><td>3</td><td> The list allows multiple choices in a custom selection mode. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:choiceMode
+          @attr name com.example.youlian:choiceMode
         */
         public static final int AbsListView_choiceMode = 9;
         /**
@@ -2984,7 +2984,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:drawSelectorOnTop
+          @attr name com.example.youlian:drawSelectorOnTop
         */
         public static final int AbsListView_drawSelectorOnTop = 1;
         /**
@@ -3003,7 +3003,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:fastScrollAlwaysVisible
+          @attr name com.example.youlian:fastScrollAlwaysVisible
         */
         public static final int AbsListView_fastScrollAlwaysVisible = 10;
         /**
@@ -3022,7 +3022,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:fastScrollEnabled
+          @attr name com.example.youlian:fastScrollEnabled
         */
         public static final int AbsListView_fastScrollEnabled = 7;
         /**
@@ -3036,7 +3036,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name android:listSelector
+          @attr name com.example.youlian:listSelector
         */
         public static final int AbsListView_listSelector = 0;
         /**
@@ -3056,7 +3056,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:scrollingCache
+          @attr name com.example.youlian:scrollingCache
         */
         public static final int AbsListView_scrollingCache = 3;
         /**
@@ -3081,7 +3081,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:smoothScrollbar
+          @attr name com.example.youlian:smoothScrollbar
         */
         public static final int AbsListView_smoothScrollbar = 8;
         /**
@@ -3097,7 +3097,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:stackFromBottom
+          @attr name com.example.youlian:stackFromBottom
         */
         public static final int AbsListView_stackFromBottom = 2;
         /**
@@ -3116,7 +3116,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:textFilterEnabled
+          @attr name com.example.youlian:textFilterEnabled
         */
         public static final int AbsListView_textFilterEnabled = 4;
         /**
@@ -3146,7 +3146,7 @@ containing a value of this type.
             </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:transcriptMode
+          @attr name com.example.youlian:transcriptMode
         */
         public static final int AbsListView_transcriptMode = 5;
         /** Attributes that can be used with a ListView.
@@ -3193,7 +3193,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:dividerHeight
+          @attr name com.example.youlian:dividerHeight
         */
         public static final int ListView_dividerHeight = 0;
         /**
@@ -3212,7 +3212,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:footerDividersEnabled
+          @attr name com.example.youlian:footerDividersEnabled
         */
         public static final int ListView_footerDividersEnabled = 2;
         /**
@@ -3231,7 +3231,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:headerDividersEnabled
+          @attr name com.example.youlian:headerDividersEnabled
         */
         public static final int ListView_headerDividersEnabled = 1;
         /**
@@ -3245,7 +3245,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name android:overScrollFooter
+          @attr name com.example.youlian:overScrollFooter
         */
         public static final int ListView_overScrollFooter = 4;
         /**
@@ -3259,7 +3259,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name android:overScrollHeader
+          @attr name com.example.youlian:overScrollHeader
         */
         public static final int ListView_overScrollHeader = 3;
         /** Attributes that can be used with a PinterestLikeAdapterView.
@@ -3292,7 +3292,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:plaColumnNumber
+          @attr name com.example.youlian:plaColumnNumber
         */
         public static final int PinterestLikeAdapterView_plaColumnNumber = 0;
         /**
@@ -3308,7 +3308,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:plaColumnPaddingLeft
+          @attr name com.example.youlian:plaColumnPaddingLeft
         */
         public static final int PinterestLikeAdapterView_plaColumnPaddingLeft = 2;
         /**
@@ -3324,7 +3324,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:plaColumnPaddingRight
+          @attr name com.example.youlian:plaColumnPaddingRight
         */
         public static final int PinterestLikeAdapterView_plaColumnPaddingRight = 3;
         /**
@@ -3338,7 +3338,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:plaLandscapeColumnNumber
+          @attr name com.example.youlian:plaLandscapeColumnNumber
         */
         public static final int PinterestLikeAdapterView_plaLandscapeColumnNumber = 1;
         /** Attributes that can be used with a View.
@@ -3631,7 +3631,7 @@ containing a value of this type.
             </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:accessibilityFocusable
+          @attr name com.example.youlian:accessibilityFocusable
         */
         public static final int View_accessibilityFocusable = 66;
         /**
@@ -3650,7 +3650,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:alpha
+          @attr name com.example.youlian:alpha
         */
         public static final int View_alpha = 50;
         /**
@@ -3666,7 +3666,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:clickable
+          @attr name com.example.youlian:clickable
         */
         public static final int View_clickable = 36;
         /**
@@ -3686,7 +3686,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:contentDescription
+          @attr name com.example.youlian:contentDescription
         */
         public static final int View_contentDescription = 47;
         /**
@@ -3718,7 +3718,7 @@ containing a value of this type.
             </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:drawingCacheQuality
+          @attr name com.example.youlian:drawingCacheQuality
         */
         public static final int View_drawingCacheQuality = 40;
         /**
@@ -3737,7 +3737,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:duplicateParentState
+          @attr name com.example.youlian:duplicateParentState
         */
         public static final int View_duplicateParentState = 42;
         /**
@@ -3753,7 +3753,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:fadeScrollbars
+          @attr name com.example.youlian:fadeScrollbars
         */
         public static final int View_fadeScrollbars = 18;
         /**
@@ -3780,7 +3780,7 @@ containing a value of this type.
 <tr><td><code>vertical</code></td><td>0x00002000</td><td> Fades vertical edges only. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:fadingEdge
+          @attr name com.example.youlian:fadingEdge
         */
         public static final int View_fadingEdge = 28;
         /**
@@ -3798,7 +3798,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:fadingEdgeLength
+          @attr name com.example.youlian:fadingEdgeLength
         */
         public static final int View_fadingEdgeLength = 30;
         /**
@@ -3819,7 +3819,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:filterTouchesWhenObscured
+          @attr name com.example.youlian:filterTouchesWhenObscured
         */
         public static final int View_filterTouchesWhenObscured = 39;
         /**
@@ -3840,7 +3840,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:fitsSystemWindows
+          @attr name com.example.youlian:fitsSystemWindows
         */
         public static final int View_fitsSystemWindows = 14;
         /**
@@ -3863,7 +3863,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:focusable
+          @attr name com.example.youlian:focusable
         */
         public static final int View_focusable = 11;
         /**
@@ -3883,7 +3883,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:focusableInTouchMode
+          @attr name com.example.youlian:focusableInTouchMode
         */
         public static final int View_focusableInTouchMode = 12;
         /**
@@ -3902,7 +3902,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:hapticFeedbackEnabled
+          @attr name com.example.youlian:hapticFeedbackEnabled
         */
         public static final int View_hapticFeedbackEnabled = 46;
         /**
@@ -3924,7 +3924,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:id
+          @attr name com.example.youlian:id
         */
         public static final int View_id = 0;
         /**
@@ -3958,7 +3958,7 @@ containing a value of this type.
 <tr><td><code>no</code></td><td>2</td><td> The view is not important for accessibility. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:importantForAccessibility
+          @attr name com.example.youlian:importantForAccessibility
         */
         public static final int View_importantForAccessibility = 65;
         /**
@@ -3980,7 +3980,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:isScrollContainer
+          @attr name com.example.youlian:isScrollContainer
         */
         public static final int View_isScrollContainer = 17;
         /**
@@ -3999,7 +3999,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:keepScreenOn
+          @attr name com.example.youlian:keepScreenOn
         */
         public static final int View_keepScreenOn = 41;
         /**
@@ -4031,7 +4031,7 @@ containing a value of this type.
             </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:layerType
+          @attr name com.example.youlian:layerType
         */
         public static final int View_layerType = 61;
         /**
@@ -4058,7 +4058,7 @@ containing a value of this type.
 <tr><td><code>locale</code></td><td>3</td><td> Locale </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:layoutDirection
+          @attr name com.example.youlian:layoutDirection
         */
         public static final int View_layoutDirection = 62;
         /**
@@ -4074,7 +4074,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:longClickable
+          @attr name com.example.youlian:longClickable
         */
         public static final int View_longClickable = 37;
         /**
@@ -4096,7 +4096,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:minHeight
+          @attr name com.example.youlian:minHeight
         */
         public static final int View_minHeight = 43;
         /**
@@ -4118,7 +4118,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:minWidth
+          @attr name com.example.youlian:minWidth
         */
         public static final int View_minWidth = 44;
         /**
@@ -4137,7 +4137,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:nextFocusDown
+          @attr name com.example.youlian:nextFocusDown
         */
         public static final int View_nextFocusDown = 34;
         /**
@@ -4156,7 +4156,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:nextFocusForward
+          @attr name com.example.youlian:nextFocusForward
         */
         public static final int View_nextFocusForward = 35;
         /**
@@ -4175,7 +4175,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:nextFocusLeft
+          @attr name com.example.youlian:nextFocusLeft
         */
         public static final int View_nextFocusLeft = 31;
         /**
@@ -4194,7 +4194,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:nextFocusRight
+          @attr name com.example.youlian:nextFocusRight
         */
         public static final int View_nextFocusRight = 32;
         /**
@@ -4213,7 +4213,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:nextFocusUp
+          @attr name com.example.youlian:nextFocusUp
         */
         public static final int View_nextFocusUp = 33;
         /**
@@ -4236,7 +4236,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:onClick
+          @attr name com.example.youlian:onClick
         */
         public static final int View_onClick = 48;
         /**
@@ -4266,7 +4266,7 @@ containing a value of this type.
 <tr><td><code>never</code></td><td>2</td><td> Never show over-scroll effects. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:overScrollMode
+          @attr name com.example.youlian:overScrollMode
         */
         public static final int View_overScrollMode = 49;
         /**
@@ -4298,7 +4298,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:padding
+          @attr name com.example.youlian:padding
         */
         public static final int View_padding = 4;
         /**
@@ -4316,7 +4316,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:paddingBottom
+          @attr name com.example.youlian:paddingBottom
         */
         public static final int View_paddingBottom = 8;
         /**
@@ -4334,7 +4334,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:paddingEnd
+          @attr name com.example.youlian:paddingEnd
         */
         public static final int View_paddingEnd = 10;
         /**
@@ -4352,7 +4352,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:paddingLeft
+          @attr name com.example.youlian:paddingLeft
         */
         public static final int View_paddingLeft = 5;
         /**
@@ -4370,7 +4370,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:paddingRight
+          @attr name com.example.youlian:paddingRight
         */
         public static final int View_paddingRight = 7;
         /**
@@ -4388,7 +4388,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:paddingStart
+          @attr name com.example.youlian:paddingStart
         */
         public static final int View_paddingStart = 9;
         /**
@@ -4406,7 +4406,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:paddingTop
+          @attr name com.example.youlian:paddingTop
         */
         public static final int View_paddingTop = 6;
         /**
@@ -4426,7 +4426,7 @@ containing a value of this type.
 <tr><td><code>vertical</code></td><td>0x00002000</td><td> Fades vertical edges only. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:requiresFadingEdge
+          @attr name com.example.youlian:requiresFadingEdge
         */
         public static final int View_requiresFadingEdge = 29;
         /**
@@ -4442,7 +4442,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:rotation
+          @attr name com.example.youlian:rotation
         */
         public static final int View_rotation = 55;
         /**
@@ -4458,7 +4458,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:rotationX
+          @attr name com.example.youlian:rotationX
         */
         public static final int View_rotationX = 56;
         /**
@@ -4474,7 +4474,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:rotationY
+          @attr name com.example.youlian:rotationY
         */
         public static final int View_rotationY = 57;
         /**
@@ -4497,7 +4497,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:saveEnabled
+          @attr name com.example.youlian:saveEnabled
         */
         public static final int View_saveEnabled = 38;
         /**
@@ -4513,7 +4513,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:scaleX
+          @attr name com.example.youlian:scaleX
         */
         public static final int View_scaleX = 58;
         /**
@@ -4529,7 +4529,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:scaleY
+          @attr name com.example.youlian:scaleY
         */
         public static final int View_scaleY = 59;
         /**
@@ -4547,7 +4547,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:scrollX
+          @attr name com.example.youlian:scrollX
         */
         public static final int View_scrollX = 2;
         /**
@@ -4565,7 +4565,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:scrollY
+          @attr name com.example.youlian:scrollY
         */
         public static final int View_scrollY = 3;
         /**
@@ -4581,7 +4581,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:scrollbarAlwaysDrawHorizontalTrack
+          @attr name com.example.youlian:scrollbarAlwaysDrawHorizontalTrack
         */
         public static final int View_scrollbarAlwaysDrawHorizontalTrack = 26;
         /**
@@ -4597,7 +4597,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:scrollbarAlwaysDrawVerticalTrack
+          @attr name com.example.youlian:scrollbarAlwaysDrawVerticalTrack
         */
         public static final int View_scrollbarAlwaysDrawVerticalTrack = 27;
         /**
@@ -4613,7 +4613,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:scrollbarDefaultDelayBeforeFade
+          @attr name com.example.youlian:scrollbarDefaultDelayBeforeFade
         */
         public static final int View_scrollbarDefaultDelayBeforeFade = 20;
         /**
@@ -4629,7 +4629,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:scrollbarFadeDuration
+          @attr name com.example.youlian:scrollbarFadeDuration
         */
         public static final int View_scrollbarFadeDuration = 19;
         /**
@@ -4647,7 +4647,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:scrollbarSize
+          @attr name com.example.youlian:scrollbarSize
         */
         public static final int View_scrollbarSize = 21;
         /**
@@ -4677,7 +4677,7 @@ containing a value of this type.
 <tr><td><code>outsideInset</code></td><td>0x03000000</td><td> Edge of the view and inset </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:scrollbarStyle
+          @attr name com.example.youlian:scrollbarStyle
         */
         public static final int View_scrollbarStyle = 16;
         /**
@@ -4689,7 +4689,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:scrollbarThumbHorizontal
+          @attr name com.example.youlian:scrollbarThumbHorizontal
         */
         public static final int View_scrollbarThumbHorizontal = 22;
         /**
@@ -4701,7 +4701,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:scrollbarThumbVertical
+          @attr name com.example.youlian:scrollbarThumbVertical
         */
         public static final int View_scrollbarThumbVertical = 23;
         /**
@@ -4713,7 +4713,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:scrollbarTrackHorizontal
+          @attr name com.example.youlian:scrollbarTrackHorizontal
         */
         public static final int View_scrollbarTrackHorizontal = 24;
         /**
@@ -4725,7 +4725,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:scrollbarTrackVertical
+          @attr name com.example.youlian:scrollbarTrackVertical
         */
         public static final int View_scrollbarTrackVertical = 25;
         /**
@@ -4745,7 +4745,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>vertical</code></td><td>0x00000200</td><td> Displays vertical scrollbar only. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:scrollbars
+          @attr name com.example.youlian:scrollbars
         */
         public static final int View_scrollbars = 15;
         /**
@@ -4764,7 +4764,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:soundEffectsEnabled
+          @attr name com.example.youlian:soundEffectsEnabled
         */
         public static final int View_soundEffectsEnabled = 45;
         /**
@@ -4787,7 +4787,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:tag
+          @attr name com.example.youlian:tag
         */
         public static final int View_tag = 1;
         /**
@@ -4830,7 +4830,7 @@ containing a value of this type.
             </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:textAlignment
+          @attr name com.example.youlian:textAlignment
         */
         public static final int View_textAlignment = 64;
         /**
@@ -4870,7 +4870,7 @@ containing a value of this type.
 <tr><td><code>locale</code></td><td>5</td><td> The paragraph direction is coming from the system Locale. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:textDirection
+          @attr name com.example.youlian:textDirection
         */
         public static final int View_textDirection = 63;
         /**
@@ -4891,7 +4891,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:transformPivotX
+          @attr name com.example.youlian:transformPivotX
         */
         public static final int View_transformPivotX = 53;
         /**
@@ -4912,7 +4912,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:transformPivotY
+          @attr name com.example.youlian:transformPivotY
         */
         public static final int View_transformPivotY = 54;
         /**
@@ -4933,7 +4933,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:translationX
+          @attr name com.example.youlian:translationX
         */
         public static final int View_translationX = 51;
         /**
@@ -4954,7 +4954,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:translationY
+          @attr name com.example.youlian:translationY
         */
         public static final int View_translationY = 52;
         /**
@@ -4974,7 +4974,7 @@ containing a value of this type.
 <tr><td><code>right</code></td><td>2</td><td> Place the scroll bar on the right. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:verticalScrollbarPosition
+          @attr name com.example.youlian:verticalScrollbarPosition
         */
         public static final int View_verticalScrollbarPosition = 60;
         /**
@@ -4994,7 +4994,7 @@ containing a value of this type.
 <tr><td><code>gone</code></td><td>2</td><td> Completely hidden, as if the view had not been added. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:visibility
+          @attr name com.example.youlian:visibility
         */
         public static final int View_visibility = 13;
         /** 
@@ -5069,7 +5069,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:addStatesFromChildren
+          @attr name com.example.youlian:addStatesFromChildren
         */
         public static final int ViewGroup_addStatesFromChildren = 7;
         /**
@@ -5088,7 +5088,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:alwaysDrawnWithCache
+          @attr name com.example.youlian:alwaysDrawnWithCache
         */
         public static final int ViewGroup_alwaysDrawnWithCache = 6;
         /**
@@ -5109,7 +5109,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:animateLayoutChanges
+          @attr name com.example.youlian:animateLayoutChanges
         */
         public static final int ViewGroup_animateLayoutChanges = 0;
         /**
@@ -5130,7 +5130,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:animationCache
+          @attr name com.example.youlian:animationCache
         */
         public static final int ViewGroup_animationCache = 4;
         /**
@@ -5152,7 +5152,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:clipChildren
+          @attr name com.example.youlian:clipChildren
         */
         public static final int ViewGroup_clipChildren = 1;
         /**
@@ -5171,7 +5171,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:clipToPadding
+          @attr name com.example.youlian:clipToPadding
         */
         public static final int ViewGroup_clipToPadding = 2;
         /**
@@ -5194,7 +5194,7 @@ containing a value of this type.
 <tr><td><code>blocksDescendants</code></td><td>2</td><td> The ViewGroup will block its descendants from receiving focus. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:descendantFocusability
+          @attr name com.example.youlian:descendantFocusability
         */
         public static final int ViewGroup_descendantFocusability = 8;
         /**
@@ -5209,7 +5209,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:layoutAnimation
+          @attr name com.example.youlian:layoutAnimation
         */
         public static final int ViewGroup_layoutAnimation = 3;
         /**
@@ -5237,7 +5237,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>all</code></td><td>0x3</td><td> The drawing cache is always persisted. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:persistentDrawingCache
+          @attr name com.example.youlian:persistentDrawingCache
         */
         public static final int ViewGroup_persistentDrawingCache = 5;
         /**
@@ -5264,7 +5264,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:splitMotionEvents
+          @attr name com.example.youlian:splitMotionEvents
         */
         public static final int ViewGroup_splitMotionEvents = 9;
     };
