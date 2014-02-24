@@ -131,13 +131,15 @@ public class ActivityFragment extends BaseFragment {
 		public void onItemClick(PLA_AdapterView<?> parent, View view,
 				int position, long id) {
 			
+			mLogger.i("position: " + position);
+			
 			String actid = null;
 			if(isSign()) {
-				ActivitySign sign = mSignList.get(position);
+				ActivitySign sign = mSignListAdapter.getItem(position-1);
 				if(sign == null) return;
 				actid = sign.id;
 			} else {
-				ActivityAll all = mAllList.get(position);
+				ActivityAll all = mAllListAdapter.getItem(position-1);
 				if(all == null) return;
 				actid = all.id;
 			}
