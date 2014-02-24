@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="真功夫啊是的发生aasdfad司法所地方sdfasdf地方" />
+             />
 
         <ImageView
             android:id="@+id/iv_image"
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_gravity="right"
-            android:text="真功夫啊" />
+            />
 
         <TextView
             android:id="@+id/tv_date"
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_gravity="right"
-            android:text="2013-87-98" />
+            />
     </LinearLayout>
 
 </LinearLayout>

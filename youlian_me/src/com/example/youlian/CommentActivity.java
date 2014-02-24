@@ -80,8 +80,6 @@ public class CommentActivity extends Activity implements OnClickListener {
 						JSONObject o = new JSONObject(response);
 						int status = o.optInt("status");
 						if (status == 1) {
-							Toast.makeText(getApplicationContext(), "申请成功",
-									Toast.LENGTH_SHORT).show();
 							JSONArray array = o.optJSONArray("result");
 							int size = array.length();
 							for(int i=0; i<size; i++){

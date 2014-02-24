@@ -24,6 +24,11 @@ import com.android.volley.toolbox.ImageLoader;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Card;
 import com.example.youlian.mode.YouhuiQuan;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.controller.RequestType;
+import com.umeng.socialize.controller.UMServiceFactory;
+import com.umeng.socialize.controller.UMSocialService;
+import com.umeng.socialize.media.UMImage;
 
 public class MemberShipDetail extends Activity implements OnClickListener {
 	protected static final String TAG = "MembershipActivity";
@@ -95,7 +100,26 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 		rel_shop_desc.setOnClickListener(this);
 		tv_shop_desc = (TextView) this.findViewById(R.id.tv_shop_desc);
 		
+		// set tab buttons
+				initShareViews();
 	}
+	
+	
+	private Button mPieButton;
+	private Button mTierButton;
+	private Button mWiGameButton;
+	private Button mMoreButton;
+	private void initShareViews() {
+		mPieButton = (Button) findViewById(R.id.btn_pie);//
+		mPieButton.setOnClickListener(this);
+		mTierButton = (Button) findViewById(R.id.btn_tier);
+		mTierButton.setOnClickListener(this);
+		mWiGameButton = (Button) findViewById(R.id.btn_wigame);
+		mWiGameButton.setOnClickListener(this);
+		mMoreButton = (Button) findViewById(R.id.btn_more);
+		mMoreButton.setOnClickListener(this);
+	}
+	
 	
 	protected void refreshView() {
 		ImageLoader imageLoader = MyVolley.getImageLoader();
@@ -119,8 +143,27 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 		tv_shop_desc.setText(card.customer_brief);
 	}
 
-	
+	 /**
+     * @功能描述 : 分享(先选择平台)
+     */
+    private void openShareBoard() {
+        mController.setShareContent("默认内容");
+        mController.setShareMedia(mUMImgBitmap);
+        mController.openShare(this, false);
+    }
+    
+ // sdk controller
+    private UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.share", RequestType.SOCIAL);;
+    // 布局view
+    private View mMainView = null;
 
+    // 要分享的文字内容
+    private String mShareContent = "";
+    private final SHARE_MEDIA mTestMedia = SHARE_MEDIA.SINA;
+    // 要分享的图片
+    private UMImage mUMImgBitmap = null;
+
+	private boolean isFav = false;
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -148,6 +191,27 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 			intent.putExtra("url", card.nonactivatedPic);
 			intent.putExtra("desc", card.customer_brief);
 			startActivity(intent);
+			break;
+			
+		case R.id.btn_pie:// 敲到
+			break;
+		case R.id.btn_tier:// 分享
+			openShareBoard();
+			break;
+		case R.id.btn_wigame:// 评论
+			 intent = new Intent(getApplicationContext(), CommentActivity.class);
+			intent.putExtra("title", card.card_name);
+			intent.putExtra("customer_id", card.customer_id);
+			
+			startActivity(intent);
+			break;
+		case R.id.btn_more:// 收藏
+			if(isFav){
+				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), card.card_id, "2", createDelFavSuccessListener(), createMyReqErrorListener());
+			}else{
+				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), card.card_id, "2", createAddFavSuccessListener(), createMyReqErrorListener());
+			}
+			isFav = !isFav;
 			break;
 		default:
 			break;
@@ -182,7 +246,33 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 			}
 		};
 	}
+	private Response.Listener<String> createAddFavSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if (status == 1) {
+							Toast.makeText(getApplicationContext(), "关注成功",
+									Toast.LENGTH_SHORT).show();
+							mMoreButton.setText("已收藏");
+						} else {
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						}
 
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		};
+	}
 	
 	private Response.ErrorListener createMyReqErrorListener() {
 		return new Response.ErrorListener() {

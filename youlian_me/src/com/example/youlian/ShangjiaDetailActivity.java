@@ -38,6 +38,16 @@ import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Ad;
 import com.example.youlian.mode.Card;
 import com.example.youlian.mode.Customer;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.controller.RequestType;
+import com.umeng.socialize.controller.UMServiceFactory;
+import com.umeng.socialize.controller.UMSocialService;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMVideo;
+import com.umeng.socialize.media.UMusic;
+import com.umeng.socialize.sso.QZoneSsoHandler;
+import com.umeng.socialize.sso.SinaSsoHandler;
+import com.umeng.socialize.sso.TencentWBSsoHandler;
 
 public class ShangjiaDetailActivity extends Activity implements OnClickListener {
 	protected static final String TAG = "ShangjiaDetailActivity";
@@ -127,7 +137,24 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 		rel_shop_desc = (RelativeLayout) this.findViewById(R.id.rel_shop_desc);
 		rel_shop_desc.setOnClickListener(this);
 		tv_shop_desc = (TextView) this.findViewById(R.id.tv_shop_desc);
-		
+		initShareViews();
+	}
+	
+	
+	private boolean isFav = false;
+	private Button mPieButton;
+	private Button mTierButton;
+	private Button mWiGameButton;
+	private Button mMoreButton;
+	private void initShareViews() {
+		mPieButton = (Button) findViewById(R.id.btn_pie);//
+		mPieButton.setOnClickListener(this);
+		mTierButton = (Button) findViewById(R.id.btn_tier);
+		mTierButton.setOnClickListener(this);
+		mWiGameButton = (Button) findViewById(R.id.btn_wigame);
+		mWiGameButton.setOnClickListener(this);
+		mMoreButton = (Button) findViewById(R.id.btn_more);
+		mMoreButton.setOnClickListener(this);
 	}
 	
 	protected void refreshView() {
@@ -180,10 +207,121 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 			intent.putExtra("desc", card.brief);
 			startActivity(intent);
 			break;
+			
+		case R.id.btn_pie:// 敲到
+			break;
+		case R.id.btn_tier:// 分享
+			openShareBoard();
+			break;
+		case R.id.btn_wigame:// 评论
+			 intent = new Intent(getApplicationContext(), CommentActivity.class);
+			intent.putExtra("title", card.name);
+			intent.putExtra("customer_id", card.id);
+			
+			startActivity(intent);
+			break;
+		case R.id.btn_more:// 收藏
+			if(isFav){
+				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), card.id, "2", createDelFavSuccessListener(), createMyReqErrorListener());
+			}else{
+				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), card.id, "2", createAddFavSuccessListener(), createMyReqErrorListener());
+			}
+			isFav = !isFav;
+			break;
 		default:
 			break;
 		}
 	}
+	
+	
+	
+
+    // 要分享的文字内容
+    private String mShareContent = "";
+    private final SHARE_MEDIA mTestMedia = SHARE_MEDIA.SINA;
+    // 要分享的图片
+    private UMImage mUMImgBitmap = null;
+	 /**
+     * @功能描述 : 初始化与SDK相关的成员变量
+     */
+    private void initConfig() {
+
+        
+
+        // 要分享的文字内容
+        mShareContent = getResources().getString(
+                R.string.umeng_socialize_share_content);
+        mController.setShareContent("测试内容");
+
+        mUMImgBitmap = new UMImage(getApplicationContext(),
+                "http://www.umeng.com/images/pic/banner_module_social.png");
+        // mUMImgBitmap = new UMImage(mContext, new
+        // File("/mnt/sdcard/DCIM/Camera/1357290284463.jpg"));
+        // 设置图片
+        // 其他方式构造UMImage
+        // UMImage umImage_url = new UMImage(mContext,
+        // "http://historyhots.com/uploadfile/2013/0110/20130110064307373.jpg");
+        //
+        // mUMImgBitmap = new UMImage(mContext, new File(
+        // "mnt/sdcard/test.png"));
+
+        UMusic uMusic = new UMusic("http://sns.whalecloud.com/test_music.mp3");
+        uMusic.setAuthor("zhangliyong");
+        uMusic.setTitle("天籁之音");
+
+        UMVideo umVedio = new UMVideo(
+                "http://v.youku.com/v_show/id_XNTE5ODAwMDM2.html?f=19001023");
+        umVedio.setThumb("http://historyhots.com/uploadfile/2013/0110/20130110064307373.jpg");
+        umVedio.setTitle("哇喔喔喔！");
+
+        // 添加新浪和QQ空间的SSO授权支持
+        mController.getConfig().setSsoHandler(new SinaSsoHandler());
+        mController.getConfig().setSsoHandler(
+                new QZoneSsoHandler(this));
+        // 添加腾讯微博SSO支持
+        mController.getConfig().setSsoHandler(new TencentWBSsoHandler());
+
+    }
+	 /**
+     * @功能描述 : 分享(先选择平台)
+     */
+    private void openShareBoard() {
+        mController.setShareContent("默认内容");
+        mController.setShareMedia(mUMImgBitmap);
+        mController.openShare(this, false);
+    }
+    
+    
+    private Response.Listener<String> createAddFavSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if (status == 1) {
+							Toast.makeText(getApplicationContext(), "关注成功",
+									Toast.LENGTH_SHORT).show();
+							mMoreButton.setText("已收藏");
+						} else {
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						}
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		};
+	}
+    
+ // sdk controller
+    private UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.share", RequestType.SOCIAL);;
 
 	private Response.Listener<String> createDelFavSuccessListener() {
 		return new Response.Listener<String>() {

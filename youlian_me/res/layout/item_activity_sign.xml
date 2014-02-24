@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:text="真功夫啊是的发生地方"
             android:textSize="18sp" />
 
         <com.android.volley.toolbox.NetworkImageView
@@ -32,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="参与签到活动可以享受7折优惠"
             android:textSize="18sp" />
 
         <View
@@ -60,7 +58,6 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="4dp"
                 android:singleLine="true"
-                android:text="真功夫（珠江新城店）"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -69,7 +66,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="2013-02-25至2014-04-01"
             android:textColor="#999"
             android:textSize="14sp" />
 
@@ -78,7 +74,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:text="300米"
             android:textColor="#999"
             android:textSize="14sp" />
     </LinearLayout>

@@ -29,7 +29,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="真功夫啊是的发生地方"
             android:textSize="18sp" />
     </LinearLayout>
 

@@ -285,7 +285,9 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			break;
 		case R.id.btn_wigame:// 评论
 			Intent intent = new Intent(getApplicationContext(), CommentActivity.class);
-			intent.putExtra("quan", quan);
+			intent.putExtra("title", quan.fav_name);
+			intent.putExtra("customer_id", quan.customer_id);
+			
 			startActivity(intent);
 			break;
 		case R.id.btn_more:// 收藏
