@@ -108,7 +108,7 @@ public class TabHome extends TabActivity implements OnClickListener,
 				.newTabSpec(TAB_PIC)
 				.setIndicator("")
 				.setContent(
-						new Intent(this, TabShopCart.class)));
+						new Intent(this, TabShopCart.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));
 		tabHost.addTab(tabHost
 				.newTabSpec(TAB_SEARCH)
 				.setIndicator("")

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp" >
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/goods_item_iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/default_img" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp" >
+
+        <TextView
+            android:id="@+id/goods_item_tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="商品名称XXX"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/goods_item_tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_alignParentRight="true"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="￥230元"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+        
+        <TextView
+            android:id="@+id/goods_item_tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/goods_item_tv_price"
+            android:layout_alignRight="@id/goods_item_tv_price"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="x10"
+            android:textColor="#666"
+            android:textSize="14sp" />
+        
+        <TextView
+            android:id="@+id/goods_item_tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/goods_item_tv_name"
+            android:layout_alignLeft="@id/goods_item_tv_name"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="这个商品大大地不错"
+            android:textColor="#666"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

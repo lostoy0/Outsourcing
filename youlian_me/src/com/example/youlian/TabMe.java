@@ -3,8 +3,6 @@ package com.example.youlian;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -117,7 +115,8 @@ public class TabMe extends BaseActivity implements OnClickListener {
 			
 		case R.id.my_order_panel:
 		case R.id.my_tv_order:
-			
+			intent = new Intent(this, MyOrderActivity.class);
+			startActivity(intent);
 			break;
 			
 		case R.id.my_favourite_panel:

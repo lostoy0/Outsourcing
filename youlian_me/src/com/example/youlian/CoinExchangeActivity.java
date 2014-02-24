@@ -164,6 +164,8 @@ public class CoinExchangeActivity extends BaseActivity {
 						JSONObject object = new JSONObject(response);
 						if("1".equals(object.opt(Constants.key_status))) {
 							Utils.showToast(CoinExchangeActivity.this, "兑换成功");
+						} else {
+							Utils.showToast(CoinExchangeActivity.this, "兑换失败");
 						}
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
@@ -182,6 +184,7 @@ public class CoinExchangeActivity extends BaseActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	Utils.showToast(CoinExchangeActivity.this, "兑换失败");
             	finish();
             }
         };

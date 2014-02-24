@@ -121,4 +121,10 @@ public class Constants {
 	//======================================
 	
 	public static final String ACTION_SIGN_FROM_PERSONALCENTER = "com.youlian.sign.from.center";
+	
+	//==============================
+	//     requestCode
+	//==============================
+	
+	public static final int REQ_CODE_LOGIN = 0x1000;
 }

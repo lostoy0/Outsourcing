@@ -5,41 +5,40 @@
     android:orientation="horizontal"
     android:paddingBottom="8dp"
     android:paddingTop="8dp" >
-    
-    <RelativeLayout 
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp">
-        
-        <ImageButton 
-            android:id="@+id/goods_item_ib_select"
+        android:layout_marginRight="8dp" >
+
+        <ImageButton
+            android:id="@+id/goods_item_ib_unselect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/cart_select_selector"/>
-        
-        <ImageButton 
+            android:src="@drawable/cart_select_selector" />
+
+        <ImageButton
             android:id="@+id/goods_item_ib_selected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/cart_selected_selector"/>
+            android:src="@drawable/cart_selected_selector" />
     </RelativeLayout>
 
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/goods_item_iv_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/my_icon_bg" />
+        android:src="@drawable/default_img" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="8dp"
-        android:orientation="vertical" >
+        android:layout_marginLeft="8dp" >
 
         <TextView
             android:id="@+id/goods_item_tv_name"
@@ -51,28 +50,65 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-       <TextView
-                android:id="@+id/goods_item_tv_price"
+        <TextView
+            android:id="@+id/goods_item_tv_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/goods_item_tv_name"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="数量：10"
+            android:textColor="#666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/goods_item_tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/goods_item_tv_amount"
+            android:layout_toLeftOf="@+id/goods_item_change_amount_panel"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="单价：230元"
+            android:textColor="#666"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:id="@+id/goods_item_change_amount_panel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/goods_item_tv_price"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/goods_item_ib_minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:text="价格：230元"
-                android:textColor="#333"
-                android:textSize="14sp" />
-            
+                android:background="@null"
+                android:src="@drawable/cart_minus_selector" />
+
             <TextView
-                android:id="@+id/goods_item_tv_amount"
-                android:layout_width="match_parent"
+                android:id="@+id/goods_item_tv_amount_change"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ellipsize="end"
+                android:gravity="center"
                 android:singleLine="true"
-                android:text="数量：10"
-                android:textColor="#333"
-                android:textSize="14sp" />
-        
-    </LinearLayout>
+                android:text="1"
+                android:textSize="16sp"
+                android:background="@drawable/cart_number_bg" />
+
+            <ImageButton
+                android:id="@+id/goods_item_ib_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/cart_plus_selector" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

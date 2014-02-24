@@ -68,12 +68,6 @@
         
         <include layout="@layout/merge_line_grey_horizontal"/>
         
-        <include layout="@layout/item_goods_list"/>
-        <include layout="@layout/merge_line_grey_horizontal"/>
-        <include layout="@layout/item_goods_list"/>
-        <include layout="@layout/merge_line_grey_horizontal"/>
-        <include layout="@layout/item_goods_list"/>
-        
         <ListView 
             android:id="@+id/list"
             android:layout_width="match_parent"
@@ -89,29 +83,6 @@
             android:paddingRight="10dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp">
-            
-            <Button 
-                android:visibility="gone"
-                android:id="@+id/cart_btn_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:background="@drawable/cart_pay_selector"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:text="删除（0）"
-                android:textSize="20sp"
-                android:textColor="@color/white"/>
-            
-            <Button 
-                android:id="@+id/cart_btn_pay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:background="@drawable/cart_pay_selector"
-                android:text="去支付"
-                android:textSize="20sp"
-                android:textColor="@color/white"/>
             
             <TextView
                 android:id="@+id/cart_tv_money"
@@ -151,6 +122,27 @@
                 android:text="数量："
                 android:textColor="#666"
                 android:textSize="18sp" />
+            
+            <Button 
+                android:visibility="gone"
+                android:id="@+id/cart_btn_delete"
+                android:layout_width="66dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cart_tv_amount"
+                android:background="@drawable/cart_pay_selector"
+                android:text="删除（0）"
+                android:textSize="14sp"
+                android:textColor="@color/white"/>
+            
+            <Button 
+                android:id="@+id/cart_btn_pay"
+                android:layout_width="66dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cart_tv_amount"
+                android:background="@drawable/cart_pay_selector"
+                android:text="去支付"
+                android:textSize="14sp"
+                android:textColor="@color/white"/>
             
         </RelativeLayout>
         

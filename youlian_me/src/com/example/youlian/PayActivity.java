@@ -1,13 +1,27 @@
 package com.example.youlian;
 
-import org.apache.http.impl.cookie.BestMatchSpec;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.example.youlian.adapter.PayOrderListAdapter;
+import com.example.youlian.common.Constants;
+import com.example.youlian.mode.Order;
+import com.example.youlian.mode.OrderDetail;
+import com.example.youlian.util.YlLogger;
 
 /**
  * 支付界面
@@ -15,6 +29,7 @@ import android.widget.TextView;
  *
  */
 public class PayActivity extends BaseActivity implements OnClickListener {
+	private static YlLogger mLogger = YlLogger.getLogger(PayActivity.class.getSimpleName());
 	
 	private static final int YIPAY = 1;
 	private static final int UNIONPAY = 2;
@@ -22,18 +37,37 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 	private static final int ALIPAY = 4;
 	private static final int UCOIN = 5;
 	
-	private TextView mShopNameTextView, mGoodsNameTextView, mPriceTextView, mAmountTextView, mTotalMoneyTextView, mCheckAlipayClienTextView;
+	public static final String KEY_ORDER = "order";
+	
+	private TextView mShopNameTextView, mTotalMoneyTextView, mCheckAlipayClienTextView;
 	private ImageButton mSelectYiPayButton, mSelectUnionButton, mSelectAlipayClientButton, mSelectAlipayButton, mSelectUcoinButton;
 	private Button mPayButton;
 	
+	private ListView mListView;
+	private PayOrderListAdapter mAdapter;
+	private List<OrderDetail> mList;
+	
 	private int mSelected = YIPAY;
+	
+	private Order mOrder;
+	private Order mSettleOrder;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pay);
 		
+		mOrder = (Order) getIntent().getSerializableExtra(KEY_ORDER);
+		if(mOrder == null) {
+			mLogger.e("order is null");
+			finish();
+		}
+		
+		mList = new ArrayList<OrderDetail>();
+		
 		initViews();
+		
+		YouLianHttpApi.orderSettle(mOrder.id, createSettleOrderSuccessListener(), createSettleOrderErrorListener());
 	}
 
 	@Override
@@ -89,9 +123,58 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 			break;
 			
 		case R.id.pay_btn_pay:
-			
+			startPay();
 			break;
 		}
+	}
+	
+	private void startPay() {
+		switch(mSelected) {
+		case YIPAY:
+			yiPay();
+			break;
+			
+		case ALIPAY:
+			alipay();
+			break;
+			
+		case ALIPAY_CLIENT:
+			alipayClient();
+			break;
+			
+		case UCOIN:
+			ucoinPay();
+			break;
+			
+		case UNIONPAY:
+			unionPay();
+			break;
+		}
+	}
+
+	private void yiPay() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void alipay() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void alipayClient() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void ucoinPay() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void unionPay() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void initViews() {
@@ -99,9 +182,6 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		findViewById(R.id.back).setOnClickListener(this);
 		
 		mShopNameTextView = (TextView) findViewById(R.id.pay_tv_shopname);
-		mGoodsNameTextView = (TextView) findViewById(R.id.pay_tv_goodsname);
-		mPriceTextView = (TextView) findViewById(R.id.pay_tv_price);
-		mAmountTextView = (TextView) findViewById(R.id.pay_tv_amount);
 		mTotalMoneyTextView = (TextView) findViewById(R.id.pay_tv_money);
 		mCheckAlipayClienTextView = (TextView) findViewById(R.id.pay_tv_alipay_client_check);
 		
@@ -133,6 +213,10 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		findViewById(R.id.pay_tv_alipay).setOnClickListener(this);
 		findViewById(R.id.pay_tv_alipay_client).setOnClickListener(this);
 		findViewById(R.id.pay_tv_ucoin).setOnClickListener(this);
+		
+		mListView = (ListView) findViewById(R.id.list);
+		mAdapter = new PayOrderListAdapter(this, mList);
+		mListView.setAdapter(mAdapter);
 	}
 	
 	private void resetSelectState(int selected) {
@@ -178,5 +262,46 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 			break;
 		}
 	}
+	
+	private Response.Listener<String> createSettleOrderSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				if(TextUtils.isEmpty(response)) {
+					mLogger.i("response is null");
+				} else {
+					mLogger.i(response);
+					
+					try {
+						JSONObject object = new JSONObject(response);
+						Order order = Order.from(object.optJSONObject(Constants.key_result));
+						if(order != null) {
+							mSettleOrder = order;
+							if(mSettleOrder.orderDetailList != null && mSettleOrder.orderDetailList.size() > 0) {
+								mList.addAll(mSettleOrder.orderDetailList);
+								mAdapter.notifyDataSetChanged();
+								int cost = 0;
+								for(OrderDetail detail : mList) {
+									cost += detail.price*detail.quantity;
+								}
+								mTotalMoneyTextView.setText("总计：" + cost);
+							}
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+	}
+	
+	private Response.ErrorListener createSettleOrderErrorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            	mLogger.e(error.getMessage());
+            }
+        };
+    }
 
 }
