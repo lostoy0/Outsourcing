@@ -9,39 +9,43 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_title" >
+            android:layout_height="48dp"
+            android:background="@drawable/bg_title"
+            android:orientation="horizontal" >
 
             <Button
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
                 android:background="@drawable/select_btn_scan" />
 
             <LinearLayout
-                android:layout_width="200dp"
-                android:layout_height="30dp"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_weight="1"
                 android:background="@drawable/search_edit"
                 android:orientation="horizontal" >
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dip"
-                    android:layout_weight="0.1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dip"
                     android:src="@drawable/ads_search" />
 
                 <TextView
                     android:id="@+id/search_edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:background="@null"
                     android:text="请输入商家名称"
                     android:textColorHint="@color/grey"
@@ -49,19 +53,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
-                android:gravity="center_vertical" 
                 android:id="@+id/linear_area"
-                >
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:gravity="center_vertical" >
 
                 <TextView
+                    android:id="@+id/tv_area"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_area"
+                    android:textColor="@color/white"
                     android:text="乌鲁木齐" />
 
                 <ImageView
@@ -69,7 +71,7 @@
                     android:layout_height="5dp"
                     android:background="@drawable/arror" />
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
 
         <!-- 会员卡  优惠券  热狗 -->
 
@@ -126,14 +128,13 @@
             android:layout_marginTop="@dimen/hotbuy_margin_top" >
 
             <LinearLayout
+                android:id="@+id/linear_act"
                 android:layout_width="fill_parent"
                 android:layout_height="70dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/select_btn_huodong"
-                android:orientation="vertical" 
-                android:id="@+id/linear_act"
-                >
+                android:orientation="vertical" >
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -150,14 +151,13 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linear_seller"
                 android:layout_width="fill_parent"
                 android:layout_height="70dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/select_btn_shangjia"
-                android:orientation="vertical" 
-                android:id="@+id/linear_seller"
-                >
+                android:orientation="vertical" >
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -206,7 +206,7 @@
             android:layout_height="100dp"
             android:layout_margin="5dp"
             android:layout_marginTop="@dimen/hotbuy_margin_top"
-            android:background="@drawable/guanggao" />
+            android:background="@drawable/guanggao" />
         -->
 
 
@@ -217,7 +217,7 @@
              <com.example.youlian.view.TemplateTwo
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp" />
         -->
 
 
@@ -228,7 +228,7 @@
              <com.example.youlian.view.TemplateThree
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp" />
         -->
 
 
@@ -246,7 +246,7 @@
         <com.example.youlian.view.TemplateSix
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp" />
         -->
 
     </LinearLayout>
