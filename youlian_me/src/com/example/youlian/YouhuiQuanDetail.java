@@ -279,6 +279,9 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			YouLianHttpApi.applyYouhuiQuan(Global.getUserToken(getApplicationContext()), quan.fav_ent_id, createApplyYouhuiQuanSuccessListener(), createMyReqErrorListener());
 			break;
 		case R.id.btn_pie:// 敲到
+			Intent i = new Intent(getApplicationContext(), CommentAddActivity.class);
+			i.putExtra("customer_id", quan.customer_id);
+			startActivity(i);
 			break;
 		case R.id.btn_tier:// 分享
 			openShareBoard();

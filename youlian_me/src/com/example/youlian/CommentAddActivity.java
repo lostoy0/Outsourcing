@@ -37,7 +37,6 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 	private LinearLayout container_left;
 	private LinearLayout container_right;
 	
-	private YouhuiQuan quan;
 	private ImageButton ib_right;
 	private ImageView iv_icon_one;
 	private ImageView iv_icon_two;
@@ -46,6 +45,7 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 	private ImageView iv_icon_five;
 	private List<ImageView> ivs = new ArrayList<ImageView>();
 	private EditText et_content;
+	private String customer_id;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,8 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 		
 		initViews();
 		
-		quan = (YouhuiQuan) getIntent().getSerializableExtra("quan");
+		customer_id = getIntent().getStringExtra("customer_id");
+		
 		
 	}
 	
@@ -156,7 +157,7 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 		case R.id.ib_right:
 			Log.i(TAG, "ddddddddd");
 			String content = et_content.getText().toString();
-			YouLianHttpApi.comment(Global.getUserToken(getApplicationContext()), quan.customer_id, content, 
+			YouLianHttpApi.comment(Global.getUserToken(getApplicationContext()), customer_id, content, 
 					String.valueOf(star_level), null, null, "2",
 					null, null, createGetCommentSuccessListener(), createGetAdErrorListener());
 			break;

@@ -1959,18 +1959,22 @@ containing a value of this type.
         public static final int zhe=0x7f0201d5;
     }
     public static final class id {
-        public static final int account_lay=0x7f0a00d6;
-        public static final int account_text=0x7f0a00d9;
-        public static final int action_settings=0x7f0a0246;
+        public static final int account_lay=0x7f0a00d4;
+        public static final int account_text=0x7f0a00d7;
+        public static final int action_settings=0x7f0a024a;
         public static final int afterDescendants=0x7f0a0028;
-        public static final int agin_psd=0x7f0a0182;
+        public static final int agin_psd=0x7f0a0186;
         public static final int alertTitle=0x7f0a012c;
         public static final int all=0x7f0a0026;
         public static final int always=0x7f0a000e;
         public static final int alwaysScroll=0x7f0a002c;
         public static final int animation=0x7f0a0024;
         public static final int anyRtl=0x7f0a001b;
+        public static final int app_content=0x7f0a017a;
+        public static final int app_img=0x7f0a0178;
+        public static final int app_name=0x7f0a0179;
         public static final int apply_num=0x7f0a0110;
+        public static final int apprem_listview=0x7f0a0177;
         public static final int auto=0x7f0a000b;
         public static final int back=0x7f0a0036;
         public static final int beforeDescendants=0x7f0a0027;
@@ -1981,9 +1985,9 @@ containing a value of this type.
         public static final int bt_hotbuy=0x7f0a00fc;
         public static final int bt_membercard=0x7f0a00fa;
         public static final int bt_youhuiquan=0x7f0a00fb;
-        public static final int btn_cate=0x7f0a01a2;
+        public static final int btn_cate=0x7f0a01a6;
         public static final int btn_exchange=0x7f0a004e;
-        public static final int btn_get_verifycode=0x7f0a0185;
+        public static final int btn_get_verifycode=0x7f0a0189;
         public static final int btn_more=0x7f0a007e;
         public static final int btn_pic=0x7f0a0176;
         public static final int btn_pie=0x7f0a007b;
@@ -1991,21 +1995,21 @@ containing a value of this type.
         public static final int btn_right=0x7f0a004b;
         public static final int btn_tier=0x7f0a007c;
         public static final int btn_wigame=0x7f0a007d;
-        public static final int bus_center_lay=0x7f0a00de;
-        public static final int bus_consume_manger=0x7f0a00e3;
-        public static final int bus_consume_manger_img=0x7f0a00e4;
-        public static final int bus_data_recode=0x7f0a00e5;
-        public static final int bus_data_recode_img=0x7f0a00e6;
-        public static final int bus_recognition_card=0x7f0a00e1;
-        public static final int bus_recognition_card_img=0x7f0a00e2;
-        public static final int bus_send_card=0x7f0a00df;
-        public static final int bus_send_card_img=0x7f0a00e0;
+        public static final int bus_center_lay=0x7f0a00dc;
+        public static final int bus_consume_manger=0x7f0a00e1;
+        public static final int bus_consume_manger_img=0x7f0a00e2;
+        public static final int bus_data_recode=0x7f0a00e3;
+        public static final int bus_data_recode_img=0x7f0a00e4;
+        public static final int bus_recognition_card=0x7f0a00df;
+        public static final int bus_recognition_card_img=0x7f0a00e0;
+        public static final int bus_send_card=0x7f0a00dd;
+        public static final int bus_send_card_img=0x7f0a00de;
         public static final int button1=0x7f0a0135;
         public static final int button2=0x7f0a0137;
         public static final int button3=0x7f0a0136;
         public static final int buttonPanel=0x7f0a0133;
         public static final int call=0x7f0a0057;
-        public static final int cancelBtn=0x7f0a01b1;
+        public static final int cancelBtn=0x7f0a01b5;
         public static final int card_btn_consume=0x7f0a0048;
         public static final int card_btn_edit=0x7f0a0047;
         public static final int card_btn_remove=0x7f0a0049;
@@ -2037,13 +2041,13 @@ containing a value of this type.
         public static final int cart_tv_money_pre=0x7f0a0103;
         public static final int center=0x7f0a001f;
         public static final int close=0x7f0a0117;
-        public static final int com_facebook_login_activity_progress_bar=0x7f0a01f6;
+        public static final int com_facebook_login_activity_progress_bar=0x7f0a01fa;
         public static final int container=0x7f0a00f6;
         public static final int container_left=0x7f0a0053;
         public static final int container_right=0x7f0a0054;
-        public static final int contentBtnLayout=0x7f0a01b0;
-        public static final int contentEdit=0x7f0a01b8;
-        public static final int contentLayout=0x7f0a01af;
+        public static final int contentBtnLayout=0x7f0a01b4;
+        public static final int contentEdit=0x7f0a01bc;
+        public static final int contentLayout=0x7f0a01b3;
         public static final int contentPanel=0x7f0a012e;
         public static final int coupon_item_ib_delete=0x7f0a0147;
         public static final int coupon_item_iv_icon=0x7f0a0148;
@@ -2062,20 +2066,20 @@ containing a value of this type.
         public static final int email=0x7f0a005e;
         public static final int et_content=0x7f0a0035;
         public static final int et_ucoin_count=0x7f0a004d;
-        public static final int et_verifycode=0x7f0a0184;
+        public static final int et_verifycode=0x7f0a0188;
         public static final int favourite_item_ib_delete=0x7f0a014d;
         public static final int favourite_item_iv_icon=0x7f0a014e;
         public static final int favourite_item_tv_name=0x7f0a014f;
         public static final int favourite_item_tv_price=0x7f0a0150;
         public static final int favourite_item_tv_validdate=0x7f0a0151;
-        public static final int feekback_edit=0x7f0a0177;
+        public static final int feekback_edit=0x7f0a017b;
         public static final int firstStrong=0x7f0a001a;
         public static final int follow_active=0x7f0a0121;
         public static final int follow_interest=0x7f0a0123;
         public static final int follow_store=0x7f0a0055;
         public static final int follow_union=0x7f0a0122;
         public static final int footer_light=0x7f0a0175;
-        public static final int forget_psd=0x7f0a017b;
+        public static final int forget_psd=0x7f0a017f;
         public static final int gallery_image=0x7f0a0152;
         public static final int gallery_point_linear=0x7f0a009e;
         public static final int gone=0x7f0a0003;
@@ -2091,13 +2095,13 @@ containing a value of this type.
         public static final int goods_item_tv_name=0x7f0a0156;
         public static final int goods_item_tv_price=0x7f0a0158;
         public static final int gravity=0x7f0a001c;
-        public static final int grey_line=0x7f0a0245;
+        public static final int grey_line=0x7f0a0249;
         public static final int grey_line_a=0x7f0a00eb;
         public static final int grey_line_b=0x7f0a00ee;
         public static final int grey_line_c=0x7f0a00f5;
-        public static final int half_textview=0x7f0a01ae;
+        public static final int half_textview=0x7f0a01b2;
         public static final int hardware=0x7f0a0015;
-        public static final int header=0x7f0a01f5;
+        public static final int header=0x7f0a01f9;
         public static final int high=0x7f0a000d;
         public static final int horizontal=0x7f0a0005;
         public static final int ib_right=0x7f0a0067;
@@ -2108,18 +2112,18 @@ containing a value of this type.
         public static final int inherit=0x7f0a0018;
         public static final int insideInset=0x7f0a0008;
         public static final int insideOverlay=0x7f0a0007;
-        public static final int integral_text=0x7f0a00dd;
-        public static final int intergral_follow_img=0x7f0a00db;
-        public static final int intergral_follow_text=0x7f0a00dc;
+        public static final int integral_text=0x7f0a00db;
+        public static final int intergral_follow_img=0x7f0a00d9;
+        public static final int intergral_follow_text=0x7f0a00da;
         public static final int invisible=0x7f0a0002;
         public static final int is_have_fad=0x7f0a0126;
         public static final int is_rem=0x7f0a0125;
         public static final int is_store=0x7f0a0124;
         public static final int iv=0x7f0a0094;
         public static final int iv_biaoshi=0x7f0a006f;
-        public static final int iv_first=0x7f0a01b9;
-        public static final int iv_five=0x7f0a01bd;
-        public static final int iv_fourth=0x7f0a01bc;
+        public static final int iv_first=0x7f0a01bd;
+        public static final int iv_five=0x7f0a01c1;
+        public static final int iv_fourth=0x7f0a01c0;
         public static final int iv_gou=0x7f0a016f;
         public static final int iv_guanggao=0x7f0a010e;
         public static final int iv_icon=0x7f0a0069;
@@ -2133,21 +2137,21 @@ containing a value of this type.
         public static final int iv_online_chong=0x7f0a006d;
         public static final int iv_online_pay=0x7f0a0141;
         public static final int iv_qiang=0x7f0a0170;
-        public static final int iv_second=0x7f0a01ba;
-        public static final int iv_six=0x7f0a01be;
+        public static final int iv_second=0x7f0a01be;
+        public static final int iv_six=0x7f0a01c2;
         public static final int iv_star_five=0x7f0a0161;
         public static final int iv_star_four=0x7f0a0160;
         public static final int iv_star_one=0x7f0a015d;
         public static final int iv_star_three=0x7f0a015f;
         public static final int iv_star_two=0x7f0a015e;
-        public static final int iv_third=0x7f0a01bb;
+        public static final int iv_third=0x7f0a01bf;
         public static final int iv_three=0x7f0a0116;
         public static final int iv_two=0x7f0a0115;
         public static final int iv_xian=0x7f0a0171;
         public static final int iv_yi_chong=0x7f0a0162;
         public static final int iv_yi_pay=0x7f0a0142;
         public static final int iv_zhe=0x7f0a0172;
-        public static final int lay=0x7f0a0183;
+        public static final int lay=0x7f0a0187;
         public static final int layout_title=0x7f0a0066;
         public static final int left=0x7f0a0012;
         public static final int leftSpacer=0x7f0a0134;
@@ -2158,66 +2162,66 @@ containing a value of this type.
         public static final int linear_area=0x7f0a00f8;
         public static final int linear_seller=0x7f0a00fe;
         public static final int list=0x7f0a007f;
-        public static final int listView=0x7f0a01d5;
+        public static final int listView=0x7f0a01d9;
         public static final int listview=0x7f0a0064;
         public static final int listview_all=0x7f0a0065;
         public static final int loading=0x7f0a0060;
         public static final int loadingImageView=0x7f0a011b;
         public static final int locale=0x7f0a0019;
-        public static final int login=0x7f0a017e;
-        public static final int login_id=0x7f0a0179;
-        public static final int login_logout_text=0x7f0a00c2;
+        public static final int login=0x7f0a0182;
+        public static final int login_id=0x7f0a017d;
+        public static final int login_logout_text=0x7f0a00c0;
         public static final int low=0x7f0a000c;
         public static final int ltr=0x7f0a0016;
-        public static final int main_title=0x7f0a01a1;
+        public static final int main_title=0x7f0a01a5;
         public static final int mark=0x7f0a011a;
         public static final int message=0x7f0a0130;
-        public static final int modify_addr_panel=0x7f0a0197;
-        public static final int modify_addr_tv=0x7f0a0198;
-        public static final int modify_btn_save=0x7f0a018e;
-        public static final int modify_email_et=0x7f0a0196;
-        public static final int modify_email_panel=0x7f0a0195;
-        public static final int modify_icon_panel=0x7f0a018f;
-        public static final int modify_iv_icon=0x7f0a0190;
-        public static final int modify_nickname_et=0x7f0a0192;
-        public static final int modify_pass_panel=0x7f0a0199;
-        public static final int modify_phone_et=0x7f0a0194;
-        public static final int modify_phone_panel=0x7f0a0193;
-        public static final int modify_tv_userid=0x7f0a0191;
+        public static final int modify_addr_panel=0x7f0a019b;
+        public static final int modify_addr_tv=0x7f0a019c;
+        public static final int modify_btn_save=0x7f0a0192;
+        public static final int modify_email_et=0x7f0a019a;
+        public static final int modify_email_panel=0x7f0a0199;
+        public static final int modify_icon_panel=0x7f0a0193;
+        public static final int modify_iv_icon=0x7f0a0194;
+        public static final int modify_nickname_et=0x7f0a0196;
+        public static final int modify_pass_panel=0x7f0a019d;
+        public static final int modify_phone_et=0x7f0a0198;
+        public static final int modify_phone_panel=0x7f0a0197;
+        public static final int modify_tv_userid=0x7f0a0195;
         public static final int more=0x7f0a00bb;
-        public static final int more_about=0x7f0a00cd;
-        public static final int more_about_img=0x7f0a00ce;
-        public static final int more_account=0x7f0a00d7;
-        public static final int more_account_logout=0x7f0a00c1;
+        public static final int more_about=0x7f0a00cb;
+        public static final int more_about_img=0x7f0a00cc;
+        public static final int more_account=0x7f0a00d5;
+        public static final int more_account_logout=0x7f0a00bf;
         public static final int more_account_logout_img=0x7f0a00e8;
-        public static final int more_app_recommend=0x7f0a00cb;
-        public static final int more_app_recommend_img=0x7f0a00cc;
-        public static final int more_attention=0x7f0a00c5;
-        public static final int more_attention_img=0x7f0a00c6;
-        public static final int more_clearcache=0x7f0a00c0;
-        public static final int more_custom_service=0x7f0a00d3;
-        public static final int more_custom_service_phone=0x7f0a00d4;
-        public static final int more_feekback=0x7f0a00c9;
-        public static final int more_feekback_img=0x7f0a00ca;
+        public static final int more_app_recommend=0x7f0a00c9;
+        public static final int more_app_recommend_img=0x7f0a00ca;
+        public static final int more_attention=0x7f0a00c3;
+        public static final int more_attention_img=0x7f0a00c4;
+        public static final int more_clearcache=0x7f0a00be;
+        public static final int more_custom_service=0x7f0a00d1;
+        public static final int more_custom_service_phone=0x7f0a00d2;
+        public static final int more_feekback=0x7f0a00c7;
+        public static final int more_feekback_img=0x7f0a00c8;
         public static final int more_follow_store=0x7f0a00f3;
         public static final int more_follow_store_img=0x7f0a00f4;
-        public static final int more_help=0x7f0a00d1;
-        public static final int more_help_img=0x7f0a00d2;
-        public static final int more_integral=0x7f0a00da;
+        public static final int more_help=0x7f0a00cf;
+        public static final int more_help_img=0x7f0a00d0;
+        public static final int more_integral=0x7f0a00d8;
         public static final int more_message_center=0x7f0a00ef;
         public static final int more_message_center_arrow=0x7f0a00f1;
         public static final int more_message_center_img=0x7f0a00f0;
-        public static final int more_message_propelling=0x7f0a00be;
-        public static final int more_message_propelling_img=0x7f0a00bf;
-        public static final int more_quit=0x7f0a00d5;
-        public static final int more_recommend_youlian=0x7f0a00c7;
-        public static final int more_recommend_youlian_img=0x7f0a00c8;
-        public static final int more_service=0x7f0a00cf;
-        public static final int more_service_img=0x7f0a00d0;
-        public static final int more_share_set=0x7f0a00bc;
-        public static final int more_share_set_img=0x7f0a00bd;
-        public static final int more_updata=0x7f0a00c3;
-        public static final int more_updata_img=0x7f0a00c4;
+        public static final int more_message_propelling=0x7f0a00bc;
+        public static final int more_message_propelling_img=0x7f0a00bd;
+        public static final int more_quit=0x7f0a00d3;
+        public static final int more_recommend_youlian=0x7f0a00c5;
+        public static final int more_recommend_youlian_img=0x7f0a00c6;
+        public static final int more_service=0x7f0a00cd;
+        public static final int more_service_img=0x7f0a00ce;
+        public static final int more_share_set=0x7f0a00e5;
+        public static final int more_share_set_img=0x7f0a00e6;
+        public static final int more_updata=0x7f0a00c1;
+        public static final int more_updata_img=0x7f0a00c2;
         public static final int more_updata_info=0x7f0a00e9;
         public static final int more_updata_info_img=0x7f0a00ea;
         public static final int more_updata_passowrd=0x7f0a00ec;
@@ -2227,7 +2231,7 @@ containing a value of this type.
         public static final int multipleChoice=0x7f0a002e;
         public static final int multipleChoiceModal=0x7f0a002f;
         public static final int myListView=0x7f0a0173;
-        public static final int my_Radiogroup=0x7f0a01a4;
+        public static final int my_Radiogroup=0x7f0a01a8;
         public static final int my_cost_listview=0x7f0a0119;
         public static final int my_coupon_panel=0x7f0a00b0;
         public static final int my_favourite_panel=0x7f0a00b8;
@@ -2257,13 +2261,13 @@ containing a value of this type.
         public static final int my_vip_panel=0x7f0a00ac;
         public static final int name=0x7f0a0056;
         public static final int never=0x7f0a0010;
-        public static final int new_psd=0x7f0a0181;
+        public static final int new_psd=0x7f0a0185;
         public static final int no=0x7f0a0023;
         public static final int no_cost=0x7f0a0118;
         public static final int none=0x7f0a0004;
         public static final int normal=0x7f0a002b;
-        public static final int ok=0x7f0a017a;
-        public static final int old_psd=0x7f0a0180;
+        public static final int ok=0x7f0a017e;
+        public static final int old_psd=0x7f0a0184;
         public static final int order_item_btn_cancel=0x7f0a016a;
         public static final int order_item_btn_status=0x7f0a0169;
         public static final int order_item_goods_container=0x7f0a0164;
@@ -2273,7 +2277,7 @@ containing a value of this type.
         public static final int outsideOverlay=0x7f0a0009;
         public static final int pager=0x7f0a010d;
         public static final int parentPanel=0x7f0a0127;
-        public static final int password=0x7f0a017c;
+        public static final int password=0x7f0a0180;
         public static final int pay_alipay_panel=0x7f0a008c;
         public static final int pay_alipay_panel_client=0x7f0a0088;
         public static final int pay_btn_pay=0x7f0a0092;
@@ -2297,71 +2301,71 @@ containing a value of this type.
         public static final int pay_union_panel=0x7f0a0085;
         public static final int pay_yi_panel=0x7f0a0082;
         public static final int pcenterPanel=0x7f0a0128;
-        public static final int platform_btn1=0x7f0a01b2;
-        public static final int platform_btn2=0x7f0a01b3;
-        public static final int platform_btn3=0x7f0a01b4;
-        public static final int platform_btn4=0x7f0a01b5;
-        public static final int platform_btn5=0x7f0a01b6;
-        public static final int progress_bar_parent=0x7f0a0205;
+        public static final int platform_btn1=0x7f0a01b6;
+        public static final int platform_btn2=0x7f0a01b7;
+        public static final int platform_btn3=0x7f0a01b8;
+        public static final int platform_btn4=0x7f0a01b9;
+        public static final int platform_btn5=0x7f0a01ba;
+        public static final int progress_bar_parent=0x7f0a0209;
         public static final int psersonal_xiaofei=0x7f0a00a0;
-        public static final int ptr_id_header=0x7f0a019b;
-        public static final int ptr_id_image=0x7f0a019c;
-        public static final int ptr_id_last_updated=0x7f0a01a0;
-        public static final int ptr_id_spinner=0x7f0a019d;
-        public static final int ptr_id_text=0x7f0a019f;
-        public static final int ptr_id_textwrapper=0x7f0a019e;
-        public static final int pull_to_refresh_image=0x7f0a021e;
-        public static final int pull_to_refresh_progress=0x7f0a021d;
-        public static final int pull_to_refresh_text=0x7f0a021f;
-        public static final int pull_to_refresh_updated_at=0x7f0a0220;
+        public static final int ptr_id_header=0x7f0a019f;
+        public static final int ptr_id_image=0x7f0a01a0;
+        public static final int ptr_id_last_updated=0x7f0a01a4;
+        public static final int ptr_id_spinner=0x7f0a01a1;
+        public static final int ptr_id_text=0x7f0a01a3;
+        public static final int ptr_id_textwrapper=0x7f0a01a2;
+        public static final int pull_to_refresh_image=0x7f0a0222;
+        public static final int pull_to_refresh_progress=0x7f0a0221;
+        public static final int pull_to_refresh_text=0x7f0a0223;
+        public static final int pull_to_refresh_updated_at=0x7f0a0224;
         public static final int qq=0x7f0a0059;
         public static final int radioGroup=0x7f0a0109;
-        public static final int radio_action=0x7f0a01a7;
-        public static final int radio_card=0x7f0a01a8;
+        public static final int radio_action=0x7f0a01ab;
+        public static final int radio_card=0x7f0a01ac;
         public static final int radio_sign=0x7f0a010b;
-        public static final int radio_store=0x7f0a01a6;
+        public static final int radio_store=0x7f0a01aa;
         public static final int radio_subject=0x7f0a010a;
         public static final int ratingBar1=0x7f0a0140;
-        public static final int register=0x7f0a017d;
-        public static final int register_pro=0x7f0a0186;
+        public static final int register=0x7f0a0181;
+        public static final int register_pro=0x7f0a018a;
         public static final int rel_mengdian=0x7f0a0074;
         public static final int rel_shop_desc=0x7f0a0078;
         public static final int rel_user_comment=0x7f0a0076;
-        public static final int rem_psd=0x7f0a017f;
+        public static final int rem_psd=0x7f0a0183;
         public static final int right=0x7f0a0013;
         public static final int rightSpacer=0x7f0a0138;
-        public static final int rr=0x7f0a018b;
-        public static final int rr_slipBtn=0x7f0a018c;
+        public static final int rr=0x7f0a018f;
+        public static final int rr_slipBtn=0x7f0a0190;
         public static final int rtl=0x7f0a0017;
         public static final int save=0x7f0a005f;
         public static final int scrapped_view=0x7f0a0000;
-        public static final int screen_snapshot_imageview=0x7f0a01ab;
+        public static final int screen_snapshot_imageview=0x7f0a01af;
         public static final int scrollView=0x7f0a012f;
         public static final int scrolling=0x7f0a0025;
-        public static final int scrshot_previewImg=0x7f0a01ac;
-        public static final int search_btn=0x7f0a01a9;
+        public static final int scrshot_previewImg=0x7f0a01b0;
+        public static final int search_btn=0x7f0a01ad;
         public static final int search_edit=0x7f0a00f7;
-        public static final int search_text=0x7f0a01d4;
-        public static final int section=0x7f0a01d0;
-        public static final int sendBtn=0x7f0a01b7;
+        public static final int search_text=0x7f0a01d8;
+        public static final int section=0x7f0a01d4;
+        public static final int sendBtn=0x7f0a01bb;
         public static final int sex=0x7f0a005a;
         public static final int shell_foot_Layout=0x7f0a0108;
         public static final int singleChoice=0x7f0a002d;
-        public static final int slideBar=0x7f0a01d6;
+        public static final int slideBar=0x7f0a01da;
         public static final int software=0x7f0a0014;
         public static final int store_info=0x7f0a011d;
         public static final int stroe_img=0x7f0a011c;
         public static final int stroe_name_lay=0x7f0a011e;
-        public static final int submit=0x7f0a0178;
+        public static final int submit=0x7f0a017c;
         public static final int sv=0x7f0a0068;
         public static final int tab_btn_layout=0x7f0a0174;
-        public static final int tab_home=0x7f0a01a5;
+        public static final int tab_home=0x7f0a01a9;
         public static final int textEnd=0x7f0a001e;
         public static final int textStart=0x7f0a001d;
-        public static final int title=0x7f0a018d;
+        public static final int title=0x7f0a0191;
         public static final int titleDivider=0x7f0a012d;
         public static final int title_template=0x7f0a012a;
-        public static final int toolbar_layout=0x7f0a01ad;
+        public static final int toolbar_layout=0x7f0a01b1;
         public static final int topPanel=0x7f0a0129;
         public static final int top_layout=0x7f0a00a1;
         public static final int tv_act_rule=0x7f0a009c;
@@ -2404,142 +2408,142 @@ containing a value of this type.
         public static final int tv_username=0x7f0a0146;
         public static final int tv_valid_date=0x7f0a013c;
         public static final int tv_welfare_pre=0x7f0a0044;
-        public static final int two_code=0x7f0a01a3;
-        public static final int tx=0x7f0a0187;
-        public static final int tx_slipBtn=0x7f0a0188;
-        public static final int txt_content=0x7f0a019a;
-        public static final int umeng_socialize_action_comment_im=0x7f0a01c1;
-        public static final int umeng_socialize_action_comment_tv=0x7f0a01c2;
-        public static final int umeng_socialize_action_like_tv=0x7f0a01c6;
-        public static final int umeng_socialize_action_pv_im=0x7f0a01ce;
-        public static final int umeng_socialize_action_pv_tv=0x7f0a01cf;
-        public static final int umeng_socialize_action_share_im=0x7f0a01c9;
-        public static final int umeng_socialize_action_share_tv=0x7f0a01ca;
-        public static final int umeng_socialize_action_user_center_im=0x7f0a01cc;
-        public static final int umeng_socialize_action_user_center_tv=0x7f0a01cd;
-        public static final int umeng_socialize_alert_body=0x7f0a01d9;
-        public static final int umeng_socialize_alert_button=0x7f0a01db;
-        public static final int umeng_socialize_alert_footer=0x7f0a01da;
-        public static final int umeng_socialize_avatar_imv=0x7f0a01d1;
-        public static final int umeng_socialize_bind_cancel=0x7f0a01e2;
-        public static final int umeng_socialize_bind_douban=0x7f0a01e0;
-        public static final int umeng_socialize_bind_no_tip=0x7f0a01e1;
-        public static final int umeng_socialize_bind_qzone=0x7f0a01dc;
-        public static final int umeng_socialize_bind_renren=0x7f0a01df;
-        public static final int umeng_socialize_bind_sina=0x7f0a01de;
-        public static final int umeng_socialize_bind_tel=0x7f0a01dd;
-        public static final int umeng_socialize_comment_avatar=0x7f0a01e5;
-        public static final int umeng_socialize_comment_bt=0x7f0a01c0;
-        public static final int umeng_socialize_comment_item=0x7f0a01e3;
-        public static final int umeng_socialize_comment_item_content=0x7f0a01e7;
-        public static final int umeng_socialize_comment_item_has_location=0x7f0a01e9;
-        public static final int umeng_socialize_comment_item_name=0x7f0a01e6;
-        public static final int umeng_socialize_comment_item_profile_gp=0x7f0a01e4;
-        public static final int umeng_socialize_comment_item_time=0x7f0a01e8;
-        public static final int umeng_socialize_comment_list=0x7f0a01f3;
-        public static final int umeng_socialize_comment_list_progress=0x7f0a01f4;
-        public static final int umeng_socialize_comment_more_root=0x7f0a01ed;
-        public static final int umeng_socialize_comment_write=0x7f0a01f2;
-        public static final int umeng_socialize_content=0x7f0a01ee;
-        public static final int umeng_socialize_divider=0x7f0a023a;
-        public static final int umeng_socialize_first_area=0x7f0a01fa;
-        public static final int umeng_socialize_first_area_title=0x7f0a01f9;
-        public static final int umeng_socialize_follow=0x7f0a0202;
-        public static final int umeng_socialize_follow_check=0x7f0a0203;
-        public static final int umeng_socialize_follow_layout=0x7f0a0215;
-        public static final int umeng_socialize_full_alert_dialog_divider=0x7f0a0200;
-        public static final int umeng_socialize_full_alert_dialog_item_icon=0x7f0a01fd;
-        public static final int umeng_socialize_full_alert_dialog_item_status=0x7f0a01ff;
-        public static final int umeng_socialize_full_alert_dialog_item_text=0x7f0a01fe;
-        public static final int umeng_socialize_funcation_area=0x7f0a01bf;
-        public static final int umeng_socialize_ic=0x7f0a022e;
-        public static final int umeng_socialize_icon=0x7f0a0237;
-        public static final int umeng_socialize_info=0x7f0a01ec;
-        public static final int umeng_socialize_like_bt=0x7f0a01c3;
-        public static final int umeng_socialize_like_bt_progress=0x7f0a01c7;
-        public static final int umeng_socialize_like_bt_show=0x7f0a01c4;
-        public static final int umeng_socialize_like_icon=0x7f0a01c5;
-        public static final int umeng_socialize_line_edit=0x7f0a01f1;
-        public static final int umeng_socialize_line_serach=0x7f0a01d3;
-        public static final int umeng_socialize_load_error=0x7f0a022c;
-        public static final int umeng_socialize_location_ic=0x7f0a020b;
-        public static final int umeng_socialize_location_progressbar=0x7f0a020c;
-        public static final int umeng_socialize_loginAddr=0x7f0a0233;
-        public static final int umeng_socialize_loginButton=0x7f0a0232;
-        public static final int umeng_socialize_loginNm=0x7f0a0230;
-        public static final int umeng_socialize_login_switch=0x7f0a0231;
-        public static final int umeng_socialize_map=0x7f0a01ea;
-        public static final int umeng_socialize_map_invisable=0x7f0a01eb;
-        public static final int umeng_socialize_msg=0x7f0a0238;
-        public static final int umeng_socialize_pb=0x7f0a01f0;
-        public static final int umeng_socialize_post_comment_bottom_area=0x7f0a0207;
-        public static final int umeng_socialize_post_comment_edittext=0x7f0a020e;
-        public static final int umeng_socialize_post_comment_fetch_img=0x7f0a0208;
-        public static final int umeng_socialize_post_comment_location=0x7f0a0209;
-        public static final int umeng_socialize_post_comment_previewImg=0x7f0a020a;
-        public static final int umeng_socialize_post_comment_titlebar=0x7f0a0206;
-        public static final int umeng_socialize_post_cws_ic=0x7f0a020f;
-        public static final int umeng_socialize_post_cws_selected=0x7f0a0210;
-        public static final int umeng_socialize_post_fetch_image=0x7f0a0214;
-        public static final int umeng_socialize_post_ws_area=0x7f0a020d;
-        public static final int umeng_socialize_progress=0x7f0a01d7;
-        public static final int umeng_socialize_second_area=0x7f0a01fc;
-        public static final int umeng_socialize_second_area_title=0x7f0a01fb;
-        public static final int umeng_socialize_share_area=0x7f0a0234;
-        public static final int umeng_socialize_share_at=0x7f0a0217;
-        public static final int umeng_socialize_share_bottom_area=0x7f0a0213;
-        public static final int umeng_socialize_share_bt=0x7f0a01c8;
-        public static final int umeng_socialize_share_config_area=0x7f0a0236;
-        public static final int umeng_socialize_share_edittext=0x7f0a021b;
-        public static final int umeng_socialize_share_location=0x7f0a0216;
-        public static final int umeng_socialize_share_previewImg=0x7f0a0218;
-        public static final int umeng_socialize_share_previewImg_progressbar=0x7f0a021a;
-        public static final int umeng_socialize_share_previewImg_remove=0x7f0a0219;
-        public static final int umeng_socialize_share_root=0x7f0a0211;
-        public static final int umeng_socialize_share_titlebar=0x7f0a0212;
-        public static final int umeng_socialize_share_tv=0x7f0a0235;
-        public static final int umeng_socialize_share_word_num=0x7f0a021c;
-        public static final int umeng_socialize_shareboard_image=0x7f0a0221;
-        public static final int umeng_socialize_shareboard_pltform_name=0x7f0a0222;
-        public static final int umeng_socialize_spinner_img=0x7f0a0223;
-        public static final int umeng_socialize_spinner_txt=0x7f0a0224;
-        public static final int umeng_socialize_text=0x7f0a01ef;
-        public static final int umeng_socialize_text_view=0x7f0a01d2;
-        public static final int umeng_socialize_tipinfo=0x7f0a01d8;
-        public static final int umeng_socialize_title=0x7f0a01f7;
-        public static final int umeng_socialize_title_bar_leftBt=0x7f0a0225;
-        public static final int umeng_socialize_title_bar_middleTv=0x7f0a0226;
-        public static final int umeng_socialize_title_bar_middle_tab=0x7f0a0227;
-        public static final int umeng_socialize_title_bar_rightBt=0x7f0a022a;
-        public static final int umeng_socialize_title_bar_rightBt_progress=0x7f0a022b;
-        public static final int umeng_socialize_title_middle_left=0x7f0a0228;
-        public static final int umeng_socialize_title_middle_right=0x7f0a0229;
-        public static final int umeng_socialize_title_tv=0x7f0a022f;
-        public static final int umeng_socialize_titlebar=0x7f0a0201;
-        public static final int umeng_socialize_toggle=0x7f0a0239;
-        public static final int umeng_socialize_ucenter_info=0x7f0a022d;
-        public static final int umeng_socialize_user_center_bt=0x7f0a01cb;
-        public static final int umeng_xp_ScrollView=0x7f0a01f8;
+        public static final int two_code=0x7f0a01a7;
+        public static final int tx=0x7f0a018b;
+        public static final int tx_slipBtn=0x7f0a018c;
+        public static final int txt_content=0x7f0a019e;
+        public static final int umeng_socialize_action_comment_im=0x7f0a01c5;
+        public static final int umeng_socialize_action_comment_tv=0x7f0a01c6;
+        public static final int umeng_socialize_action_like_tv=0x7f0a01ca;
+        public static final int umeng_socialize_action_pv_im=0x7f0a01d2;
+        public static final int umeng_socialize_action_pv_tv=0x7f0a01d3;
+        public static final int umeng_socialize_action_share_im=0x7f0a01cd;
+        public static final int umeng_socialize_action_share_tv=0x7f0a01ce;
+        public static final int umeng_socialize_action_user_center_im=0x7f0a01d0;
+        public static final int umeng_socialize_action_user_center_tv=0x7f0a01d1;
+        public static final int umeng_socialize_alert_body=0x7f0a01dd;
+        public static final int umeng_socialize_alert_button=0x7f0a01df;
+        public static final int umeng_socialize_alert_footer=0x7f0a01de;
+        public static final int umeng_socialize_avatar_imv=0x7f0a01d5;
+        public static final int umeng_socialize_bind_cancel=0x7f0a01e6;
+        public static final int umeng_socialize_bind_douban=0x7f0a01e4;
+        public static final int umeng_socialize_bind_no_tip=0x7f0a01e5;
+        public static final int umeng_socialize_bind_qzone=0x7f0a01e0;
+        public static final int umeng_socialize_bind_renren=0x7f0a01e3;
+        public static final int umeng_socialize_bind_sina=0x7f0a01e2;
+        public static final int umeng_socialize_bind_tel=0x7f0a01e1;
+        public static final int umeng_socialize_comment_avatar=0x7f0a01e9;
+        public static final int umeng_socialize_comment_bt=0x7f0a01c4;
+        public static final int umeng_socialize_comment_item=0x7f0a01e7;
+        public static final int umeng_socialize_comment_item_content=0x7f0a01eb;
+        public static final int umeng_socialize_comment_item_has_location=0x7f0a01ed;
+        public static final int umeng_socialize_comment_item_name=0x7f0a01ea;
+        public static final int umeng_socialize_comment_item_profile_gp=0x7f0a01e8;
+        public static final int umeng_socialize_comment_item_time=0x7f0a01ec;
+        public static final int umeng_socialize_comment_list=0x7f0a01f7;
+        public static final int umeng_socialize_comment_list_progress=0x7f0a01f8;
+        public static final int umeng_socialize_comment_more_root=0x7f0a01f1;
+        public static final int umeng_socialize_comment_write=0x7f0a01f6;
+        public static final int umeng_socialize_content=0x7f0a01f2;
+        public static final int umeng_socialize_divider=0x7f0a023e;
+        public static final int umeng_socialize_first_area=0x7f0a01fe;
+        public static final int umeng_socialize_first_area_title=0x7f0a01fd;
+        public static final int umeng_socialize_follow=0x7f0a0206;
+        public static final int umeng_socialize_follow_check=0x7f0a0207;
+        public static final int umeng_socialize_follow_layout=0x7f0a0219;
+        public static final int umeng_socialize_full_alert_dialog_divider=0x7f0a0204;
+        public static final int umeng_socialize_full_alert_dialog_item_icon=0x7f0a0201;
+        public static final int umeng_socialize_full_alert_dialog_item_status=0x7f0a0203;
+        public static final int umeng_socialize_full_alert_dialog_item_text=0x7f0a0202;
+        public static final int umeng_socialize_funcation_area=0x7f0a01c3;
+        public static final int umeng_socialize_ic=0x7f0a0232;
+        public static final int umeng_socialize_icon=0x7f0a023b;
+        public static final int umeng_socialize_info=0x7f0a01f0;
+        public static final int umeng_socialize_like_bt=0x7f0a01c7;
+        public static final int umeng_socialize_like_bt_progress=0x7f0a01cb;
+        public static final int umeng_socialize_like_bt_show=0x7f0a01c8;
+        public static final int umeng_socialize_like_icon=0x7f0a01c9;
+        public static final int umeng_socialize_line_edit=0x7f0a01f5;
+        public static final int umeng_socialize_line_serach=0x7f0a01d7;
+        public static final int umeng_socialize_load_error=0x7f0a0230;
+        public static final int umeng_socialize_location_ic=0x7f0a020f;
+        public static final int umeng_socialize_location_progressbar=0x7f0a0210;
+        public static final int umeng_socialize_loginAddr=0x7f0a0237;
+        public static final int umeng_socialize_loginButton=0x7f0a0236;
+        public static final int umeng_socialize_loginNm=0x7f0a0234;
+        public static final int umeng_socialize_login_switch=0x7f0a0235;
+        public static final int umeng_socialize_map=0x7f0a01ee;
+        public static final int umeng_socialize_map_invisable=0x7f0a01ef;
+        public static final int umeng_socialize_msg=0x7f0a023c;
+        public static final int umeng_socialize_pb=0x7f0a01f4;
+        public static final int umeng_socialize_post_comment_bottom_area=0x7f0a020b;
+        public static final int umeng_socialize_post_comment_edittext=0x7f0a0212;
+        public static final int umeng_socialize_post_comment_fetch_img=0x7f0a020c;
+        public static final int umeng_socialize_post_comment_location=0x7f0a020d;
+        public static final int umeng_socialize_post_comment_previewImg=0x7f0a020e;
+        public static final int umeng_socialize_post_comment_titlebar=0x7f0a020a;
+        public static final int umeng_socialize_post_cws_ic=0x7f0a0213;
+        public static final int umeng_socialize_post_cws_selected=0x7f0a0214;
+        public static final int umeng_socialize_post_fetch_image=0x7f0a0218;
+        public static final int umeng_socialize_post_ws_area=0x7f0a0211;
+        public static final int umeng_socialize_progress=0x7f0a01db;
+        public static final int umeng_socialize_second_area=0x7f0a0200;
+        public static final int umeng_socialize_second_area_title=0x7f0a01ff;
+        public static final int umeng_socialize_share_area=0x7f0a0238;
+        public static final int umeng_socialize_share_at=0x7f0a021b;
+        public static final int umeng_socialize_share_bottom_area=0x7f0a0217;
+        public static final int umeng_socialize_share_bt=0x7f0a01cc;
+        public static final int umeng_socialize_share_config_area=0x7f0a023a;
+        public static final int umeng_socialize_share_edittext=0x7f0a021f;
+        public static final int umeng_socialize_share_location=0x7f0a021a;
+        public static final int umeng_socialize_share_previewImg=0x7f0a021c;
+        public static final int umeng_socialize_share_previewImg_progressbar=0x7f0a021e;
+        public static final int umeng_socialize_share_previewImg_remove=0x7f0a021d;
+        public static final int umeng_socialize_share_root=0x7f0a0215;
+        public static final int umeng_socialize_share_titlebar=0x7f0a0216;
+        public static final int umeng_socialize_share_tv=0x7f0a0239;
+        public static final int umeng_socialize_share_word_num=0x7f0a0220;
+        public static final int umeng_socialize_shareboard_image=0x7f0a0225;
+        public static final int umeng_socialize_shareboard_pltform_name=0x7f0a0226;
+        public static final int umeng_socialize_spinner_img=0x7f0a0227;
+        public static final int umeng_socialize_spinner_txt=0x7f0a0228;
+        public static final int umeng_socialize_text=0x7f0a01f3;
+        public static final int umeng_socialize_text_view=0x7f0a01d6;
+        public static final int umeng_socialize_tipinfo=0x7f0a01dc;
+        public static final int umeng_socialize_title=0x7f0a01fb;
+        public static final int umeng_socialize_title_bar_leftBt=0x7f0a0229;
+        public static final int umeng_socialize_title_bar_middleTv=0x7f0a022a;
+        public static final int umeng_socialize_title_bar_middle_tab=0x7f0a022b;
+        public static final int umeng_socialize_title_bar_rightBt=0x7f0a022e;
+        public static final int umeng_socialize_title_bar_rightBt_progress=0x7f0a022f;
+        public static final int umeng_socialize_title_middle_left=0x7f0a022c;
+        public static final int umeng_socialize_title_middle_right=0x7f0a022d;
+        public static final int umeng_socialize_title_tv=0x7f0a0233;
+        public static final int umeng_socialize_titlebar=0x7f0a0205;
+        public static final int umeng_socialize_toggle=0x7f0a023d;
+        public static final int umeng_socialize_ucenter_info=0x7f0a0231;
+        public static final int umeng_socialize_user_center_bt=0x7f0a01cf;
+        public static final int umeng_xp_ScrollView=0x7f0a01fc;
         public static final int user_id=0x7f0a0058;
-        public static final int user_name=0x7f0a00d8;
-        public static final int vPager=0x7f0a01aa;
+        public static final int user_name=0x7f0a00d6;
+        public static final int vPager=0x7f0a01ae;
         public static final int vertical=0x7f0a0006;
         public static final int viewEnd=0x7f0a0021;
         public static final int viewStart=0x7f0a0020;
         public static final int visible=0x7f0a0001;
-        public static final int webView=0x7f0a0204;
-        public static final int webview=0x7f0a023b;
-        public static final int xl=0x7f0a0189;
-        public static final int xl_slipBtn=0x7f0a018a;
-        public static final int xlistview_footer_content=0x7f0a023c;
-        public static final int xlistview_footer_hint_textview=0x7f0a023e;
-        public static final int xlistview_footer_progressbar=0x7f0a023d;
-        public static final int xlistview_header_arrow=0x7f0a0243;
-        public static final int xlistview_header_content=0x7f0a023f;
-        public static final int xlistview_header_hint_textview=0x7f0a0241;
-        public static final int xlistview_header_progressbar=0x7f0a0244;
-        public static final int xlistview_header_text=0x7f0a0240;
-        public static final int xlistview_header_time=0x7f0a0242;
+        public static final int webView=0x7f0a0208;
+        public static final int webview=0x7f0a023f;
+        public static final int xl=0x7f0a018d;
+        public static final int xl_slipBtn=0x7f0a018e;
+        public static final int xlistview_footer_content=0x7f0a0240;
+        public static final int xlistview_footer_hint_textview=0x7f0a0242;
+        public static final int xlistview_footer_progressbar=0x7f0a0241;
+        public static final int xlistview_header_arrow=0x7f0a0247;
+        public static final int xlistview_header_content=0x7f0a0243;
+        public static final int xlistview_header_hint_textview=0x7f0a0245;
+        public static final int xlistview_header_progressbar=0x7f0a0248;
+        public static final int xlistview_header_text=0x7f0a0244;
+        public static final int xlistview_header_time=0x7f0a0246;
         public static final int yes=0x7f0a0022;
         public static final int youhuiquan_huiyuanka=0x7f0a009f;
     }
@@ -2605,57 +2609,59 @@ containing a value of this type.
         public static final int merge_select_opts=0x7f03003a;
         public static final int merge_select_tabs=0x7f03003b;
         public static final int merge_title_layout=0x7f03003c;
-        public static final int more_feekback=0x7f03003d;
-        public static final int more_find_psd=0x7f03003e;
-        public static final int more_login=0x7f03003f;
-        public static final int more_modify_psd=0x7f030040;
-        public static final int more_register=0x7f030041;
-        public static final int more_share_set=0x7f030042;
-        public static final int more_user_info=0x7f030043;
-        public static final int more_webview=0x7f030044;
-        public static final int ptr_header=0x7f030045;
-        public static final int search=0x7f030046;
-        public static final int shake_umeng_socialize_scrshot_snapshot=0x7f030047;
-        public static final int shake_umeng_socialize_share_dlg=0x7f030048;
-        public static final int templatefive=0x7f030049;
-        public static final int templatefour=0x7f03004a;
-        public static final int templateone=0x7f03004b;
-        public static final int templatesix=0x7f03004c;
-        public static final int templatethree=0x7f03004d;
-        public static final int templatetwo=0x7f03004e;
-        public static final int umeng_socialize_actionbar=0x7f03004f;
-        public static final int umeng_socialize_at_item=0x7f030050;
-        public static final int umeng_socialize_at_overlay=0x7f030051;
-        public static final int umeng_socialize_at_view=0x7f030052;
-        public static final int umeng_socialize_base_alert_dialog=0x7f030053;
-        public static final int umeng_socialize_base_alert_dialog_button=0x7f030054;
-        public static final int umeng_socialize_bind_select_dialog=0x7f030055;
-        public static final int umeng_socialize_comment_content=0x7f030056;
-        public static final int umeng_socialize_comment_detail=0x7f030057;
-        public static final int umeng_socialize_comment_detail_nomap=0x7f030058;
-        public static final int umeng_socialize_comment_item=0x7f030059;
-        public static final int umeng_socialize_comment_more=0x7f03005a;
-        public static final int umeng_socialize_comment_view=0x7f03005b;
-        public static final int umeng_socialize_composer_header=0x7f03005c;
-        public static final int umeng_socialize_facebook_login_activity_layout=0x7f03005d;
-        public static final int umeng_socialize_failed_load_page=0x7f03005e;
-        public static final int umeng_socialize_full_alert_dialog=0x7f03005f;
-        public static final int umeng_socialize_full_alert_dialog_item=0x7f030060;
-        public static final int umeng_socialize_full_curtain=0x7f030061;
-        public static final int umeng_socialize_oauth_dialog=0x7f030062;
-        public static final int umeng_socialize_post_comment=0x7f030063;
-        public static final int umeng_socialize_post_comment_platform=0x7f030064;
-        public static final int umeng_socialize_post_share=0x7f030065;
-        public static final int umeng_socialize_pull_to_refresh_header=0x7f030066;
-        public static final int umeng_socialize_shareboard_item=0x7f030067;
-        public static final int umeng_socialize_simple_spinner_item=0x7f030068;
-        public static final int umeng_socialize_titile_bar=0x7f030069;
-        public static final int umeng_socialize_titile_bar_comment=0x7f03006a;
-        public static final int umeng_socialize_ucenter=0x7f03006b;
-        public static final int umeng_socialize_ucenter_platform_item=0x7f03006c;
-        public static final int webview=0x7f03006d;
-        public static final int xlistview_footer=0x7f03006e;
-        public static final int xlistview_header=0x7f03006f;
+        public static final int more_app_recommend=0x7f03003d;
+        public static final int more_app_rem_item=0x7f03003e;
+        public static final int more_feekback=0x7f03003f;
+        public static final int more_find_psd=0x7f030040;
+        public static final int more_login=0x7f030041;
+        public static final int more_modify_psd=0x7f030042;
+        public static final int more_register=0x7f030043;
+        public static final int more_share_set=0x7f030044;
+        public static final int more_user_info=0x7f030045;
+        public static final int more_webview=0x7f030046;
+        public static final int ptr_header=0x7f030047;
+        public static final int search=0x7f030048;
+        public static final int shake_umeng_socialize_scrshot_snapshot=0x7f030049;
+        public static final int shake_umeng_socialize_share_dlg=0x7f03004a;
+        public static final int templatefive=0x7f03004b;
+        public static final int templatefour=0x7f03004c;
+        public static final int templateone=0x7f03004d;
+        public static final int templatesix=0x7f03004e;
+        public static final int templatethree=0x7f03004f;
+        public static final int templatetwo=0x7f030050;
+        public static final int umeng_socialize_actionbar=0x7f030051;
+        public static final int umeng_socialize_at_item=0x7f030052;
+        public static final int umeng_socialize_at_overlay=0x7f030053;
+        public static final int umeng_socialize_at_view=0x7f030054;
+        public static final int umeng_socialize_base_alert_dialog=0x7f030055;
+        public static final int umeng_socialize_base_alert_dialog_button=0x7f030056;
+        public static final int umeng_socialize_bind_select_dialog=0x7f030057;
+        public static final int umeng_socialize_comment_content=0x7f030058;
+        public static final int umeng_socialize_comment_detail=0x7f030059;
+        public static final int umeng_socialize_comment_detail_nomap=0x7f03005a;
+        public static final int umeng_socialize_comment_item=0x7f03005b;
+        public static final int umeng_socialize_comment_more=0x7f03005c;
+        public static final int umeng_socialize_comment_view=0x7f03005d;
+        public static final int umeng_socialize_composer_header=0x7f03005e;
+        public static final int umeng_socialize_facebook_login_activity_layout=0x7f03005f;
+        public static final int umeng_socialize_failed_load_page=0x7f030060;
+        public static final int umeng_socialize_full_alert_dialog=0x7f030061;
+        public static final int umeng_socialize_full_alert_dialog_item=0x7f030062;
+        public static final int umeng_socialize_full_curtain=0x7f030063;
+        public static final int umeng_socialize_oauth_dialog=0x7f030064;
+        public static final int umeng_socialize_post_comment=0x7f030065;
+        public static final int umeng_socialize_post_comment_platform=0x7f030066;
+        public static final int umeng_socialize_post_share=0x7f030067;
+        public static final int umeng_socialize_pull_to_refresh_header=0x7f030068;
+        public static final int umeng_socialize_shareboard_item=0x7f030069;
+        public static final int umeng_socialize_simple_spinner_item=0x7f03006a;
+        public static final int umeng_socialize_titile_bar=0x7f03006b;
+        public static final int umeng_socialize_titile_bar_comment=0x7f03006c;
+        public static final int umeng_socialize_ucenter=0x7f03006d;
+        public static final int umeng_socialize_ucenter_platform_item=0x7f03006e;
+        public static final int webview=0x7f03006f;
+        public static final int xlistview_footer=0x7f030070;
+        public static final int xlistview_header=0x7f030071;
     }
     public static final class menu {
         public static final int main=0x7f0b0000;
@@ -2932,7 +2938,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:cacheColorHint
+          @attr name android:cacheColorHint
         */
         public static final int AbsListView_cacheColorHint = 6;
         /**
@@ -2964,7 +2970,7 @@ containing a value of this type.
 <tr><td><code>multipleChoiceModal</code></td><td>3</td><td> The list allows multiple choices in a custom selection mode. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:choiceMode
+          @attr name android:choiceMode
         */
         public static final int AbsListView_choiceMode = 9;
         /**
@@ -2984,7 +2990,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:drawSelectorOnTop
+          @attr name android:drawSelectorOnTop
         */
         public static final int AbsListView_drawSelectorOnTop = 1;
         /**
@@ -3003,7 +3009,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:fastScrollAlwaysVisible
+          @attr name android:fastScrollAlwaysVisible
         */
         public static final int AbsListView_fastScrollAlwaysVisible = 10;
         /**
@@ -3022,7 +3028,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:fastScrollEnabled
+          @attr name android:fastScrollEnabled
         */
         public static final int AbsListView_fastScrollEnabled = 7;
         /**
@@ -3036,7 +3042,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:listSelector
+          @attr name android:listSelector
         */
         public static final int AbsListView_listSelector = 0;
         /**
@@ -3056,7 +3062,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollingCache
+          @attr name android:scrollingCache
         */
         public static final int AbsListView_scrollingCache = 3;
         /**
@@ -3081,7 +3087,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:smoothScrollbar
+          @attr name android:smoothScrollbar
         */
         public static final int AbsListView_smoothScrollbar = 8;
         /**
@@ -3097,7 +3103,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:stackFromBottom
+          @attr name android:stackFromBottom
         */
         public static final int AbsListView_stackFromBottom = 2;
         /**
@@ -3116,7 +3122,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:textFilterEnabled
+          @attr name android:textFilterEnabled
         */
         public static final int AbsListView_textFilterEnabled = 4;
         /**
@@ -3146,7 +3152,7 @@ containing a value of this type.
             </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:transcriptMode
+          @attr name android:transcriptMode
         */
         public static final int AbsListView_transcriptMode = 5;
         /** Attributes that can be used with a ListView.
@@ -3193,7 +3199,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:dividerHeight
+          @attr name android:dividerHeight
         */
         public static final int ListView_dividerHeight = 0;
         /**
@@ -3212,7 +3218,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:footerDividersEnabled
+          @attr name android:footerDividersEnabled
         */
         public static final int ListView_footerDividersEnabled = 2;
         /**
@@ -3231,7 +3237,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:headerDividersEnabled
+          @attr name android:headerDividersEnabled
         */
         public static final int ListView_headerDividersEnabled = 1;
         /**
@@ -3245,7 +3251,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:overScrollFooter
+          @attr name android:overScrollFooter
         */
         public static final int ListView_overScrollFooter = 4;
         /**
@@ -3259,7 +3265,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:overScrollHeader
+          @attr name android:overScrollHeader
         */
         public static final int ListView_overScrollHeader = 3;
         /** Attributes that can be used with a PinterestLikeAdapterView.
@@ -3292,7 +3298,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.youlian:plaColumnNumber
+          @attr name android:plaColumnNumber
         */
         public static final int PinterestLikeAdapterView_plaColumnNumber = 0;
         /**
@@ -3308,7 +3314,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.youlian:plaColumnPaddingLeft
+          @attr name android:plaColumnPaddingLeft
         */
         public static final int PinterestLikeAdapterView_plaColumnPaddingLeft = 2;
         /**
@@ -3324,7 +3330,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.youlian:plaColumnPaddingRight
+          @attr name android:plaColumnPaddingRight
         */
         public static final int PinterestLikeAdapterView_plaColumnPaddingRight = 3;
         /**
@@ -3338,7 +3344,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.youlian:plaLandscapeColumnNumber
+          @attr name android:plaLandscapeColumnNumber
         */
         public static final int PinterestLikeAdapterView_plaLandscapeColumnNumber = 1;
         /** Attributes that can be used with a View.
@@ -3631,7 +3637,7 @@ containing a value of this type.
             </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:accessibilityFocusable
+          @attr name android:accessibilityFocusable
         */
         public static final int View_accessibilityFocusable = 66;
         /**
@@ -3650,7 +3656,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:alpha
+          @attr name android:alpha
         */
         public static final int View_alpha = 50;
         /**
@@ -3666,7 +3672,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:clickable
+          @attr name android:clickable
         */
         public static final int View_clickable = 36;
         /**
@@ -3686,7 +3692,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:contentDescription
+          @attr name android:contentDescription
         */
         public static final int View_contentDescription = 47;
         /**
@@ -3718,7 +3724,7 @@ containing a value of this type.
             </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:drawingCacheQuality
+          @attr name android:drawingCacheQuality
         */
         public static final int View_drawingCacheQuality = 40;
         /**
@@ -3737,7 +3743,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:duplicateParentState
+          @attr name android:duplicateParentState
         */
         public static final int View_duplicateParentState = 42;
         /**
@@ -3753,7 +3759,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:fadeScrollbars
+          @attr name android:fadeScrollbars
         */
         public static final int View_fadeScrollbars = 18;
         /**
@@ -3780,7 +3786,7 @@ containing a value of this type.
 <tr><td><code>vertical</code></td><td>0x00002000</td><td> Fades vertical edges only. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:fadingEdge
+          @attr name android:fadingEdge
         */
         public static final int View_fadingEdge = 28;
         /**
@@ -3798,7 +3804,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:fadingEdgeLength
+          @attr name android:fadingEdgeLength
         */
         public static final int View_fadingEdgeLength = 30;
         /**
@@ -3819,7 +3825,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:filterTouchesWhenObscured
+          @attr name android:filterTouchesWhenObscured
         */
         public static final int View_filterTouchesWhenObscured = 39;
         /**
@@ -3840,7 +3846,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:fitsSystemWindows
+          @attr name android:fitsSystemWindows
         */
         public static final int View_fitsSystemWindows = 14;
         /**
@@ -3863,7 +3869,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:focusable
+          @attr name android:focusable
         */
         public static final int View_focusable = 11;
         /**
@@ -3883,7 +3889,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:focusableInTouchMode
+          @attr name android:focusableInTouchMode
         */
         public static final int View_focusableInTouchMode = 12;
         /**
@@ -3902,7 +3908,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:hapticFeedbackEnabled
+          @attr name android:hapticFeedbackEnabled
         */
         public static final int View_hapticFeedbackEnabled = 46;
         /**
@@ -3924,7 +3930,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:id
+          @attr name android:id
         */
         public static final int View_id = 0;
         /**
@@ -3958,7 +3964,7 @@ containing a value of this type.
 <tr><td><code>no</code></td><td>2</td><td> The view is not important for accessibility. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:importantForAccessibility
+          @attr name android:importantForAccessibility
         */
         public static final int View_importantForAccessibility = 65;
         /**
@@ -3980,7 +3986,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:isScrollContainer
+          @attr name android:isScrollContainer
         */
         public static final int View_isScrollContainer = 17;
         /**
@@ -3999,7 +4005,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:keepScreenOn
+          @attr name android:keepScreenOn
         */
         public static final int View_keepScreenOn = 41;
         /**
@@ -4031,7 +4037,7 @@ containing a value of this type.
             </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:layerType
+          @attr name android:layerType
         */
         public static final int View_layerType = 61;
         /**
@@ -4058,7 +4064,7 @@ containing a value of this type.
 <tr><td><code>locale</code></td><td>3</td><td> Locale </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:layoutDirection
+          @attr name android:layoutDirection
         */
         public static final int View_layoutDirection = 62;
         /**
@@ -4074,7 +4080,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:longClickable
+          @attr name android:longClickable
         */
         public static final int View_longClickable = 37;
         /**
@@ -4096,7 +4102,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:minHeight
+          @attr name android:minHeight
         */
         public static final int View_minHeight = 43;
         /**
@@ -4118,7 +4124,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:minWidth
+          @attr name android:minWidth
         */
         public static final int View_minWidth = 44;
         /**
@@ -4137,7 +4143,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:nextFocusDown
+          @attr name android:nextFocusDown
         */
         public static final int View_nextFocusDown = 34;
         /**
@@ -4156,7 +4162,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:nextFocusForward
+          @attr name android:nextFocusForward
         */
         public static final int View_nextFocusForward = 35;
         /**
@@ -4175,7 +4181,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:nextFocusLeft
+          @attr name android:nextFocusLeft
         */
         public static final int View_nextFocusLeft = 31;
         /**
@@ -4194,7 +4200,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:nextFocusRight
+          @attr name android:nextFocusRight
         */
         public static final int View_nextFocusRight = 32;
         /**
@@ -4213,7 +4219,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:nextFocusUp
+          @attr name android:nextFocusUp
         */
         public static final int View_nextFocusUp = 33;
         /**
@@ -4236,7 +4242,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:onClick
+          @attr name android:onClick
         */
         public static final int View_onClick = 48;
         /**
@@ -4266,7 +4272,7 @@ containing a value of this type.
 <tr><td><code>never</code></td><td>2</td><td> Never show over-scroll effects. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:overScrollMode
+          @attr name android:overScrollMode
         */
         public static final int View_overScrollMode = 49;
         /**
@@ -4298,7 +4304,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:padding
+          @attr name android:padding
         */
         public static final int View_padding = 4;
         /**
@@ -4316,7 +4322,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:paddingBottom
+          @attr name android:paddingBottom
         */
         public static final int View_paddingBottom = 8;
         /**
@@ -4334,7 +4340,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:paddingEnd
+          @attr name android:paddingEnd
         */
         public static final int View_paddingEnd = 10;
         /**
@@ -4352,7 +4358,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:paddingLeft
+          @attr name android:paddingLeft
         */
         public static final int View_paddingLeft = 5;
         /**
@@ -4370,7 +4376,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:paddingRight
+          @attr name android:paddingRight
         */
         public static final int View_paddingRight = 7;
         /**
@@ -4388,7 +4394,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:paddingStart
+          @attr name android:paddingStart
         */
         public static final int View_paddingStart = 9;
         /**
@@ -4406,7 +4412,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:paddingTop
+          @attr name android:paddingTop
         */
         public static final int View_paddingTop = 6;
         /**
@@ -4426,7 +4432,7 @@ containing a value of this type.
 <tr><td><code>vertical</code></td><td>0x00002000</td><td> Fades vertical edges only. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:requiresFadingEdge
+          @attr name android:requiresFadingEdge
         */
         public static final int View_requiresFadingEdge = 29;
         /**
@@ -4442,7 +4448,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:rotation
+          @attr name android:rotation
         */
         public static final int View_rotation = 55;
         /**
@@ -4458,7 +4464,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:rotationX
+          @attr name android:rotationX
         */
         public static final int View_rotationX = 56;
         /**
@@ -4474,7 +4480,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:rotationY
+          @attr name android:rotationY
         */
         public static final int View_rotationY = 57;
         /**
@@ -4497,7 +4503,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:saveEnabled
+          @attr name android:saveEnabled
         */
         public static final int View_saveEnabled = 38;
         /**
@@ -4513,7 +4519,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:scaleX
+          @attr name android:scaleX
         */
         public static final int View_scaleX = 58;
         /**
@@ -4529,7 +4535,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:scaleY
+          @attr name android:scaleY
         */
         public static final int View_scaleY = 59;
         /**
@@ -4547,7 +4553,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollX
+          @attr name android:scrollX
         */
         public static final int View_scrollX = 2;
         /**
@@ -4565,7 +4571,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollY
+          @attr name android:scrollY
         */
         public static final int View_scrollY = 3;
         /**
@@ -4581,7 +4587,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollbarAlwaysDrawHorizontalTrack
+          @attr name android:scrollbarAlwaysDrawHorizontalTrack
         */
         public static final int View_scrollbarAlwaysDrawHorizontalTrack = 26;
         /**
@@ -4597,7 +4603,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollbarAlwaysDrawVerticalTrack
+          @attr name android:scrollbarAlwaysDrawVerticalTrack
         */
         public static final int View_scrollbarAlwaysDrawVerticalTrack = 27;
         /**
@@ -4613,7 +4619,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollbarDefaultDelayBeforeFade
+          @attr name android:scrollbarDefaultDelayBeforeFade
         */
         public static final int View_scrollbarDefaultDelayBeforeFade = 20;
         /**
@@ -4629,7 +4635,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollbarFadeDuration
+          @attr name android:scrollbarFadeDuration
         */
         public static final int View_scrollbarFadeDuration = 19;
         /**
@@ -4647,7 +4653,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollbarSize
+          @attr name android:scrollbarSize
         */
         public static final int View_scrollbarSize = 21;
         /**
@@ -4677,7 +4683,7 @@ containing a value of this type.
 <tr><td><code>outsideInset</code></td><td>0x03000000</td><td> Edge of the view and inset </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollbarStyle
+          @attr name android:scrollbarStyle
         */
         public static final int View_scrollbarStyle = 16;
         /**
@@ -4689,7 +4695,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollbarThumbHorizontal
+          @attr name android:scrollbarThumbHorizontal
         */
         public static final int View_scrollbarThumbHorizontal = 22;
         /**
@@ -4701,7 +4707,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollbarThumbVertical
+          @attr name android:scrollbarThumbVertical
         */
         public static final int View_scrollbarThumbVertical = 23;
         /**
@@ -4713,7 +4719,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollbarTrackHorizontal
+          @attr name android:scrollbarTrackHorizontal
         */
         public static final int View_scrollbarTrackHorizontal = 24;
         /**
@@ -4725,7 +4731,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollbarTrackVertical
+          @attr name android:scrollbarTrackVertical
         */
         public static final int View_scrollbarTrackVertical = 25;
         /**
@@ -4745,7 +4751,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>vertical</code></td><td>0x00000200</td><td> Displays vertical scrollbar only. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:scrollbars
+          @attr name android:scrollbars
         */
         public static final int View_scrollbars = 15;
         /**
@@ -4764,7 +4770,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:soundEffectsEnabled
+          @attr name android:soundEffectsEnabled
         */
         public static final int View_soundEffectsEnabled = 45;
         /**
@@ -4787,7 +4793,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:tag
+          @attr name android:tag
         */
         public static final int View_tag = 1;
         /**
@@ -4830,7 +4836,7 @@ containing a value of this type.
             </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:textAlignment
+          @attr name android:textAlignment
         */
         public static final int View_textAlignment = 64;
         /**
@@ -4870,7 +4876,7 @@ containing a value of this type.
 <tr><td><code>locale</code></td><td>5</td><td> The paragraph direction is coming from the system Locale. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:textDirection
+          @attr name android:textDirection
         */
         public static final int View_textDirection = 63;
         /**
@@ -4891,7 +4897,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:transformPivotX
+          @attr name android:transformPivotX
         */
         public static final int View_transformPivotX = 53;
         /**
@@ -4912,7 +4918,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:transformPivotY
+          @attr name android:transformPivotY
         */
         public static final int View_transformPivotY = 54;
         /**
@@ -4933,7 +4939,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:translationX
+          @attr name android:translationX
         */
         public static final int View_translationX = 51;
         /**
@@ -4954,7 +4960,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:translationY
+          @attr name android:translationY
         */
         public static final int View_translationY = 52;
         /**
@@ -4974,7 +4980,7 @@ containing a value of this type.
 <tr><td><code>right</code></td><td>2</td><td> Place the scroll bar on the right. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:verticalScrollbarPosition
+          @attr name android:verticalScrollbarPosition
         */
         public static final int View_verticalScrollbarPosition = 60;
         /**
@@ -4994,7 +5000,7 @@ containing a value of this type.
 <tr><td><code>gone</code></td><td>2</td><td> Completely hidden, as if the view had not been added. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:visibility
+          @attr name android:visibility
         */
         public static final int View_visibility = 13;
         /** 
@@ -5069,7 +5075,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:addStatesFromChildren
+          @attr name android:addStatesFromChildren
         */
         public static final int ViewGroup_addStatesFromChildren = 7;
         /**
@@ -5088,7 +5094,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:alwaysDrawnWithCache
+          @attr name android:alwaysDrawnWithCache
         */
         public static final int ViewGroup_alwaysDrawnWithCache = 6;
         /**
@@ -5109,7 +5115,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:animateLayoutChanges
+          @attr name android:animateLayoutChanges
         */
         public static final int ViewGroup_animateLayoutChanges = 0;
         /**
@@ -5130,7 +5136,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:animationCache
+          @attr name android:animationCache
         */
         public static final int ViewGroup_animationCache = 4;
         /**
@@ -5152,7 +5158,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:clipChildren
+          @attr name android:clipChildren
         */
         public static final int ViewGroup_clipChildren = 1;
         /**
@@ -5171,7 +5177,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:clipToPadding
+          @attr name android:clipToPadding
         */
         public static final int ViewGroup_clipToPadding = 2;
         /**
@@ -5194,7 +5200,7 @@ containing a value of this type.
 <tr><td><code>blocksDescendants</code></td><td>2</td><td> The ViewGroup will block its descendants from receiving focus. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:descendantFocusability
+          @attr name android:descendantFocusability
         */
         public static final int ViewGroup_descendantFocusability = 8;
         /**
@@ -5209,7 +5215,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.example.youlian:layoutAnimation
+          @attr name android:layoutAnimation
         */
         public static final int ViewGroup_layoutAnimation = 3;
         /**
@@ -5237,7 +5243,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>all</code></td><td>0x3</td><td> The drawing cache is always persisted. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.example.youlian:persistentDrawingCache
+          @attr name android:persistentDrawingCache
         */
         public static final int ViewGroup_persistentDrawingCache = 5;
         /**
@@ -5264,7 +5270,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.example.youlian:splitMotionEvents
+          @attr name android:splitMotionEvents
         */
         public static final int ViewGroup_splitMotionEvents = 9;
     };

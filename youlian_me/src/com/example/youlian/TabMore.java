@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,8 +20,10 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.youlian.more.AppRecommendActivity;
 import com.example.youlian.more.FeekBackActivity;
 import com.example.youlian.more.ShareSetActivity;
+import com.example.youlian.util.Utils;
 import com.example.youlian.view.SimpleProgressDialog;
 import com.example.youlian.view.dialog.HuzAlertDialog;
 
@@ -32,7 +35,7 @@ public class TabMore extends Activity implements OnClickListener{
 
 	private RelativeLayout messagePropelling;
 	
-	private RelativeLayout shareSet;
+//	private RelativeLayout shareSet;
 	
 	private RelativeLayout about;
 	
@@ -57,6 +60,15 @@ public class TabMore extends Activity implements OnClickListener{
 	private Button more_quit;
 
 	private TextView tv_title;
+	public static final int MSG_CLOSE_LOADING = 1;
+	
+	private Handler mhHandler = new Handler(){
+		public void handleMessage(android.os.Message msg) {
+			if(msg.what == MSG_CLOSE_LOADING){
+				SimpleProgressDialog.dismiss();
+			}
+		};
+	};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +89,7 @@ public class TabMore extends Activity implements OnClickListener{
 		
 		
 		
-		shareSet = (RelativeLayout)findViewById(R.id.more_share_set);
+//		shareSet = (RelativeLayout)findViewById(R.id.more_share_set);
 		messagePropelling = (RelativeLayout)findViewById(R.id.more_message_propelling);
 		more_clearcache = (RelativeLayout)findViewById(R.id.more_clearcache);
 		appUpdata = (RelativeLayout)findViewById(R.id.more_updata);
@@ -101,7 +113,7 @@ public class TabMore extends Activity implements OnClickListener{
 		more_attention.setOnClickListener(this);
 		more_clearcache.setOnClickListener(this);
 		messagePropelling.setOnClickListener(this);
-		shareSet.setOnClickListener(this);
+//		shareSet.setOnClickListener(this);
 		about.setOnClickListener(this);
 		service.setOnClickListener(this);
 		help.setOnClickListener(this);
@@ -116,10 +128,10 @@ public class TabMore extends Activity implements OnClickListener{
 		switch (view.getId()) {
 		case R.id.more_message_propelling:
 			break;
-		case R.id.more_share_set:
-			Intent mShareSetActivity = new Intent(this, ShareSetActivity.class);
-			startActivity(mShareSetActivity);
-			break;
+//		case R.id.more_share_set:
+//			Intent mShareSetActivity = new Intent(this, ShareSetActivity.class);
+//			startActivity(mShareSetActivity);
+//			break;
 		case R.id.more_about:
 			Intent aboutIntent = new Intent();
 			aboutIntent.setClass(this, WebViewActivity.class);
@@ -147,16 +159,20 @@ public class TabMore extends Activity implements OnClickListener{
 			SimpleProgressDialog.show(this);
 			YouLianHttpApi.checkVersion(createCheckVersionSuccessListener(), createCheckVersionErrorListener());
 			break;
-//		case R.id.more_app_recommend:
-//			Intent mAppRecommendActivity = new Intent(this, AppRecommendActivity.class);
-//			startActivity(mAppRecommendActivity);
-//			break;
-//		case R.id.more_custom_service_phone:
-//			break;
-//		case R.id.more_clearcache:
-//			break;
-//		case R.id.more_quit:
-//			break;
+		case R.id.more_app_recommend:
+			Intent mAppRecommendActivity = new Intent(this, AppRecommendActivity.class);
+			startActivity(mAppRecommendActivity);
+			break;
+		case R.id.more_custom_service_phone:
+				Utils.call(getApplicationContext(), "09914542288");
+			break;
+		case R.id.more_clearcache:
+			SimpleProgressDialog.show(this);
+			mhHandler.sendEmptyMessageDelayed(MSG_CLOSE_LOADING, 2000);
+			break;
+		case R.id.more_quit:
+			TabHome.sTabHome.finish();
+			break;
 		}
 		
 	}

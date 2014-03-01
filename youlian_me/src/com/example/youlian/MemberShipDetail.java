@@ -194,6 +194,9 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 			break;
 			
 		case R.id.btn_pie:// 敲到
+			Intent i = new Intent(getApplicationContext(), CommentAddActivity.class);
+			i.putExtra("customer_id", card.customer_id);
+			startActivity(i);
 			break;
 		case R.id.btn_tier:// 分享
 			openShareBoard();

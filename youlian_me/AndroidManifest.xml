@@ -49,6 +49,7 @@
         <activity android:name=".MemberShipDetail" android:screenOrientation="portrait"></activity>
         <activity android:name=".AllSellerActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".AllSellerDetailActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".more.AppRecommendActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".more.ShareSetActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".WebViewActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".more.FeekBackActivity" android:screenOrientation="portrait"></activity>

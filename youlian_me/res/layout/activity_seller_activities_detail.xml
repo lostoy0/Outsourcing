@@ -67,21 +67,21 @@
                 android:background="#ffffff"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="asdfdsafdsadfasdf" />
+                 />
 
             <TextView
                 android:id="@+id/tv_start_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/act_detail_marge_left"
-                android:text="asdfdsafdsadfasdf" />
+                />
 
             <TextView
                 android:id="@+id/tv_end_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/act_detail_marge_left"
-                android:text="asdfdsafdsadfasdf" />
+                 />
 
             <TextView
                 android:id="@+id/tv_eat_num"
@@ -89,21 +89,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/act_detail_marge_left"
                 android:layout_marginTop="20dp"
-                android:text="asdfdsafdsadfasdf" />
+                />
 
             <TextView
                 android:id="@+id/tv_eat_standard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/act_detail_marge_left"
-                android:text="asdfdsafdsadfasdf" />
+                />
 
             <TextView
                 android:id="@+id/tv_eat_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/act_detail_marge_left"
-                android:text="asdfdsafdsadfasdf" />
+                />
 
             <TextView
                 android:id="@+id/tv_eat_didian"
@@ -111,14 +111,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/act_detail_marge_left"
                 android:layout_marginTop="20dp"
-                android:text="asdfdsafdsadfasdf" />
+                />
 
             <TextView
                 android:id="@+id/tv_eat_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/act_detail_marge_left"
-                android:text="asdfdsafdsadfasdf" />
+                />
 
             <TextView
                 android:id="@+id/tv_act_rule"
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/act_detail_marge_left"
                 android:layout_marginTop="20dp"
-                android:text="asdfdsafdsadfasdf" />
+                />
         </LinearLayout>
     </ScrollView>
 

@@ -3,6 +3,7 @@ package com.example.youlian.view;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.youlian.R;
+import com.example.youlian.ShangjiaDetailActivity;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Customer;
 
@@ -68,13 +70,26 @@ public class CutomListview extends FrameLayout {
 		mListView = (ListView) this.findViewById(R.id.myListView);
 		adapter = new HomeAdapter();
 		mListView.setAdapter(adapter);
-		mListView.setOnItemClickListener(listener);
+		mListView.setOnItemClickListener(onItemClickListener);
 	}
 	
 	public void setData(List<Customer> customers){
 		mCustomers = customers;
 		adapter.notifyDataSetChanged();
 	}
+	
+	OnItemClickListener onItemClickListener = new OnItemClickListener() {
+
+		@Override
+		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+				long arg3) {
+			Intent in = new Intent(mContext, ShangjiaDetailActivity.class);
+			Customer c = mCustomers.get(arg2);
+			in.putExtra("customerid", c.id);
+			in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			mContext.startActivity(in);
+		}
+	};
 	
 	
 	class HomeAdapter extends BaseAdapter{
@@ -156,13 +171,4 @@ public class CutomListview extends FrameLayout {
 		}
 	}
 	
-	private OnItemClickListener listener = new OnItemClickListener() {
-
-		@Override
-		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-				long arg3) {
-			Customer customer = mCustomers.get(arg2);
-		}
-		
-	};
 }

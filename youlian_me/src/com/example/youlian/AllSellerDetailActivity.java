@@ -144,21 +144,25 @@ public class AllSellerDetailActivity extends Activity implements OnClickListener
 			break;
 		
 		case R.id.btn_pie:// 敲到
+			Intent i = new Intent(getApplicationContext(), CommentAddActivity.class);
+			i.putExtra("customer_id", act.customerId);
+			startActivity(i);
 			break;
 		case R.id.btn_tier:// 分享
 			openShareBoard();
 			break;
 		case R.id.btn_wigame:// 评论
-			Intent intent = new Intent(getApplicationContext(), CommentActivity.class);
-			intent.putExtra("quan", 1);
-			startActivity(intent);
+			i = new Intent(getApplicationContext(), CommentActivity.class);
+			i.putExtra("title", act.customerName);
+			i.putExtra("customer_id", act.customerId);
+			startActivity(i);
 			break;
 		case R.id.btn_more:// 收藏
-//			if(isFav){
-//				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), quan.fav_id, "2", createDelFavSuccessListener(), createMyReqErrorListener());
-//			}else{
-//				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), quan.fav_id, "2", createAddFavSuccessListener(), createMyReqErrorListener());
-//			}
+			if(isFav){
+				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), act.customerId, "2", createDelFavSuccessListener(), createMyReqErrorListener());
+			}else{
+				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), act.customerId, "2", createAddFavSuccessListener(), createErrorListener());
+			}
 			isFav = !isFav;
 			break;
 		default:
@@ -214,4 +218,80 @@ public class AllSellerDetailActivity extends Activity implements OnClickListener
             }
         };
     }
+	
+	
+	
+	private Response.Listener<String> createDelFavSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if (status == 1) {
+							mMoreButton.setText("收藏");
+						} else {
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						}
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		};
+	}
+	private Response.Listener<String> createAddFavSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if (status == 1) {
+							Toast.makeText(getApplicationContext(), "关注成功",
+									Toast.LENGTH_SHORT).show();
+							mMoreButton.setText("已收藏");
+						} else {
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						}
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		};
+	}
+	
+	private Response.ErrorListener createMyReqErrorListener() {
+		return new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				Log.i(TAG, "error");
+				mMoreButton.setText("收藏");
+			}
+		};
+	}
+	
+	
+	private Response.ErrorListener createErrorListener() {
+		return new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				Log.i(TAG, "error");
+				mMoreButton.setText("已收藏");
+			}
+		};
+	}
 }

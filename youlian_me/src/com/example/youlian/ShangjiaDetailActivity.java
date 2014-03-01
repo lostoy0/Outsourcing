@@ -209,6 +209,9 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 			break;
 			
 		case R.id.btn_pie:// 敲到
+			intent = new Intent(getApplicationContext(), CommentAddActivity.class);
+			intent.putExtra("customer_id", card.id);
+			startActivity(intent);
 			break;
 		case R.id.btn_tier:// 分享
 			openShareBoard();
