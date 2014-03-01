@@ -14,6 +14,7 @@ public class Ad {
 	public String linkUrl;
 	public String linkId;
 	public String top;
+	public String message;
 
 	public static Ad parse(JSONObject jsonObj) throws JSONException {
 		Ad ad = new Ad();
@@ -23,6 +24,7 @@ public class Ad {
 		ad.linkUrl = jsonObj.optString("linkUrl");
 		ad.linkId = jsonObj.optString("linkId");
 		ad.top = jsonObj.optString("top");
+		ad.message = jsonObj.optString("message");
 		return ad;
 	}
 

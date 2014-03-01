@@ -16,7 +16,14 @@
 
 package com.example.youlian.app;
 
+import android.app.AlarmManager;
 import android.app.Application;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+
+import com.example.youlian.AlertMessageService;
 
 /**
  * Application class for the demo. Used to ensure that MyVolley is initialized. {@see MyVolley}
@@ -24,15 +31,38 @@ import android.app.Application;
  *
  */
 public class YouLianApp extends Application {
+	protected static final String TAG = "YouLianApp";
+	private PendingIntent sAlertSender;
     @Override
     public void onCreate() {
+    	
         super.onCreate();
-        
+        Log.i(TAG, "YouLianApp onCreate:" + YouLianApp.this);
         init();
     }
 
 
     private void init() {
         MyVolley.init(this);
+        
+        registerAlertMessage();
     }
+    
+    
+    public void registerAlertMessage() {
+    	sAlertSender = PendingIntent.getService(getApplicationContext(), 0,
+				new Intent(getApplicationContext(), AlertMessageService.class), 0);
+    	
+		int interval = 1;
+		AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+		am.setRepeating(AlarmManager.RTC, System.currentTimeMillis()
+				+ 5 * 1000, interval * 15 * 1000, sAlertSender);
+	}
+    
+    
+    public void cancelAlarm() {
+		AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+		am.cancel(sAlertSender);
+	}
+    
 }

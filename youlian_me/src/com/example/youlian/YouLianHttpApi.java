@@ -57,6 +57,19 @@ public class YouLianHttpApi {
 				successListener, errorListener);
 		queue.add(myReq);
 	}
+	
+	public static void getPushMsg(String device_token,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.app.android.push";
+		String url = getUrl(KEY_SERVER, server, "device_token", device_token);
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
 
 	/**
 	 * 应用推荐
