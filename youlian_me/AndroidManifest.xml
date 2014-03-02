@@ -127,7 +127,6 @@
             android:name="UMENG_APPKEY"
             android:value="4eaee02c527015373b000003" >
         </meta-data>
-        
        
     </application>
 
