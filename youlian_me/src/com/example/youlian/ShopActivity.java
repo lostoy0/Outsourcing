@@ -22,8 +22,8 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.youlian.baidumap.BaiduMapActivity;
 import com.example.youlian.mode.Shop;
-import com.example.youlian.mode.YouhuiQuan;
 import com.example.youlian.util.Utils;
 
 public class ShopActivity extends Activity implements OnClickListener {
@@ -86,7 +86,7 @@ public class ShopActivity extends Activity implements OnClickListener {
 			for (int i =0;i<size;i++) {
 				//左边布局
 				System.out.println("店铺："+i);
-				Shop  shop = shops.get(i);
+				final Shop  shop = shops.get(i);
 				LinearLayout allLay = new LinearLayout(this);
 				allLay.setLayoutParams(Relparams);
 				allLay.setPadding(8, 8, 8, 8);
@@ -193,11 +193,11 @@ public class ShopActivity extends Activity implements OnClickListener {
 							lngf = Double.parseDouble(lng);
 						if (Utils.notNull(lat))
 							latf = Double.parseDouble(lat);
-//						Intent mBaiduMapActivity = new Intent(getApplicationContext(),BaiduMapActivity.class);
-//						mBaiduMapActivity.putExtra("dLong", lngf);
-//						mBaiduMapActivity.putExtra("dLat", latf);
-//						mBaiduMapActivity.putExtra("storeName", cardDet.getCard_name());
-//						startActivity(mBaiduMapActivity);
+						Intent mBaiduMapActivity = new Intent(getApplicationContext(),BaiduMapActivity.class);
+						mBaiduMapActivity.putExtra("dLong", lngf);
+						mBaiduMapActivity.putExtra("dLat", latf);
+						mBaiduMapActivity.putExtra("storeName", shop.name);
+						startActivity(mBaiduMapActivity);
 						
 					}
 				});

@@ -57,12 +57,32 @@ public class YouLianHttpApi {
 				successListener, errorListener);
 		queue.add(myReq);
 	}
-	
+	/**
+	 * 后去推送信息
+	 * @param device_token
+	 * @param successListener
+	 * @param errorListener
+	 */
 	public static void getPushMsg(String device_token,
 			Response.Listener<String> successListener,
 			Response.ErrorListener errorListener) {
 		String server = "younion.app.android.push";
 		String url = getUrl(KEY_SERVER, server, "device_token", device_token);
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		myReq.setShouldCache(false);
+		queue.add(myReq);
+	}
+	
+	public static void bindDeviceId(String user_token,
+			String device_token,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.app.iphone.device.add";
+		String url = getUrl(KEY_SERVER, server, "device_token", device_token
+				,"user_token", user_token, KEY_CLIENT_TYPE, "android");
 		Log.i(TAG, "url:" + url);
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),

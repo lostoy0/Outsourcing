@@ -3,9 +3,12 @@ package com.example.youlian;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -14,14 +17,18 @@ import android.widget.ImageButton;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.youlian.app.YouLianApp;
 import com.example.youlian.common.Configure;
 import com.example.youlian.common.Constants;
 import com.example.youlian.mode.LoginResult;
 import com.example.youlian.util.PreferencesUtils;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.util.YlUtils;
 
 public class LoginActivity extends BaseActivity implements OnClickListener {
+	private static final String TAG = "LoginActivity";
+
 	private YlLogger mLogger = YlLogger.getLogger(this.getClass().getSimpleName());
 
 	private ImageButton mBackButton, mAutoLoginButton;;
@@ -145,8 +152,12 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 				LoginResult result = LoginResult.from(jsonObject.optJSONObject(Constants.key_result));
 				if(result != null) {//注册成功，保存登录信息
 					PreferencesUtils.saveSessionUser(LoginActivity.this, result);
-					setResult(RESULT_OK);
-					finish();
+					
+					
+					YouLianHttpApi.bindDeviceId(Global.getUserToken(getApplicationContext()), 
+							getDeviceId(), createSuccessListener(), createErrorListener());
+					
+					
 				}
 			} else {
 				Utils.showToast(LoginActivity.this, "登录失败");
@@ -155,4 +166,34 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 			e.printStackTrace();
 		}
 	}
+	
+	public String getDeviceId(){
+		final TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+	    String deviceId =  tm.getDeviceId();
+	    Log.i(TAG, "deviceId :" + deviceId);
+	    return YlUtils.md5(deviceId);
+	}
+	
+	
+	private Response.Listener<String> createSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "response :" + response);
+				setResult(RESULT_OK);
+				finish();
+			}
+		};
+	}
+	
+	private Response.ErrorListener createErrorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            	Log.i(TAG, "response :" + error);
+            	setResult(RESULT_OK);
+				finish();
+            }
+        };
+    }
 }

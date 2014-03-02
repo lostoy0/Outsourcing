@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:orientation="horizontal"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    android:paddingBottom="25dip"
+    >  
+<LinearLayout
+    android:orientation="vertical"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent" 
+    android:background="@drawable/pop"
+    android:gravity="center_horizontal"
+    > 
+ <TextView 
+    android:id="@+id/pt_text"  
+    android:layout_width="wrap_content"    
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dip"
+    android:text="真功夫"
+    android:textColor="@color/green"
+ />   
+</LinearLayout>  
+</LinearLayout>

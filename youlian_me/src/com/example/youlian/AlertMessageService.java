@@ -2,6 +2,7 @@ package com.example.youlian;
 
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,7 +43,7 @@ public class AlertMessageService extends Service {
 	}
 	
 	public String getDeviceId(){
-		final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
+		final TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 	    String deviceId =  tm.getDeviceId();
 	    Log.i(TAG, "deviceId :" + deviceId);
 	    return YlUtils.md5(deviceId);
@@ -137,10 +138,13 @@ public class AlertMessageService extends Service {
 						JSONObject o = new JSONObject(response);
 						int status = o.optInt("status");
 						if (status == 1) {
-							Ad ad = new Ad();
-							ad.linkType = "1";
-							ad.message = "ddddddd";
-							sendNotification(ad);
+							JSONArray array = o.optJSONArray("result");
+							int size = array.length();
+							for(int i=0; i<size; i++){
+								JSONObject jsonObject = array.getJSONObject(i);
+								Ad ad = Ad.parse(jsonObject);
+								sendNotification(ad);
+							}
 						} else {
 							String msg = o.optString("msg");
 							Toast.makeText(getApplicationContext(), msg,
