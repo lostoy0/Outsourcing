@@ -16,9 +16,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -28,14 +28,12 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.example.youlian.app.MyVolley;
-import com.example.youlian.mode.Act;
 import com.example.youlian.mode.Ad;
-import com.example.youlian.mode.Card;
-import com.example.youlian.mode.Customer;
 import com.example.youlian.mode.RegioninfoVO;
 import com.example.youlian.mode.SubjectActivity;
 import com.example.youlian.view.TemplateFive;
@@ -64,6 +62,7 @@ public class TabFirstPage extends Activity implements OnClickListener {
 	private RegioninfoVO mCity;
 	private RegioninfoVO mDistrict;
 	private TextView tv_area;
+	private Button mScanRQCodeButton;
 
 	private static final int REQ_ADDR = 0x1000;
 	private List<Ad> ads = new ArrayList<Ad>();
@@ -90,7 +89,9 @@ public class TabFirstPage extends Activity implements OnClickListener {
 	}
 
 	private void initViews() {
-
+		mScanRQCodeButton = (Button) findViewById(R.id.btn_scan_rqcode);
+		mScanRQCodeButton.setOnClickListener(this);
+		
 		search_edit = (TextView) this.findViewById(R.id.search_edit);
 		search_edit.setOnClickListener(this);
 
@@ -298,6 +299,11 @@ public class TabFirstPage extends Activity implements OnClickListener {
 		case R.id.search_edit:
 			i = new Intent(getApplicationContext(), SearchActivity.class);
 			startActivity(i);
+			break;
+			
+		case R.id.btn_scan_rqcode:
+			Intent mCaptureActivity = new Intent(this, CaptureActivity.class);
+			startActivityForResult(mCaptureActivity,0);
 			break;
 
 		default:

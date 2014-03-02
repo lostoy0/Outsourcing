@@ -16,6 +16,7 @@
             android:orientation="horizontal" >
 
             <Button
+                android:id="@+id/btn_scan_rqcode"
                 android:layout_width="37dp"
                 android:layout_height="37dp"
                 android:layout_gravity="center_vertical"
@@ -206,7 +207,7 @@
             android:layout_height="100dp"
             android:layout_margin="5dp"
             android:layout_marginTop="@dimen/hotbuy_margin_top"
-            android:background="@drawable/guanggao" />
+            android:background="@drawable/guanggao" />
         -->
 
 
@@ -217,7 +218,7 @@
              <com.example.youlian.view.TemplateTwo
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp" />
         -->
 
 
@@ -228,7 +229,7 @@
              <com.example.youlian.view.TemplateThree
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp" />
         -->
 
 
@@ -246,7 +247,7 @@
         <com.example.youlian.view.TemplateSix
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp" />
         -->
 
     </LinearLayout>
