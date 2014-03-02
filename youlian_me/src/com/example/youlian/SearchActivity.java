@@ -1,7 +1,6 @@
 package com.example.youlian;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.json.JSONException;
@@ -19,8 +18,8 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
@@ -29,20 +28,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.example.youlian.common.Configure;
 import com.example.youlian.mode.Customer;
 import com.example.youlian.util.PreferencesUtils;
-import com.example.youlian.util.Utils;
 import com.example.youlian.view.CutomListview;
 import com.example.youlian.view.SimpleProgressDialog;
 
@@ -214,8 +210,8 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 				
 				break;
 			case R.id.two_code:
-//				Intent mCaptureActivity = new Intent(this, CaptureActivity.class);
-//				startActivity(mCaptureActivity);
+				Intent mCaptureActivity = new Intent(this, CaptureActivity.class);
+				startActivityForResult(mCaptureActivity,0);
 				break;
 			case R.id.btn_cate:
 //				ArrayList<CardsResult> card = new ArrayList<CardsResult>();
