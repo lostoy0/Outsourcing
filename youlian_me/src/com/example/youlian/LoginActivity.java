@@ -17,7 +17,6 @@ import android.widget.ImageButton;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.example.youlian.app.YouLianApp;
 import com.example.youlian.common.Configure;
 import com.example.youlian.common.Constants;
 import com.example.youlian.mode.LoginResult;
@@ -117,6 +116,11 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 	}
 	
 	private void login() {
+		if(TextUtils.isEmpty(mLoginIdEditText.getText().toString()) || TextUtils.isEmpty(mPasswordEditText.getText().toString())) {
+			showToast("请输入用户名和密码");
+			return;
+		}
+		
 		YouLianHttpApi.login(mLoginIdEditText.getText().toString().trim(), mPasswordEditText.getText().toString().trim(),
 				createLoginSuccessListener(), createLoginErrorListener());
 	}
@@ -150,14 +154,10 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 			JSONObject jsonObject = new JSONObject(response.trim());
 			if("1".equals(jsonObject.opt(Constants.key_status))) {
 				LoginResult result = LoginResult.from(jsonObject.optJSONObject(Constants.key_result));
-				if(result != null) {//注册成功，保存登录信息
+				if(result != null) {//登录成功，保存登录信息
 					PreferencesUtils.saveSessionUser(LoginActivity.this, result);
-					
-					
 					YouLianHttpApi.bindDeviceId(Global.getUserToken(getApplicationContext()), 
 							getDeviceId(), createSuccessListener(), createErrorListener());
-					
-					
 				}
 			} else {
 				Utils.showToast(LoginActivity.this, "登录失败");
@@ -180,6 +180,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 			@Override
 			public void onResponse(String response) {
 				Log.i(TAG, "response :" + response);
+				showToast("登录成功");
 				setResult(RESULT_OK);
 				finish();
 			}

@@ -227,7 +227,6 @@ public class PreferencesUtils {
 		if (Utils.notNull(mShareConfig)) {
 			Editor edit = mShareConfig.edit();
 			edit.putString(Configure.SESSION_USER_TYPE, user.type);
-			System.out.println("user_token:" + user.user_token);
 			edit.putString(Configure.SESSION_USER_TOKEN, user.user_token);
 
 			edit.putString(Configure.SESSION_USER_NAME, user.user_name);

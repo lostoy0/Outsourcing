@@ -60,11 +60,6 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 		
 		initViews();
 		
-	}
-	
-	@Override
-	protected void onStart() {
-		super.onStart();
 		if(!PreferencesUtils.isLogin(this)) {
 			login();
 		} else {

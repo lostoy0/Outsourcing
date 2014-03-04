@@ -171,6 +171,7 @@ public class TabMore extends Activity implements OnClickListener{
 			mhHandler.sendEmptyMessageDelayed(MSG_CLOSE_LOADING, 2000);
 			break;
 		case R.id.more_quit:
+			Global.destroy(this);
 			TabHome.sTabHome.finish();
 			break;
 		}
