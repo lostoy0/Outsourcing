@@ -2,6 +2,7 @@ package com.example.youlian;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class BaseActivity extends Activity {
 
@@ -29,4 +30,7 @@ public class BaseActivity extends Activity {
 		super.onDestroy();
 	}
 
+	protected void showToast(String msg) {
+		Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+	}
 }

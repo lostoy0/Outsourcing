@@ -48,4 +48,9 @@ public class Global {
 	public static boolean isAutoLogin(Context context) {
 		return PreferencesUtils.getBooleanByKey(context, Configure.SESSION_USER_IS_REMPSD);
 	}
+	
+	public static void destroy(Context context) {
+		sUserToken = null;
+		PreferencesUtils.clearSessionUser(context);
+	}
 }

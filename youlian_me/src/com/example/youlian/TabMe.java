@@ -47,18 +47,14 @@ public class TabMe extends BaseActivity implements OnClickListener {
 		setContentView(R.layout.activity_tab_individual);
 		
 		initViews();
-	}
-
-	@Override
-	protected void onStart() {
-		super.onStart();
+		
 		if(!PreferencesUtils.isLogin(this)) {
 			login();
 		} else {
 			loadData();
 		}
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);

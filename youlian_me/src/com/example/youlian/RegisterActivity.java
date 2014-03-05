@@ -95,27 +95,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 
 			break;
 		case R.id.submit:
-
-			mLoginId = mLoginIdEditText.getText().toString().trim();
-			mPassword = mPasswordEditText.getText().toString().trim();
-			mVerifyCode = mVerifyCodEditText.getText().toString().trim();
-			
-			if (!TextUtils.isEmpty(mLoginId) && !TextUtils.isEmpty(mPassword) && !TextUtils.isEmpty(mVerifyCode)) {
-				if (mLoginId.length() < 11) {
-					String totalStr = "手机号不能小于11位";
-					Utils.showToast(this, totalStr);
-				} else {
-					if (mLoginId.length() > 11) {
-						String totalStr = "手机号不能大于11位";
-						Utils.showToast(this, totalStr);
-					} else {
-						register();
-					}
-				}
-			} else {
-				String totalStr = "请把信息填写完整后提交";
-				Utils.showToast(this, totalStr);
-			}
+			register();
 			break;
 			
 		case R.id.btn_get_verifycode:
@@ -128,7 +108,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 	private void getVerifyCode() {
 		mLoginId = mLoginIdEditText.getText().toString().trim();
 		if(TextUtils.isEmpty(mLoginId) || !YlUtils.isMobileValid(mLoginId)) {
-			Utils.showToast(this, "请输入有效手机号码");
+			showToast("请输入有效手机号码");
 			return;
 		}
 		
@@ -136,6 +116,27 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 	}
 	
 	private void register() {
+		mLoginId = mLoginIdEditText.getText().toString().trim();
+		mPassword = mPasswordEditText.getText().toString().trim();
+		mVerifyCode = mVerifyCodEditText.getText().toString().trim();
+		
+		if(TextUtils.isEmpty(mLoginId)) {
+			showToast("手机号码不能为空");
+			return;
+		} else if(TextUtils.isEmpty(mPassword)) {
+			showToast("密码不能为空");
+			return;
+		} else if(TextUtils.isEmpty(mVerifyCode)) {
+			showToast("验证码不能为空");
+			return;
+		} 
+		
+		if (!YlUtils.isMobileValid(mLoginId)) {
+			String totalStr = "请输入有效手机号码";
+			showToast(totalStr);
+			return;
+		}
+		
 		YouLianHttpApi.register(mLoginId, mPassword, mVerifyCode, createRegisterSuccessListener(), createRegisterErrorListener());
 	}
 	
@@ -186,6 +187,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+				showToast("注册失败");
             }
         };
     }
@@ -195,13 +197,14 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 			JSONObject jsonObject = new JSONObject(response.trim());
 			if("1".equals(jsonObject.opt(Constants.key_status))) {
 				LoginResult result = LoginResult.from(jsonObject.optJSONObject(Constants.key_result));
-				if(result != null) {//注册成功，保存登录信息
+				if(result != null) {//注册成功，保存用户信息
 					PreferencesUtils.saveSessionUser(RegisterActivity.this, result);
+					showToast("注册成功");
 					setResult(RESULT_OK);
 					finish();
 				}
 			} else {
-				Utils.showToast(RegisterActivity.this, "登录失败");
+				showToast("注册失败");
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
