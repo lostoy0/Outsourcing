@@ -114,7 +114,13 @@
         <activity android:name=".MyOrderActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
         <activity android:name=".EditCardActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
 		<activity android:name=".CaptureActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
-        
+		
+		<!-- ###################支付宝支付#################### -->
+		<activity
+            android:name="com.alipay.android.app.sdk.WapPayActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+		
         <!-- ###################注册SDK使用的Activity###################### -->
         <!--分享编辑页-->
         <activity
@@ -134,7 +140,6 @@
             android:name="UMENG_APPKEY"
             android:value="4eaee02c527015373b000003" >
         </meta-data>
-        
        
     </application>
 
