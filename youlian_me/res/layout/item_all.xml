@@ -7,15 +7,16 @@
 
     <ImageView
         android:id="@+id/iv_icon"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_launcher" />
+        />
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
          />
 
 </LinearLayout>

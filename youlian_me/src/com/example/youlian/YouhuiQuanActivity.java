@@ -35,6 +35,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.City;
 import com.example.youlian.mode.YouhuiQuan;
+import com.example.youlian.view.SimpleProgressDialog;
 
 public class YouhuiQuanActivity extends Activity implements OnClickListener {
 
@@ -55,8 +56,14 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 	private int type = allarea;
 	
 	public List<YouhuiQuan> youhuiQuans = new ArrayList<YouhuiQuan>();
+	public List<YouhuiQuan> handleYouhuiQuans = new ArrayList<YouhuiQuan>();
+	
 	
 	public List<City> cities = new ArrayList<City>();
+	
+	public List<String> hots = new ArrayList<String>();
+	public List<String> parts = new ArrayList<String>();
+	
 	ImageLoader  mImageLoader;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +73,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 
 		initViews();
 
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getYouhuiQuan(Global.getUserToken(getApplicationContext()), null, createMyReqSuccessListener(),createMyReqErrorListener());
 	
 		YouLianHttpApi.getAreaByProvinceIdCid(null, null, null, creategetAreaByProvinceIdCidSuccessListener(), createMyReqErrorListener());
@@ -115,7 +123,72 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		listview_all.setAdapter(adapterAll);
 		listview_all.setVisibility(View.GONE);
 		
+		listview_all.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+					long arg3) {
+				
+				switch (YouhuiQuanActivity.this.type) {
+				case allarea:
+					if(position < cities.size()){
+						cities.get(position);
+					}
+					break;
+				case allsort:
+					if(position < parts.size()){
+						parts.get(position);
+					}			
+					break;
+				case hot:
+					if(position < hots.size()){
+						String result = hots.get(position);
+						if(result.equals(getString(R.string.all_of))){
+							handleYouhuiQuans.clear();
+							handleYouhuiQuans.addAll(youhuiQuans);
+							adapter.notifyDataSetChanged();
+						}else if(result.equals(getString(R.string.hot))){
+							handleYouhuiQuans.clear();
+							int size = youhuiQuans.size();
+							for(int i=0; i<size; i++){
+								YouhuiQuan y = youhuiQuans.get(i);
+								if("1".equals(y.isHot)){
+									handleYouhuiQuans.add(y);
+								}
+							}
+							adapter.notifyDataSetChanged();
+						}else if(result.equals(getString(R.string.nearby))){
+							
+						}else{
+							
+						}
+					}	
+					break;
+					
+				default:
+					break;
+				}
+				setListviewVisible();
+			}
+		});
+		
 		mImageLoader = MyVolley.getImageLoader();
+		
+		
+		hots.add(getString(R.string.all_of));
+		hots.add(getString(R.string.hot));
+		hots.add(getString(R.string.nearby));
+		
+		
+		parts.add(getString(R.string.all_size, youhuiQuans.size()));
+		parts.add(getString(R.string.living_service, 5));
+		parts.add(getString(R.string.meili_liren, 5));
+		parts.add(getString(R.string.xiuxian_yulei, 5));
+		parts.add(getString(R.string.canyin_meishi, 5));
+		parts.add(getString(R.string.gouwu_buy, 5));
+		parts.add(getString(R.string.other, 5));
+		
+		
 	}
 
 	boolean exChange = true;
@@ -127,15 +200,17 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 			finish();
 			break;
 		case R.id.linear_all_area:
+			setFucengVisible();
 			type = allarea;
-			exChange();
 			adapterAll.notifyDataSetChanged();
 			break;
 		case R.id.linear_all_sort:
+			setFucengVisible();
 			type = allsort;
 			adapterAll.notifyDataSetChanged();
 			break;
 		case R.id.linear_all_hot:
+			setFucengVisible();
 			type = hot;
 			adapterAll.notifyDataSetChanged();
 			break;
@@ -155,6 +230,17 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		}
 		exChange = !exChange;
 	}
+	
+	public void setFucengVisible(){
+		listview.setVisibility(View.GONE);
+		listview_all.setVisibility(View.VISIBLE);
+	}
+	
+	
+	public void setListviewVisible(){
+		listview.setVisibility(View.VISIBLE);
+		listview_all.setVisibility(View.GONE);
+	}
 
 	private class MyAdapter extends BaseAdapter {
 
@@ -163,7 +249,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 
 		@Override
 		public int getCount() {
-			return youhuiQuans.size();
+			return handleYouhuiQuans.size();
 		}
 
 		@Override
@@ -273,7 +359,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 
 		@Override
 		public int getCount() {
-			return cities.size();
+			return 10;
 		}
 
 		@Override
@@ -299,11 +385,45 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 				tv.setText(city.areaName);
 				break;
 			case allsort:
-				iv.setVisibility(View.GONE);
+				if(position < parts.size()){
+					tv.setText(parts.get(position));
+					switch (position) {
+					case 0:
+						iv.setImageResource(R.drawable.iv_all);
+						break;
+					case 1:
+						iv.setImageResource(R.drawable.living_service);				
+						break;
+					case 2:
+						iv.setImageResource(R.drawable.meili_liren);
+						break;
+					case 3:
+						iv.setImageResource(R.drawable.xiuxian_yule);
+						break;
+					case 4:
+						iv.setImageResource(R.drawable.canyin_meishi);
+						break;
+					case 5:
+						iv.setImageResource(R.drawable.guangjie_gouwu);
+						break;
+					case 6:
+						iv.setImageResource(R.drawable.iv_other);
+						break;
+
+					default:
+						break;
+					}
+					iv.setVisibility(View.VISIBLE);
+				}else{
+					iv.setVisibility(View.GONE);
+				}
 				
 				break;
 			case hot:
-				tv.setVisibility(View.GONE);
+				iv.setVisibility(View.GONE);
+				if(position < hots.size()){
+					tv.setText(hots.get(position));
+				}
 				break;
 			}
 			
@@ -325,6 +445,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				Log.i(TAG, "success:" + response);
 				if (response != null) {
 					try {
@@ -337,6 +458,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 								JSONObject oo = array.getJSONObject(i);
 								youhuiQuans.add(YouhuiQuan.parse(oo));
 							}
+							handleYouhuiQuans.addAll(youhuiQuans);
 							adapter.notifyDataSetChanged();
 						}else{
 							String msg = o.optString("msg");
@@ -388,6 +510,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		return new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
+				SimpleProgressDialog.dismiss();
 				Log.i(TAG, "error");
 			}
 		};

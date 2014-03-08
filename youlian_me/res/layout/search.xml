@@ -1,129 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:layout_height="fill_parent" >
 
-    <RelativeLayout
-            android:id="@+id/main_title"
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+       <include layout="@layout/merge_title_layout" />
+        
+
+        <RelativeLayout
+            android:id="@+id/shell_foot_Layout"
             android:layout_width="fill_parent"
-            android:layout_height="48dip"
-            android:background="@drawable/title_header_bg"
-            android:descendantFocusability="blocksDescendants"
+            android:layout_height="50dip"
+            android:background="@drawable/title_menu_bg"
+            android:gravity="center" >
+
+            <RadioGroup
+                android:id="@+id/my_Radiogroup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:checkedButton="@+id/tab_home"
+                android:clickable="true"
+                android:clipChildren="true"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radio_store"
+                    style="@style/radioButton"
+                    android:text="商家" />
+
+                <RadioButton
+                    android:id="@+id/radio_action"
+                    style="@style/radioButton"
+                    android:text="活动" />
+
+                <RadioButton
+                    android:id="@+id/radio_card"
+                    style="@style/radioButton"
+                    android:text="会员卡" />
+            </RadioGroup>
+
+            <ImageView
+                android:id="@+id/cursor"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:scaleType="matrix"
+                android:src="@drawable/second_goto" />
+        </RelativeLayout>
+        <!-- 搜索 -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg"
             android:orientation="vertical" >
 
-             <Button
-                android:id="@+id/btn_cate"
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="6dip" >
+
+                <EditText
+                    android:id="@+id/search_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:background="@drawable/search_edit"
+                    android:hint="请输入商家名称" />
+
+                <ImageButton
+                    android:id="@+id/search_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dip"
+                    android:layout_weight="0.1"
+                    android:background="@drawable/search_btn" />
+            </LinearLayout>
+
+            <include layout="@drawable/grey_line" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vPager"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dip"
-                android:background="@drawable/icon_style"
-                android:textColor="@color/white"
-                android:text="全部"/>
-
-
-           <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-             android:text="搜索"
-            android:textColor="#ffffff"
-            android:textSize="22sp" />
-
-            <ImageButton
-                android:id="@+id/two_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/two_code"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dip"
-                />
-        </RelativeLayout>
- <RelativeLayout
-        android:id="@+id/shell_foot_Layout"
-        android:layout_width="fill_parent"
-        android:layout_height="50dip"
-            android:gravity="center"
-        android:background="@drawable/title_menu_bg" >
-
-        <RadioGroup
-            android:id="@+id/my_Radiogroup"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:checkedButton="@+id/tab_home"
-            android:clickable="true"
-            android:clipChildren="true"
-            android:gravity="center"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/radio_store"
-                style="@style/radioButton"
-                android:text="商家" />
-
-            <RadioButton
-                android:id="@+id/radio_action"
-                style="@style/radioButton"
-                android:text="活动" />
-
-            <RadioButton
-                android:id="@+id/radio_card"
-                style="@style/radioButton"
-                android:text="会员卡" />
-        </RadioGroup>
-         <ImageView
-        android:id="@+id/cursor"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:scaleType="matrix"
-        android:src="@drawable/second_goto" />
-    </RelativeLayout>
-    <!--搜索  -->
-    <LinearLayout 
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/bg"
-    >
-    <LinearLayout 
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      android:padding="6dip"
-      android:gravity="center_vertical"
-    >
-    <EditText 
-    android:id="@+id/search_edit"
-     android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_weight="0.9"
-      android:hint="请输入商家名称"
-      android:background="@drawable/search_edit"
-    />
-     <ImageButton 
-     android:id="@+id/search_btn"
-     android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_weight="0.1"
-     android:background="@drawable/search_btn"
-     android:layout_marginLeft="4dip"
-    />
-    
-    </LinearLayout>
-    <include layout="@drawable/grey_line"/>
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vPager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1.0"
-        android:flipInterval="30"
-        android:persistentDrawingCache="animation" />
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:flipInterval="30"
+                android:persistentDrawingCache="animation" />
         </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout 
+        android:id="@+id/right_slide"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        android:background="#ff0000"
+        >
+        
+        <Button 
+            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="返回"
+        android:id="@+id/back_to_main"
+            />
+    </LinearLayout>
+  
+
+</RelativeLayout>

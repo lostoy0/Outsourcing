@@ -14,6 +14,7 @@ import com.example.youlian.mode.Ad;
 import com.example.youlian.mode.Card;
 import com.example.youlian.view.ActLeft;
 import com.example.youlian.view.ActRight;
+import com.example.youlian.view.SimpleProgressDialog;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -46,7 +47,7 @@ public class AllSellerActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_comment);
 		
 		initViews();
-		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getAllactivitys(createGetAdSuccessListener(), createGetAdErrorListener());
 		
 	}
@@ -69,7 +70,7 @@ public class AllSellerActivity extends Activity implements OnClickListener {
             @Override
             public void onResponse(String response) {
             	Log.i(TAG, "success:" + response);
-            	
+            	SimpleProgressDialog.dismiss();
             	
             	if (response != null) {
 				try {
@@ -135,6 +136,7 @@ public class AllSellerActivity extends Activity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	Log.i(TAG, "error");
             }
         };

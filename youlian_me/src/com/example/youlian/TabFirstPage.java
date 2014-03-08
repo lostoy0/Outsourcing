@@ -3,7 +3,13 @@ package com.example.youlian;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +18,8 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,6 +44,7 @@ import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Ad;
 import com.example.youlian.mode.RegioninfoVO;
 import com.example.youlian.mode.SubjectActivity;
+import com.example.youlian.view.SimpleProgressDialog;
 import com.example.youlian.view.TemplateFive;
 import com.example.youlian.view.TemplateFour;
 import com.example.youlian.view.TemplateOne;
@@ -69,6 +78,18 @@ public class TabFirstPage extends Activity implements OnClickListener {
 	
 	double latitude = 0.0;
 	double longitude = 0.0;
+	
+	String address;
+	
+	private static final int what = 2;
+	Handler handler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			if (msg.what == what) {
+				String add = (String)msg.obj;
+				tv_area.setText(add);
+			}
+		}
+	};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -78,6 +99,8 @@ public class TabFirstPage extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_tab_pie);
 
 		initViews();
+		
+		SimpleProgressDialog.show(this);
 		// 获取广告轮播图
 		YouLianHttpApi.getAdvertisement("0", createGetAdSuccessListener(),
 				createGetAdErrorListener());
@@ -237,6 +260,8 @@ public class TabFirstPage extends Activity implements OnClickListener {
 							"Location changed : Lat: "
 									+ location.getLatitude() + " Lng: "
 									+ location.getLongitude());
+					getAddress();
+					
 				}
 			}
 		};
@@ -260,6 +285,7 @@ public class TabFirstPage extends Activity implements OnClickListener {
 		if (location != null) {
 			latitude = location.getLatitude(); // 经度
 			longitude = location.getLongitude(); // 纬度
+			getAddress();
 			Log.i(TAG,"latitude:" + latitude + ", longitude:" + longitude);
 		}else{
 			Log.i(TAG,"	 location is null");
@@ -418,6 +444,7 @@ public class TabFirstPage extends Activity implements OnClickListener {
 			@Override
 			public void onResponse(String response) {
 				Log.i(TAG, "success:" + response);
+				SimpleProgressDialog.dismiss();
 				try {
 					List<SubjectActivity> list = SubjectActivity
 							.parse(response);
@@ -477,6 +504,7 @@ public class TabFirstPage extends Activity implements OnClickListener {
 		return new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
+				SimpleProgressDialog.dismiss();
 				Log.i(TAG, "error");
 			}
 		};
@@ -495,5 +523,52 @@ public class TabFirstPage extends Activity implements OnClickListener {
 					.getSerializableExtra(AreaProvinceActivity.key_district);
 			tv_area.setText(mDistrict.areaName);
 		}
+	}
+	
+	
+	private void getAddress() {
+		if(address == null){
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					HttpGet request = new HttpGet(getAddressUrl());
+					HttpResponse response;
+					try {
+						response = new DefaultHttpClient().execute(request);
+						if (response.getStatusLine().getStatusCode() == 200) {
+							String rpstr = EntityUtils.toString(response.getEntity());
+							JSONObject result = new JSONObject(rpstr);
+							Log.d(TAG, "chengshi:" + result.toString());
+							// 将结果JSONObject中的results转换成JSONArray
+							JSONArray ja = (JSONArray) result.get("results");
+							for (int i = 0; i < ja.length(); i++) {
+								JSONObject js = ja.getJSONObject(i);
+								JSONArray jaa = (JSONArray) js.get("types");
+								String ss = jaa.getString(0);
+								// 根据types中的street_address获取address
+								if ("route".equalsIgnoreCase(ss)) {
+									address = js.getString("formatted_address");
+									Message msg = handler.obtainMessage();
+									msg.what = what;
+									msg.obj = address;
+									handler.sendMessage(msg);
+									Log.d(TAG, "address:" + address);
+								}
+
+							}
+
+						}
+					} catch (Exception e) {
+						Log.i("MainActivity", e.toString());
+					}
+				}
+			}).start();
+		}
+	}
+	
+	private String getAddressUrl() {
+		return "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude
+				+ "," + longitude + "&language=zh-CN&sensor=true";
 	}
 }

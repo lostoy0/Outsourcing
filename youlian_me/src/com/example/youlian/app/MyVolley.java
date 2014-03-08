@@ -69,14 +69,6 @@ public class MyVolley {
      * @return
      */
     public static ImageLoader getImageLoader() {
-//        if (mImageLoader != null) {
-//            return mImageLoader;
-//        } else {
-//        	if(mRequestQueue == null){
-//        		mRequestQueue = newRequestQueue(context);
-//        	}
-//        	mImageLoader = new ImageLoader(mRequestQueue, new BitmapLruCache(MAX_IMAGE_CACHE_SIZE));
-//        }
         return mImageLoader;
     }
     

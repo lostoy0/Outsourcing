@@ -35,6 +35,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Card;
 import com.example.youlian.mode.YouhuiQuan;
+import com.example.youlian.view.SimpleProgressDialog;
 
 public class MembershipActivity extends Activity implements OnClickListener {
 
@@ -64,7 +65,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_membership);
 
 		initViews();
-
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getMemberCard(Global.getUserToken(getApplicationContext()), null, createMyReqSuccessListener(),
 				createMyReqErrorListener());
 	}
@@ -332,6 +333,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 			@Override
 			public void onResponse(String response) {
 				Log.i(TAG, "success:" + response);
+				SimpleProgressDialog.dismiss();
 				if (response != null) {
 					try {
 						JSONObject o = new JSONObject(response);
@@ -362,6 +364,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 		return new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
+				SimpleProgressDialog.dismiss();
 				Log.i(TAG, "error");
 			}
 		};

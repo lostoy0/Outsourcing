@@ -36,6 +36,7 @@ import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Card;
 import com.example.youlian.mode.Customer;
 import com.example.youlian.mode.YouhuiQuan;
+import com.example.youlian.view.SimpleProgressDialog;
 
 public class ShangjiaActivity extends Activity implements OnClickListener {
 
@@ -66,6 +67,7 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 
 		initViews();
 
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.searchCustomer(null, createMyReqSuccessListener(), createMyReqErrorListener());
 		
 	}
@@ -331,6 +333,7 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 			@Override
 			public void onResponse(String response) {
 				Log.i(TAG, "success:" + response);
+				SimpleProgressDialog.dismiss();
 				if (response != null) {
 					try {
 						JSONObject o = new JSONObject(response);
@@ -356,6 +359,7 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 		return new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
+				SimpleProgressDialog.dismiss();
 				Log.i(TAG, "error");
 			}
 		};

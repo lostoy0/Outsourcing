@@ -28,7 +28,18 @@
     <string name="number_apply_use">%s人已申请</string>
     <string name="number_apply_use_card">%s人已申领了本卡</string>
     
-    
+    <string name="all_of">全部</string>
+	<string name="nearby">附近</string>
+	<string name="search">搜索</string>
+	
+	<string name="all_size">全部(%s)</string>
+	<string name="living_service">生活服务(%s)</string>
+	<string name="meili_liren">魅力丽人(%s)</string>
+	<string name="xiuxian_yulei">休闲娱乐(%s)</string>
+	<string name="canyin_meishi">餐饮美食(%s)</string>
+	<string name="gouwu_buy">逛街购物(%s)</string>
+	<string name="other">其他(%s)</string>
+	
 <string name="personal_custom">人均消费：￥%s</string>
 <string name="liulan_count">浏览次数：%s</string>
 <string name="fav_count">收藏人数：%s</string>

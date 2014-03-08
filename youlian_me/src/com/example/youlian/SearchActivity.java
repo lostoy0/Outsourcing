@@ -8,7 +8,6 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
@@ -21,6 +20,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -56,8 +56,7 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 	    private ListView actionListView,cardListView;
 	    private CutomListview storeListView;
 	    private EditText searchEdit;
-	    private ImageButton twoCodeBtn,searchBtn;
-	    private Button btn_cate; 
+	    private ImageButton ib_right, searchBtn;
 	    private int groupCount;
 	    
 	    private TextView storesNocardText,cardsNocardText,actionsNocardText;
@@ -87,6 +86,10 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 		MyPagerAdapter myPagerAdapter;
 		
 		private int cate_id;
+		private View right_slide;
+		private Button back_to_main;
+		private ImageButton back;
+		private TextView tv_title;
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			// TODO Auto-generated method stub
@@ -105,10 +108,15 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 	    	searchEdit =(EditText)findViewById(R.id.search_edit);
 	    	cursor = (ImageView) findViewById(R.id.cursor);
 			mPager = (ViewPager) findViewById(R.id.vPager);
-			twoCodeBtn = (ImageButton) findViewById(R.id.two_code);
+			ib_right = (ImageButton) findViewById(R.id.ib_right);
 			searchBtn = (ImageButton) findViewById(R.id.search_btn);
-			btn_cate =  (Button) findViewById(R.id.btn_cate);
 			LayoutInflater mInflater = getLayoutInflater();
+			
+			
+			back = (ImageButton) this.findViewById(R.id.back);
+			back.setOnClickListener(this);
+//			ib_right.setVisibility(View.VISIBLE);
+			ib_right.setOnClickListener(this);
 			
 			
 			View lay_all = mInflater.inflate(R.layout.listview, null);
@@ -125,6 +133,15 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 			listViews.add(storeListView);
 			listViews.add(lay_nearby);
 			listViews.add(lay_favourable);
+			
+			
+			right_slide = this.findViewById(R.id.right_slide);
+			back_to_main = (Button)right_slide.findViewById(R.id.back_to_main);
+			back_to_main.setOnClickListener(this);
+			
+			tv_title = (TextView) this.findViewById(R.id.tv_title);
+			tv_title.setText(R.string.search);
+			
 		}
 		private void initListener(){
 	    	radioGroup.setOnCheckedChangeListener(this);
@@ -135,32 +152,9 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 	    	mPager.setAdapter(myPagerAdapter);
 			mPager.setCurrentItem(0);
 			mPager.setOnPageChangeListener(new MyOnPageChangeListener());
-			twoCodeBtn.setOnClickListener(this);
 			searchBtn.setOnClickListener(this);
-			btn_cate.setOnClickListener(this);
 	    }
-		/**
-		 *
-		 * @param type
-		 */
-		private void synConnection(int type){
-			SimpleProgressDialog.show(this);
-		}
 		
-		/**
-		 * login error...
-		 */
-		private void getCardsError() {
-			switch (currIndex) {
-			
-
-			}	
-		}
-		private void noCard(){
-		
-			
-			
-		}
 		
 		/**
 		 * @author simon
@@ -209,65 +203,22 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 				 
 				
 				break;
-			case R.id.two_code:
-				Intent mCaptureActivity = new Intent(this, CaptureActivity.class);
-				startActivityForResult(mCaptureActivity,0);
-				break;
-			case R.id.btn_cate:
-//				ArrayList<CardsResult> card = new ArrayList<CardsResult>();
-//				if("1".equals(searchType)){
-//					if(stores!=null)
-//					card.addAll(stores);
-//				}else if("2".equals(searchType)){
-//					if(cards!=null)
-//					card.addAll(cards);
-//				}
-//				if(Utils.isArrayNotNull(card)){
-//					String[] cateNums = new String[14];
-//					cateNums[0] = String.valueOf(card.size());
-//					int i=0,j=0,k=0,l=0,m=0,n=0,a=0,b=0,c=0,d=0,e=0,f=0,g=0;
-//					for (CardsResult cardsResult : card) {
-//						if("1".equals(cardsResult.getCategory_id()))i++;
-//						if("2".equals(cardsResult.getCategory_id()))j++;
-//						if("3".equals(cardsResult.getCategory_id()))k++;
-//						if("4".equals(cardsResult.getCategory_id()))l++;
-//						if("5".equals(cardsResult.getCategory_id()))m++;
-//						if("6".equals(cardsResult.getCategory_id()))n++;
-//						if("7".equals(cardsResult.getCategory_id()))a++;
-//						if("8".equals(cardsResult.getCategory_id()))b++;
-//						if("9".equals(cardsResult.getCategory_id()))c++;
-//						if("10".equals(cardsResult.getCategory_id()))d++;
-//						if("11".equals(cardsResult.getCategory_id()))e++;
-//						if("12".equals(cardsResult.getCategory_id()))f++;
-//						if("13".equals(cardsResult.getCategory_id()))g++;
-//					}
-//					cateNums[1] = String.valueOf(i);
-//					cateNums[2] = String.valueOf(j);
-//					cateNums[3] = String.valueOf(k);
-//					cateNums[4] = String.valueOf(l);
-//					cateNums[5] = String.valueOf(m);
-//					cateNums[6] = String.valueOf(n);
-//					cateNums[7] = String.valueOf(a);
-//					cateNums[8] = String.valueOf(b);
-//					cateNums[9] = String.valueOf(c);
-//					cateNums[10] = String.valueOf(d);
-//					cateNums[11] = String.valueOf(e);
-//					cateNums[12] = String.valueOf(f);
-//					cateNums[13] = String.valueOf(g);
-//					
-//					Intent mCategoryActivity = new Intent(this, CategoryActivity.class);
-//					mCategoryActivity.putExtra("cate_id", cate_id);
-//					mCategoryActivity.putExtra("cate_num", cateNums);
-//					startActivityForResult(mCategoryActivity, 0);
-//				}else{
-//					String[]	cateNums = {"0","0","0","0","0","0","0","0","0","0","0","0","0","0"};
-//					
-//					Intent mCategoryActivity = new Intent(this, CategoryActivity.class);
-//					mCategoryActivity.putExtra("cate_id", cate_id);
-//					mCategoryActivity.putExtra("cate_num", cateNums);
-//					startActivityForResult(mCategoryActivity, 0);
-//				}
+			case R.id.ib_right:
+//				Intent mCaptureActivity = new Intent(this, CaptureActivity.class);
+//				startActivityForResult(mCaptureActivity,0);
 				
+				Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.right_in);
+				right_slide.startAnimation(hyperspaceJumpAnimation);
+				right_slide.setVisibility(View.VISIBLE);
+				break;
+				
+			case R.id.back_to_main:
+				hyperspaceJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.right_out);
+				right_slide.startAnimation(hyperspaceJumpAnimation);
+				right_slide.setVisibility(View.GONE);
+				break;
+			case R.id.back:
+				finish();
 				break;
 			}
 			
