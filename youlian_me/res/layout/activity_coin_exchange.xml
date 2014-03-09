@@ -4,108 +4,112 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:orientation="vertical" >
-    
-    <include layout="@layout/merge_title_layout"/>
-    
-    <LinearLayout 
-        android:orientation="vertical"
+
+    <include layout="@layout/merge_title_layout" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:padding="8dp"
-        android:background="@drawable/rounded_one">
-        
-        <TextView 
+        android:background="@drawable/rounded_one"
+        android:orientation="vertical"
+        android:padding="8dp" >
+
+        <TextView
             android:id="@+id/tv_total_dot"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center_vertical"
             android:text="你目前拥有U点：3999"
-            android:textSize="18sp"
-            android:textColor="@color/black"/>
-        
-        <LinearLayout 
-            android:orientation="horizontal"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_marginTop="8dp"
-            android:gravity="center_vertical">
-            
-            <LinearLayout 
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal"
-                android:background="@drawable/rounded_one">
-                <TextView 
+                android:background="@drawable/rounded_one"
+                android:orientation="horizontal" >
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:gravity="center_vertical"
                     android:text="U币："
-                    android:textSize="18sp"
-                    android:textColor="@color/black"/>
-                
-                <EditText 
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
                     android:id="@+id/et_ucoin_count"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingRight="8dp"
                     android:background="@null"
+                    android:ellipsize="end"
                     android:gravity="center_vertical"
-                    android:singleLine="true"
                     android:inputType="number"
                     android:maxLength="12"
-                    android:ellipsize="end"
+                    android:paddingRight="8dp"
+                    android:singleLine="true"
                     android:text="100"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
             </LinearLayout>
-            
-            <Button 
+
+            <Button
                 android:id="@+id/btn_exchange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/btn_exchange_coin_selector"
                 android:layout_marginLeft="8dp"
+                android:background="@drawable/btn_exchange_coin_selector"
                 android:text="兑换"
-                android:textSize="18sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="18sp" />
         </LinearLayout>
-        
-        <TextView 
-            android:id="@+id/tv_exchange_rule"
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
-            android:gravity="center_vertical"
-            android:text="注：1U币等于10U点"
-            android:textSize="14sp"
-            android:textColor="#666"/>
-        
-        <LinearLayout 
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:gravity="right|center_vertical"
-            android:orientation="horizontal">
-            <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="所需："
-            android:textSize="18sp"
-            android:textColor="#666"/>
-            
-            <TextView 
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_exchange_rule"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="注：1U币等于10U点"
+                android:textColor="#666"
+                android:textSize="14sp" />
+
+            <TextView
                 android:id="@+id/tv_need_udot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1000U点"
-            android:textSize="18sp"
-            android:textColor="@color/red"/>
-        </LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical"
+                android:text="1000U点"
+                android:textColor="@color/red"
+                android:textSize="18sp" />
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/tv_need_udot"
+                android:gravity="center_vertical"
+                android:text="所需："
+                android:textColor="#666"
+                android:textSize="18sp" />
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

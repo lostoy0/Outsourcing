@@ -7,6 +7,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,12 +17,14 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.alipay.android.app.sdk.AliPay;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.youlian.adapter.PayOrderListAdapter;
 import com.example.youlian.common.Constants;
 import com.example.youlian.mode.Order;
 import com.example.youlian.mode.OrderDetail;
+import com.example.youlian.pay.alipay.Result;
 import com.example.youlian.util.YlLogger;
 
 /**
@@ -31,15 +35,20 @@ import com.example.youlian.util.YlLogger;
 public class PayActivity extends BaseActivity implements OnClickListener {
 	private static YlLogger mLogger = YlLogger.getLogger(PayActivity.class.getSimpleName());
 	
-	private static final int YIPAY = 1;
-	private static final int UNIONPAY = 2;
-	private static final int ALIPAY_CLIENT = 3;
-	private static final int ALIPAY = 4;
-	private static final int UCOIN = 5;
+	private static final int TYPE_YIPAY = 4;
+	private static final int TYPE_UNIONPAY = 3;
+	private static final int TYPE_ALIPAY_CLIENT = 2;
+	private static final int TYPE_ALIPAY_WEB = 1;
+	private static final int TYPE_UCOIN = 0;
+	
+	private static final int ORDER_TYPE_RECHARGE = 1;//充值订单
+	private static final int ORDER_TYPE_GENERAL = 0;//普通订单
 	
 	public static final String KEY_ORDER = "order";
 	
-	private TextView mShopNameTextView, mTotalMoneyTextView, mCheckAlipayClienTextView;
+	private int mOrderType = ORDER_TYPE_GENERAL;
+	
+	private TextView mTotalMoneyTextView;
 	private ImageButton mSelectYiPayButton, mSelectUnionButton, mSelectAlipayClientButton, mSelectAlipayButton, mSelectUcoinButton;
 	private Button mPayButton;
 	
@@ -47,10 +56,30 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 	private PayOrderListAdapter mAdapter;
 	private List<OrderDetail> mList;
 	
-	private int mSelected = YIPAY;
+	private int mSelectedPayType = TYPE_ALIPAY_CLIENT;
 	
 	private Order mOrder;
 	private Order mSettleOrder;
+	
+	public boolean isRechargeOrder() {
+		return mOrderType == ORDER_TYPE_RECHARGE;
+	}
+	
+	private PayHandler mHandler;
+	
+	private final class PayHandler extends Handler {
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			switch(msg.what) {
+			case TYPE_ALIPAY_CLIENT:
+				Result result = new Result((String) msg.obj);
+				result.parseResult();
+				finish();
+				break;
+			}
+		}
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +92,15 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 			finish();
 		}
 		
+		String orderNoString = mOrder.orderNo;
+		if(!TextUtils.isEmpty(orderNoString) && orderNoString.startsWith("R")) {
+			mOrderType = ORDER_TYPE_RECHARGE;
+		} else {
+			mOrderType = ORDER_TYPE_GENERAL;
+		}
+		
 		mList = new ArrayList<OrderDetail>();
+		mHandler = new PayHandler();
 		
 		initViews();
 		
@@ -84,41 +121,41 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 			
 		case R.id.pay_yi_panel:
 		case R.id.pay_tv_yi:
-			if(mSelected != YIPAY) {
-				mSelected = YIPAY;
-				resetSelectState(mSelected);
+			if(mSelectedPayType != TYPE_YIPAY) {
+				mSelectedPayType = TYPE_YIPAY;
+				resetSelectState(mSelectedPayType);
 			}
 			break;
 			
 		case R.id.pay_union_panel:
 		case R.id.pay_tv_union:
-			if(mSelected != UNIONPAY) {
-				mSelected = UNIONPAY;
-				resetSelectState(mSelected);
+			if(mSelectedPayType != TYPE_UNIONPAY) {
+				mSelectedPayType = TYPE_UNIONPAY;
+				resetSelectState(mSelectedPayType);
 			}
 			break;
 			
 		case R.id.pay_alipay_panel_client:
 		case R.id.pay_tv_alipay_client:
-			if(mSelected != ALIPAY_CLIENT) {
-				mSelected = ALIPAY_CLIENT;
-				resetSelectState(mSelected);
+			if(mSelectedPayType != TYPE_ALIPAY_CLIENT) {
+				mSelectedPayType = TYPE_ALIPAY_CLIENT;
+				resetSelectState(mSelectedPayType);
 			}
 			break;
 			
-		case R.id.pay_alipay_panel:
-		case R.id.pay_tv_alipay:
-			if(mSelected != ALIPAY) {
-				mSelected = ALIPAY;
-				resetSelectState(mSelected);
+		case R.id.pay_alipay_web_panel:
+		case R.id.pay_tv_alipay_web:
+			if(mSelectedPayType != TYPE_ALIPAY_WEB) {
+				mSelectedPayType = TYPE_ALIPAY_WEB;
+				resetSelectState(mSelectedPayType);
 			}
 			break;
 			
 		case R.id.pay_ucoin_panel:
 		case R.id.pay_tv_ucoin:
-			if(mSelected != UCOIN) {
-				mSelected = UCOIN;
-				resetSelectState(mSelected);
+			if(mSelectedPayType != TYPE_UCOIN) {
+				mSelectedPayType = TYPE_UCOIN;
+				resetSelectState(mSelectedPayType);
 			}
 			break;
 			
@@ -129,61 +166,23 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 	}
 	
 	private void startPay() {
-		switch(mSelected) {
-		case YIPAY:
-			yiPay();
-			break;
-			
-		case ALIPAY:
-			alipay();
-			break;
-			
-		case ALIPAY_CLIENT:
-			alipayClient();
-			break;
-			
-		case UCOIN:
-			ucoinPay();
-			break;
-			
-		case UNIONPAY:
-			unionPay();
-			break;
+		switch(mSelectedPayType) {
+		case TYPE_YIPAY:
+		case TYPE_UCOIN:
+		case TYPE_UNIONPAY:
+			showToast("抱歉，该支付方式暂未开发完成，请使用其他支付方式支付");
+			return;
 		}
-	}
-
-	private void yiPay() {
-		// TODO Auto-generated method stub
 		
-	}
-
-	private void alipay() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void alipayClient() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void ucoinPay() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void unionPay() {
-		// TODO Auto-generated method stub
-		
+		YouLianHttpApi.payOrder(Global.getUserToken(getApplicationContext()), mOrder.id, mSelectedPayType, 
+				createPaySuccessListener(), createPayErrorListener());
 	}
 
 	private void initViews() {
 		((TextView) findViewById(R.id.tv_title)).setText("结算");
 		findViewById(R.id.back).setOnClickListener(this);
 		
-		mShopNameTextView = (TextView) findViewById(R.id.pay_tv_shopname);
 		mTotalMoneyTextView = (TextView) findViewById(R.id.pay_tv_money);
-		mCheckAlipayClienTextView = (TextView) findViewById(R.id.pay_tv_alipay_client_check);
 		
 		mSelectAlipayButton = (ImageButton) findViewById(R.id.pay_ib_select_alipay);
 		mSelectAlipayClientButton = (ImageButton) findViewById(R.id.pay_ib_select_alipay_client);
@@ -197,20 +196,20 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		mSelectUnionButton.setOnClickListener(this);
 		mSelectYiPayButton.setOnClickListener(this);
 		
-		resetSelectState(mSelected);
+		resetSelectState(mSelectedPayType);
 		
 		mPayButton = (Button) findViewById(R.id.pay_btn_pay);
 		mPayButton.setOnClickListener(this);
 		
 		findViewById(R.id.pay_yi_panel).setOnClickListener(this);
 		findViewById(R.id.pay_union_panel).setOnClickListener(this);
-		findViewById(R.id.pay_alipay_panel).setOnClickListener(this);
+		findViewById(R.id.pay_alipay_web_panel).setOnClickListener(this);
 		findViewById(R.id.pay_alipay_panel_client).setOnClickListener(this);
 		findViewById(R.id.pay_ucoin_panel).setOnClickListener(this);
 		
 		findViewById(R.id.pay_tv_yi).setOnClickListener(this);
 		findViewById(R.id.pay_tv_union).setOnClickListener(this);
-		findViewById(R.id.pay_tv_alipay).setOnClickListener(this);
+		findViewById(R.id.pay_tv_alipay_web).setOnClickListener(this);
 		findViewById(R.id.pay_tv_alipay_client).setOnClickListener(this);
 		findViewById(R.id.pay_tv_ucoin).setOnClickListener(this);
 		
@@ -221,7 +220,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 	
 	private void resetSelectState(int selected) {
 		switch(selected) {
-		case UCOIN:
+		case TYPE_UCOIN:
 			mSelectUcoinButton.setVisibility(View.VISIBLE);
 			mSelectUnionButton.setVisibility(View.GONE);
 			mSelectYiPayButton.setVisibility(View.GONE);
@@ -229,7 +228,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 			mSelectAlipayClientButton.setVisibility(View.GONE);
 			break;
 			
-		case UNIONPAY:
+		case TYPE_UNIONPAY:
 			mSelectUcoinButton.setVisibility(View.GONE);
 			mSelectUnionButton.setVisibility(View.VISIBLE);
 			mSelectYiPayButton.setVisibility(View.GONE);
@@ -237,7 +236,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 			mSelectAlipayClientButton.setVisibility(View.GONE);
 			break;
 			
-		case ALIPAY:
+		case TYPE_ALIPAY_WEB:
 			mSelectUcoinButton.setVisibility(View.GONE);
 			mSelectUnionButton.setVisibility(View.GONE);
 			mSelectYiPayButton.setVisibility(View.GONE);
@@ -245,7 +244,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 			mSelectAlipayClientButton.setVisibility(View.GONE);
 			break;
 			
-		case ALIPAY_CLIENT:
+		case TYPE_ALIPAY_CLIENT:
 			mSelectUcoinButton.setVisibility(View.GONE);
 			mSelectUnionButton.setVisibility(View.GONE);
 			mSelectYiPayButton.setVisibility(View.GONE);
@@ -280,11 +279,11 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 							if(mSettleOrder.orderDetailList != null && mSettleOrder.orderDetailList.size() > 0) {
 								mList.addAll(mSettleOrder.orderDetailList);
 								mAdapter.notifyDataSetChanged();
-								int cost = 0;
-								for(OrderDetail detail : mList) {
-									cost += detail.price*detail.quantity;
+								if(isRechargeOrder()) {
+									mTotalMoneyTextView.setText("总计：" + mSettleOrder.youcoinCount + "元");
+								} else {
+									mTotalMoneyTextView.setText("总计：" + mSettleOrder.youcoinCount + "U币");
 								}
-								mTotalMoneyTextView.setText("总计：" + cost);
 							}
 						}
 					} catch (JSONException e) {
@@ -303,5 +302,84 @@ public class PayActivity extends BaseActivity implements OnClickListener {
             }
         };
     }
+	
+	private Response.Listener<String> createPaySuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				if(TextUtils.isEmpty(response)) {
+					mLogger.i("response is null");
+				} else {
+					mLogger.i(response);
+					
+					try {
+						JSONObject object = new JSONObject(response);
+						if(0 == object.optInt(Constants.key_status)) {
+							showToast(object.optString(Constants.KEY_MSG));
+						} else {
+							handlePay(object);
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+	}
+	
+	private Response.ErrorListener createPayErrorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            	mLogger.e(error.getMessage());
+            }
+        };
+    }
+	
+	private void handlePay(JSONObject json) {
+		switch(mSelectedPayType) {
+		case TYPE_UCOIN:
+			
+			break;
+			
+		case TYPE_ALIPAY_WEB:
+			
+			break;
+			
+		case TYPE_ALIPAY_CLIENT:
+			String orderInfo = json.optString(Constants.key_result);
+			alipayClient(orderInfo);
+			break;
+			
+		case TYPE_UNIONPAY:
+			
+			break;
+			
+		case TYPE_YIPAY:
+			
+			break;
+		}
+	}
+	
+	private void alipayClient(final String orderInfo) {
+		if(TextUtils.isEmpty(orderInfo)) return;
+		
+		new Thread() {
+			public void run() {
+				AliPay alipay = new AliPay(PayActivity.this, mHandler);
+				
+				//设置为沙箱模式，不设置默认为线上环境
+//				alipay.setSandBox(true);
 
+				String result = alipay.pay(orderInfo);
+
+				mLogger.i(result);
+				Message msg = new Message();
+				msg.what = TYPE_ALIPAY_CLIENT;
+				msg.obj = result;
+				mHandler.sendMessage(msg);
+			}
+		}.start();
+	}
+	
 }

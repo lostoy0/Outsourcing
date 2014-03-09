@@ -14,7 +14,7 @@ public class OrderDetail implements Serializable {
 	/**商品图片URL	当订单首字母是R时表示是充值订单，那么这个商品图片URL为空*/
 	public String picUrl;
 	/**单价（U币）	当订单首字母是R时表示是充值订单，那么这个单价是一个U币价值多少RMB*/
-	public float price;
+	public double price;
 	/**数量*/
 	public int quantity;	
 	
@@ -23,7 +23,7 @@ public class OrderDetail implements Serializable {
 		if(json != null) {
 			detail = new OrderDetail();
 			detail.picUrl = json.optString("picUrl");
-			detail.price = json.optInt("price");
+			detail.price = json.optDouble("price");
 			detail.productName = json.optString("productName");
 			detail.quantity = json.optInt("quantity");
 			detail.simpleDescription = json.optString("simpleDescription");

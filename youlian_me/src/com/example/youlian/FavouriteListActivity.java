@@ -32,6 +32,7 @@ public class FavouriteListActivity extends BaseActivity implements OnItemClickLi
 	private ListView mListView;
 	private FavouriteListAdapter mAdapter;
 	
+	private View mEmptyView;
 	private Button mEditButton;
 	
 	private ArrayList<Favourite> mList;
@@ -57,6 +58,10 @@ public class FavouriteListActivity extends BaseActivity implements OnItemClickLi
 		});
 		
 		((TextView) findViewById(R.id.tv_title)).setText("我的收藏");
+		((TextView) findViewById(R.id.tv_empty_info)).setText("还没有收藏内容哦");
+		
+		mEmptyView = findViewById(R.id.emptyView);
+		mEmptyView.setVisibility(View.GONE);
 		
 		mEditButton = (Button) findViewById(R.id.btn_right);
 		mEditButton.setVisibility(View.VISIBLE);
@@ -140,8 +145,11 @@ public class FavouriteListActivity extends BaseActivity implements OnItemClickLi
 					
 					List<Favourite> couponList = Favourite.from(response);
 					if(couponList != null && couponList.size() > 0) {
+						hideEmptyView();
 						mList.addAll(couponList);
 						mAdapter.notifyDataSetChanged();
+					} else {
+						showEmptyView();
 					}
 				}
 			}
@@ -153,8 +161,19 @@ public class FavouriteListActivity extends BaseActivity implements OnItemClickLi
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	showEmptyView();
             }
         };
     }
+
+	private void showEmptyView() {
+		mListView.setVisibility(View.GONE);
+		mEmptyView.setVisibility(View.VISIBLE);
+	}
+	
+	private void hideEmptyView() {
+		mListView.setVisibility(View.VISIBLE);
+		mEmptyView.setVisibility(View.GONE);
+	}
 
 }

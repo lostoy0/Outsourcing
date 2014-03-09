@@ -21,131 +21,146 @@
             android:textSize="22sp" />
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/rounded_one"
-        android:orientation="vertical" >
+        android:layout_height="match_parent" >
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/contentView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp" >
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_one"
+            android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/cart_tv_goodsname"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="商户名称XXX"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-            
-            <Button 
-                android:visibility="gone"
-                android:id="@+id/cart_btn_yes"
-                android:layout_width="45dp"
-                android:layout_height="27dp"
-                android:layout_marginRight="10dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/cart_yes_selector"
-                android:text="确定"
-                android:textColor="@color/white"/>
-            
-            <Button 
-                android:id="@+id/cart_btn_edit"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_marginRight="10dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/cart_edit_selector"/>
-        </RelativeLayout>
-        
-        <include layout="@layout/merge_line_grey_horizontal"/>
-        
-        <ListView 
-            android:id="@+id/list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none"/>
-        
-        <include layout="@layout/merge_line_grey_horizontal"/>
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp" >
+
+                <TextView
+                    android:id="@+id/cart_tv_goodsname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="商户名称XXX"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/cart_btn_yes"
+                    android:layout_width="45dp"
+                    android:layout_height="27dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/cart_yes_selector"
+                    android:text="确定"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/cart_btn_edit"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/cart_edit_selector" />
+            </RelativeLayout>
+
+            <include layout="@layout/merge_line_grey_horizontal" />
+
+            <ListView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none" />
+
+            <include layout="@layout/merge_line_grey_horizontal" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="8dp" >
+
+                <TextView
+                    android:id="@+id/cart_tv_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="0元"
+                    android:textColor="@color/red"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/cart_tv_money_pre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/cart_tv_money"
+                    android:layout_toLeftOf="@id/cart_tv_money"
+                    android:text="合计："
+                    android:textColor="#666"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/cart_tv_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/cart_tv_money"
+                    android:layout_below="@id/cart_tv_money"
+                    android:text="0"
+                    android:textColor="@color/red"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/cart_tv_amount_pre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/cart_tv_money_pre"
+                    android:layout_below="@id/cart_tv_money_pre"
+                    android:text="数量："
+                    android:textColor="#666"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/cart_btn_delete"
+                    android:layout_width="66dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@id/cart_tv_amount"
+                    android:background="@drawable/cart_pay_selector"
+                    android:text="删除（0）"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/cart_btn_pay"
+                    android:layout_width="66dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@id/cart_tv_amount"
+                    android:background="@drawable/cart_pay_selector"
+                    android:text="去支付"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+        </LinearLayout>
         
         <RelativeLayout 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-            
-            <TextView
-                android:id="@+id/cart_tv_money"
+            android:id="@+id/emptyView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+            <TextView 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="0元"
-                android:textColor="@color/red"
-                android:textSize="18sp" />
-            
-            <TextView
-                android:id="@+id/cart_tv_money_pre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/cart_tv_money"
-                android:layout_alignTop="@id/cart_tv_money"
-                android:text="合计："
-                android:textColor="#666"
-                android:textSize="18sp" />
-            
-            <TextView
-                android:id="@+id/cart_tv_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cart_tv_money"
-                android:layout_alignLeft="@id/cart_tv_money"
-                android:text="0"
-                android:textColor="@color/red"
-                android:textSize="18sp" />
-            
-            <TextView
-                android:id="@+id/cart_tv_amount_pre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cart_tv_money_pre"
-                android:layout_alignLeft="@id/cart_tv_money_pre"
-                android:text="数量："
-                android:textColor="#666"
-                android:textSize="18sp" />
-            
-            <Button 
-                android:visibility="gone"
-                android:id="@+id/cart_btn_delete"
-                android:layout_width="66dp"
-                android:layout_height="30dp"
-                android:layout_alignBottom="@id/cart_tv_amount"
-                android:background="@drawable/cart_pay_selector"
-                android:text="删除（0）"
-                android:textSize="14sp"
-                android:textColor="@color/white"/>
-            
-            <Button 
-                android:id="@+id/cart_btn_pay"
-                android:layout_width="66dp"
-                android:layout_height="30dp"
-                android:layout_alignBottom="@id/cart_tv_amount"
-                android:background="@drawable/cart_pay_selector"
-                android:text="去支付"
-                android:textSize="14sp"
-                android:textColor="@color/white"/>
-            
+                android:text="购物车空空如也，去逛逛吧"/>
         </RelativeLayout>
-        
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

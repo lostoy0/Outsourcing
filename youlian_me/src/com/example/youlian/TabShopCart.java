@@ -35,6 +35,8 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 	private TextView mShopNameTextView, mCostMoneyTextView, mAmountTextView;
 	private Button mEditButton, mYesButton, mPayButton, mDeleteButton;
 	
+	private View mContentView, mEmptyView;
+	
 	private ListView mListView;
 	private GoodsListAdapter mAdapter;
 	private ArrayList<Goods> mGoodsList;
@@ -77,6 +79,10 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 	}
 
 	private void initViews() {
+		mContentView = findViewById(R.id.contentView);
+		mEmptyView = findViewById(R.id.emptyView);
+		mEmptyView.setVisibility(View.GONE);
+		
 		mShopNameTextView = (TextView) findViewById(R.id.cart_tv_goodsname);
 		mShopNameTextView.setText("");
 		mCostMoneyTextView = (TextView) findViewById(R.id.cart_tv_money);
@@ -231,12 +237,17 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 						JSONObject object = new JSONObject(response);
 						List<Goods> goodsList = Goods.get(object);
 						if(Utils.isCollectionNotNull(goodsList)) {
+							mContentView.setVisibility(View.VISIBLE);
+							mEmptyView.setVisibility(View.GONE);
+							
 							mGoodsList.addAll(goodsList);
 							for(int i=0; i<mGoodsList.size(); i++) {
 								mStateMap.put(mGoodsList.get(i).goodsId, true);
 							}
 							mAdapter.notifyDataSetChanged();
 							resetQuantityAndMoney();
+						} else {
+							showEmptyView();
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -251,6 +262,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	showEmptyView();
             }
         };
     }
@@ -297,6 +309,11 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 				loadData();
 			}
 		}
+	}
+
+	private void showEmptyView() {
+		mContentView.setVisibility(View.GONE);
+		mEmptyView.setVisibility(View.VISIBLE);
 	}
 	
 }

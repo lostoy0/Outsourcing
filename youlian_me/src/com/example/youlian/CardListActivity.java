@@ -32,6 +32,8 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 
 	private static final int REQ_CODE = 0x1000;
 	
+	private View mEmptyView;
+	
 	private ListView mListView;
 	private CardListAdapter mAdapter;
 	
@@ -52,6 +54,9 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 		});
 		
 		((TextView) findViewById(R.id.tv_title)).setText("我的会员卡");
+		
+		mEmptyView = findViewById(R.id.emptyView);
+		mEmptyView.setVisibility(View.GONE);
 		
 		mListView = (ListView) findViewById(android.R.id.list);
 		mListView.setOnItemClickListener(this);
@@ -100,8 +105,13 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 					try {
 						List<Card> cards = Card.parse(response);
 						if(cards != null && cards.size() > 0) {
+							mListView.setVisibility(View.VISIBLE);
+							mEmptyView.setVisibility(View.GONE);
+							
 							mCards.addAll(cards);
 							mAdapter.notifyDataSetChanged();
+						} else {
+							showEmptyView();
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -116,6 +126,7 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	showEmptyView();
             }
         };
     }
@@ -127,5 +138,10 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 				refreshData();
 			}
 		}
+	}
+
+	private void showEmptyView() {
+		mListView.setVisibility(View.GONE);
+		mEmptyView.setVisibility(View.VISIBLE);
 	}
 }
