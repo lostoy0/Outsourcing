@@ -73,12 +73,12 @@ public class Utils {
 	 */
 	public static void showToast(Context context,int msgid) {
 		Toast toast = Toast.makeText(context, msgid, Toast.LENGTH_SHORT);
-		toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+		toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
 		toast.show();
 	}
 	public static void showToast(Context context,CharSequence msg) {
 		Toast toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
-		toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+		toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
 		toast.show();
 	}
 	public static void showToast(Context context,int stringid,Object... values) {

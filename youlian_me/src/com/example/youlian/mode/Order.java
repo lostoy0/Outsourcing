@@ -20,7 +20,7 @@ public class Order implements Serializable {
 	/**订单中商品总个数*/
 	public int countQuantity;
 	/**订单总额（U币）	当订单首字母是R时表示是充值订单，那么这个总额是RMB*/
-	public float youcoinCount;	
+	public double youcoinCount;	
 	/**订单状态	0:已支付,1:未支付,2:已取消,3:已关闭*/
 	public int status;	
 	
@@ -30,12 +30,12 @@ public class Order implements Serializable {
 		Order order = null;
 		if(json != null) {
 			order = new Order();
-			order.countQuantity = json.optInt("");
-			order.id = json.optString("");
-			order.orderNo = json.optString("");
-			order.status = json.optInt("");
-			order.youcoinCount = json.optInt("");
-			JSONArray array = json.optJSONArray("");
+			order.countQuantity = json.optInt("countQuantity");
+			order.id = json.optString("id");
+			order.orderNo = json.optString("orderNo");
+			order.status = json.optInt("status");
+			order.youcoinCount = json.optDouble("youcoinCount");
+			JSONArray array = json.optJSONArray("orderDetailList");
 			if(array != null && array.length() > 0) {
 				List<OrderDetail> details = new ArrayList<OrderDetail>();
 				for(int i=0; i<array.length(); i++) {

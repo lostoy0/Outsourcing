@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.youlian.PayActivity;
 import com.example.youlian.R;
 import com.example.youlian.mode.OrderDetail;
 
@@ -16,10 +17,12 @@ public class PayOrderListAdapter extends BaseAdapter {
 	
 	private List<OrderDetail> mList;
 	private LayoutInflater mInflater;
+	private PayActivity mActivity;
 
 	public PayOrderListAdapter(Context context, List<OrderDetail> list) {
 		mInflater = LayoutInflater.from(context);
 		mList = list;
+		mActivity = (PayActivity) context;
 	}
 	
 	@Override
@@ -58,9 +61,13 @@ public class PayOrderListAdapter extends BaseAdapter {
 
 	private void setData(ViewHolder holder, OrderDetail orderDetail) {
 		if(holder != null && orderDetail != null) {
-			holder.nameTextView.setText(orderDetail.productName);
-			holder.pricetTextView.setText(orderDetail.price + "");
-			holder.quantityTextView.setText(orderDetail.quantity + "");
+			holder.nameTextView.setText("商品名称：" + orderDetail.productName);
+			if(mActivity.isRechargeOrder()) {
+				holder.pricetTextView.setText("单价：" + orderDetail.price + "元");
+			} else {
+				holder.pricetTextView.setText("单价：" + orderDetail.price + "U币");
+			}
+			holder.quantityTextView.setText("数量：" + orderDetail.quantity + "");
 		}
 	}
 

@@ -206,7 +206,12 @@ public class TabMe extends BaseActivity implements OnClickListener {
 		if(mInfo != null) {
 			MyVolley.getImageLoader().get(mInfo.logo, ImageLoader.getImageListener(mIconImageView, 0, 0));
 			
-			mUsernameTextView.setText(mInfo.userName);
+			if(!TextUtils.isEmpty(mInfo.userName)) {
+				mUsernameTextView.setText(mInfo.userName);
+			} else {
+				mUsernameTextView.setText(mInfo.loginId);
+			}
+			
 			mUcoinTextView.setText("U币: " + mInfo.youcoin);
 			mUdotTextView.setText("U点: " + mInfo.youdot);
 			

@@ -73,8 +73,6 @@ public class CoinRechargeActivity extends BaseActivity {
 		mCostMoneyTextView = (TextView) findViewById(R.id.tv_need_money);
 		mExchangeRuleTextView = (TextView) findViewById(R.id.tv_exchange_rule);
 		
-		mRechargeUcoinCountEditText.setText("0");
-		mRechargeUcoinCountEditText.setSelection(1);
 		mCostMoneyTextView.setText("0元");
 		
 		findViewById(R.id.btn_recharge).setOnClickListener(new OnClickListener() {
@@ -175,10 +173,19 @@ public class CoinRechargeActivity extends BaseActivity {
         };
     }
 	
+	private static final int req_pay = 1000;
+	
 	private void startPay(Order order) {
 		Intent intent = new Intent(this, PayActivity.class);
 		intent.putExtra(PayActivity.KEY_ORDER, order);
-		startActivity(intent);
+		startActivityForResult(intent, req_pay);
 	}
 	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == req_pay) {
+			finish();
+		}
+	}
 }

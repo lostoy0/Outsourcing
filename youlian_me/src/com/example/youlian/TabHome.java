@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 
+import com.example.youlian.common.Configure;
 import com.example.youlian.common.Constants;
 
 
@@ -64,6 +65,8 @@ public class TabHome extends TabActivity implements OnClickListener,
 		
 		sTabHome = this;
 		setContentView(R.layout.activity_tabhome);
+		
+		Configure.init(this);
 
 		// init views
 		initViews();
@@ -113,7 +116,7 @@ public class TabHome extends TabActivity implements OnClickListener,
 				.newTabSpec(TAB_SEARCH)
 				.setIndicator("")
 				.setContent(
-						new Intent(this, TabMe.class)));
+						new Intent(this, TabMe.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));
 		tabHost.addTab(tabHost
 				.newTabSpec(TAB_MORE)
 				.setIndicator("")

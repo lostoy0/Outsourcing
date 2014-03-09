@@ -10,6 +10,8 @@
         android:id="@+id/order_item_goods_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:orientation="vertical"/>
     
 	<include layout="@layout/merge_line_grey_horizontal"/>
@@ -17,6 +19,8 @@
 	<RelativeLayout 
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="16dp"
+	    android:layout_marginRight="16dp"
 	    android:layout_marginTop="8dp">
 	    <TextView 
 	        android:id="@+id/tv_total_pre"

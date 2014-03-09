@@ -35,6 +35,7 @@ public class CouponListActivity extends BaseActivity implements OnItemClickListe
 	private CouponListAdapter mAdapter;
 	
 	private Button mEditButton;
+	private View mEmptyView;
 	
 	private ArrayList<YouhuiQuan> mCouponList;
 	
@@ -59,6 +60,10 @@ public class CouponListActivity extends BaseActivity implements OnItemClickListe
 		});
 		
 		((TextView) findViewById(R.id.tv_title)).setText("我的优惠券");
+		((TextView) findViewById(R.id.tv_empty_info)).setText("还没有优惠券哦");
+		
+		mEmptyView = findViewById(R.id.emptyView);
+		mEmptyView.setVisibility(View.GONE);
 		
 		mEditButton = (Button) findViewById(R.id.btn_right);
 		mEditButton.setVisibility(View.VISIBLE);
@@ -113,13 +118,14 @@ public class CouponListActivity extends BaseActivity implements OnItemClickListe
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
-					mLogger.i(response);
-					
 					try {
 						List<YouhuiQuan> couponList = YouhuiQuan.parse(response);
 						if(couponList != null && couponList.size() > 0) {
+							hideEmptyView();
 							mCouponList.addAll(couponList);
 							mAdapter.notifyDataSetChanged();
+						} else {
+							showEmptyView();
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -134,8 +140,19 @@ public class CouponListActivity extends BaseActivity implements OnItemClickListe
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	showEmptyView();
             }
         };
     }
+	
+	private void showEmptyView() {
+		mListView.setVisibility(View.GONE);
+		mEmptyView.setVisibility(View.VISIBLE);
+	}
+	
+	private void hideEmptyView() {
+		mListView.setVisibility(View.VISIBLE);
+		mEmptyView.setVisibility(View.GONE);
+	}
 
 }

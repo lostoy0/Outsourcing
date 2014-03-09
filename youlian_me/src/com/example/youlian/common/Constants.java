@@ -13,6 +13,7 @@ package com.example.youlian.common;
 public class Constants {
 	public static final String key_status = "status";
 	public static final String key_result = "result";
+	public static final String KEY_MSG = "msg";
 	
 	/**
 	 * YOULian HTTP请求

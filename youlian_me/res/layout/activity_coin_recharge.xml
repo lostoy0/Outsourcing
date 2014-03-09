@@ -43,14 +43,14 @@
                     android:id="@+id/et_ucoin_count"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingRight="8dp"
                     android:background="@null"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:inputType="number"
                     android:maxLength="12"
+                    android:paddingRight="8dp"
                     android:singleLine="true"
-                    android:text="100"
+                    android:hint="0"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -67,37 +67,40 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_exchange_rule"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginTop="8dp"
-            android:text="注：1U币等于人民币1元"
-            android:textColor="#666"
-            android:textSize="14sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="right"
             android:orientation="horizontal" >
 
             <TextView
+                android:id="@+id/tv_exchange_rule"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="合计："
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="注：1U币等于人民币1元"
                 android:textColor="#666"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_need_money"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical"
                 android:text="100元"
                 android:textColor="@color/red"
                 android:textSize="18sp" />
-        </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/tv_need_money"
+                android:gravity="center_vertical"
+                android:text="合计："
+                android:textColor="#666"
+                android:textSize="18sp" />
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

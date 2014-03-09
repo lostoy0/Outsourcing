@@ -31,145 +31,148 @@
             android:src="@drawable/my_setting_selector" />
     </RelativeLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="168dp"
-        android:background="@drawable/my_border_bg"
-        android:orientation="vertical"
-        android:paddingBottom="8dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp" >
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal" >
-
-            <ImageView
-                android:id="@+id/my_iv_icon"
-                android:layout_width="74dp"
-                android:layout_height="74dp"
-                android:background="@drawable/my_icon_bg"
-                android:scaleType="fitXY" />
+            android:orientation="vertical" >
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:orientation="vertical" >
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        android:id="@+id/my_tv_username"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="50dp"
-                        android:ellipsize="end"
-                        android:singleLine="true"
-                        android:text="优联商场"
-                        android:textColor="@color/white"
-                        android:textSize="22sp" />
-
-                    <ImageButton
-                        android:id="@+id/my_ib_msg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/my_msg_selector" />
-                </RelativeLayout>
+                android:layout_width="match_parent"
+                android:layout_height="168dp"
+                android:background="@drawable/my_border_bg"
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="16dp" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal" >
 
-                    <TextView
-                        android:id="@+id/my_tv_ucoin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/my_ucoin"
-                        android:drawablePadding="4dp"
-                        android:singleLine="true"
-                        android:text="U币：348"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
+                    <ImageView
+                        android:id="@+id/my_iv_icon"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:background="@drawable/my_icon_bg"
+                        android:scaleType="fitXY" />
 
-                    <TextView
-                        android:id="@+id/my_tv_udot"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
-                        android:drawableLeft="@drawable/my_udot"
-                        android:drawablePadding="4dp"
-                        android:singleLine="true"
-                        android:text="U点：1455"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/my_tv_username"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="50dp"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="优联商场"
+                                android:textColor="@color/white"
+                                android:textSize="22sp" />
+
+                            <ImageButton
+                                android:id="@+id/my_ib_msg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:background="@android:color/transparent"
+                                android:src="@drawable/my_msg_selector" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/my_tv_ucoin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/my_ucoin"
+                                android:drawablePadding="4dp"
+                                android:singleLine="true"
+                                android:text="U币：348"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/my_tv_udot"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:drawableLeft="@drawable/my_udot"
+                                android:drawablePadding="4dp"
+                                android:singleLine="true"
+                                android:text="U点：1455"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp" >
+
+                    <Button
+                        android:id="@+id/my_ib_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:background="@drawable/my_sign_selector"
+                        android:text="签到"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/my_ib_exchange_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/my_exchange_score_selector"
+                        android:text="兑积分"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/my_ib_recharge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/my_exchange_score_selector"
+                        android:text="充值"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </RelativeLayout>
             </LinearLayout>
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" >
-
-            <Button
-                android:id="@+id/my_ib_sign"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:background="@drawable/my_sign_selector"
-                android:text="签到"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/my_ib_exchange_score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/my_exchange_score_selector"
-                android:text="兑积分"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/my_ib_recharge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/my_exchange_score_selector"
-                android:text="充值"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-        </RelativeLayout>
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/rounded_one"
                 android:padding="8dp" >
 
@@ -201,7 +204,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="3张"
                         android:textColor="@color/black_2"
                         android:textSize="16sp" />
 
@@ -213,7 +215,6 @@
                         android:layout_centerVertical="true"
                         android:drawablePadding="4dp"
                         android:drawableRight="@drawable/arrow_right"
-                        android:text="x张有余额"
                         android:textColor="@color/black_2"
                         android:textSize="16sp" />
                 </RelativeLayout>
@@ -222,6 +223,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_one"
                 android:padding="8dp" >
@@ -254,7 +257,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="3张"
                         android:textColor="@color/black_2"
                         android:textSize="16sp" />
 
@@ -266,7 +268,6 @@
                         android:layout_centerVertical="true"
                         android:drawablePadding="4dp"
                         android:drawableRight="@drawable/arrow_right"
-                        android:text="x张有余额"
                         android:textColor="@color/black_2"
                         android:textSize="16sp" />
                 </RelativeLayout>
@@ -276,6 +277,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:background="@drawable/rounded_one"
                 android:padding="8dp" >
 
@@ -307,7 +310,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="3张"
                         android:textColor="@color/black_2"
                         android:textSize="16sp" />
 
@@ -319,7 +321,6 @@
                         android:layout_centerVertical="true"
                         android:drawablePadding="4dp"
                         android:drawableRight="@drawable/arrow_right"
-                        android:text="x张有余额"
                         android:textColor="@color/black_2"
                         android:textSize="16sp" />
                 </RelativeLayout>
@@ -328,7 +329,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/rounded_one"
                 android:padding="8dp" >
 
@@ -360,7 +364,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="3张"
                         android:textColor="@color/black_2"
                         android:textSize="16sp" />
 
@@ -372,7 +375,6 @@
                         android:layout_centerVertical="true"
                         android:drawablePadding="4dp"
                         android:drawableRight="@drawable/arrow_right"
-                        android:text="x张有余额"
                         android:textColor="@color/black_2"
                         android:textSize="16sp" />
                 </RelativeLayout>

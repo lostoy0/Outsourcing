@@ -28,16 +28,16 @@ public class CardInfo {
 		CardInfo info = null;
 		if(json != null) {
 			info = new CardInfo();
-			info.id = json.optString("");
-			info.isAllowPush = json.optInt("");
-			info.membeIdCard = json.optString("");
-			info.memberAddress = json.optString("");
-			info.memberBirth = json.optString("");
-			info.memberEmail = json.optString("");
-			info.memberName = json.optString("");
-			info.memberPhone = json.optString("");
-			info.memberQq = json.optString("");
-			info.memberSex = json.optInt("");
+			info.id = json.optString("id");
+			info.isAllowPush = json.optInt("isAllowPush");
+			info.membeIdCard = json.optString("membeIdCard");
+			info.memberAddress = json.optString("memberAddress");
+			info.memberBirth = json.optString("memberBirth");
+			info.memberEmail = json.optString("memberEmail");
+			info.memberName = json.optString("memberName");
+			info.memberPhone = json.optString("memberPhone");
+			info.memberQq = json.optString("memberQq");
+			info.memberSex = json.optInt("memberSex");
 		}
 		return info;
 	}

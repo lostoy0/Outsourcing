@@ -138,15 +138,16 @@ public class EditCardActivity extends BaseActivity implements OnClickListener {
 	}
 
 	private void initCardInfo() {
-		mNameEditText.setText(mCardInfo.memberName);
-		mPhoneEditText.setText(mCardInfo.memberPhone);
-		mUserIdCardNOEditText.setText(mCardInfo.membeIdCard);
-		mEmailEditText.setText(mCardInfo.memberEmail);
-		mQQEditText.setText(mCardInfo.memberQq);
+		if(!TextUtils.isEmpty(mCardInfo.memberName)) mNameEditText.setText(mCardInfo.memberName);
+		if(!TextUtils.isEmpty(mCardInfo.memberPhone)) mPhoneEditText.setText(mCardInfo.memberPhone);
+		if(!TextUtils.isEmpty(mCardInfo.membeIdCard)) mUserIdCardNOEditText.setText(mCardInfo.membeIdCard);
+		if(!TextUtils.isEmpty(mCardInfo.memberEmail)) mEmailEditText.setText(mCardInfo.memberEmail);
+		if(!TextUtils.isEmpty(mCardInfo.memberQq)) mQQEditText.setText(mCardInfo.memberQq);
 		mSexButton.setText(sexStrs[mCardInfo.memberSex]);
-		mDateTextView.setText(mCardInfo.memberBirth);
+		if(!TextUtils.isEmpty(mCardInfo.memberBirth)) mDateTextView.setText(mCardInfo.memberBirth);
 		
-		memberAddress = mCardInfo.memberAddress;
+		if(!TextUtils.isEmpty(mCardInfo.memberAddress)) memberAddress = mCardInfo.memberAddress;
+		else memberAddress = "";
 		isAllowPush = mCardInfo.isAllowPush + "";
 	}
 
@@ -245,6 +246,7 @@ public class EditCardActivity extends BaseActivity implements OnClickListener {
 						if (1 == object.optInt(Constants.key_status)) {
 							CardInfo info = CardInfo.from(object.optJSONObject(Constants.key_result));
 							if(!Utils.isNull(info)) {
+								mCardInfo = info;
 								initCardInfo();
 							}
 						}
