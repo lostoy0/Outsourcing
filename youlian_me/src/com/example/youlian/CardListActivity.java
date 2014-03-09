@@ -79,18 +79,12 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		
-		Intent intent = new Intent(this, CardActivity.class);
-		
 		Card card = mCards.get(position);
-		
-		intent.putExtra("card_id", card.card_id);
-		intent.putExtra("card_name", card.card_name);
-		intent.putExtra("applyWay", card.applyWay);
-		intent.putExtra("balanceUrl", card.balanceUrl);
-		intent.putExtra("countUrl", card.countUrl);
-		
-		startActivityForResult(intent, REQ_CODE);
+		if(card != null) {
+			Intent intent = new Intent(this, CardActivity.class);
+			intent.putExtra("card", card);
+			startActivityForResult(intent, REQ_CODE);
+		}
 	}
 
 	private Response.Listener<String> createGetCardListSuccessListener() {
@@ -100,8 +94,6 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
-					mLogger.i(response);
-					
 					try {
 						List<Card> cards = Card.parse(response);
 						if(cards != null && cards.size() > 0) {

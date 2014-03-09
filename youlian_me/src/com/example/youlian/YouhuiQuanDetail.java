@@ -64,7 +64,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 	
 	
 	// sdk controller
-    private UMSocialService mController = UMServiceFactory.getUMSocialService(DESCRIPTOR, RequestType.SOCIAL);;
+    private UMSocialService mController = UMServiceFactory.getUMSocialService(DESCRIPTOR, RequestType.SOCIAL);
     // 布局view
     private View mMainView = null;
 

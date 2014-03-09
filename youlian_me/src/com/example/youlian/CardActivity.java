@@ -30,6 +30,16 @@ import com.example.youlian.mode.Card;
 import com.example.youlian.mode.CardCost;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.controller.RequestType;
+import com.umeng.socialize.controller.UMServiceFactory;
+import com.umeng.socialize.controller.UMSocialService;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMVideo;
+import com.umeng.socialize.media.UMusic;
+import com.umeng.socialize.sso.QZoneSsoHandler;
+import com.umeng.socialize.sso.SinaSsoHandler;
+import com.umeng.socialize.sso.TencentWBSsoHandler;
 import com.youlian.utils.zxin.create.BarcodeCreater;
 import com.youlian.view.dialog.HuzAlertDialog;
 
@@ -41,20 +51,28 @@ import com.youlian.view.dialog.HuzAlertDialog;
 public class CardActivity extends BaseActivity implements OnClickListener {
 	private static YlLogger mLogger = YlLogger.getLogger(CardActivity.class.getSimpleName()); 
 	
+	public static final String DESCRIPTOR = "com.umeng.share";
+	
+	private static final int BARCODE = 1;
+	private static final int QRCODE = 2;
+	
 	private TextView mNoTextView, mBalanceTextView, mScoreTextView, mValidDateTextView, mWelfareTextView, mCardTypeTextView, mShopDetailTextView;
 	private ImageButton mBackButton, mSwitchButton;
-	private ImageView mIconImageView, mOneDimensionImageView, mTwoDimensionImageView, mFavImageView; 
+	private ImageView mIconImageView, mBarCodeImageView, mQRCodeImageView, mFavImageView; 
 	
-	private Card mCard;
+	private Card mCard, mListCard;
 	
-	private String mCardId;
-	private String mCardName;
-	private String mCardEntityId;
-	private String mApplyWay;
-	
-	private int mCodeType = 2; //1：一维码  2：二维码 
+	private int mCodeType = QRCODE; //1：一维码  2：二维码 
 	
 	private CardActivity mContext;
+	
+	// sdk controller
+    private UMSocialService mController = UMServiceFactory.getUMSocialService(DESCRIPTOR, RequestType.SOCIAL);
+    //要分享的文字内容
+    private String mShareContent = "";
+    private final SHARE_MEDIA mTestMedia = SHARE_MEDIA.SINA;
+    // 要分享的图片
+    private UMImage mUMImgBitmap = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,20 +83,15 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 		
 		mContext = this;
 		
-		mCardId= getIntent().getStringExtra("card_id");
-		if(mCardId == null) {
-			mLogger.e("card id is null");
+		mListCard = (Card) getIntent().getSerializableExtra("card");
+		if(mListCard == null) {
 			finish();
 			return;
 		}
 		
-		mCardName = getIntent().getStringExtra("card_name");
-		mCardEntityId = getIntent().getStringExtra("entity_id");
-		mApplyWay = getIntent().getStringExtra("applyWay");
-		
 		initViews();
 		
-		YouLianHttpApi.getCardDetail(mCardId, createGetCardDetailSuccessListener(), createGetCardDetailErrorListener());
+		YouLianHttpApi.getCardDetail(mListCard.card_id, createGetCardDetailSuccessListener(), createGetCardDetailErrorListener());
 	}
 
 	@Override
@@ -126,23 +139,23 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 
 	private void switchCode() {
 		switch (mCodeType) {
-		case 2: //转成一维
-			mTwoDimensionImageView.setVisibility(View.GONE);
-			mOneDimensionImageView.setVisibility(View.VISIBLE);
-			mCodeType = 1;
+		case QRCODE: //转成一维
+			mQRCodeImageView.setVisibility(View.GONE);
+			mBarCodeImageView.setVisibility(View.VISIBLE);
+			mCodeType = BARCODE;
 			break;
-		case 1:
-			mOneDimensionImageView.setVisibility(View.GONE);
-			mTwoDimensionImageView.setVisibility(View.VISIBLE);
-			mCodeType = 0;
+		case BARCODE:
+			mBarCodeImageView.setVisibility(View.GONE);
+			mQRCodeImageView.setVisibility(View.VISIBLE);
+			mCodeType = QRCODE;
 			break;
 		}
 	}
 
 	private void edit() {
-		if(!"1".equals(mApplyWay)){
+		if(!"1".equals(mListCard.applyWay)){
 			Intent mEditCardActivity = new Intent(this, EditCardActivity.class);
-			mEditCardActivity.putExtra("card_id", mCardId);
+			mEditCardActivity.putExtra("card_id", mListCard.card_id);
 			startActivity(mEditCardActivity);
 		}else{
 			Utils.showToast(this, "您的卡为商家自发,无法编辑");
@@ -150,11 +163,11 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 	}
 
 	private void consume() {
-		YouLianHttpApi.costCard(mCardId, costCardSuccessListener(), costCardErrorListener());
+		YouLianHttpApi.costCard(mListCard.card_id, costCardSuccessListener(), costCardErrorListener());
 	}
 
 	private void remove() {
-		if(!"1".equals(mApplyWay)){
+		if(!"1".equals(mListCard.applyWay)){
 			Builder bd = new HuzAlertDialog.Builder(this);
 			bd.setTitle("移除");
 			bd.setMessage("是否移除卡片");
@@ -175,19 +188,66 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 	}
 
 	private void share() {
-		// TODO Auto-generated method stub
-		
+		openShareBoard();
 	}
 
 	private void startFav() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	private void startShopDetail() {
-		// TODO Auto-generated method stub
-		
+		Intent intent = new Intent(this, ShangjiaDetailActivity.class);
+		intent.putExtra("customerid", mCard.customer_id);
+		startActivity(intent);
 	}
+	
+	 /**
+     * @功能描述 : 初始化与SDK相关的成员变量
+     */
+    private void initConfig() {
+        // 要分享的文字内容
+        mShareContent = getResources().getString(
+                R.string.umeng_socialize_share_content);
+        mController.setShareContent("测试内容");
+
+        mUMImgBitmap = new UMImage(getApplicationContext(),
+                "http://www.umeng.com/images/pic/banner_module_social.png");
+        // mUMImgBitmap = new UMImage(mContext, new
+        // File("/mnt/sdcard/DCIM/Camera/1357290284463.jpg"));
+        // 设置图片
+        // 其他方式构造UMImage
+        // UMImage umImage_url = new UMImage(mContext,
+        // "http://historyhots.com/uploadfile/2013/0110/20130110064307373.jpg");
+        //
+        // mUMImgBitmap = new UMImage(mContext, new File(
+        // "mnt/sdcard/test.png"));
+
+        UMusic uMusic = new UMusic("http://sns.whalecloud.com/test_music.mp3");
+        uMusic.setAuthor("zhangliyong");
+        uMusic.setTitle("天籁之音");
+
+        UMVideo umVedio = new UMVideo(
+                "http://v.youku.com/v_show/id_XNTE5ODAwMDM2.html?f=19001023");
+        umVedio.setThumb("http://historyhots.com/uploadfile/2013/0110/20130110064307373.jpg");
+        umVedio.setTitle("哇喔喔喔！");
+
+        // 添加新浪和QQ空间的SSO授权支持
+        mController.getConfig().setSsoHandler(new SinaSsoHandler());
+        mController.getConfig().setSsoHandler(
+                new QZoneSsoHandler(this));
+        // 添加腾讯微博SSO支持
+        mController.getConfig().setSsoHandler(new TencentWBSsoHandler());
+
+    }
+	
+	 /**
+     * @功能描述 : 分享(先选择平台)
+     */
+    private void openShareBoard() {
+        mController.setShareContent("默认内容");
+        mController.setShareMedia(mUMImgBitmap);
+        mController.openShare(this, false);
+    }
 
 	private void initViews() {
 		mNoTextView = (TextView) findViewById(R.id.tv_title);
@@ -197,8 +257,8 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 		mSwitchButton.setOnClickListener(this);
 		
 		mIconImageView = (ImageView) findViewById(R.id.card_iv_icon);
-		mTwoDimensionImageView = (ImageView) findViewById(R.id.card_iv_twodimensioncode);
-		mOneDimensionImageView = (ImageView) findViewById(R.id.card_iv_onedimensioncode);
+		mQRCodeImageView = (ImageView) findViewById(R.id.card_iv_twodimensioncode);
+		mBarCodeImageView = (ImageView) findViewById(R.id.card_iv_onedimensioncode);
 		
 		mFavImageView = (ImageView) findViewById(R.id.card_iv_fav);
 		mFavImageView.setOnClickListener(this);
@@ -225,8 +285,6 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
-					mLogger.i(response);
-					
 					try {
 						parseDataAndShow(response);
 					} catch (JSONException e) {
@@ -255,12 +313,12 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 				mIconImageView.setImageResource(R.drawable.default_img);
 			}
 			
-			mTwoDimensionImageView.setImageBitmap(BarcodeCreater.create2DCode(0 + mCard.card_no + System.currentTimeMillis()));
-			mOneDimensionImageView.setImageBitmap(
+			mQRCodeImageView.setImageBitmap(BarcodeCreater.create2DCode(0 + mCard.card_no + System.currentTimeMillis()));
+			mBarCodeImageView.setImageBitmap(
 					BarcodeCreater.creatBarcode(this, 
 							0 + mCard.card_no + System.currentTimeMillis(),
 							20, 50, false));
-			mOneDimensionImageView.setVisibility(View.GONE);
+			mBarCodeImageView.setVisibility(View.GONE);
 			
 			mNoTextView.setText("NO." + mCard.card_no);
 			
@@ -338,10 +396,12 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 					
 					try {
 						JSONObject object = new JSONObject(response);
-						if(1 == object.optInt(Constants.key_status)) {
+						if("1".equals(object.optString(Constants.key_status))) {
 							ArrayList<CardCost> costList = CardCost.getList(object);
 							if(Utils.isCollectionNotNull(costList)) {
 								showConsumeRecordDialog(costList);
+							} else {
+								showToast("没有消费记录");
 							}
 						}
 					} catch (JSONException e) {

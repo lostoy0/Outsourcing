@@ -118,8 +118,6 @@ public class CouponListActivity extends BaseActivity implements OnItemClickListe
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
-					mLogger.i(response);
-					
 					try {
 						List<YouhuiQuan> couponList = YouhuiQuan.parse(response);
 						if(couponList != null && couponList.size() > 0) {

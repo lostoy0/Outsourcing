@@ -141,8 +141,6 @@ public class FavouriteListActivity extends BaseActivity implements OnItemClickLi
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
-					mLogger.i(response);
-					
 					List<Favourite> couponList = Favourite.from(response);
 					if(couponList != null && couponList.size() > 0) {
 						hideEmptyView();
