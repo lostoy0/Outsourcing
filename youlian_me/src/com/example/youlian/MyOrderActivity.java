@@ -25,6 +25,8 @@ public class MyOrderActivity extends BaseActivity {
 	private ListView mListView;
 	private OrderListAdapter mAdapter;
 	private List<Order> mList;
+	
+	private View mEmptyView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,9 @@ public class MyOrderActivity extends BaseActivity {
 			}
 		});
 		
+		mEmptyView = findViewById(R.id.emptyView);
+		mEmptyView.setVisibility(View.GONE);
+		
 		mListView = (ListView) findViewById(R.id.list);
 		mAdapter = new OrderListAdapter(this, mList, MyVolley.getImageLoader());
 		mListView.setAdapter(mAdapter);
@@ -73,14 +78,15 @@ public class MyOrderActivity extends BaseActivity {
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
-					mLogger.i(response);
-					
 					try {
 						JSONObject object = new JSONObject(response);
 						List<Order> orders = Order.getOrders(object);
 						if(orders != null && orders.size() > 0) {
+							hideEmptyView();
 							mList.addAll(orders);
 							mAdapter.notifyDataSetChanged();
+						} else {
+							showEmptyView();
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -95,8 +101,19 @@ public class MyOrderActivity extends BaseActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	showEmptyView();
             }
         };
     }
 	
+	private void showEmptyView() {
+		mListView.setVisibility(View.GONE);
+		mEmptyView.setVisibility(View.VISIBLE);
+	}
+	
+	private void hideEmptyView() {
+		mListView.setVisibility(View.VISIBLE);
+		mEmptyView.setVisibility(View.GONE);
+	}
+
 }
