@@ -53,4 +53,12 @@ public class Global {
 		sUserToken = null;
 		PreferencesUtils.clearSessionUser(context);
 	}
+	
+	public static String getLocCityId(Context context) {
+		return PreferencesUtils.getCityId(context);
+	}
+	
+	public static void saveLocCityId(Context context, String cityId) {
+		PreferencesUtils.saveCityId(context, cityId);
+	}
 }

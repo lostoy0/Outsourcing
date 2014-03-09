@@ -390,4 +390,34 @@ public class PreferencesUtils {
 		return mShareConfig.edit().remove(key).commit();
 	}
 
+	/**
+	 * 保存定位城市id
+	 * 
+	 * @param context
+	 * @return
+	 */
+	public static void saveCityId(Context context, String cityId) {
+		mShareConfig = context.getSharedPreferences(context.getPackageName(),
+				Context.MODE_PRIVATE);
+		if (Utils.notNull(mShareConfig)) {
+			Editor edit = mShareConfig.edit();
+			edit.putString(Configure.SESSION_CITY_ID, cityId);
+			edit.commit();
+		}
+	}
+
+	/**
+	 * 获取定位城市id
+	 * @param context
+	 * @return
+	 */
+	public static String getCityId(Context context) {
+		mShareConfig = context.getSharedPreferences(context.getPackageName(),
+				Context.MODE_PRIVATE);
+		if (Utils.notNull(mShareConfig)) {
+			return getStringByKey(context, Configure.SESSION_CITY_ID);
+		}
+		return null;
+	}
+	
 }

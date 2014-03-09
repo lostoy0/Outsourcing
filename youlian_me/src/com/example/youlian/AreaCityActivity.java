@@ -65,6 +65,9 @@ public class AreaCityActivity extends BaseActivity implements OnItemClickListene
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		mCity = mAdapter.getItem(position);
+		
+		Global.saveLocCityId(this, mCity.areaId);
+		
 		Intent intent = new Intent(this, AreaDistrictActivity.class);
 		intent.putExtra(AreaProvinceActivity.key_province, mProvince);
 		intent.putExtra(AreaProvinceActivity.key_city, mCity);
