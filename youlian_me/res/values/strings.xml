@@ -28,6 +28,9 @@
     <string name="number_apply_use">%s人已申请</string>
     <string name="number_apply_use_card">%s人已申领了本卡</string>
     
+    <string name="already_apply">已申请</string>
+    <string name="apply">申请</string>
+    
     <string name="all_of">全部</string>
 	<string name="nearby">附近</string>
 	<string name="search">搜索</string>

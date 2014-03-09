@@ -34,6 +34,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Card;
+import com.example.youlian.mode.City;
 import com.example.youlian.mode.YouhuiQuan;
 import com.example.youlian.view.SimpleProgressDialog;
 
@@ -56,6 +57,15 @@ public class MembershipActivity extends Activity implements OnClickListener {
 	private int type = allarea;
 	
 	public List<Card> cards = new ArrayList<Card>();
+	
+	
+	public List<Card> handlecards = new ArrayList<Card>();
+	
+	
+	public List<City> cities = new ArrayList<City>();
+	public List<String> hots = new ArrayList<String>();
+	public List<String> parts = new ArrayList<String>();
+	
 	ImageLoader  mImageLoader;;
 
 	@Override
@@ -68,6 +78,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getMemberCard(Global.getUserToken(getApplicationContext()), null, createMyReqSuccessListener(),
 				createMyReqErrorListener());
+		YouLianHttpApi.getAreaByProvinceIdCid(null, Global.getLocCityId(getApplicationContext()), null, creategetAreaByProvinceIdCidSuccessListener(), createGetAreaErrorListener());
 	}
 
 	private void initViews() {
@@ -87,7 +98,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				Intent in = new Intent(getApplicationContext(), MemberShipDetail.class);
-				Card c = cards.get(arg2);
+				Card c = handlecards.get(arg2);
 				in.putExtra("cardid", c.card_id);
 				startActivity(in);
 			}
@@ -106,9 +117,108 @@ public class MembershipActivity extends Activity implements OnClickListener {
 		adapterAll = new MyAdapterAll(getApplicationContext());
 		listview_all.setAdapter(adapterAll);
 		listview_all.setVisibility(View.GONE);
+		
+		
+		
+		listview_all.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+					long arg3) {
+				
+				switch (MembershipActivity.this.type) {
+				case allarea:
+					if(position < cities.size()){
+						if(position == 0) {
+							setListviewVisible();
+							return;
+						}
+						City c = cities.get(position);
+						initCity(c);
+					}
+					break;
+				case allsort:
+					if(position < parts.size()){
+						handlecards.clear();
+						switch (position) {
+						case 0:
+							handlecards.addAll(cards);
+							break;
+						case ShangjiaActivity.shenghuo_service:
+							initShenghuoList(ShangjiaActivity.shenghuo_service);
+							break;
+						case ShangjiaActivity.meili_liren:
+							initShenghuoList(ShangjiaActivity.meili_liren);
+							break;
+						case ShangjiaActivity.xiuxian_yule:
+							initShenghuoList(ShangjiaActivity.xiuxian_yule);
+							break;
+						case ShangjiaActivity.canyin_meishi:
+							initShenghuoList(ShangjiaActivity.canyin_meishi);
+							break;
+						case ShangjiaActivity.guangjie_gouwu:
+							initShenghuoList(ShangjiaActivity.guangjie_gouwu);
+							break;
+						case ShangjiaActivity.other:
+							initShenghuoList(ShangjiaActivity.other);
+							break;
+						default:
+							break;
+						}
+						adapter.notifyDataSetChanged();
+					}			
+					break;
+				case hot:
+					if(position < hots.size()){
+						String result = hots.get(position);
+						if(result.equals(getString(R.string.all_of))){
+							handlecards.clear();
+							handlecards.addAll(cards);
+							adapter.notifyDataSetChanged();
+						}else if(result.equals(getString(R.string.hot))){
+							handlecards.clear();
+							int size = cards.size();
+							for(int i=0; i<size; i++){
+								Card y = cards.get(i);
+								if("1".equals(y.is_hot)){
+									handlecards.add(y);
+								}
+							}
+							adapter.notifyDataSetChanged();
+						}else if(result.equals(getString(R.string.nearby))){
+							
+						}else{
+							
+						}
+					}	
+					break;
+					
+				default:
+					break;
+				}
+				setListviewVisible();
+			}
+		});
+		
+		
+		hots.add(getString(R.string.all_of));
+		hots.add(getString(R.string.hot));
+		hots.add(getString(R.string.nearby));
 	}
 
 	boolean exChange = true;
+	
+	public void setFucengVisible(){
+		listview.setVisibility(View.GONE);
+		listview_all.setVisibility(View.VISIBLE);
+	}
+	
+	
+	public void setListviewVisible(){
+		listview.setVisibility(View.VISIBLE);
+		listview_all.setVisibility(View.GONE);
+	}
+
 
 	@Override
 	public void onClick(View v) {
@@ -117,15 +227,17 @@ public class MembershipActivity extends Activity implements OnClickListener {
 			finish();
 			break;
 		case R.id.linear_all_area:
+			setFucengVisible();
 			type = allarea;
-//			exChange();
 			adapterAll.notifyDataSetChanged();
 			break;
 		case R.id.linear_all_sort:
+			setFucengVisible();
 			type = allsort;
 			adapterAll.notifyDataSetChanged();
 			break;
 		case R.id.linear_all_hot:
+			setFucengVisible();
 			type = hot;
 			adapterAll.notifyDataSetChanged();
 			break;
@@ -153,7 +265,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 
 		@Override
 		public int getCount() {
-			return cards.size();
+			return handlecards.size();
 		}
 
 		@Override
@@ -215,7 +327,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 		}
 
 		public void setValue(ViewHolder holder, int position) {
-			Card c = cards.get(position);
+			Card c = handlecards.get(position);
 			if(c.nonactivatedPic != null){
 				holder.iv_icon.setDefaultImageResId(R.drawable.guanggao);
 				holder.iv_icon.setImageUrl(c.nonactivatedPic, mImageLoader);
@@ -283,7 +395,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 
 		@Override
 		public int getCount() {
-			return 1;
+			return 10;
 		}
 
 		@Override
@@ -304,17 +416,54 @@ public class MembershipActivity extends Activity implements OnClickListener {
 			TextView tv = (TextView) convertView.findViewById(R.id.tv_title);
 			switch (type) {
 			case allarea:
-				
+				iv.setVisibility(View.GONE);
+				City city = cities.get(position);
+				tv.setText(city.areaName);
 				break;
 			case allsort:
-				iv.setVisibility(View.GONE);
+				if(position < parts.size()){
+					tv.setText(parts.get(position));
+					switch (position) {
+					case 0:
+						iv.setImageResource(R.drawable.iv_all);
+						break;
+					case 1:
+						iv.setImageResource(R.drawable.living_service);				
+						break;
+					case 2:
+						iv.setImageResource(R.drawable.meili_liren);
+						break;
+					case 3:
+						iv.setImageResource(R.drawable.xiuxian_yule);
+						break;
+					case 4:
+						iv.setImageResource(R.drawable.canyin_meishi);
+						break;
+					case 5:
+						iv.setImageResource(R.drawable.guangjie_gouwu);
+						break;
+					case 6:
+						iv.setImageResource(R.drawable.iv_other);
+						break;
+
+					default:
+						break;
+					}
+					iv.setVisibility(View.VISIBLE);
+				}else{
+					iv.setVisibility(View.GONE);
+				}
+				
 				break;
 			case hot:
-				tv.setVisibility(View.GONE);
+				iv.setVisibility(View.GONE);
+				if(position < hots.size()){
+					tv.setText(hots.get(position));
+				}
 				break;
-
 			}
-
+			
+			
 			return convertView;
 		}
 
@@ -345,6 +494,8 @@ public class MembershipActivity extends Activity implements OnClickListener {
 								JSONObject oo = array.getJSONObject(i);
 								cards.add(Card.parse(oo));
 							}
+							handlecards.addAll(cards);
+							initCategoryNum();
 							adapter.notifyDataSetChanged();
 						}else{
 							String msg = o.optString("msg");
@@ -370,4 +521,117 @@ public class MembershipActivity extends Activity implements OnClickListener {
 		};
 	}
 
+	
+
+	
+	private Response.Listener<String> creategetAreaByProvinceIdCidSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if(status == 1){
+							JSONArray array = o.optJSONArray("result");
+							int len = array.length();
+							City all = new City();
+							all.areaName = getString(R.string.all_of);
+							all.areaId = "10000";
+							cities.add(all);
+							for(int i=0; i<len; i++){
+								JSONObject oo = array.getJSONObject(i);
+								cities.add(City.parse(oo));
+							}
+							adapterAll.notifyDataSetChanged();
+						}else{
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+						}
+						
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					
+				}
+			}
+		};
+	}
+
+	private Response.ErrorListener createGetAreaErrorListener() {
+		return new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				SimpleProgressDialog.dismiss();
+				Log.i(TAG, "error");
+			}
+		};
+	}
+	
+	
+	protected void initShenghuoList(int shenghuoService) {
+		int size = cards.size();
+		for(int i=0;i<size; i++){
+			Card c = cards.get(i);
+			if(shenghuoService == Integer.parseInt(c.category_id)){
+				handlecards.add(c);
+			}
+		}
+	}
+	protected void initCity(City c) {
+		handlecards.clear();
+		int size = cards.size();
+		for(int i=0; i<size; i++){
+			Card cus = cards.get(i);
+			if(c.areaId.equals(cus.districtId)){
+				handlecards.add(cus);
+			}
+		}
+		adapter.notifyDataSetChanged();
+	}
+	
+	
+	int shenghuoService;
+	int meiliLiren;
+	int xiuxianYule;
+	int canyinMeishi;
+	int guangjieGouwu;
+	int otherMe;
+	private void initCategoryNum() {
+		int size = cards.size();
+		for(int i=0;i<size; i++){
+			Card c = cards.get(i);
+			int type = Integer.parseInt(c.category_id);
+			switch (type) {
+			case ShangjiaActivity.shenghuo_service:
+				shenghuoService++;
+				break;
+			case ShangjiaActivity.meili_liren:
+				meiliLiren++;	
+				break;
+			case ShangjiaActivity.xiuxian_yule:
+				xiuxianYule++;
+				break;
+			case ShangjiaActivity.canyin_meishi:
+				canyinMeishi++;
+				break;
+			case ShangjiaActivity.guangjie_gouwu:
+				guangjieGouwu++;
+				break;
+			case ShangjiaActivity.other:
+				otherMe++;
+				break;
+			default:
+				break;
+			}
+		}
+		parts.add(getString(R.string.all_size, size));
+		parts.add(getString(R.string.living_service, shenghuoService));
+		parts.add(getString(R.string.meili_liren, meiliLiren));
+		parts.add(getString(R.string.xiuxian_yulei, xiuxianYule));
+		parts.add(getString(R.string.canyin_meishi, canyinMeishi));
+		parts.add(getString(R.string.gouwu_buy, guangjieGouwu));
+		parts.add(getString(R.string.other, otherMe));
+	}
 }

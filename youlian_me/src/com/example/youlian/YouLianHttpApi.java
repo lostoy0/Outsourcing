@@ -55,6 +55,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 	/**
@@ -87,6 +88,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 	
@@ -105,6 +107,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -119,6 +122,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -170,6 +174,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -186,6 +191,21 @@ public class YouLianHttpApi {
 			Response.ErrorListener errorListener) {
 		String server = "younion.cards.get";
 		String url = getUrl("user_token", userToken, "city_id", cityId,
+				KEY_SERVER, server, KEY_CLIENT_TYPE, "android");
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		myReq.setShouldCache(false);
+		queue.add(myReq);
+	}
+	
+	
+	public static void applyCard(String userToken, String card_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.card.apply";
+		String url = getUrl("user_token", userToken, "card_id", card_id,
 				KEY_SERVER, server, KEY_CLIENT_TYPE, "android");
 		Log.i(TAG, "url:" + url);
 		RequestQueue queue = MyVolley.getRequestQueue();
@@ -223,6 +243,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -240,6 +261,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -257,6 +279,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -278,6 +301,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -343,6 +367,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -1215,6 +1240,19 @@ public class YouLianHttpApi {
 			Response.ErrorListener errorListener) {
 		String server = "younion.customers.get";
 		String url = getUrl(KEY_SERVER, server, "search_key", search_key);
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		queue.add(myReq);
+	}
+	
+	
+	public static void getShangjiaList(String city_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.customers.get";
+		String url = getUrl(KEY_SERVER, server, "city_id", city_id);
 		Log.i(TAG, "url:" + url);
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),

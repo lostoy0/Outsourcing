@@ -142,19 +142,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="#ffffff"
+                android:gravity="center_vertical"
                 android:padding="10dp" >
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
                     android:id="@+id/bt_chongzhi"
-                    android:text="充值"
+                    android:text="申请"
                     android:background="@drawable/btn_chongzhi" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:text="dddddddddddddddddddddddddd"
                     android:id="@+id/tv_chongzhi_desc"
                     />
             </LinearLayout>

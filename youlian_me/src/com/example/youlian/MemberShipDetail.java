@@ -24,6 +24,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Card;
 import com.example.youlian.mode.YouhuiQuan;
+import com.example.youlian.util.PreferencesUtils;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -86,6 +87,7 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 		iv_online_chong = (ImageView)this.findViewById(R.id.iv_online_chong);
 		tv_left  = (TextView) this.findViewById(R.id.tv_left);
 		bt_chongzhi = (Button)this.findViewById(R.id.bt_chongzhi);
+		bt_chongzhi.setOnClickListener(this);
 		tv_chongzhi_desc = (TextView) this.findViewById(R.id.tv_chongzhi_desc);
 		tv_member_fuli = (TextView) this.findViewById(R.id.tv_member_fuli);
 		tv_use_desc = (TextView) this.findViewById(R.id.tv_use_desc);
@@ -127,6 +129,14 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 				.getImageListener(iv_icon, R.drawable.guanggao,
 						R.drawable.guanggao));
 		tv_title.setText(card.card_name);
+		
+		if(TextUtils.isEmpty(card.user_card)){
+			bt_chongzhi.setText(R.string.apply);
+		}else{
+			bt_chongzhi.setEnabled(false);
+			bt_chongzhi.setClickable(false);
+			bt_chongzhi.setText(R.string.already_apply);
+		}
 		
 		tv_apply.setText(getString(R.string.number_apply_use_card, card.card_num));
 		tv_desc.setText(card.agioInfo);
@@ -170,6 +180,16 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 		case R.id.back:
 			finish();
 			break;
+		case R.id.bt_chongzhi:
+			if(!PreferencesUtils.isLogin(this)) {
+				Intent intent = new Intent(this, LoginActivity.class);
+				startActivity(intent);
+			} else {
+				YouLianHttpApi.applyCard(Global.getUserToken(getApplicationContext())
+							, card.card_id, createApplyCardSuccessListener(), createMyReqErrorListener());
+			}
+			break;
+			
 		case R.id.rel_mengdian:// 门店信息
 			Intent intent = new Intent(getApplicationContext(), ShopActivity.class);
 			intent.putExtra("title", card.card_name);
@@ -276,6 +296,37 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 			}
 		};
 	}
+	
+	
+	private Response.Listener<String> createApplyCardSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if (status == 1) {
+							Toast.makeText(getApplicationContext(), "申请成功",
+									Toast.LENGTH_SHORT).show();
+							bt_chongzhi.setText(R.string.already_apply);
+							
+						} else {
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						}
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		};
+	}
+	
 	
 	private Response.ErrorListener createMyReqErrorListener() {
 		return new Response.ErrorListener() {

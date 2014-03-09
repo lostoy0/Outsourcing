@@ -34,8 +34,10 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.City;
+import com.example.youlian.mode.Customer;
 import com.example.youlian.mode.YouhuiQuan;
 import com.example.youlian.view.SimpleProgressDialog;
+import com.example.youlian.ShangjiaActivity;
 
 public class YouhuiQuanActivity extends Activity implements OnClickListener {
 
@@ -56,11 +58,10 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 	private int type = allarea;
 	
 	public List<YouhuiQuan> youhuiQuans = new ArrayList<YouhuiQuan>();
+	
+	
 	public List<YouhuiQuan> handleYouhuiQuans = new ArrayList<YouhuiQuan>();
-	
-	
 	public List<City> cities = new ArrayList<City>();
-	
 	public List<String> hots = new ArrayList<String>();
 	public List<String> parts = new ArrayList<String>();
 	
@@ -76,7 +77,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getYouhuiQuan(Global.getUserToken(getApplicationContext()), null, createMyReqSuccessListener(),createMyReqErrorListener());
 	
-		YouLianHttpApi.getAreaByProvinceIdCid(null, null, null, creategetAreaByProvinceIdCidSuccessListener(), createMyReqErrorListener());
+		YouLianHttpApi.getAreaByProvinceIdCid(null, Global.getLocCityId(getApplicationContext()), null, creategetAreaByProvinceIdCidSuccessListener(), createGetAreaErrorListener());
 	}
 
 	private void initViews() {
@@ -102,7 +103,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
-				YouhuiQuan quan = youhuiQuans.get(position);
+				YouhuiQuan quan = handleYouhuiQuans.get(position);
 				Intent intent = new Intent(getApplicationContext(), YouhuiQuanDetail.class);
 				intent.putExtra("fav_ent_id", quan.fav_ent_id);
 				startActivity(intent);
@@ -132,12 +133,43 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 				switch (YouhuiQuanActivity.this.type) {
 				case allarea:
 					if(position < cities.size()){
-						cities.get(position);
+						if(position == 0) {
+							setListviewVisible();
+							return;
+						}
+						City c = cities.get(position);
+						initCity(c);
 					}
 					break;
 				case allsort:
 					if(position < parts.size()){
-						parts.get(position);
+						handleYouhuiQuans.clear();
+						switch (position) {
+						case 0:
+							handleYouhuiQuans.addAll(youhuiQuans);
+							break;
+						case ShangjiaActivity.shenghuo_service:
+							initShenghuoList(ShangjiaActivity.shenghuo_service);
+							break;
+						case ShangjiaActivity.meili_liren:
+							initShenghuoList(ShangjiaActivity.meili_liren);
+							break;
+						case ShangjiaActivity.xiuxian_yule:
+							initShenghuoList(ShangjiaActivity.xiuxian_yule);
+							break;
+						case ShangjiaActivity.canyin_meishi:
+							initShenghuoList(ShangjiaActivity.canyin_meishi);
+							break;
+						case ShangjiaActivity.guangjie_gouwu:
+							initShenghuoList(ShangjiaActivity.guangjie_gouwu);
+							break;
+						case ShangjiaActivity.other:
+							initShenghuoList(ShangjiaActivity.other);
+							break;
+						default:
+							break;
+						}
+						adapter.notifyDataSetChanged();
 					}			
 					break;
 				case hot:
@@ -178,16 +210,6 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		hots.add(getString(R.string.all_of));
 		hots.add(getString(R.string.hot));
 		hots.add(getString(R.string.nearby));
-		
-		
-		parts.add(getString(R.string.all_size, youhuiQuans.size()));
-		parts.add(getString(R.string.living_service, 5));
-		parts.add(getString(R.string.meili_liren, 5));
-		parts.add(getString(R.string.xiuxian_yulei, 5));
-		parts.add(getString(R.string.canyin_meishi, 5));
-		parts.add(getString(R.string.gouwu_buy, 5));
-		parts.add(getString(R.string.other, 5));
-		
 		
 	}
 
@@ -297,7 +319,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		}
 
 		public void setValue(ViewHolder holder, int position) {
-			YouhuiQuan quan = youhuiQuans.get(position);
+			YouhuiQuan quan = handleYouhuiQuans.get(position);
 			if(TextUtils.isEmpty(quan.fav_id)){
 				if(quan.nonactivatedPic != null){
 					holder.iv_icon.setDefaultImageResId(R.drawable.guanggao);
@@ -459,6 +481,9 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 								youhuiQuans.add(YouhuiQuan.parse(oo));
 							}
 							handleYouhuiQuans.addAll(youhuiQuans);
+							
+							initCategoryNum();
+							
 							adapter.notifyDataSetChanged();
 						}else{
 							String msg = o.optString("msg");
@@ -487,6 +512,10 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 						if(status == 1){
 							JSONArray array = o.optJSONArray("result");
 							int len = array.length();
+							City all = new City();
+							all.areaName = getString(R.string.all_of);
+							all.areaId = "10000";
+							cities.add(all);
 							for(int i=0; i<len; i++){
 								JSONObject oo = array.getJSONObject(i);
 								cities.add(City.parse(oo));
@@ -515,5 +544,80 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 			}
 		};
 	}
-
+	
+	private Response.ErrorListener createGetAreaErrorListener() {
+		return new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				SimpleProgressDialog.dismiss();
+				Log.i(TAG, "error");
+			}
+		};
+	}
+	
+	
+	protected void initShenghuoList(int shenghuoService) {
+		int size = youhuiQuans.size();
+		for(int i=0;i<size; i++){
+			YouhuiQuan c = youhuiQuans.get(i);
+			if(shenghuoService == Integer.parseInt(c.cat_id)){
+				handleYouhuiQuans.add(c);
+			}
+		}
+	}
+	protected void initCity(City c) {
+		handleYouhuiQuans.clear();
+		int size = youhuiQuans.size();
+		for(int i=0; i<size; i++){
+			YouhuiQuan cus = youhuiQuans.get(i);
+			if(c.areaId.equals(cus.districtId)){
+				handleYouhuiQuans.add(cus);
+			}
+		}
+		adapter.notifyDataSetChanged();
+	}
+	
+	
+	int shenghuoService;
+	int meiliLiren;
+	int xiuxianYule;
+	int canyinMeishi;
+	int guangjieGouwu;
+	int otherMe;
+	private void initCategoryNum() {
+		int size = youhuiQuans.size();
+		for(int i=0;i<size; i++){
+			YouhuiQuan c = youhuiQuans.get(i);
+			int type = Integer.parseInt(c.cat_id);
+			switch (type) {
+			case ShangjiaActivity.shenghuo_service:
+				shenghuoService++;
+				break;
+			case ShangjiaActivity.meili_liren:
+				meiliLiren++;	
+				break;
+			case ShangjiaActivity.xiuxian_yule:
+				xiuxianYule++;
+				break;
+			case ShangjiaActivity.canyin_meishi:
+				canyinMeishi++;
+				break;
+			case ShangjiaActivity.guangjie_gouwu:
+				guangjieGouwu++;
+				break;
+			case ShangjiaActivity.other:
+				otherMe++;
+				break;
+			default:
+				break;
+			}
+		}
+		parts.add(getString(R.string.all_size, size));
+		parts.add(getString(R.string.living_service, shenghuoService));
+		parts.add(getString(R.string.meili_liren, meiliLiren));
+		parts.add(getString(R.string.xiuxian_yulei, xiuxianYule));
+		parts.add(getString(R.string.canyin_meishi, canyinMeishi));
+		parts.add(getString(R.string.gouwu_buy, guangjieGouwu));
+		parts.add(getString(R.string.other, otherMe));
+	}
 }

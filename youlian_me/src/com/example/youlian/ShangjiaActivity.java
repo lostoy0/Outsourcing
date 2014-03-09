@@ -34,6 +34,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Card;
+import com.example.youlian.mode.City;
 import com.example.youlian.mode.Customer;
 import com.example.youlian.mode.YouhuiQuan;
 import com.example.youlian.view.SimpleProgressDialog;
@@ -57,7 +58,31 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 	private int type = allarea;
 	
 	private List<Customer> mCustomers = new ArrayList<Customer>();
-	ImageLoader  mImageLoader;;
+	
+	
+	
+	public List<Customer> mHandleCustomers = new ArrayList<Customer>();
+	public List<City> cities = new ArrayList<City>();
+	public List<String> hots = new ArrayList<String>();
+	public List<String> parts = new ArrayList<String>();
+	
+	
+	public static final int shenghuo_service = 1;
+	public static final int meili_liren = 2;
+	public static final int xiuxian_yule = 3;
+	public static final int canyin_meishi = 4;
+	public static final int guangjie_gouwu = 5;
+	public static final int other = 6;
+	
+	int shenghuoService;
+	int meiliLiren;
+	int xiuxianYule;
+	int canyinMeishi;
+	int guangjieGouwu;
+	int otherMe;
+	
+	
+	ImageLoader  mImageLoader;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +90,11 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_membership);
 
-		initViews();
+		initViews(); 
 
 		SimpleProgressDialog.show(this);
-		YouLianHttpApi.searchCustomer(null, createMyReqSuccessListener(), createMyReqErrorListener());
+		YouLianHttpApi.getShangjiaList(Global.getLocCityId(getApplicationContext()), createMyReqSuccessListener(), createMyReqErrorListener());
+		YouLianHttpApi.getAreaByProvinceIdCid(null, Global.getLocCityId(getApplicationContext()), null, creategetAreaByProvinceIdCidSuccessListener(), createGetAreaErrorListener());
 		
 	}
 
@@ -88,7 +114,7 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				Intent in = new Intent(getApplicationContext(), ShangjiaDetailActivity.class);
-				Customer c = mCustomers.get(arg2);
+				Customer c = mHandleCustomers.get(arg2);
 				in.putExtra("customerid", c.id);
 				startActivity(in);
 			}
@@ -107,7 +133,110 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 		adapterAll = new MyAdapterAll(getApplicationContext());
 		listview_all.setAdapter(adapterAll);
 		listview_all.setVisibility(View.GONE);
+		
+		
+		
+		
+		hots.add(getString(R.string.all_of));
+		hots.add(getString(R.string.hot));
+		hots.add(getString(R.string.nearby));
+		
+		
+		
+		listview_all.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+					long arg3) {
+				
+				switch (ShangjiaActivity.this.type) {
+				case allarea:
+					if(position < cities.size()){
+						if(position == 0) {
+							setListviewVisible();
+							return;
+						}
+						City c = cities.get(position);
+						initCity(c);
+					}
+					break;
+				case allsort:
+					if(position < parts.size()){
+						mHandleCustomers.clear();
+						switch (position) {
+						case 0:
+							mHandleCustomers.addAll(mCustomers);
+							break;
+						case shenghuo_service:
+							initShenghuoList(shenghuo_service);
+							break;
+						case meili_liren:
+							initShenghuoList(meili_liren);
+							break;
+						case xiuxian_yule:
+							initShenghuoList(xiuxian_yule);
+							break;
+						case canyin_meishi:
+							initShenghuoList(canyin_meishi);
+							break;
+						case guangjie_gouwu:
+							initShenghuoList(guangjie_gouwu);
+							break;
+						case other:
+							initShenghuoList(other);
+							break;
+						default:
+							break;
+						}
+						adapter.notifyDataSetChanged();
+					}			
+					break;
+				case hot:
+					if(position < hots.size()){
+						String result = hots.get(position);
+						if(result.equals(getString(R.string.all_of))){
+							mHandleCustomers.clear();
+							mHandleCustomers.addAll(mCustomers);
+							adapter.notifyDataSetChanged();
+						}else if(result.equals(getString(R.string.hot))){
+							mHandleCustomers.clear();
+							int size = mCustomers.size();
+							for(int i=0; i<size; i++){
+								Customer y = mCustomers.get(i);
+								if("1".equals(y.isHot)){
+									mHandleCustomers.add(y);
+								}
+							}
+							adapter.notifyDataSetChanged();
+						}else if(result.equals(getString(R.string.nearby))){
+							
+						}else{
+							
+						}
+					}	
+					break;
+					
+				default:
+					break;
+				}
+				setListviewVisible();
+			}
+		});
+		
 	}
+
+
+	protected void initCity(City c) {
+		mHandleCustomers.clear();
+		int size = mCustomers.size();
+		for(int i=0; i<size; i++){
+			Customer cus = mCustomers.get(i);
+			if(c.areaId.equals(cus.districtId)){
+				mHandleCustomers.add(cus);
+			}
+		}
+		adapter.notifyDataSetChanged();
+	}
+
 
 	boolean exChange = true;
 
@@ -118,15 +247,17 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 			finish();
 			break;
 		case R.id.linear_all_area:
+			setFucengVisible();
 			type = allarea;
-//			exChange();
 			adapterAll.notifyDataSetChanged();
 			break;
 		case R.id.linear_all_sort:
+			setFucengVisible();
 			type = allsort;
 			adapterAll.notifyDataSetChanged();
 			break;
 		case R.id.linear_all_hot:
+			setFucengVisible();
 			type = hot;
 			adapterAll.notifyDataSetChanged();
 			break;
@@ -146,6 +277,18 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 		}
 		exChange = !exChange;
 	}
+	
+	public void setFucengVisible(){
+		listview.setVisibility(View.GONE);
+		listview_all.setVisibility(View.VISIBLE);
+	}
+	
+	
+	public void setListviewVisible(){
+		listview.setVisibility(View.VISIBLE);
+		listview_all.setVisibility(View.GONE);
+	}
+	
 
 	private class MyAdapter extends BaseAdapter {
 
@@ -154,7 +297,7 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 
 		@Override
 		public int getCount() {
-			return mCustomers.size();
+			return mHandleCustomers.size();
 		}
 
 		@Override
@@ -213,7 +356,7 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 		}
 
 		public void setValue(ViewHolder holder, int position) {
-			Customer c = mCustomers.get(position);
+			Customer c = mHandleCustomers.get(position);
 			if(c.logo != null){
 				holder.iv_icon.setDefaultImageResId(R.drawable.guanggao);
 				holder.iv_icon.setImageUrl(c.logo, mImageLoader);
@@ -283,7 +426,7 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 
 		@Override
 		public int getCount() {
-			return 1;
+			return 10;
 		}
 
 		@Override
@@ -304,17 +447,56 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 			TextView tv = (TextView) convertView.findViewById(R.id.tv_title);
 			switch (type) {
 			case allarea:
-				
+				iv.setVisibility(View.GONE);
+				if(position < cities.size()){
+					City city = cities.get(position);
+					tv.setText(city.areaName);
+				}
 				break;
 			case allsort:
-				iv.setVisibility(View.GONE);
+				if(position < parts.size()){
+					tv.setText(parts.get(position));
+					switch (position) {
+					case 0:
+						iv.setImageResource(R.drawable.iv_all);
+						break;
+					case 1:
+						iv.setImageResource(R.drawable.living_service);				
+						break;
+					case 2:
+						iv.setImageResource(R.drawable.meili_liren);
+						break;
+					case 3:
+						iv.setImageResource(R.drawable.xiuxian_yule);
+						break;
+					case 4:
+						iv.setImageResource(R.drawable.canyin_meishi);
+						break;
+					case 5:
+						iv.setImageResource(R.drawable.guangjie_gouwu);
+						break;
+					case 6:
+						iv.setImageResource(R.drawable.iv_other);
+						break;
+
+					default:
+						break;
+					}
+					iv.setVisibility(View.VISIBLE);
+				}else{
+					iv.setVisibility(View.GONE);
+				}
+				
 				break;
 			case hot:
-				tv.setVisibility(View.GONE);
+				iv.setVisibility(View.GONE);
+				if(position < hots.size()){
+					tv.setText(hots.get(position));
+				}
 				break;
-
 			}
-
+			
+			
 			return convertView;
 		}
 
@@ -340,6 +522,9 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 						int status = o.optInt("status");
 						if (status == 1) {
 							mCustomers.addAll(Customer.parseList(o));
+							initCategoryNum();
+							
+							mHandleCustomers.addAll(mCustomers);
 							adapter.notifyDataSetChanged();
 						} else {
 							String msg = o.optString("msg");
@@ -352,8 +537,11 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 
 				}
 			}
+
 		};
 	}
+	
+	
 
 	private Response.ErrorListener createMyReqErrorListener() {
 		return new Response.ErrorListener() {
@@ -364,5 +552,100 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 			}
 		};
 	}
+	
 
+	private void initCategoryNum() {
+		int size = mCustomers.size();
+		for(int i=0;i<size; i++){
+			Customer c = mCustomers.get(i);
+			int type = Integer.parseInt(c.customerKindId);
+			switch (type) {
+			case shenghuo_service:
+				shenghuoService++;
+				break;
+			case meili_liren:
+				meiliLiren++;	
+				break;
+			case xiuxian_yule:
+				xiuxianYule++;
+				break;
+			case canyin_meishi:
+				canyinMeishi++;
+				break;
+			case guangjie_gouwu:
+				guangjieGouwu++;
+				break;
+			case other:
+				otherMe++;
+				break;
+			default:
+				break;
+			}
+		}
+		parts.add(getString(R.string.all_size, size));
+		parts.add(getString(R.string.living_service, shenghuoService));
+		parts.add(getString(R.string.meili_liren, meiliLiren));
+		parts.add(getString(R.string.xiuxian_yulei, xiuxianYule));
+		parts.add(getString(R.string.canyin_meishi, canyinMeishi));
+		parts.add(getString(R.string.gouwu_buy, guangjieGouwu));
+		parts.add(getString(R.string.other, otherMe));
+	}
+	
+	
+
+	protected void initShenghuoList(int shenghuoService) {
+		int size = mCustomers.size();
+		for(int i=0;i<size; i++){
+			Customer c = mCustomers.get(i);
+			if(shenghuoService == Integer.parseInt(c.customerKindId)){
+				mHandleCustomers.add(c);
+			}
+		}
+	}
+	
+	
+	private Response.Listener<String> creategetAreaByProvinceIdCidSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if(status == 1){
+							JSONArray array = o.optJSONArray("result");
+							int len = array.length();
+							City all = new City();
+							all.areaName = getString(R.string.all_of);
+							all.areaId = "10000";
+							cities.add(all);
+							for(int i=0; i<len; i++){
+								JSONObject oo = array.getJSONObject(i);
+								cities.add(City.parse(oo));
+							}
+							adapterAll.notifyDataSetChanged();
+						}else{
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+						}
+						
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					
+				}
+			}
+		};
+	}
+
+	private Response.ErrorListener createGetAreaErrorListener() {
+		return new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				SimpleProgressDialog.dismiss();
+				Log.i(TAG, "error");
+			}
+		};
+	}
 }
