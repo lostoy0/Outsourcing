@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,15 +23,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.youlian.more.AppRecommendActivity;
 import com.example.youlian.more.FeekBackActivity;
-import com.example.youlian.more.ShareSetActivity;
+import com.example.youlian.util.PreferencesUtils;
 import com.example.youlian.util.Utils;
 import com.example.youlian.view.SimpleProgressDialog;
 import com.example.youlian.view.dialog.HuzAlertDialog;
 
 
 public class TabMore extends Activity implements OnClickListener{
-
 	
+	private static final int REQ_CODE_LOGIN = 0x1000;
+
 	protected static final String TAG = "TabMore";
 
 	private RelativeLayout messagePropelling;
@@ -102,6 +104,15 @@ public class TabMore extends Activity implements OnClickListener{
 		help = (RelativeLayout)findViewById(R.id.more_help);
 		customServicePhone = (Button)findViewById(R.id.more_custom_service_phone);
 		more_quit = (Button)findViewById(R.id.more_quit);
+		resetQuitButtonText();
+	}
+	
+	private void resetQuitButtonText() {
+		if(PreferencesUtils.isLogin(getApplicationContext())) {
+			more_quit.setText("注销/退出登录");
+		} else {
+			more_quit.setText("登录");
+		}
 	}
 	
 	/**
@@ -171,13 +182,22 @@ public class TabMore extends Activity implements OnClickListener{
 			mhHandler.sendEmptyMessageDelayed(MSG_CLOSE_LOADING, 2000);
 			break;
 		case R.id.more_quit:
-			Global.destroy(this);
-			TabHome.sTabHome.finish();
+			if(PreferencesUtils.isLogin(getApplicationContext())) {
+				Global.destroy(this);
+//				TabHome.sTabHome.finish();
+				resetQuitButtonText();
+			} else {
+				login();
+			}
 			break;
 		}
 		
 	}
 	
+	private void login() {
+		Intent intent = new Intent(this, LoginActivity.class);
+		startActivityForResult(intent, REQ_CODE_LOGIN);
+	}
 	
 	public void notNewVersionShow(Context context) {
 		StringBuffer sb = new StringBuffer();
@@ -232,4 +252,15 @@ public class TabMore extends Activity implements OnClickListener{
             }
         };
     }
+    
+    @Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == REQ_CODE_LOGIN && resultCode == RESULT_OK) {
+			//登录成功，并成功返回
+			if(!TextUtils.isEmpty(Global.getUserToken(this))) {
+				resetQuitButtonText();
+			}
+		}
+	}
 }
