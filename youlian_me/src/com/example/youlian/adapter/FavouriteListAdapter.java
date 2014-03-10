@@ -2,23 +2,31 @@ package com.example.youlian.adapter;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.youlian.FavouriteListActivity;
+import com.example.youlian.Global;
 import com.example.youlian.R;
-import com.example.youlian.mode.Card;
+import com.example.youlian.YouLianHttpApi;
+import com.example.youlian.common.Constants;
 import com.example.youlian.mode.Favourite;
+import com.example.youlian.util.YlLogger;
 
 public class FavouriteListAdapter extends BaseAdapter {
+	private YlLogger mLogger = YlLogger.getLogger(FavouriteListAdapter.class.getSimpleName());
 
 	private FavouriteListActivity mContext;
 	private LayoutInflater mInflater;
@@ -64,13 +72,17 @@ public class FavouriteListAdapter extends BaseAdapter {
 			convertView.setTag(holder);
 		}
 		
+		final Favourite favourite = getItem(position);
+		
 		if(mContext.getEditState()) {
 			holder.deleteButton.setVisibility(View.VISIBLE);
 			holder.deleteButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					mList.remove(position);
-					notifyDataSetChanged();
+					if(favourite != null) {
+						YouLianHttpApi.delFav(Global.getUserToken(mContext), favourite.fav_id, favourite.type + "", 
+								delFavSuccessListener(position), delFavErrorListener());
+					}
 				}
 			});
 		} else {
@@ -92,9 +104,9 @@ public class FavouriteListAdapter extends BaseAdapter {
 				holder.iconImageView.setImageResource(R.drawable.default_img);
 			}
 			
-			holder.nameTextView.setText(item.name);
-			holder.priceTextView.setText("关注数量：" + item.amount);
-			holder.validDateTextView.setText("");
+			holder.nameTextView.setText(item.fav_name);
+			holder.priceTextView.setText("关注数量：" + item.participate_num);
+			holder.validDateTextView.setText("有效期：" + item.apply_date_from.substring(0,10)+"\n"+"至"+item.apply_date_to.substring(0,10));
 		}
 	}
 
@@ -104,4 +116,34 @@ public class FavouriteListAdapter extends BaseAdapter {
 		TextView nameTextView, priceTextView, validDateTextView;
 	}
 
+	private Response.Listener<String> delFavSuccessListener(final int position) {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				if(TextUtils.isEmpty(response)) {
+					mLogger.i("response is null");
+				} else {
+					try {
+						JSONObject object = new JSONObject(response);
+						if("1".equals(object.optString(Constants.key_status))) {
+							mList.remove(position);
+							notifyDataSetChanged();
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+	}
+	
+	private Response.ErrorListener delFavErrorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            	mLogger.e(error.getMessage());
+            }
+        };
+    }
+	
 }

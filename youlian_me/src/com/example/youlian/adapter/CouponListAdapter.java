@@ -15,6 +15,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.youlian.CouponListActivity;
 import com.example.youlian.R;
+import com.example.youlian.YouLianHttpApi;
 import com.example.youlian.mode.YouhuiQuan;
 import com.example.youlian.util.Utils;
 

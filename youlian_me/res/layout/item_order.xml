@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dash="http://schemas.android.com/apk/res/com.example.youlian"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
+    android:background="@drawable/rounded_one"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
     android:orientation="vertical" >
     
     <LinearLayout 
         android:id="@+id/order_item_goods_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:padding="8dp"
         android:orientation="vertical"/>
     
-	<include layout="@layout/merge_line_grey_horizontal"/>
+	 <com.example.youlian.view.DashedLine
+        android:layout_width= "fill_parent"
+        android:layout_height= "1dip"
+        dash:lineColor= "#CCCCCC" />
 	
 	<RelativeLayout 
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_marginLeft="16dp"
-	    android:layout_marginRight="16dp"
+        android:padding="8dp"
 	    android:layout_marginTop="8dp">
 	    <TextView 
 	        android:id="@+id/tv_total_pre"

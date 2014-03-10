@@ -37,6 +37,8 @@ public class OrderListAdapter extends BaseAdapter {
 	private List<Order> mList;
 	private LayoutInflater mInflater;
 	private ImageLoader mImageLoader;
+	
+	private boolean isRechargeOrder = false;
 
 	public OrderListAdapter(Context context, List<Order> list, ImageLoader imageLoader) {
 		mActivity = (MyOrderActivity) context;
@@ -83,21 +85,26 @@ public class OrderListAdapter extends BaseAdapter {
 
 	private void setData(ViewHolder holder, final Order order) {
 		if(holder != null && order != null) {
+			if(order.orderNo != null && order.orderNo.startsWith("R")) isRechargeOrder = true;
+			else isRechargeOrder = false;
+			
 			List<OrderDetail> details = order.orderDetailList;
 			if(details != null && details.size() > 0) {
-				float money = 0f;
-				int quantity = 0;
+				holder.container.removeAllViews();
+				
 				for(int i=0; i<details.size(); i++) {
 					OrderDetail detail = details.get(i);
 					if(detail != null) {
-						money += detail.price*detail.quantity;
-						quantity += detail.quantity;
 						holder.container.addView(createGoodsItemView(detail));
 					}
 				}
 				
-				holder.quantitytTextView.setText("" + quantity);
-				holder.moneyTextView.setText("￥" + money);
+				holder.quantitytTextView.setText("" + order.countQuantity);
+				if(isRechargeOrder) {
+					holder.moneyTextView.setText("￥" + order.youcoinCount);
+				} else {
+					holder.moneyTextView.setText(order.youcoinCount + "U币");
+				}
 			}
 		}
 		
@@ -113,6 +120,7 @@ public class OrderListAdapter extends BaseAdapter {
 		case 0:
 			holder.statusButton.setText("已支付");
 			holder.statusButton.setEnabled(false);
+			holder.cancelButton.setVisibility(View.GONE);
 			break;
 			
 		case 1:
@@ -124,16 +132,19 @@ public class OrderListAdapter extends BaseAdapter {
 					startPay(order);
 				}
 			});
+			holder.cancelButton.setVisibility(View.VISIBLE);
 			break;
 			
 		case 2:
 			holder.statusButton.setText("已取消");
 			holder.statusButton.setEnabled(false);
+			holder.cancelButton.setVisibility(View.GONE);
 			break;
 			
 		case 3:
 			holder.statusButton.setText("已关闭");
 			holder.statusButton.setEnabled(false);
+			holder.cancelButton.setVisibility(View.GONE);
 			break;
 		}
 		
@@ -146,12 +157,10 @@ public class OrderListAdapter extends BaseAdapter {
 	}
 	
 	private void cancelOrder(Order order) {
-		mList.remove(order);
-		notifyDataSetChanged();
-		YouLianHttpApi.cancelOrder(order.id, createCancelOrderSuccessListener(), createCancelOrderErrorListener());
+		YouLianHttpApi.cancelOrder(order.id, createCancelOrderSuccessListener(order), createCancelOrderErrorListener());
 	}
 	
-	private Response.Listener<String> createCancelOrderSuccessListener() {
+	private Response.Listener<String> createCancelOrderSuccessListener(final Order order) {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
@@ -164,6 +173,10 @@ public class OrderListAdapter extends BaseAdapter {
 						JSONObject object = new JSONObject(response);
 						if(0 == object.optInt(Constants.key_status)) {
 							Utils.showToast(mActivity, "取消失败");
+						} else {
+							Utils.showToast(mActivity, "取消成功");
+							order.status = 2;
+							notifyDataSetChanged();
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -199,8 +212,9 @@ public class OrderListAdapter extends BaseAdapter {
 		
 		nameTextView.setText(detail.productName);
 		quantityTextView.setText("x" + detail.quantity);
-		pricetTextView.setText("￥" + detail.price);
 		desctTextView.setText(detail.simpleDescription);
+		if(isRechargeOrder) pricetTextView.setText("￥" + detail.price);
+		else pricetTextView.setText(detail.price + "U币");
 		
 		return goodsView;
 	}

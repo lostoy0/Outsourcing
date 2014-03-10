@@ -66,8 +66,9 @@ public class CouponListActivity extends BaseActivity implements OnItemClickListe
 		mEmptyView.setVisibility(View.GONE);
 		
 		mEditButton = (Button) findViewById(R.id.btn_right);
-		mEditButton.setVisibility(View.VISIBLE);
 		mEditButton.setOnClickListener(this);
+		mEditButton.setVisibility(View.GONE);
+		mEditButton.setEnabled(false);
 		
 		mListView = (ListView) findViewById(android.R.id.list);
 		mListView.setOnItemClickListener(this);
