@@ -2,10 +2,10 @@ package com.example.youlian;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,19 +20,17 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.example.youlian.app.MyVolley;
+import com.example.youlian.app.YouLianApp;
 import com.example.youlian.mode.YouhuiQuan;
-import com.umeng.socialize.bean.MultiStatus;
 import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.bean.SocializeConfig;
-import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
-import com.umeng.socialize.controller.listener.SocializeListeners.MulStatusListener;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.media.UMVideo;
 import com.umeng.socialize.media.UMusic;
@@ -211,7 +209,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 	}
 	
 
-
+	boolean isExist = false;
 	protected void refreshView() {
 		ImageLoader imageLoader = MyVolley.getImageLoader();
 		if (TextUtils.isEmpty(quan.fav_id)) {
@@ -228,6 +226,15 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			}
 		}
 		tv_title.setText(quan.fav_name);
+		
+		
+		if(isExit()){
+			isExist = true;
+			bt_apply.setText("使用");
+		}else{
+			isExist = false;
+			bt_apply.setText("申请");
+		}
 		
 		apply_num.setText(getString(R.string.number_apply_use,
 				quan.participate_num));
@@ -267,6 +274,20 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		}
 		
 	}
+	private boolean isExit() {
+		YouLianApp app = (YouLianApp)getApplication();
+		ArrayList<YouhuiQuan> mCouponList = app.mCouponList;
+		int size = mCouponList.size();
+		for(int i=0; i<size; i++){
+			YouhuiQuan y = mCouponList.get(i);
+			if(quan.fav_ent_id.equals(y.fav_ent_id)){
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
 	private boolean isFav = false;
 	@Override
 	public void onClick(View v) {
@@ -276,7 +297,12 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			break;
 
 		case R.id.bt_apply:
-			YouLianHttpApi.applyYouhuiQuan(Global.getUserToken(getApplicationContext()), quan.fav_ent_id, createApplyYouhuiQuanSuccessListener(), createMyReqErrorListener());
+			if(isExist){
+				
+			}else{
+				YouLianHttpApi.applyYouhuiQuan(Global.getUserToken(getApplicationContext()), 
+						quan.fav_ent_id, createApplyYouhuiQuanSuccessListener(), createMyReqErrorListener());
+			}
 			break;
 		case R.id.btn_pie:// 敲到
 			Intent i = new Intent(getApplicationContext(), CommentAddActivity.class);
@@ -379,15 +405,18 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 						JSONObject o = new JSONObject(response);
 						int status = o.optInt("status");
 						if (status == 1) {
-							Toast.makeText(getApplicationContext(), "申请成功",
-									Toast.LENGTH_SHORT).show();
-							bt_apply.setText("已申请");
-						} else {
+							
+							JSONObject jsonObject = o.optJSONObject("result");
+							int suc = jsonObject.optInt("successful");
+							if(suc == 1){
+								bt_apply.setText("已申请");
+							}else{
+								
+							}
 							String msg = o.optString("msg");
 							Toast.makeText(getApplicationContext(), msg,
 									Toast.LENGTH_SHORT).show();
-						}
-
+						} 
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}

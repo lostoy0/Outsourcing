@@ -299,22 +299,22 @@ public class TabFirstPage extends Activity implements OnClickListener {
 			Intent i = new Intent(this, AreaProvinceActivity.class);
 			startActivityForResult(i, REQ_ADDR);
 			break;
-		case R.id.bt_membercard:
+		case R.id.bt_membercard:// 会员卡
 			i = new Intent(getApplicationContext(), MembershipActivity.class);
 			startActivity(i);
 			break;
-		case R.id.bt_youhuiquan:
+		case R.id.bt_youhuiquan:// 优惠券
 			i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
 			i.putExtra("type", 0);
 			startActivity(i);
 			break;
 
-		case R.id.bt_hotbuy:
+		case R.id.bt_hotbuy:// 热狗
 			i = new Intent(getApplicationContext(), YouhuiQuanActivity.class);
 			i.putExtra("type", 1);
 			startActivity(i);
 			break;
-		case R.id.linear_act:
+		case R.id.linear_act:// 活动
 			i = new Intent(getApplicationContext(), AllSellerActivity.class);
 			startActivity(i);
 			break;

@@ -1237,15 +1237,44 @@ public class YouLianHttpApi {
 	 * @param successListener
 	 * @param errorListener
 	 */
-	public static void searchCustomer(String search_key,
+	public static void searchShangjia(String search_key, String city_id,
 			Response.Listener<String> successListener,
 			Response.ErrorListener errorListener) {
 		String server = "younion.customers.get";
-		String url = getUrl(KEY_SERVER, server, "search_key", search_key);
+		String url = getUrl(KEY_SERVER, server, "search_key", search_key, "city_id", city_id);
 		Log.i(TAG, "url:" + url);
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
+		queue.add(myReq);
+	}
+	
+	
+	public static void searchAct(String search_key, String city_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.allactivitys.get";
+		String url = getUrl(KEY_SERVER, server, "search_key", search_key, "city_id", city_id);
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		myReq.setShouldCache(false);
+		queue.add(myReq);
+	}
+	
+	
+	public static void searchCards(String search_key, String city_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.cards.get";
+		String url = getUrl(KEY_SERVER, server, "search_key", search_key, "city_id", city_id);
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 	

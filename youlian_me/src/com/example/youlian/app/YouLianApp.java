@@ -16,18 +16,29 @@
 
 package com.example.youlian.app;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONException;
+
 import android.app.AlarmManager;
 import android.app.Application;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.baidu.mapapi.BMapManager;
 import com.baidu.mapapi.MKEvent;
 import com.baidu.mapapi.MKGeneralListener;
 import com.example.youlian.AlertMessageService;
+import com.example.youlian.Global;
+import com.example.youlian.YouLianHttpApi;
+import com.example.youlian.mode.YouhuiQuan;
 
 /**
  * Application class for the demo. Used to ensure that MyVolley is initialized. {@see MyVolley}
@@ -77,6 +88,8 @@ public class YouLianApp extends Application {
         
         Log.i(TAG, "YouLianApp onCreate:" + YouLianApp.this);
         init();
+        
+        YouLianHttpApi.getCouponList(Global.getUserToken(this), createGetCardListSuccessListener(), createGetCardListErrorListener());
     }
 
 
@@ -102,5 +115,33 @@ public class YouLianApp extends Application {
 		AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 		am.cancel(sAlertSender);
 	}
+    
+    public ArrayList<YouhuiQuan> mCouponList = new ArrayList<YouhuiQuan>();
+    private Response.Listener<String> createGetCardListSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				if(TextUtils.isEmpty(response)) {
+				} else {
+					try {
+						List<YouhuiQuan> couponList = YouhuiQuan.parse(response);
+						if(couponList != null && couponList.size() > 0) {
+							mCouponList.addAll(couponList);
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+	}
+	
+	private Response.ErrorListener createGetCardListErrorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        };
+    }
     
 }

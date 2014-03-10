@@ -3,6 +3,7 @@ package com.example.youlian;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,9 +38,12 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.youlian.mode.Card;
 import com.example.youlian.mode.Customer;
 import com.example.youlian.util.PreferencesUtils;
-import com.example.youlian.view.CutomListview;
+import com.example.youlian.view.ListviewAct;
+import com.example.youlian.view.ListviewCards;
+import com.example.youlian.view.ListviewShangjia;
 import com.example.youlian.view.SimpleProgressDialog;
 
 /**
@@ -53,8 +57,9 @@ import com.example.youlian.view.SimpleProgressDialog;
 public class SearchActivity extends Activity implements OnClickListener, OnCheckedChangeListener, OnItemClickListener{
 	    private Context mContext;
 	    private RadioGroup radioGroup;
-	    private ListView actionListView,cardListView;
-	    private CutomListview storeListView;
+	    private ListviewCards cardListView;
+	    private ListviewAct actionListView;
+	    private ListviewShangjia shangjiaListView;
 	    private EditText searchEdit;
 	    private ImageButton ib_right, searchBtn;
 	    private int groupCount;
@@ -119,20 +124,18 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 			ib_right.setOnClickListener(this);
 			
 			
-			View lay_all = mInflater.inflate(R.layout.listview, null);
-			View lay_nearby = mInflater.inflate(R.layout.listview, null);
-			View lay_favourable = mInflater.inflate(R.layout.listview, null);
 			
-			storeListView = new CutomListview(getApplicationContext());
+			shangjiaListView = new ListviewShangjia(getApplicationContext());
 			
-			actionListView = (ListView)lay_nearby.findViewById(R.id.myListView);
-			cardListView = (ListView)lay_favourable.findViewById(R.id.myListView);
+			actionListView = new ListviewAct(getApplicationContext());
+			cardListView = new ListviewCards(getApplicationContext());
+			
 			
 			
 			listViews = new ArrayList<View>();
-			listViews.add(storeListView);
-			listViews.add(lay_nearby);
-			listViews.add(lay_favourable);
+			listViews.add(shangjiaListView);
+			listViews.add(actionListView);
+			listViews.add(cardListView);
 			
 			
 			right_slide = this.findViewById(R.id.right_slide);
@@ -146,8 +149,10 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 		private void initListener(){
 	    	radioGroup.setOnCheckedChangeListener(this);
 //	    	storeListView.setOnItemClickListener(this);
-	    	actionListView.setOnItemClickListener(this);
-	    	cardListView.setOnItemClickListener(this);
+//	    	actionListView.setOnItemClickListener(this);
+//	    	cardListView.setOnItemClickListener(this);
+	    	
+	    	
 	    	myPagerAdapter = new MyPagerAdapter(listViews);
 	    	mPager.setAdapter(myPagerAdapter);
 			mPager.setCurrentItem(0);
@@ -199,9 +204,28 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 			switch (v.getId()) {
 			case R.id.search_btn:
 				searchKey = searchEdit.getText().toString();
-				YouLianHttpApi.searchCustomer(searchKey, createSearchSuccessListener(), createMyReqErrorListener());
-				 
-				
+				switch (currIndex) {
+				case 0: // 商家
+					SimpleProgressDialog.show(this);
+					YouLianHttpApi.searchShangjia(searchKey,Global.getLocCityId(getApplicationContext()), 
+							createSearchShangjiaSuccessListener(), createMyReqErrorListener());
+					break;
+					
+				case 1: // 活动
+					SimpleProgressDialog.show(this);
+					YouLianHttpApi.searchAct(searchKey,Global.getLocCityId(getApplicationContext()), 
+							createSearchActSuccessListener(), createMyReqErrorListener());
+					break;
+					
+				case 2: //会员卡
+					SimpleProgressDialog.show(this);
+					YouLianHttpApi.searchCards(searchKey,Global.getLocCityId(getApplicationContext()), 
+							createSearchCardsSuccessListener(), createMyReqErrorListener());
+					break;
+
+				default:
+					break;
+				}
 				break;
 			case R.id.ib_right:
 //				Intent mCaptureActivity = new Intent(this, CaptureActivity.class);
@@ -303,17 +327,12 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 			public void changeView(int index){
 			}
 		}
-		/**
-		 *ˢ�����
-		 */
-		private void onComplete() {
-			
-		}
 		
-		private Response.Listener<String> createSearchSuccessListener() {
+		private Response.Listener<String> createSearchShangjiaSuccessListener() {
 			return new Response.Listener<String>() {
 				@Override
 				public void onResponse(String response) {
+					SimpleProgressDialog.dismiss();
 					Log.i(TAG, "success:" + response);
 					if (response != null) {
 						try {
@@ -321,7 +340,7 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 							int status = o.optInt("status");
 							if (status == 1) {
 								List<Customer> customers = Customer.parseList(o);
-								storeListView.setData(customers);
+								shangjiaListView.setData(customers);
 							} else {
 								String msg = o.optString("msg");
 								Toast.makeText(getApplicationContext(), msg,
@@ -336,11 +355,75 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 				}
 			};
 		}
+		
+		
+		private Response.Listener<String> createSearchActSuccessListener() {
+			return new Response.Listener<String>() {
+				@Override
+				public void onResponse(String response) {
+					SimpleProgressDialog.dismiss();
+					Log.i(TAG, "success:" + response);
+					if (response != null) {
+						try {
+							JSONObject o = new JSONObject(response);
+							int status = o.optInt("status");
+							if (status == 1) {
+								List<Customer> customers = Customer.parseList(o);
+								shangjiaListView.setData(customers);
+							} else {
+								String msg = o.optString("msg");
+								Toast.makeText(getApplicationContext(), msg,
+										Toast.LENGTH_SHORT).show();
+							}
 
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+
+					}
+				}
+			};
+		}
+		
+
+		
+		private Response.Listener<String> createSearchCardsSuccessListener() {
+			return new Response.Listener<String>() {
+				@Override
+				public void onResponse(String response) {
+					SimpleProgressDialog.dismiss();
+					Log.i(TAG, "success:" + response);
+					if (response != null) {
+						try {
+							JSONObject o = new JSONObject(response);
+							int status = o.optInt("status");
+							if(status == 1){
+								JSONArray array = o.optJSONArray("result");
+								int len = array.length();
+								List<Card> cards = new ArrayList<Card>();
+								for(int i=0; i<len; i++){
+									JSONObject oo = array.getJSONObject(i);
+									cards.add(Card.parse(oo));
+								}
+								cardListView.setData(cards);
+							}else{
+								String msg = o.optString("msg");
+								Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+							}
+							
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+						
+					}
+				}
+			};
+		}
 		private Response.ErrorListener createMyReqErrorListener() {
 			return new Response.ErrorListener() {
 				@Override
 				public void onErrorResponse(VolleyError error) {
+					SimpleProgressDialog.dismiss();
 					Log.i(TAG, "error");
 					Toast.makeText(getApplicationContext(), "请求失败",
 							Toast.LENGTH_SHORT).show();

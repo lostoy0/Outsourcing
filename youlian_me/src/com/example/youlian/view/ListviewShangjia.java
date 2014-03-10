@@ -24,7 +24,7 @@ import com.example.youlian.ShangjiaDetailActivity;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Customer;
 
-public class CutomListview extends FrameLayout {
+public class ListviewShangjia extends FrameLayout {
 	public static final String TAG = "CutomListview";
 
 	/**
@@ -40,20 +40,20 @@ public class CutomListview extends FrameLayout {
 	
 	ImageLoader  mImageLoader;;
 
-	public CutomListview(Context context) {
+	public ListviewShangjia(Context context) {
 		super(context);
 		mContext = context;
 		init();
 	}
 
-	public CutomListview(Context context, AttributeSet attrs,
+	public ListviewShangjia(Context context, AttributeSet attrs,
 			int defStyle) {
 		super(context, attrs, defStyle);
 		mContext = context;
 		init();
 	}
 
-	public CutomListview(Context context, AttributeSet attrs) {
+	public ListviewShangjia(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		mContext = context;
 		init();
@@ -148,12 +148,15 @@ public class CutomListview extends FrameLayout {
 			
 			holder.stroe_name_text.setText(customer.name);
 			holder.card_content_text.setText(customer.introduce);
-			if(Integer.parseInt(customer.isRecommend) == 1){
-				holder.is_rem.setVisibility(View.VISIBLE);
-			}else{
+			try{
+				if(Integer.parseInt(customer.isRecommend) == 1){
+					holder.is_rem.setVisibility(View.VISIBLE);
+				}else{
+					holder.is_rem.setVisibility(View.GONE);
+				}	
+			}catch(NumberFormatException e){
 				holder.is_rem.setVisibility(View.GONE);
 			}
-			
 		}
 
 
