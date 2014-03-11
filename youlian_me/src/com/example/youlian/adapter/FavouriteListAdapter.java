@@ -80,7 +80,7 @@ public class FavouriteListAdapter extends BaseAdapter {
 				@Override
 				public void onClick(View v) {
 					if(favourite != null) {
-						YouLianHttpApi.delFav(Global.getUserToken(mContext), favourite.fav_id, favourite.type + "", 
+						YouLianHttpApi.delFav(Global.getUserToken(mContext), favourite.favour_id, favourite.type + "", 
 								delFavSuccessListener(position), delFavErrorListener());
 					}
 				}
@@ -104,9 +104,9 @@ public class FavouriteListAdapter extends BaseAdapter {
 				holder.iconImageView.setImageResource(R.drawable.default_img);
 			}
 			
-			holder.nameTextView.setText(item.fav_name);
-			holder.priceTextView.setText("关注数量：" + item.participate_num);
-			holder.validDateTextView.setText("有效期：" + item.apply_date_from.substring(0,10)+"\n"+"至"+item.apply_date_to.substring(0,10));
+			holder.nameTextView.setText(item.name);
+			holder.priceTextView.setText("关注数量：" + item.amount);
+			holder.validDateTextView.setVisibility(View.GONE);
 		}
 	}
 

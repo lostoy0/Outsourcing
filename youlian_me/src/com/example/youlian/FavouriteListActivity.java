@@ -72,7 +72,7 @@ public class FavouriteListActivity extends BaseActivity implements OnItemClickLi
 		mAdapter = new FavouriteListAdapter(this, mList, MyVolley.getImageLoader());
 		mListView.setAdapter(mAdapter);
 		
-		YouLianHttpApi.getCouponList(Global.getUserToken(this), createGetFavouriteListSuccessListener(), createGetFavouriteListErrorListener());
+		YouLianHttpApi.getFavouriteList(Global.getUserToken(this), createGetFavouriteListSuccessListener(), createGetFavouriteListErrorListener());
 	}
 
 	@Override
@@ -100,13 +100,13 @@ public class FavouriteListActivity extends BaseActivity implements OnItemClickLi
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		Favourite favourite = mList.get(position);
 		if(favourite != null) {
-			String favorId = favourite.fav_id;
+			String favorId = favourite.favour_id;
 			if(TextUtils.isEmpty(favorId)) return;
 			
 			Intent intent = null;
 			
 			//关注的类型：1为会员卡2为优惠券 3为商家 4为普通活动 5 签到活动
-			int type = favourite.cat_id;
+			int type = favourite.type;
 			switch(type) {
 			case 1:
 				intent = new Intent(this, MemberShipDetail.class);
