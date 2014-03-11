@@ -57,6 +57,9 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 	private static final int hot = 3;
 	private int type = allarea;
 	
+	
+	private int type_from = 0;
+	
 	public List<YouhuiQuan> youhuiQuans = new ArrayList<YouhuiQuan>();
 	
 	
@@ -84,10 +87,9 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		back = (ImageButton) this.findViewById(R.id.back);
 		back.setOnClickListener(this);
 		
-		
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
-		int type = getIntent().getIntExtra("type", 0);
-		if(type == 0){
+		type_from = getIntent().getIntExtra("type", 0);
+		if(type_from == 0){
 			tv_title.setText(R.string.youhuiquan);
 		}else{
 			tv_title.setText("热购");
@@ -344,21 +346,24 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 			}else{
 				holder.iv_xian.setVisibility(View.GONE);
 			}
+			
 			if(quan.isBuy.equals("1")){
 				holder.iv_gou.setVisibility(View.VISIBLE);
 			}else{
 				holder.iv_gou.setVisibility(View.GONE);
+			}
+			
+			if(quan.isHotBuy.equals("1")){
+				holder.iv_qiang.setVisibility(View.VISIBLE);
+			}else{
+				holder.iv_qiang.setVisibility(View.GONE);
 			}
 			if(quan.isAgio.equals("1")){
 				holder.iv_zhe.setVisibility(View.VISIBLE);
 			}else{
 				holder.iv_zhe.setVisibility(View.GONE);
 			}
-			if(quan.isHotBuy.equals("1")){
-				holder.iv_qiang.setVisibility(View.VISIBLE);
-			}else{
-				holder.iv_qiang.setVisibility(View.GONE);
-			}
+			
 		}
 
 		class ViewHolder {
@@ -478,7 +483,14 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 							int len = array.length();
 							for(int i=0; i<len; i++){
 								JSONObject oo = array.getJSONObject(i);
-								youhuiQuans.add(YouhuiQuan.parse(oo));
+								YouhuiQuan y = YouhuiQuan.parse(oo);
+								if(type_from == 0){//优惠券
+									youhuiQuans.add(y);
+								}else {
+									if("1".equals(y.isBuy)){
+										youhuiQuans.add(y);
+									}
+								}
 							}
 							handleYouhuiQuans.addAll(youhuiQuans);
 							

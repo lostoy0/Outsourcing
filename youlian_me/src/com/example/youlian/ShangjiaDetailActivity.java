@@ -85,7 +85,7 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 		
 		YouLianHttpApi.getCustomerDetail(
 				Global.getUserToken(getApplicationContext()), customerid,
-				createDelFavSuccessListener(), createMyReqErrorListener());
+				createGetShangjiaDetailSuccessListener(), createMyReqErrorListener());
 	}
 	private Gallery image_wall_gallery;
 	private ImageAdapter adapter;
@@ -163,6 +163,15 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 		
 		tv_title.setText(card.name);
 		
+		
+		if("1".equals(card.is_follow)){
+			isFav = true;
+			mMoreButton.setText("已收藏");
+		}else{
+			isFav = false;
+			mMoreButton.setText("收藏");
+		}
+		
 		StringBuilder sb = new StringBuilder();
 		sb.append(card.favEntityCount).append("张优惠券 ")
 		.append("  |  ")
@@ -225,9 +234,9 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 			break;
 		case R.id.btn_more:// 收藏
 			if(isFav){
-				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), card.id, "2", createDelFavSuccessListener(), createMyReqErrorListener());
+				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), card.id, "3", createDelFavSuccessListener(), createMyReqErrorListener());
 			}else{
-				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), card.id, "2", createAddFavSuccessListener(), createMyReqErrorListener());
+				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), card.id, "3", createAddFavSuccessListener(), createMyReqErrorListener());
 			}
 			isFav = !isFav;
 			break;
@@ -327,6 +336,37 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
     private UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.share", RequestType.SOCIAL);;
 
 	private Response.Listener<String> createDelFavSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if (status == 1) {
+							Toast.makeText(getApplicationContext(), "关注成功",
+									Toast.LENGTH_SHORT).show();
+							mMoreButton.setText("已收藏");
+							
+						} else {
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						}
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		};
+	}
+	
+	
+	
+	private Response.Listener<String> createGetShangjiaDetailSuccessListener() {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {

@@ -122,6 +122,14 @@ public class AllSellerDetailActivity extends Activity implements OnClickListener
                        ImageLoader.getImageListener(iv, 
                                                      0, 
                                                      0));
+        if("1".equals(act.is_follow)){
+			isFav = true;
+			mMoreButton.setText("已收藏");
+		}else{
+			isFav = false;
+			mMoreButton.setText("收藏");
+		}
+        
         tv_desc.setText(act.description);
         
         tv_title.setText(act.title);
@@ -159,9 +167,9 @@ public class AllSellerDetailActivity extends Activity implements OnClickListener
 			break;
 		case R.id.btn_more:// 收藏
 			if(isFav){
-				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), act.customerId, "2", createDelFavSuccessListener(), createMyReqErrorListener());
+				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), act.id, "3", createDelFavSuccessListener(), createMyReqErrorListener());
 			}else{
-				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), act.customerId, "2", createAddFavSuccessListener(), createErrorListener());
+				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), act.id, "3", createAddFavSuccessListener(), createErrorListener());
 			}
 			isFav = !isFav;
 			break;

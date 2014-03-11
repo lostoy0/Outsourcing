@@ -33,8 +33,8 @@ public class Act implements Serializable {
 	public String top;
 	
 	public ArrayList<Shop> shops = new ArrayList<Shop>();
-	private String is_follow;
-	private String telphone; 
+	public String is_follow;
+	public String telphone; 
 	
 	
 	

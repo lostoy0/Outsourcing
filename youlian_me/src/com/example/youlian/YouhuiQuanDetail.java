@@ -236,6 +236,14 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			bt_apply.setText("申请");
 		}
 		
+		if("1".equals(quan.is_favorites)){
+			isFav = true;
+			mMoreButton.setText("已收藏");
+		}else{
+			isFav = false;
+			mMoreButton.setText("收藏");
+		}
+		
 		apply_num.setText(getString(R.string.number_apply_use,
 				quan.participate_num));
 		tv_name.setText("名称：" + quan.fav_name);
@@ -257,19 +265,32 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 					break;
 				}
 				YouhuiQuan quan = list.get(i);
+				ImageView iv = ivs.get(i);
 				if (TextUtils.isEmpty(quan.fav_id)) {
 					if (quan.nonactivatedPic != null) {
 						imageLoader.get(quan.nonactivatedPic, ImageLoader
-								.getImageListener(ivs.get(i), R.drawable.guanggao,
+								.getImageListener(iv, R.drawable.guanggao,
 										R.drawable.guanggao));
 					}
 				} else {
 					if (quan.activatedPic != null) {
 						imageLoader.get(quan.activatedPic, ImageLoader
-								.getImageListener(ivs.get(i), R.drawable.guanggao,
+								.getImageListener(iv, R.drawable.guanggao,
 										R.drawable.guanggao));
 					}
 				}
+				iv.setTag(quan);
+				iv.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						YouhuiQuan youhuiQuan = (YouhuiQuan)v.getTag();
+						if(youhuiQuan != null){
+							Intent intent = new Intent(getApplicationContext(), YouhuiQuanDetail.class);
+							intent.putExtra("fav_ent_id", youhuiQuan.fav_ent_id);
+							startActivity(intent);
+						}
+					}
+				});
 			}
 		}
 		
@@ -298,7 +319,8 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 
 		case R.id.bt_apply:
 			if(isExist){
-				
+				YouLianHttpApi.useYouhuiQuan(Global.getUserToken(getApplicationContext()), quan.fav_id, 
+						createUseYouhuiQuanSuccessListener(), createMyReqErrorListener());
 			}else{
 				YouLianHttpApi.applyYouhuiQuan(Global.getUserToken(getApplicationContext()), 
 						quan.fav_ent_id, createApplyYouhuiQuanSuccessListener(), createMyReqErrorListener());
@@ -321,9 +343,9 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			break;
 		case R.id.btn_more:// 收藏
 			if(isFav){
-				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), quan.fav_id, "2", createDelFavSuccessListener(), createMyReqErrorListener());
+				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), quan.fav_ent_id, "2", createDelFavSuccessListener(), createMyReqErrorListener());
 			}else{
-				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), quan.fav_id, "2", createAddFavSuccessListener(), createMyReqErrorListener());
+				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), quan.fav_ent_id, "2", createAddFavSuccessListener(), createMyReqErrorListener());
 			}
 			isFav = !isFav;
 			break;
@@ -405,11 +427,13 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 						JSONObject o = new JSONObject(response);
 						int status = o.optInt("status");
 						if (status == 1) {
-							
 							JSONObject jsonObject = o.optJSONObject("result");
 							int suc = jsonObject.optInt("successful");
 							if(suc == 1){
-								bt_apply.setText("已申请");
+								bt_apply.setText("使用");
+								YouLianApp app = (YouLianApp)getApplication();
+								app.mCouponList.add(quan);
+								isExist = true;
 							}else{
 								
 							}
@@ -417,6 +441,42 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 							Toast.makeText(getApplicationContext(), msg,
 									Toast.LENGTH_SHORT).show();
 						} 
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		};
+	}
+	
+	
+	
+	private Response.Listener<String> createUseYouhuiQuanSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if (status == 1) {
+							
+							JSONObject jsonObject = o.optJSONObject("result");
+							int suc = jsonObject.optInt("successful");
+							if(suc == 1){
+							}else{
+								
+							}
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						} else{
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						}
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -438,7 +498,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 						JSONObject o = new JSONObject(response);
 						int status = o.optInt("status");
 						if (status == 1) {
-							Toast.makeText(getApplicationContext(), "关注成功",
+							Toast.makeText(getApplicationContext(), "收藏成功",
 									Toast.LENGTH_SHORT).show();
 							mMoreButton.setText("已收藏");
 						} else {
@@ -466,7 +526,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 						JSONObject o = new JSONObject(response);
 						int status = o.optInt("status");
 						if (status == 1) {
-							Toast.makeText(getApplicationContext(), "关注成功",
+							Toast.makeText(getApplicationContext(), "删除成功",
 									Toast.LENGTH_SHORT).show();
 							mMoreButton.setText("收藏");
 						} else {

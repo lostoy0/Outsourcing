@@ -70,7 +70,7 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 		
 		YouLianHttpApi.getMemberCardDetail(
 				Global.getUserToken(getApplicationContext()), card_id,
-				createDelFavSuccessListener(), createMyReqErrorListener());
+				createGetCardDetailSuccessListener(), createMyReqErrorListener());
 	}
 
 	private void initViews() {
@@ -136,6 +136,15 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 			bt_chongzhi.setEnabled(false);
 			bt_chongzhi.setClickable(false);
 			bt_chongzhi.setText(R.string.already_apply);
+		}
+		
+		
+		if("1".equals(card.is_follow)){
+			isFav = true;
+			mMoreButton.setText("已收藏");
+		}else{
+			isFav = false;
+			mMoreButton.setText("收藏");
 		}
 		
 		tv_apply.setText(getString(R.string.number_apply_use_card, card.card_num));
@@ -230,9 +239,9 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 			break;
 		case R.id.btn_more:// 收藏
 			if(isFav){
-				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), card.card_id, "2", createDelFavSuccessListener(), createMyReqErrorListener());
+				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), card.card_id, "1", createDelFavSuccessListener(), createMyReqErrorListener());
 			}else{
-				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), card.card_id, "2", createAddFavSuccessListener(), createMyReqErrorListener());
+				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), card.card_id, "1", createAddFavSuccessListener(), createMyReqErrorListener());
 			}
 			isFav = !isFav;
 			break;
@@ -241,7 +250,10 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 		}
 	}
 
-	private Response.Listener<String> createDelFavSuccessListener() {
+	
+	
+	
+	private Response.Listener<String> createGetCardDetailSuccessListener() {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
@@ -269,6 +281,39 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 			}
 		};
 	}
+	
+	
+
+	private Response.Listener<String> createDelFavSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if (status == 1) {
+							Toast.makeText(getApplicationContext(), "取消成功",
+									Toast.LENGTH_SHORT).show();
+							isFav = false;
+							mMoreButton.setText("收藏");
+							
+						} else {
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						}
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		};
+	}
+	
 	private Response.Listener<String> createAddFavSuccessListener() {
 		return new Response.Listener<String>() {
 			@Override
@@ -281,6 +326,7 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 						if (status == 1) {
 							Toast.makeText(getApplicationContext(), "关注成功",
 									Toast.LENGTH_SHORT).show();
+							isFav = true;
 							mMoreButton.setText("已收藏");
 						} else {
 							String msg = o.optString("msg");

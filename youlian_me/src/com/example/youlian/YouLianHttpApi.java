@@ -370,6 +370,22 @@ public class YouLianHttpApi {
 		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
+	
+	
+	public static void useYouhuiQuan(String user_token, String fav_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.fav.use";
+		String url = getUrl(KEY_SERVER, server, "user_token", user_token,
+				"fav_id", fav_id);
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		myReq.setShouldCache(false);
+		queue.add(myReq);
+	}
+	
 
 	/**
 	 * 点评列表
@@ -736,6 +752,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -749,6 +766,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -1278,7 +1296,12 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
-	
+	/**
+	 * 商家列表
+	 * @param city_id
+	 * @param successListener
+	 * @param errorListener
+	 */
 	public static void getShangjiaList(String city_id,
 			Response.Listener<String> successListener,
 			Response.ErrorListener errorListener) {
@@ -1288,6 +1311,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -1309,6 +1333,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 

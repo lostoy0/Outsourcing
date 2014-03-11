@@ -6,10 +6,10 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:id="@+id/linear_main"
         android:orientation="vertical" >
 
-       <include layout="@layout/merge_title_layout" />
-        
+        <include layout="@layout/merge_title_layout" />
 
         <RelativeLayout
             android:id="@+id/shell_foot_Layout"
@@ -98,21 +98,26 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout 
+    <LinearLayout
         android:id="@+id/right_slide"
-        android:layout_width="fill_parent"
+        android:layout_width="250dp"
         android:layout_height="fill_parent"
-        android:visibility="gone"
-        android:background="#ff0000"
+        android:orientation="vertical"
+        android:background="#919191"
+        android:layout_alignParentRight="true"
         >
-        
-        <Button 
+
+        <Button
+            android:id="@+id/back_to_main"
             android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="返回"
-        android:id="@+id/back_to_main"
-            />
+            android:layout_height="wrap_content"
+            android:text="返回" />
+         <ListView 
+        android:layout_width="250dp"
+        android:layout_height="fill_parent" 
+        android:cacheColorHint="#00000000"
+        android:id="@+id/listview_all"
+        ></ListView>
     </LinearLayout>
-  
 
 </RelativeLayout>
