@@ -119,12 +119,14 @@ public class OrderListAdapter extends BaseAdapter {
 		switch(order.status) {
 		case 0:
 			holder.statusButton.setText("已支付");
+			holder.statusButton.setBackgroundResource(R.drawable.order_btn_canceled_normal);
 			holder.statusButton.setEnabled(false);
 			holder.cancelButton.setVisibility(View.GONE);
 			break;
 			
 		case 1:
 			holder.statusButton.setText("未支付");
+			holder.statusButton.setBackgroundResource(R.drawable.cart_pay_selector);
 			holder.statusButton.setEnabled(true);
 			holder.statusButton.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -137,12 +139,14 @@ public class OrderListAdapter extends BaseAdapter {
 			
 		case 2:
 			holder.statusButton.setText("已取消");
+			holder.statusButton.setBackgroundResource(R.drawable.order_btn_canceled_normal);
 			holder.statusButton.setEnabled(false);
 			holder.cancelButton.setVisibility(View.GONE);
 			break;
 			
 		case 3:
 			holder.statusButton.setText("已关闭");
+			holder.statusButton.setBackgroundResource(R.drawable.order_btn_canceled_normal);
 			holder.statusButton.setEnabled(false);
 			holder.cancelButton.setVisibility(View.GONE);
 			break;
