@@ -6,6 +6,8 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -34,6 +36,8 @@ import com.example.youlian.util.YlLogger;
  */
 public class PayActivity extends BaseActivity implements OnClickListener {
 	private static YlLogger mLogger = YlLogger.getLogger(PayActivity.class.getSimpleName());
+	
+	private static final int REQ_ALIPAY_WAP = 1000;
 	
 	private static final int TYPE_YIPAY = 4;
 	private static final int TYPE_UNIONPAY = 3;
@@ -174,8 +178,22 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 			return;
 		}
 		
-		YouLianHttpApi.payOrder(Global.getUserToken(getApplicationContext()), mOrder.id, mSelectedPayType, 
-				createPaySuccessListener(), createPayErrorListener());
+		if(mSelectedPayType == TYPE_ALIPAY_CLIENT) {
+			YouLianHttpApi.payOrder(Global.getUserToken(getApplicationContext()), mOrder.id, mSelectedPayType, 
+					createPaySuccessListener(), createPayErrorListener());
+		} else if(mSelectedPayType == TYPE_ALIPAY_WEB) {
+			
+			String url = YouLianHttpApi.getUrl("service", "younion.order.pay", "user_token", Global.getUserToken(this), "id",
+					mOrder.id, "payType", TYPE_ALIPAY_WEB + "");
+			
+//			Intent intent = new Intent(PayActivity.this, AliWapPayActivity.class);
+//			intent.putExtra("url", url);
+//			startActivityForResult(intent, REQ_ALIPAY_WAP);
+			
+			Uri uri = Uri.parse(url);
+			Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+			startActivity(intent);
+		}
 	}
 
 	private void initViews() {
@@ -310,7 +328,12 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
-					mLogger.i(response);
+					/*if(mSelectedPayType == TYPE_ALIPAY_WEB) {
+						Intent intent = new Intent(PayActivity.this, AliWapPayActivity.class);
+						intent.putExtra("wap", response);
+						startActivityForResult(intent, REQ_ALIPAY_WAP);
+						return;
+					}*/
 					
 					try {
 						JSONObject object = new JSONObject(response);
