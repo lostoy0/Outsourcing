@@ -23,6 +23,7 @@ import com.example.youlian.R;
 import com.example.youlian.YouLianHttpApi;
 import com.example.youlian.common.Constants;
 import com.example.youlian.mode.Favourite;
+import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
 
 public class FavouriteListAdapter extends BaseAdapter {
@@ -128,6 +129,8 @@ public class FavouriteListAdapter extends BaseAdapter {
 						if("1".equals(object.optString(Constants.key_status))) {
 							mList.remove(position);
 							notifyDataSetChanged();
+						} else {
+							Utils.showToast(mContext, "删除失败");
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -142,6 +145,7 @@ public class FavouriteListAdapter extends BaseAdapter {
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	Utils.showToast(mContext, "删除失败");
             }
         };
     }

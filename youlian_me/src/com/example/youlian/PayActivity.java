@@ -6,8 +6,8 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -71,6 +71,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 	
 	private PayHandler mHandler;
 	
+	@SuppressLint("HandlerLeak")
 	private final class PayHandler extends Handler {
 		@Override
 		public void handleMessage(Message msg) {
@@ -186,13 +187,13 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 			String url = YouLianHttpApi.getUrl("service", "younion.order.pay", "user_token", Global.getUserToken(this), "id",
 					mOrder.id, "payType", TYPE_ALIPAY_WEB + "");
 			
-//			Intent intent = new Intent(PayActivity.this, AliWapPayActivity.class);
-//			intent.putExtra("url", url);
-//			startActivityForResult(intent, REQ_ALIPAY_WAP);
+			Intent intent = new Intent(PayActivity.this, AliWapPayActivity.class);
+			intent.putExtra("url", url);
+			startActivityForResult(intent, REQ_ALIPAY_WAP);
 			
-			Uri uri = Uri.parse(url);
-			Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-			startActivity(intent);
+//			Uri uri = Uri.parse(url);
+//			Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//			startActivity(intent);
 		}
 	}
 
@@ -405,4 +406,11 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		}.start();
 	}
 	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == REQ_ALIPAY_WAP) {
+			finish();
+		}
+	}
 }

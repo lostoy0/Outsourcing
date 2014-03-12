@@ -2,6 +2,9 @@ package com.example.youlian.adapter;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +14,20 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.youlian.CouponListActivity;
 import com.example.youlian.R;
 import com.example.youlian.YouLianHttpApi;
+import com.example.youlian.common.Constants;
 import com.example.youlian.mode.YouhuiQuan;
 import com.example.youlian.util.Utils;
+import com.example.youlian.util.YlLogger;
 
 public class CouponListAdapter extends BaseAdapter {
+	private YlLogger mLogger = YlLogger.getLogger(CouponListAdapter.class.getSimpleName()); 
 
 	private CouponListActivity mContext;
 	private LayoutInflater mInflater;
@@ -66,20 +74,23 @@ public class CouponListAdapter extends BaseAdapter {
 			convertView.setTag(holder);
 		}
 		
+		final YouhuiQuan quan = mCouponList.get(position);
+		
 		if(mContext.getEditState()) {
 			holder.deleteButton.setVisibility(View.VISIBLE);
 			holder.deleteButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					mCouponList.remove(position);
-					notifyDataSetChanged();
+					if(quan != null) {
+						YouLianHttpApi.deleteCard(quan.fav_id, "2", delSuccessListener(position), delErrorListener());
+					}
 				}
 			});
 		} else {
 			holder.deleteButton.setVisibility(View.GONE);
 		}
 		
-		setData(holder, mCouponList.get(position));
+		setData(holder, quan);
 		
 		return convertView;
 	}
@@ -115,5 +126,38 @@ public class CouponListAdapter extends BaseAdapter {
 		TextView nameTextView, priceTextView, validDateTextView;
 		ImageView presentImageView;
 	}
+	
+	private Response.Listener<String> delSuccessListener(final int position) {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				if(TextUtils.isEmpty(response)) {
+					mLogger.i("response is null");
+				} else {
+					try {
+						JSONObject object = new JSONObject(response);
+						if("1".equals(object.optString(Constants.key_status))) {
+							mCouponList.remove(position);
+							notifyDataSetChanged();
+						} else {
+							Utils.showToast(mContext, "删除失败");
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+	}
+	
+	private Response.ErrorListener delErrorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            	mLogger.e(error.getMessage());
+            	Utils.showToast(mContext, "删除失败");
+            }
+        };
+    }
 
 }
