@@ -18,6 +18,7 @@ import com.example.youlian.adapter.OrderListAdapter;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Order;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 public class MyOrderActivity extends BaseActivity {
 	private static YlLogger mLogger = YlLogger.getLogger(MyOrderActivity.class.getSimpleName());
@@ -36,14 +37,11 @@ public class MyOrderActivity extends BaseActivity {
 		mList = new ArrayList<Order>();
 		
 		initViews();
-	}
-	
-	@Override
-	protected void onStart() {
-		super.onStart();
+		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getOrder(Global.getUserToken(this), createGetOrderListSuccessListener(), createGetOrderListErrorListener());
 	}
-
+	
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -75,6 +73,7 @@ public class MyOrderActivity extends BaseActivity {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -101,6 +100,7 @@ public class MyOrderActivity extends BaseActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	SimpleProgressDialog.dismiss();
             	showEmptyView();
             }
         };

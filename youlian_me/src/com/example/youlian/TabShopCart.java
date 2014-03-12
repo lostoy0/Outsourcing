@@ -28,6 +28,7 @@ import com.example.youlian.mode.Order;
 import com.example.youlian.util.PreferencesUtils;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 public class TabShopCart extends BaseActivity implements OnClickListener {
 	private YlLogger mLogger = YlLogger.getLogger(TabShopCart.class.getSimpleName());
@@ -70,6 +71,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 	}
 	
 	private void loadData() {
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getShoppingCart(Global.getUserToken(this), createGetGoodsListSuccessListener(), createGetGoodsListErrorListener());
 	}
 
@@ -116,6 +118,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 		case R.id.cart_btn_pay:
 			if(!mGoodsList.isEmpty() && selectAtLeastOne()) {
 				resetPayingData();
+				SimpleProgressDialog.show(this);
 				YouLianHttpApi.addOrder(Global.getUserToken(this), mSelectCartIds, 0, 
 						createAddOrderSuccessListener(), createAddOrderErrorListener());
 			} else {
@@ -228,6 +231,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -261,6 +265,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             	showEmptyView();
             }
@@ -271,6 +276,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -294,6 +300,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             }
         };

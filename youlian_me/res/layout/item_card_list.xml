@@ -4,6 +4,15 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="8dp" >
+    
+    <ImageButton
+        android:id="@+id/card_item_ib_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="16dp"
+        android:background="@null"
+        android:src="@drawable/btn_item_delete_selector" />
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/card_item_iv_icon"

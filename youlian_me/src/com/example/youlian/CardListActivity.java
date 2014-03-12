@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,13 +22,14 @@ import com.example.youlian.adapter.CardListAdapter;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Card;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 /**
  * 卡片列表
  * @author raymond
  *
  */
-public class CardListActivity extends BaseActivity implements OnItemClickListener {
+public class CardListActivity extends BaseActivity implements OnItemClickListener, OnClickListener {
 	private static YlLogger mLogger = YlLogger.getLogger(CardListActivity.class.getSimpleName());
 
 	private static final int REQ_CODE = 0x1000;
@@ -38,6 +40,13 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 	private CardListAdapter mAdapter;
 	
 	private ArrayList<Card> mCards;
+	
+	private Button mEditButton;
+	private boolean mEditing = false;
+	
+	public boolean isEditing() {
+		return mEditing;
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +67,16 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 		mEmptyView = findViewById(R.id.emptyView);
 		mEmptyView.setVisibility(View.GONE);
 		
+		mEditButton = (Button) findViewById(R.id.btn_right);
+		mEditButton.setOnClickListener(this);
+		mEditButton.setVisibility(View.VISIBLE);
+		
 		mListView = (ListView) findViewById(android.R.id.list);
 		mListView.setOnItemClickListener(this);
 		mAdapter = new CardListAdapter(this, mCards, MyVolley.getImageLoader());
 		mListView.setAdapter(mAdapter);
 		
+		SimpleProgressDialog.show(this);
 		refreshData();
 	}
 	
@@ -74,6 +88,22 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+	}
+	
+	@Override
+	public void onClick(View v) {
+		switch(v.getId()) {
+		case R.id.btn_right:
+			if(!mEditing) {
+				mEditing = true;
+				mEditButton.setText("完成");
+			} else {
+				mEditing = false;
+				mEditButton.setText("编辑");
+			}
+			mAdapter.notifyDataSetChanged();
+			break;
+		}
 	}
 	
 	@Override
@@ -91,6 +121,7 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -118,10 +149,12 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	SimpleProgressDialog.dismiss();
             	showEmptyView();
             }
         };
     }
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);

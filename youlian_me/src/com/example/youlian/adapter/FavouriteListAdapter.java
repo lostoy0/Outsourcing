@@ -23,7 +23,9 @@ import com.example.youlian.R;
 import com.example.youlian.YouLianHttpApi;
 import com.example.youlian.common.Constants;
 import com.example.youlian.mode.Favourite;
+import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 public class FavouriteListAdapter extends BaseAdapter {
 	private YlLogger mLogger = YlLogger.getLogger(FavouriteListAdapter.class.getSimpleName());
@@ -80,6 +82,7 @@ public class FavouriteListAdapter extends BaseAdapter {
 				@Override
 				public void onClick(View v) {
 					if(favourite != null) {
+						SimpleProgressDialog.show(mContext);
 						YouLianHttpApi.delFav(Global.getUserToken(mContext), favourite.favour_id, favourite.type + "", 
 								delFavSuccessListener(position), delFavErrorListener());
 					}
@@ -120,6 +123,7 @@ public class FavouriteListAdapter extends BaseAdapter {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -128,6 +132,8 @@ public class FavouriteListAdapter extends BaseAdapter {
 						if("1".equals(object.optString(Constants.key_status))) {
 							mList.remove(position);
 							notifyDataSetChanged();
+						} else {
+							Utils.showToast(mContext, "删除失败");
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -141,7 +147,9 @@ public class FavouriteListAdapter extends BaseAdapter {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
+            	Utils.showToast(mContext, "删除失败");
             }
         };
     }

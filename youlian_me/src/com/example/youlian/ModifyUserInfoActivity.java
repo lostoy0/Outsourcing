@@ -23,6 +23,7 @@ import com.example.youlian.mode.RegioninfoVO;
 import com.example.youlian.mode.UserInfo;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 public class ModifyUserInfoActivity extends BaseActivity implements
 		OnClickListener {
@@ -48,6 +49,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements
 		
 		initView();
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getUserInfo(Global.getUserToken(this), createGetUserInfoSuccessListener(), createGetUserInfoErrorListener());
 	}
 
@@ -148,6 +150,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -172,6 +175,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             }
         };

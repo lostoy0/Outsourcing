@@ -18,6 +18,7 @@ import com.example.youlian.common.Constants;
 import com.example.youlian.mode.UCoinRule;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 /**
  * 兑换积分
@@ -87,6 +88,7 @@ public class CoinExchangeActivity extends BaseActivity {
 					if(exCount*mRule.youdotToYoucoin > mUdotCount) {
 						Utils.showToast(CoinExchangeActivity.this, "兑换额度过大，U点数不够");
 					} else {
+						SimpleProgressDialog.show(CoinExchangeActivity.this);
 						YouLianHttpApi.exchangeCoin(Global.getUserToken(CoinExchangeActivity.this), exCountString, 
 								createExchangeSuccessListener(), createExchangeErrorListener());
 					}
@@ -96,6 +98,7 @@ public class CoinExchangeActivity extends BaseActivity {
 			}
 		});
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getCoinRule(createGetRuleSuccessListener(), createGetRuleErrorListener());
 		
 	}
@@ -110,6 +113,7 @@ public class CoinExchangeActivity extends BaseActivity {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -137,6 +141,7 @@ public class CoinExchangeActivity extends BaseActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	SimpleProgressDialog.dismiss();
             }
         };
     }
@@ -155,6 +160,7 @@ public class CoinExchangeActivity extends BaseActivity {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -183,6 +189,7 @@ public class CoinExchangeActivity extends BaseActivity {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             	Utils.showToast(CoinExchangeActivity.this, "兑换失败");
             	finish();

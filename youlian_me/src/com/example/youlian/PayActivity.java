@@ -6,6 +6,8 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -26,6 +28,7 @@ import com.example.youlian.mode.Order;
 import com.example.youlian.mode.OrderDetail;
 import com.example.youlian.pay.alipay.Result;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 /**
  * 支付界面
@@ -34,6 +37,8 @@ import com.example.youlian.util.YlLogger;
  */
 public class PayActivity extends BaseActivity implements OnClickListener {
 	private static YlLogger mLogger = YlLogger.getLogger(PayActivity.class.getSimpleName());
+	
+	private static final int REQ_ALIPAY_WAP = 1000;
 	
 	private static final int TYPE_YIPAY = 4;
 	private static final int TYPE_UNIONPAY = 3;
@@ -67,6 +72,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 	
 	private PayHandler mHandler;
 	
+	@SuppressLint("HandlerLeak")
 	private final class PayHandler extends Handler {
 		@Override
 		public void handleMessage(Message msg) {
@@ -104,6 +110,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		
 		initViews();
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.orderSettle(mOrder.id, createSettleOrderSuccessListener(), createSettleOrderErrorListener());
 	}
 
@@ -174,8 +181,23 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 			return;
 		}
 		
-		YouLianHttpApi.payOrder(Global.getUserToken(getApplicationContext()), mOrder.id, mSelectedPayType, 
-				createPaySuccessListener(), createPayErrorListener());
+		if(mSelectedPayType == TYPE_ALIPAY_CLIENT) {
+			SimpleProgressDialog.show(this);
+			YouLianHttpApi.payOrder(Global.getUserToken(getApplicationContext()), mOrder.id, mSelectedPayType, 
+					createPaySuccessListener(), createPayErrorListener());
+		} else if(mSelectedPayType == TYPE_ALIPAY_WEB) {
+			
+			String url = YouLianHttpApi.getUrl("service", "younion.order.pay", "user_token", Global.getUserToken(this), "id",
+					mOrder.id, "payType", TYPE_ALIPAY_WEB + "");
+			
+			Intent intent = new Intent(PayActivity.this, AliWapPayActivity.class);
+			intent.putExtra("url", url);
+			startActivityForResult(intent, REQ_ALIPAY_WAP);
+			
+//			Uri uri = Uri.parse(url);
+//			Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//			startActivity(intent);
+		}
 	}
 
 	private void initViews() {
@@ -266,6 +288,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -299,6 +322,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	SimpleProgressDialog.dismiss();
             }
         };
     }
@@ -307,10 +331,16 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
-					mLogger.i(response);
+					/*if(mSelectedPayType == TYPE_ALIPAY_WEB) {
+						Intent intent = new Intent(PayActivity.this, AliWapPayActivity.class);
+						intent.putExtra("wap", response);
+						startActivityForResult(intent, REQ_ALIPAY_WAP);
+						return;
+					}*/
 					
 					try {
 						JSONObject object = new JSONObject(response);
@@ -331,6 +361,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             }
         };
@@ -382,4 +413,11 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		}.start();
 	}
 	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == REQ_ALIPAY_WAP) {
+			finish();
+		}
+	}
 }

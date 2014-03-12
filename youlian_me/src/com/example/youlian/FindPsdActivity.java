@@ -12,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.youlian.util.YlLogger;
 import com.example.youlian.util.YlUtils;
+import com.example.youlian.view.SimpleProgressDialog;
 
 public class FindPsdActivity extends BaseActivity implements OnClickListener {
 	private YlLogger mLogger = YlLogger.getLogger(this.getClass().getSimpleName());
@@ -62,6 +63,7 @@ public class FindPsdActivity extends BaseActivity implements OnClickListener {
 
 	private void seekPassword() {
 		if(!TextUtils.isEmpty(mLoginIdEditText.getText().toString()) && YlUtils.isMobileValid(mLoginIdEditText.getText().toString().trim())) {
+			SimpleProgressDialog.show(this);
 			YouLianHttpApi.seekPassword(mLoginIdEditText.getText().toString().trim(), createSeekSuccessListener(), createSeekErrorListener());
 		} else {
 			showToast("请输入有效手机号码");
@@ -72,6 +74,7 @@ public class FindPsdActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -85,6 +88,7 @@ public class FindPsdActivity extends BaseActivity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             }
         };
