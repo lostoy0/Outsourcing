@@ -22,6 +22,7 @@ import com.example.youlian.adapter.CardListAdapter;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Card;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 /**
  * 卡片列表
@@ -75,6 +76,7 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 		mAdapter = new CardListAdapter(this, mCards, MyVolley.getImageLoader());
 		mListView.setAdapter(mAdapter);
 		
+		SimpleProgressDialog.show(this);
 		refreshData();
 	}
 	
@@ -119,6 +121,7 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -146,6 +149,7 @@ public class CardListActivity extends BaseActivity implements OnItemClickListene
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	SimpleProgressDialog.dismiss();
             	showEmptyView();
             }
         };

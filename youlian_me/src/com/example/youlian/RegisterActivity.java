@@ -23,6 +23,7 @@ import com.example.youlian.util.PreferencesUtils;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
 import com.example.youlian.util.YlUtils;
+import com.example.youlian.view.SimpleProgressDialog;
 
 public class RegisterActivity extends BaseActivity implements OnClickListener {
 	private YlLogger mLogger = YlLogger.getLogger(this.getClass().getSimpleName());
@@ -112,6 +113,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 			return;
 		}
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getVerifyCode(mLoginId, "0",  createVerifyCodeSuccessListener(), createVerifyCodeErrorListener());
 	}
 	
@@ -137,6 +139,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 			return;
 		}
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.register(mLoginId, mPassword, mVerifyCode, createRegisterSuccessListener(), createRegisterErrorListener());
 	}
 	
@@ -144,6 +147,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -161,6 +165,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             }
         };
@@ -170,6 +175,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -186,6 +192,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
 				showToast("注册失败");
             }

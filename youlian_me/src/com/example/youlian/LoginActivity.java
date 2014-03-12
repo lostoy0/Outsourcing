@@ -24,6 +24,7 @@ import com.example.youlian.util.PreferencesUtils;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
 import com.example.youlian.util.YlUtils;
+import com.example.youlian.view.SimpleProgressDialog;
 
 public class LoginActivity extends BaseActivity implements OnClickListener {
 	private static final String TAG = "LoginActivity";
@@ -121,6 +122,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 			return;
 		}
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.login(mLoginIdEditText.getText().toString().trim(), mPasswordEditText.getText().toString().trim(),
 				createLoginSuccessListener(), createLoginErrorListener());
 	}
@@ -129,6 +131,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -144,6 +147,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             }
         };
@@ -156,6 +160,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 				LoginResult result = LoginResult.from(jsonObject.optJSONObject(Constants.key_result));
 				if(result != null) {//登录成功，保存登录信息
 					PreferencesUtils.saveSessionUser(LoginActivity.this, result);
+					SimpleProgressDialog.show(LoginActivity.this);
 					YouLianHttpApi.bindDeviceId(Global.getUserToken(getApplicationContext()), 
 							getDeviceId(), createSuccessListener(), createErrorListener());
 				}
@@ -179,6 +184,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				Log.i(TAG, "response :" + response);
 				showToast("登录成功");
 				setResult(RESULT_OK);
@@ -191,6 +197,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	Log.i(TAG, "response :" + error);
             	setResult(RESULT_OK);
 				finish();

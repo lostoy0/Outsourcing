@@ -23,6 +23,7 @@ import com.example.youlian.mode.UCoinRule;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
 import com.example.youlian.util.YlUtils;
+import com.example.youlian.view.SimpleProgressDialog;
 
 /**
  * 充值
@@ -82,12 +83,14 @@ public class CoinRechargeActivity extends BaseActivity {
 				if(ucoinCount <= 0) {
 					Utils.showToast(CoinRechargeActivity.this, "请正确输入充值U币数量");
 				} else {
+					SimpleProgressDialog.show(CoinRechargeActivity.this);
 					YouLianHttpApi.addOrder(Global.getUserToken(CoinRechargeActivity.this), "0", ucoinCount, 
 							createAddOrderSuccessListener(), createAddOrderErrorListener());
 				}
 			}
 		});
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getCoinRule(createGetRuleSuccessListener(), createGetRuleErrorListener());
 	}
 
@@ -100,6 +103,7 @@ public class CoinRechargeActivity extends BaseActivity {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -126,6 +130,7 @@ public class CoinRechargeActivity extends BaseActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	SimpleProgressDialog.dismiss();
             }
         };
     }
@@ -145,6 +150,7 @@ public class CoinRechargeActivity extends BaseActivity {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -169,6 +175,7 @@ public class CoinRechargeActivity extends BaseActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	SimpleProgressDialog.dismiss();
             }
         };
     }

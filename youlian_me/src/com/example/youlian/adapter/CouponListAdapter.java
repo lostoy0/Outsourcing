@@ -25,6 +25,7 @@ import com.example.youlian.common.Constants;
 import com.example.youlian.mode.YouhuiQuan;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 public class CouponListAdapter extends BaseAdapter {
 	private YlLogger mLogger = YlLogger.getLogger(CouponListAdapter.class.getSimpleName()); 
@@ -82,6 +83,7 @@ public class CouponListAdapter extends BaseAdapter {
 				@Override
 				public void onClick(View v) {
 					if(quan != null) {
+						SimpleProgressDialog.show(mContext);
 						YouLianHttpApi.deleteCard(quan.fav_id, "2", delSuccessListener(position), delErrorListener());
 					}
 				}
@@ -131,6 +133,7 @@ public class CouponListAdapter extends BaseAdapter {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -154,6 +157,7 @@ public class CouponListAdapter extends BaseAdapter {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             	Utils.showToast(mContext, "删除失败");
             }

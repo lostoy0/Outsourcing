@@ -27,6 +27,7 @@ import com.example.youlian.common.Constants;
 import com.example.youlian.mode.CardInfo;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 public class EditCardActivity extends BaseActivity implements OnClickListener {
 	private static YlLogger mLogger = YlLogger.getLogger(EditCardActivity.class
@@ -180,6 +181,7 @@ public class EditCardActivity extends BaseActivity implements OnClickListener {
 			return;
 		}
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.editCardInfo(card_id, memberName, memberSex, memberBirth, memberPhone, 
 				memberEmail, memberAddress, memberQq, membeIdCard, isAllowPush, 
 						editCardInfoSuccessListener(), editCardInfoErrorListener());
@@ -271,6 +273,7 @@ public class EditCardActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if (TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -295,6 +298,7 @@ public class EditCardActivity extends BaseActivity implements OnClickListener {
 		return new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
+				SimpleProgressDialog.dismiss();
 				mLogger.e(error.getMessage());
 				Utils.showToast(mContext, "编辑会员卡资料失败");
 			}

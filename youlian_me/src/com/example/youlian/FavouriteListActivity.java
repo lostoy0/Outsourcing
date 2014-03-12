@@ -20,6 +20,7 @@ import com.example.youlian.adapter.FavouriteListAdapter;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Favourite;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 /**
  * 我的收藏列表
@@ -72,6 +73,7 @@ public class FavouriteListActivity extends BaseActivity implements OnItemClickLi
 		mAdapter = new FavouriteListAdapter(this, mList, MyVolley.getImageLoader());
 		mListView.setAdapter(mAdapter);
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getFavouriteList(Global.getUserToken(this), createGetFavouriteListSuccessListener(), createGetFavouriteListErrorListener());
 	}
 
@@ -138,6 +140,7 @@ public class FavouriteListActivity extends BaseActivity implements OnItemClickLi
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -158,6 +161,7 @@ public class FavouriteListActivity extends BaseActivity implements OnItemClickLi
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             	showEmptyView();
             }

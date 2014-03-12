@@ -30,6 +30,7 @@ import com.example.youlian.mode.Card;
 import com.example.youlian.mode.CardCost;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -91,6 +92,7 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 		
 		initViews();
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getCardDetail(mListCard.card_id, createGetCardDetailSuccessListener(), createGetCardDetailErrorListener());
 	}
 
@@ -163,6 +165,7 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 	}
 
 	private void consume() {
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.costCard(mListCard.card_id, costCardSuccessListener(), costCardErrorListener());
 	}
 
@@ -173,6 +176,7 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 			bd.setMessage("是否移除卡片");
 			bd.setPositiveButton("是", new DialogInterface.OnClickListener() { 
 		        public void onClick(DialogInterface d, int which) { 
+		        	SimpleProgressDialog.show(mContext);
 		        	YouLianHttpApi.deleteCard(mCard.card_id, "1", createRemoneCardSuccessListener(), createRemoneCardErrorListener());
 		        } 
 	        });
@@ -282,6 +286,7 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -347,6 +352,7 @@ public class CardActivity extends BaseActivity implements OnClickListener {
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	SimpleProgressDialog.dismiss();
             }
         };
     }
@@ -355,6 +361,7 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -380,6 +387,7 @@ public class CardActivity extends BaseActivity implements OnClickListener {
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	SimpleProgressDialog.dismiss();
             	Utils.showToast(CardActivity.this, "移除成功");
             }
         };
@@ -389,6 +397,7 @@ public class CardActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -416,6 +425,7 @@ public class CardActivity extends BaseActivity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             }
         };

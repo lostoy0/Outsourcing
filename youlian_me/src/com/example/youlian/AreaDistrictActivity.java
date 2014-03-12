@@ -12,6 +12,7 @@ import com.example.youlian.adapter.AreaListAdapter;
 import com.example.youlian.common.Constants;
 import com.example.youlian.mode.RegioninfoVO;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -57,6 +58,7 @@ private static YlLogger mLogger = YlLogger.getLogger(AreaCityActivity.class.getS
 		mAdapter = new AreaListAdapter(this, mRegioninfoVOs);
 		mListView.setAdapter(mAdapter);
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getAreaByProvinceIdCid(mProvince==null?null:mProvince.areaId, 
 					mCity==null?null:mCity.areaId, null, 
 							createGetCitySuccessListener(), createGetCityErrorListener());
@@ -75,6 +77,7 @@ private static YlLogger mLogger = YlLogger.getLogger(AreaCityActivity.class.getS
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -105,6 +108,7 @@ private static YlLogger mLogger = YlLogger.getLogger(AreaCityActivity.class.getS
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	SimpleProgressDialog.dismiss();
             	finish();
             }
         };

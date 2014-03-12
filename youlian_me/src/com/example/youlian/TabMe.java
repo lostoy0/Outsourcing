@@ -22,6 +22,7 @@ import com.example.youlian.common.Constants;
 import com.example.youlian.mode.MyInfo;
 import com.example.youlian.util.PreferencesUtils;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 public class TabMe extends BaseActivity implements OnClickListener {
 	private YlLogger mLogger = YlLogger.getLogger(this.getClass().getSimpleName());
@@ -170,6 +171,7 @@ public class TabMe extends BaseActivity implements OnClickListener {
 	}
 
 	private void loadData() {
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getMyInfo(Global.getUserToken(this), createGetMyInfoSuccessListener(), createGetMyInfoErrorListener());
 	}
 
@@ -177,6 +179,7 @@ public class TabMe extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -232,6 +235,7 @@ public class TabMe extends BaseActivity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             }
         };

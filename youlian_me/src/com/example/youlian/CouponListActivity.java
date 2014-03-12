@@ -22,6 +22,7 @@ import com.example.youlian.adapter.CouponListAdapter;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.YouhuiQuan;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 /**
  * 我的优惠券列表
@@ -74,6 +75,7 @@ public class CouponListActivity extends BaseActivity implements OnItemClickListe
 		mAdapter = new CouponListAdapter(this, mCouponList, MyVolley.getImageLoader());
 		mListView.setAdapter(mAdapter);
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getCouponList(Global.getUserToken(this), createGetCardListSuccessListener(), createGetCardListErrorListener());
 	}
 
@@ -115,6 +117,7 @@ public class CouponListActivity extends BaseActivity implements OnItemClickListe
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -139,6 +142,7 @@ public class CouponListActivity extends BaseActivity implements OnItemClickListe
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             	showEmptyView();
             }

@@ -28,6 +28,7 @@ import com.example.youlian.mode.Order;
 import com.example.youlian.mode.OrderDetail;
 import com.example.youlian.pay.alipay.Result;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 /**
  * 支付界面
@@ -109,6 +110,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		
 		initViews();
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.orderSettle(mOrder.id, createSettleOrderSuccessListener(), createSettleOrderErrorListener());
 	}
 
@@ -180,6 +182,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		}
 		
 		if(mSelectedPayType == TYPE_ALIPAY_CLIENT) {
+			SimpleProgressDialog.show(this);
 			YouLianHttpApi.payOrder(Global.getUserToken(getApplicationContext()), mOrder.id, mSelectedPayType, 
 					createPaySuccessListener(), createPayErrorListener());
 		} else if(mSelectedPayType == TYPE_ALIPAY_WEB) {
@@ -285,6 +288,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -318,6 +322,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	SimpleProgressDialog.dismiss();
             }
         };
     }
@@ -326,6 +331,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -355,6 +361,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             }
         };

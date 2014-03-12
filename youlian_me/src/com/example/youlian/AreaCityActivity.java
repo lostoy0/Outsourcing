@@ -12,6 +12,7 @@ import com.example.youlian.adapter.AreaListAdapter;
 import com.example.youlian.common.Constants;
 import com.example.youlian.mode.RegioninfoVO;
 import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -58,6 +59,7 @@ public class AreaCityActivity extends BaseActivity implements OnItemClickListene
 		mAdapter = new AreaListAdapter(this, mRegioninfoVOs);
 		mListView.setAdapter(mAdapter);
 		
+		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getAreaByProvinceIdCid(mProvince==null?null:mProvince.areaId, null, null, 
 				createGetCitySuccessListener(), createGetCityErrorListener());
 	}
@@ -89,6 +91,7 @@ public class AreaCityActivity extends BaseActivity implements OnItemClickListene
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -119,6 +122,7 @@ public class AreaCityActivity extends BaseActivity implements OnItemClickListene
             @Override
             public void onErrorResponse(VolleyError error) {
             	mLogger.e(error.getMessage());
+            	SimpleProgressDialog.dismiss();
             	finish();
             }
         };
