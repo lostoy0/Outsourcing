@@ -20,6 +20,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.common.Constants;
 import com.example.youlian.mode.MyInfo;
+import com.example.youlian.more.MsgCenterActivity;
 import com.example.youlian.util.PreferencesUtils;
 import com.example.youlian.util.YlLogger;
 import com.example.youlian.view.SimpleProgressDialog;
@@ -78,7 +79,8 @@ public class TabMe extends BaseActivity implements OnClickListener {
 			break;
 			
 		case R.id.my_ib_msg:
-			
+			intent = new Intent(this, MsgCenterActivity.class);
+			startActivity(intent);
 			break;
 			
 		case R.id.my_ib_sign:

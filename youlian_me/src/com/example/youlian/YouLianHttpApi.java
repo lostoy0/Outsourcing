@@ -1398,7 +1398,85 @@ public class YouLianHttpApi {
 		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
-
+	
+	/**
+	 * 
+	 * 消息中心
+	 * @Title: getMessageList
+	 * @param user_token
+	 * @param successListener
+	 * @param errorListener
+	 * @return void
+	 * @date 2014-3-12 下午9:54:58
+	 */
+	public static void getMessageList(String user_token,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.messages.get";
+		
+		String url = null;
+		if(TextUtils.isEmpty(user_token)) {
+			url = getUrl(KEY_SERVER, server);
+		} else {
+			url = getUrl("user_token", user_token, KEY_SERVER, server);
+		}
+		
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		myReq.setShouldCache(false);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 
+	 * 消息删除
+	 * @Title: delMessage
+	 * @param user_token
+	 * @param delete_str 格式：消息ID:消息类型多个用逗号隔开（如：1:0,12:1,34:1）
+	 * @param successListener
+	 * @param errorListener
+	 * @return void
+	 * @date 2014-3-12 下午9:57:36
+	 */
+	public static void delMessage(String user_token, String delete_str,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.user.message.delete";
+		String url = getUrl("user_token", user_token, "delete_str", delete_str, KEY_SERVER, server);;
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		myReq.setShouldCache(false);
+		queue.add(myReq);
+	}
+	
+	/**
+	 * 
+	 * 消息标记为已读
+	 * @Title: markMessageRead
+	 * @param user_token
+	 * @param read_str 格式：消息ID:消息类型（如：1:0）
+	 * @param successListener
+	 * @param errorListener
+	 * @return void
+	 * @date 2014-3-12 下午9:59:44
+	 */
+	public static void markMessageRead(String user_token, String read_str,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		String server = "younion.user.message.read";
+		String url = getUrl("user_token", user_token, "read_str", read_str, KEY_SERVER, server);;
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
+				successListener, errorListener);
+		myReq.setShouldCache(false);
+		queue.add(myReq);
+	}
+	
 	public static String getUrl(String... keyValues) {
 		// get base url
 		StringBuilder buf = new StringBuilder(URL_TEST);

@@ -115,6 +115,7 @@
         <activity android:name=".EditCardActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
 		<activity android:name=".CaptureActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
 		<activity android:name=".AliWapPayActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
+		<activity android:name=".more.MsgCenterActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
 		
 		<!-- ###################支付宝支付#################### -->
 		<activity
