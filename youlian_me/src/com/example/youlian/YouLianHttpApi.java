@@ -166,10 +166,15 @@ public class YouLianHttpApi {
 	}
 
 	public static void getActDetail(String id,
+			String req_type, String user_token,
+			String shop_id,
 			Response.Listener<String> successListener,
 			Response.ErrorListener errorListener) {
 		String server = "younion.activity.get";
-		String url = getUrl(KEY_SERVER, server, "id", id);
+		String url = getUrl(KEY_SERVER, server, "id", id,
+				"req_type", req_type, "user_token", user_token,
+				"shop_id", shop_id
+				);
 		Log.i(TAG, "url:" + url);
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),

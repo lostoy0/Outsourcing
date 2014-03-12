@@ -40,6 +40,7 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.youlian.mode.Act;
 import com.example.youlian.mode.Card;
 import com.example.youlian.mode.City;
 import com.example.youlian.mode.Customer;
@@ -185,7 +186,7 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 									processShangjia(position);
 									break;
 								case 1:
-																	
+									processActs(position);							
 									break;
 								case 2:
 									processCards(position);
@@ -203,6 +204,37 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 				
 			});
 		}
+		
+		protected void processActs(int position) {
+			handleActs.clear();
+			switch (position) {
+			case 0:
+				handleActs.addAll(acts);
+				break;
+			case ShangjiaActivity.shenghuo_service:
+				initShenghuoListByAct(ShangjiaActivity.shenghuo_service);
+				break;
+			case ShangjiaActivity.meili_liren:
+				initShenghuoListByAct(ShangjiaActivity.meili_liren);
+				break;
+			case ShangjiaActivity.xiuxian_yule:
+				initShenghuoListByAct(ShangjiaActivity.xiuxian_yule);
+				break;
+			case ShangjiaActivity.canyin_meishi:
+				initShenghuoListByAct(ShangjiaActivity.canyin_meishi);
+				break;
+			case ShangjiaActivity.guangjie_gouwu:
+				initShenghuoListByAct(ShangjiaActivity.guangjie_gouwu);
+				break;
+			case ShangjiaActivity.other:
+				initShenghuoListByAct(ShangjiaActivity.other);
+				break;
+			default:
+				break;
+			}
+			actionListView.setData(handleActs);
+		}
+		
 		
 		protected void processCards(int position) {
 			handlecards.clear();
@@ -298,6 +330,17 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 				Card c = cards.get(i);
 				if(shenghuoService == Integer.parseInt(c.category_id)){
 					handlecards.add(c);
+				}
+			}
+		}
+		
+		
+		protected void initShenghuoListByAct(int shenghuoService) {
+			int size = acts.size();
+			for(int i=0;i<size; i++){
+				Act c = acts.get(i);
+				if(shenghuoService == Integer.parseInt(c.category_id)){
+					handleActs.add(c);
 				}
 			}
 		}
@@ -459,6 +502,7 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 					animation.setDuration(300);
 					cursor.startAnimation(animation);
 				}
+				refreshCategory();
 			}
 
 			@Override
@@ -509,6 +553,23 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 			};
 		}
 		
+		public void refreshCategory() {
+			switch (currIndex) {
+			case 0:
+				initCategoryNum();
+				break;
+			case 1:
+				initCategoryNumByAct();
+				break;
+			case 2:
+				initCategoryNumByCard();
+				break;
+
+			default:
+				break;
+			}
+		}
+
 		public List<Card> cards = new ArrayList<Card>();
 		public List<Card> handlecards = new ArrayList<Card>();
 		private Response.Listener<String> createSearchActSuccessListener() {
@@ -522,14 +583,20 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 							JSONObject o = new JSONObject(response);
 							int status = o.optInt("status");
 							if (status == 1) {
-								List<Customer> customers = Customer.parseList(o);
-								mCustomers.clear();
-								mCustomers.addAll(Customer.parseList(o));
-								shangjiaListView.setData(customers);
+								acts.clear();
+								JSONArray array = o.optJSONArray("result");
+								int len = array.length();
+								for(int i=0; i<len; i++){
+									JSONObject oo = array.getJSONObject(i);
+									acts.add(Act.parse(oo));
+								}
 								
-								mHandleCustomers.clear();
-								mHandleCustomers.addAll(customers);
-								initCategoryNum();
+								handleActs.clear();
+								handleActs.addAll(acts);
+								
+								actionListView.setData(acts);
+								
+								initCategoryNumByAct();
 							} else {
 								String msg = o.optString("msg");
 								Toast.makeText(getApplicationContext(), msg,
@@ -733,6 +800,54 @@ public class SearchActivity extends Activity implements OnClickListener, OnCheck
 			for(int i=0;i<size; i++){
 				Customer c = mHandleCustomers.get(i);
 				int type = Integer.parseInt(c.customerKindId);
+				switch (type) {
+				case ShangjiaActivity.shenghuo_service:
+					shenghuoService++;
+					break;
+				case ShangjiaActivity.meili_liren:
+					meiliLiren++;	
+					break;
+				case ShangjiaActivity.xiuxian_yule:
+					xiuxianYule++;
+					break;
+				case ShangjiaActivity.canyin_meishi:
+					canyinMeishi++;
+					break;
+				case ShangjiaActivity.guangjie_gouwu:
+					guangjieGouwu++;
+					break;
+				case ShangjiaActivity.other:
+					otherMe++;
+					break;
+				default:
+					break;
+				}
+			}
+			parts.clear();
+			parts.add(getString(R.string.all_size, size));
+			parts.add(getString(R.string.living_service, shenghuoService));
+			parts.add(getString(R.string.meili_liren, meiliLiren));
+			parts.add(getString(R.string.xiuxian_yulei, xiuxianYule));
+			parts.add(getString(R.string.canyin_meishi, canyinMeishi));
+			parts.add(getString(R.string.gouwu_buy, guangjieGouwu));
+			parts.add(getString(R.string.other, otherMe));
+			adapterAll.notifyDataSetChanged();
+		}
+		
+		
+		public List<Act> acts = new ArrayList<Act>();
+		public List<Act> handleActs = new ArrayList<Act>();
+		public void initCategoryNumByAct() {
+			shenghuoService = 0;
+			meiliLiren = 0;
+			xiuxianYule = 0;
+			canyinMeishi = 0;
+			guangjieGouwu = 0;
+			otherMe = 0;
+			int size = acts.size();
+			for(int i=0;i<size; i++){
+				Act c = acts.get(i);
+				int type = Integer.parseInt(c.category_id);
 				switch (type) {
 				case ShangjiaActivity.shenghuo_service:
 					shenghuoService++;

@@ -19,9 +19,11 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.youlian.AllSellerDetailActivity;
 import com.example.youlian.R;
 import com.example.youlian.ShangjiaDetailActivity;
 import com.example.youlian.app.MyVolley;
+import com.example.youlian.mode.Act;
 import com.example.youlian.mode.Customer;
 
 public class ListviewAct extends FrameLayout {
@@ -34,7 +36,7 @@ public class ListviewAct extends FrameLayout {
 	
 	private ListView mListView;
 
-	private List<Customer> mCustomers;
+	private List<Act> mActs;
 	
 	private HomeAdapter adapter;
 	
@@ -73,8 +75,8 @@ public class ListviewAct extends FrameLayout {
 		mListView.setOnItemClickListener(onItemClickListener);
 	}
 	
-	public void setData(List<Customer> customers){
-		mCustomers = customers;
+	public void setData(List<Act> acts ){
+		mActs = acts;
 		adapter.notifyDataSetChanged();
 	}
 	
@@ -83,9 +85,9 @@ public class ListviewAct extends FrameLayout {
 		@Override
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
-			Intent in = new Intent(mContext, ShangjiaDetailActivity.class);
-			Customer c = mCustomers.get(arg2);
-			in.putExtra("customerid", c.id);
+			Intent in = new Intent(mContext, AllSellerDetailActivity.class);
+			Act c = mActs.get(arg2);
+			in.putExtra("actid", c.id);
 			in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			mContext.startActivity(in);
 		}
@@ -101,7 +103,7 @@ public class ListviewAct extends FrameLayout {
 
 		@Override
 		public int getCount() {
-			return mCustomers == null ? 0 : mCustomers.size();
+			return mActs == null ? 0 : mActs.size();
 		}
 
 		
@@ -116,17 +118,9 @@ public class ListviewAct extends FrameLayout {
 			final ViewCache vc;
 			if (convertView == null) {
 				vc = new ViewCache();
-				convertView = mInflater.inflate(R.layout.home_listview_item, null);
-				vc.stroe_img = (NetworkImageView)convertView.findViewById(R.id.stroe_img);
-				vc.is_store = (ImageView)convertView.findViewById(R.id.is_store);
-				vc.follow_active = (ImageView)convertView.findViewById(R.id.follow_active);
-//				vc.follow_card = (ImageView)convertView.findViewById(R.id.follow_card);
-				vc.follow_interest = (ImageView)convertView.findViewById(R.id.follow_interest);
-				vc.follow_union = (ImageView)convertView.findViewById(R.id.follow_union);
-				vc.stroe_name_text = (TextView)convertView.findViewById(R.id.card_name_text);
-				vc.card_content_text = (TextView)convertView.findViewById(R.id.card_content_text);
-				vc.is_have_fad = (ImageView)convertView.findViewById(R.id.is_have_fad);
-				vc.is_rem = (ImageView)convertView.findViewById(R.id.is_rem);
+				convertView = mInflater.inflate(R.layout.item_act_search, null);
+				vc.iv_icon = (ImageView)convertView.findViewById(R.id.iv_icon);
+				vc.tv_title = (TextView)convertView.findViewById(R.id.tv_title);
 				convertView.setTag(vc);
 			}else {
 				vc = (ViewCache) convertView.getTag();
@@ -138,30 +132,19 @@ public class ListviewAct extends FrameLayout {
 		
 		
 		private void setValue(int position, ViewCache holder) {
-			Customer customer = mCustomers.get(position);
-			if(customer.logo != null){
-				holder.stroe_img.setDefaultImageResId(R.drawable.guanggao);
-				holder.stroe_img.setImageUrl(customer.logo, mImageLoader);
-			}else{
-				holder.stroe_img.setImageResource(R.drawable.guanggao);
-			}
-			
-			holder.stroe_name_text.setText(customer.name);
-			holder.card_content_text.setText(customer.introduce);
-			if(Integer.parseInt(customer.isRecommend) == 1){
-				holder.is_rem.setVisibility(View.VISIBLE);
-			}else{
-				holder.is_rem.setVisibility(View.GONE);
-			}
-			
+			Act customer = mActs.get(position);
+			ImageLoader imageLoader = MyVolley.getImageLoader();
+	        imageLoader.get(customer.pic, 
+	                       ImageLoader.getImageListener(holder.iv_icon, 
+	                                                     0, 
+	                                                     0));
+	        holder.tv_title.setText(customer.title);
 		}
 
 
 		private class ViewCache {
-			public TextView stroe_name_text;
-			public TextView card_content_text;
-			public ImageView is_store,follow_active,follow_union,follow_interest,is_have_fad,is_rem;
-			public NetworkImageView stroe_img;
+			public TextView tv_title;
+			public ImageView iv_icon;
 		}
 
 		@Override

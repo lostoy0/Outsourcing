@@ -58,8 +58,8 @@ public class AllSellerDetailActivity extends Activity implements OnClickListener
 		initViews();
 		
 		
-		YouLianHttpApi.getActDetail(actid, createGetAdSuccessListener(), createGetAdErrorListener());
-//		refresh();
+		YouLianHttpApi.getActDetail(actid, "0", Global.getUserToken(getApplicationContext()), 
+				null, createGetAdSuccessListener(), createGetAdErrorListener());
 	}
 	
 	
@@ -167,9 +167,9 @@ public class AllSellerDetailActivity extends Activity implements OnClickListener
 			break;
 		case R.id.btn_more:// 收藏
 			if(isFav){
-				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), act.id, "3", createDelFavSuccessListener(), createMyReqErrorListener());
+				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), act.id, "4", createDelFavSuccessListener(), createMyReqErrorListener());
 			}else{
-				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), act.id, "3", createAddFavSuccessListener(), createErrorListener());
+				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), act.id, "4", createAddFavSuccessListener(), createErrorListener());
 			}
 			isFav = !isFav;
 			break;
