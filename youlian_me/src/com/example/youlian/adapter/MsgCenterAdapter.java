@@ -19,30 +19,24 @@ public class MsgCenterAdapter extends BaseAdapter{
 	private LayoutInflater mInflater;
 	private ArrayList<MsgCenterResult> resultList;
 
-	public MsgCenterAdapter(Context mContext,ArrayList<MsgCenterResult> reuslts){
-		this.mContext = mContext;
-		resultList = new ArrayList<MsgCenterResult>();
+	public MsgCenterAdapter(Context context, ArrayList<MsgCenterResult> reuslts){
+		mContext = context;
+		resultList = reuslts;
 		mInflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		if(Utils.notNull(reuslts)){
-			resultList.addAll(reuslts);
-		}
 	}
 
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
 		return resultList.size();
 	}
 
 	@Override
 	public MsgCenterResult getItem(int arg0) {
-		// TODO Auto-generated method stub
 		return resultList.get(arg0);
 	}
 
 	@Override
 	public long getItemId(int arg0) {
-		// TODO Auto-generated method stub
 		return arg0;
 	}
 
@@ -60,30 +54,24 @@ public class MsgCenterAdapter extends BaseAdapter{
 		}else {
 			vc = (ViewCache) convertView.getTag();
 		}
+		
 		final MsgCenterResult result = this.getItem(position);
+		
 		vc.titile_text.setText(result.title);
 		vc.date_text.setText(result.time);
 		vc.cotent_text.setText(result.introduction);
 		vc.det_text.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				
 			}
 		});
+		
 		return convertView;
 	}
-	private class ViewCache {
+	
+	static class ViewCache {
 		public TextView titile_text,date_text,cotent_text,det_text;
 	}
-	public void addAllDataList(ArrayList<MsgCenterResult> data){
-		if(resultList!=null	&& resultList.size()>0){
-			resultList.clear();
-		}else{
-			resultList = new ArrayList<MsgCenterResult>();
-		}
-		resultList.addAll(data);
-		this.notifyDataSetChanged();
-	}
+	
 }

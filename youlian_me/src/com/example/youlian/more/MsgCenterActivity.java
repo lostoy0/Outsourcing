@@ -1,7 +1,6 @@
 package com.example.youlian.more;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONException;
 
@@ -23,8 +22,8 @@ import com.example.youlian.Global;
 import com.example.youlian.R;
 import com.example.youlian.YouLianHttpApi;
 import com.example.youlian.adapter.MsgCenterAdapter;
-import com.example.youlian.mode.Card;
 import com.example.youlian.mode.MsgCenterResult;
+import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
 import com.example.youlian.view.SimpleProgressDialog;
 
@@ -35,14 +34,15 @@ public class MsgCenterActivity extends BaseActivity implements OnClickListener, 
 	 private ListView mListView;
 	 private LinearLayout mEmptyView;
 	 
-	 private ArrayList<MsgCenterResult> msgs;
-	 
-	 private MsgCenterAdapter msgAdapter;
+	 private ArrayList<MsgCenterResult> mList;
+	 private MsgCenterAdapter mAdapter;
 	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.more_msg_center);
+		
+		mList = new ArrayList<MsgCenterResult>();
 		
 		initView();
 		
@@ -63,8 +63,12 @@ public class MsgCenterActivity extends BaseActivity implements OnClickListener, 
 	private void initView(){
 		mBackButton = (ImageButton)findViewById(R.id.back);
 		mBackButton.setOnClickListener(this);
-		mListView = (ListView)findViewById(R.id.msg_listview);
 		mEmptyView = (LinearLayout)findViewById(R.id.emptyView);
+		mEmptyView.setVisibility(View.GONE);
+		mListView = (ListView)findViewById(R.id.msg_listview);
+		mListView.setOnItemClickListener(this);
+		mAdapter = new MsgCenterAdapter(this, mList);
+		mListView.setAdapter(mAdapter);
 	}
 
 	@Override
@@ -94,6 +98,19 @@ public class MsgCenterActivity extends BaseActivity implements OnClickListener, 
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
+					try {
+						ArrayList<MsgCenterResult> list = MsgCenterResult.getList(response);
+						if(Utils.isCollectionNotNull(list)) {
+							hideEmptyView();
+							mList.addAll(list);
+							mAdapter.notifyDataSetChanged();
+						} else {
+							showEmptyView();
+						}
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
 				}
 			}
