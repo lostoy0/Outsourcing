@@ -663,6 +663,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -683,6 +684,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -706,6 +708,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -786,6 +789,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -815,6 +819,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -874,6 +879,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -893,6 +899,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -937,6 +944,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -1099,6 +1107,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -1164,6 +1173,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -1227,6 +1237,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
@@ -1246,6 +1257,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 
