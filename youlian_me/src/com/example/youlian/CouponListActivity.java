@@ -41,7 +41,7 @@ public class CouponListActivity extends BaseActivity implements OnItemClickListe
 	
 	private boolean mEditing = false;
 	
-	public boolean getEditState() {
+	public boolean isEditing() {
 		return mEditing;
 	}
 	

@@ -125,7 +125,7 @@ public class OrderListAdapter extends BaseAdapter {
 			break;
 			
 		case 1:
-			holder.statusButton.setText("未支付");
+			holder.statusButton.setText("支付");
 			holder.statusButton.setBackgroundResource(R.drawable.cart_pay_selector);
 			holder.statusButton.setEnabled(true);
 			holder.statusButton.setOnClickListener(new View.OnClickListener() {

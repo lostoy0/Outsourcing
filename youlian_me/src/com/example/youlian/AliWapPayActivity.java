@@ -1,16 +1,17 @@
 package com.example.youlian;
 
-import com.example.youlian.util.YlLogger;
-
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Window;
-import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.youlian.util.YlLogger;
+import com.example.youlian.view.SimpleProgressDialog;
 
 /**
  * 
@@ -23,6 +24,8 @@ public class AliWapPayActivity extends BaseActivity {
 	
 	private WebView mWebView;
 	
+	private AliWapPayActivity mContext;
+	
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +36,16 @@ public class AliWapPayActivity extends BaseActivity {
 		String url = getIntent().getStringExtra("url");
 		if(TextUtils.isEmpty(url)) finish();
 		
+		mContext = this;
+		
 		mWebView = (WebView) findViewById(R.id.webview);
 		WebSettings webSettings = mWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
 		mWebView.setWebChromeClient(new PayWebChromeClient());
 		mWebView.setWebViewClient(new PayWebViewClient());
+		
 		mWebView.loadUrl(url);
+		
 	}
 	
 	class PayWebChromeClient extends WebChromeClient {
@@ -52,7 +59,19 @@ public class AliWapPayActivity extends BaseActivity {
 	}
 	
 	class PayWebViewClient extends WebViewClient {
+		
+		@Override
+		public void onPageStarted(WebView view, String url, Bitmap favicon) {
+			super.onPageStarted(view, url, favicon);
+			SimpleProgressDialog.show(mContext);
+		}
 
+		@Override
+		public void onPageFinished(WebView view, String url) {
+			super.onPageFinished(view, url);
+			SimpleProgressDialog.dismiss();
+		}
+		
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			if(!TextUtils.isEmpty(url) && (url.contains("test.younion.cn") || url.startsWith("www.younion.com.cn"))) {

@@ -76,7 +76,7 @@ public class CouponListAdapter extends BaseAdapter {
 		
 		final YouhuiQuan quan = mCouponList.get(position);
 		
-		if(mContext.getEditState()) {
+		if(mContext.isEditing()) {
 			holder.deleteButton.setVisibility(View.VISIBLE);
 			holder.deleteButton.setOnClickListener(new View.OnClickListener() {
 				@Override
