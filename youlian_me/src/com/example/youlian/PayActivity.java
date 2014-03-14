@@ -16,13 +16,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alipay.android.app.sdk.AliPay;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.example.youlian.adapter.PayOrderListAdapter;
 import com.example.youlian.common.Constants;
 import com.example.youlian.mode.Order;
 import com.example.youlian.mode.OrderDetail;
@@ -46,19 +45,13 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 	private static final int TYPE_ALIPAY_WEB = 1;
 	private static final int TYPE_UCOIN = 0;
 	
-	private static final int ORDER_TYPE_RECHARGE = 1;//充值订单
-	private static final int ORDER_TYPE_GENERAL = 0;//普通订单
-	
 	public static final String KEY_ORDER = "order";
-	
-	private int mOrderType = ORDER_TYPE_GENERAL;
 	
 	private TextView mTotalMoneyTextView;
 	private ImageButton mSelectYiPayButton, mSelectUnionButton, mSelectAlipayClientButton, mSelectAlipayButton, mSelectUcoinButton;
 	private Button mPayButton;
 	
-	private ListView mListView;
-	private PayOrderListAdapter mAdapter;
+	private LinearLayout mContainer;
 	private List<OrderDetail> mList;
 	
 	private int mSelectedPayType = TYPE_ALIPAY_CLIENT;
@@ -67,7 +60,10 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 	private Order mSettleOrder;
 	
 	public boolean isRechargeOrder() {
-		return mOrderType == ORDER_TYPE_RECHARGE;
+		if(mSettleOrder != null && mSettleOrder.orderNo != null && mSettleOrder.orderNo.startsWith("R")) {
+			return true;
+		}
+		return false;
 	}
 	
 	private PayHandler mHandler;
@@ -96,13 +92,6 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		if(mOrder == null) {
 			mLogger.e("order is null");
 			finish();
-		}
-		
-		String orderNoString = mOrder.orderNo;
-		if(!TextUtils.isEmpty(orderNoString) && orderNoString.startsWith("R")) {
-			mOrderType = ORDER_TYPE_RECHARGE;
-		} else {
-			mOrderType = ORDER_TYPE_GENERAL;
 		}
 		
 		mList = new ArrayList<OrderDetail>();
@@ -193,10 +182,6 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 			Intent intent = new Intent(PayActivity.this, AliWapPayActivity.class);
 			intent.putExtra("url", url);
 			startActivityForResult(intent, REQ_ALIPAY_WAP);
-			
-//			Uri uri = Uri.parse(url);
-//			Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//			startActivity(intent);
 		}
 	}
 
@@ -235,9 +220,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		findViewById(R.id.pay_tv_alipay_client).setOnClickListener(this);
 		findViewById(R.id.pay_tv_ucoin).setOnClickListener(this);
 		
-		mListView = (ListView) findViewById(R.id.list);
-		mAdapter = new PayOrderListAdapter(this, mList);
-		mListView.setAdapter(mAdapter);
+		mContainer = (LinearLayout) findViewById(R.id.order_goods_container);
 	}
 	
 	private void resetSelectState(int selected) {
@@ -299,14 +282,14 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 						Order order = Order.from(object.optJSONObject(Constants.key_result));
 						if(order != null) {
 							mSettleOrder = order;
+							if(isRechargeOrder()) {
+								mTotalMoneyTextView.setText("总计：" + mSettleOrder.youcoinCount + "元");
+							} else {
+								mTotalMoneyTextView.setText("总计：" + mSettleOrder.youcoinCount + "U币");
+							}
 							if(mSettleOrder.orderDetailList != null && mSettleOrder.orderDetailList.size() > 0) {
 								mList.addAll(mSettleOrder.orderDetailList);
-								mAdapter.notifyDataSetChanged();
-								if(isRechargeOrder()) {
-									mTotalMoneyTextView.setText("总计：" + mSettleOrder.youcoinCount + "元");
-								} else {
-									mTotalMoneyTextView.setText("总计：" + mSettleOrder.youcoinCount + "U币");
-								}
+								fillGoodsList();
 							}
 						}
 					} catch (JSONException e) {
@@ -315,6 +298,39 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 				}
 			}
 		};
+	}
+	
+	private void fillGoodsList() {
+		if(mList != null && mList.size() > 0) {
+			mContainer.removeAllViews();
+			
+			for(int i=0; i<mList.size(); i++) {
+				OrderDetail detail = mList.get(i);
+				if(detail != null) {
+					mContainer.addView(createGoodsItemView(detail));
+					if(i < mList.size()-1) {
+						mContainer.addView(getLayoutInflater().inflate(R.layout.dashedline, null));
+					}
+				}
+			}
+		}
+	}
+	
+	private View createGoodsItemView(OrderDetail orderDetail) {
+		View goodsView = getLayoutInflater().inflate(R.layout.item_pay_order, null);
+		TextView nameTextView = (TextView) goodsView.findViewById(R.id.pay_tv_goodsname);
+		TextView pricetTextView = (TextView) goodsView.findViewById(R.id.pay_tv_price);
+		TextView quantityTextView = (TextView) goodsView.findViewById(R.id.pay_tv_amount);
+		
+		nameTextView.setText("商品名称：" + orderDetail.productName);
+		if(isRechargeOrder()) {
+			pricetTextView.setText("单价：" + orderDetail.price + "元");
+		} else {
+			pricetTextView.setText("单价：" + orderDetail.price + "U币");
+		}
+		quantityTextView.setText("数量：" + orderDetail.quantity + "");
+		
+		return goodsView;
 	}
 	
 	private Response.ErrorListener createSettleOrderErrorListener() {
@@ -335,13 +351,6 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
-					/*if(mSelectedPayType == TYPE_ALIPAY_WEB) {
-						Intent intent = new Intent(PayActivity.this, AliWapPayActivity.class);
-						intent.putExtra("wap", response);
-						startActivityForResult(intent, REQ_ALIPAY_WAP);
-						return;
-					}*/
-					
 					try {
 						JSONObject object = new JSONObject(response);
 						if(0 == object.optInt(Constants.key_status)) {

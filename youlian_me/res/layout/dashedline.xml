@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dash="http://schemas.android.com/apk/res/com.example.youlian"
+    android:layout_width="match_parent"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:layout_height="1dp" >
+    <com.example.youlian.view.DashedLine
+        android:layout_width= "fill_parent"
+        android:layout_height= "1dip"
+        dash:lineColor= "#CCCCCC" />
+</RelativeLayout>

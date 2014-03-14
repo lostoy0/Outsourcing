@@ -117,7 +117,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 			
 		case R.id.cart_btn_pay:
 			if(!mGoodsList.isEmpty() && selectAtLeastOne()) {
-				resetPayingData();
+				recomputeSelectIdsStr();
 				SimpleProgressDialog.show(this);
 				YouLianHttpApi.addOrder(Global.getUserToken(this), mSelectCartIds, 0, 
 						createAddOrderSuccessListener(), createAddOrderErrorListener());
@@ -132,7 +132,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 		}
 	}
 	
-	private void resetPayingData() {
+	private void recomputeSelectIdsStr() {
 		mSelectCartIds = "";
 		StringBuilder builder = new StringBuilder();
 		for(Goods goods : mGoodsList) {
@@ -160,6 +160,16 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 	}
 
 	private void deleteSelectedGoods() {
+		recomputeSelectIdsStr();
+		if(TextUtils.isEmpty(mSelectCartIds)) {
+			showToast("请至少选择一个订单");
+		} else {
+			SimpleProgressDialog.show(this);
+			YouLianHttpApi.deleteShoppingCart(mSelectCartIds, createDelSuccessListener(), createDelErrorListener());
+		}
+	}
+
+	private void removeDelGoodsFromList() {
 		ArrayList<Goods> goodsList = new ArrayList<Goods>();
 		for(int i=0; i<mGoodsList.size(); i++) {
 			if(mStateMap.get(mGoodsList.get(i).goodsId)) {
@@ -171,15 +181,22 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 		mGoodsList.clear();
 		mGoodsList.addAll(goodsList);
 		mAdapter.notifyDataSetChanged();
+		resetDeleteButton();
 	}
-
+	
 	private void editComplete() {
 		mIsEditing = false;
 		mEditButton.setVisibility(View.VISIBLE);
 		mYesButton.setVisibility(View.GONE);
 		mPayButton.setVisibility(View.VISIBLE);
 		mDeleteButton.setVisibility(View.GONE);
+		
+		for(Goods goods : mGoodsList) {
+			mStateMap.put(goods.goodsId, true);
+		}
 		mAdapter.notifyDataSetChanged();
+		
+		resetQuantityAndMoney();
 	}
 
 	private void edit() {
@@ -212,7 +229,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 	}
 	
 	private void resetMoney(int money) {
-		mCostMoneyTextView.setText(money + "元");
+		mCostMoneyTextView.setText(money + "U币");
 	}
 	
 	private void resetQuantity(int quantity) {
@@ -302,6 +319,43 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
             public void onErrorResponse(VolleyError error) {
             	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
+            }
+        };
+    }
+	
+	private Response.Listener<String> createDelSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				SimpleProgressDialog.dismiss();
+				if(TextUtils.isEmpty(response)) {
+					mLogger.i("response is null");
+				} else {
+					mLogger.i(response);
+					
+					try {
+						JSONObject object = new JSONObject(response);
+						if(1 == object.optInt(Constants.key_status)) {
+							showToast("删除成功");
+							removeDelGoodsFromList();
+						} else {
+							showToast("删除失败");
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+	}
+	
+	private Response.ErrorListener createDelErrorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            	SimpleProgressDialog.dismiss();
+            	mLogger.e(error.getMessage());
+            	showToast("删除失败");
             }
         };
     }
