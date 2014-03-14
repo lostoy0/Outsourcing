@@ -7,6 +7,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,9 +27,12 @@ import com.android.volley.VolleyError;
 import com.example.youlian.common.Constants;
 import com.example.youlian.mode.Order;
 import com.example.youlian.mode.OrderDetail;
+import com.example.youlian.more.MsgCenterDetActivity;
 import com.example.youlian.pay.alipay.Result;
+import com.example.youlian.util.PreferencesUtils;
 import com.example.youlian.util.YlLogger;
 import com.example.youlian.view.SimpleProgressDialog;
+import com.youlian.view.dialog.HuzAlertDialog;
 
 /**
  * 支付界面
@@ -164,7 +169,6 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 	private void startPay() {
 		switch(mSelectedPayType) {
 		case TYPE_YIPAY:
-		case TYPE_UCOIN:
 		case TYPE_UNIONPAY:
 			showToast("抱歉，该支付方式暂未开发完成，请使用其他支付方式支付");
 			return;
@@ -182,6 +186,10 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 			Intent intent = new Intent(PayActivity.this, AliWapPayActivity.class);
 			intent.putExtra("url", url);
 			startActivityForResult(intent, REQ_ALIPAY_WAP);
+		} else if(mSelectedPayType == TYPE_UCOIN) {
+			SimpleProgressDialog.show(this);
+			YouLianHttpApi.payOrder(Global.getUserToken(getApplicationContext()), mOrder.id, mSelectedPayType, 
+					createPaySuccessListener(), createPayErrorListener());
 		}
 	}
 
@@ -353,11 +361,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 				} else {
 					try {
 						JSONObject object = new JSONObject(response);
-						if(0 == object.optInt(Constants.key_status)) {
-							showToast(object.optString(Constants.KEY_MSG));
-						} else {
-							handlePay(object);
-						}
+						handlePay(object);
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -372,14 +376,25 @@ public class PayActivity extends BaseActivity implements OnClickListener {
             public void onErrorResponse(VolleyError error) {
             	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
+            	showToast("支付失败");
             }
         };
     }
 	
 	private void handlePay(JSONObject json) {
+		if(mSelectedPayType != TYPE_UCOIN && 0 == json.optInt(Constants.key_status)) {
+			showToast("支付失败");
+			return;
+		}
+		
 		switch(mSelectedPayType) {
 		case TYPE_UCOIN:
-			
+			int resultCode = json.optInt(Constants.key_status);
+			if(resultCode == 0) {
+				showUcoinPayFailedDialog();
+			} else if(resultCode == 1) {
+				showToast("支付成功");
+			}
 			break;
 			
 		case TYPE_ALIPAY_WEB:
@@ -401,6 +416,24 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		}
 	}
 	
+	private void showUcoinPayFailedDialog() {
+		Builder bd = new HuzAlertDialog.Builder(this);
+		bd.setTitle("支付失败");
+		bd.setMessage("您的U币账户余额不足，是否充值？");
+		bd.setPositiveButton("是", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface d, int which) {
+				Intent intent = new Intent(PayActivity.this, CoinRechargeActivity.class);
+				startActivity(intent);
+			}
+		});
+		bd.setNeutralButton("否", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface d, int which) {
+				d.dismiss();
+			}
+		});
+		bd.show();
+	}
+
 	private void alipayClient(final String orderInfo) {
 		if(TextUtils.isEmpty(orderInfo)) return;
 		

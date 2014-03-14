@@ -235,7 +235,7 @@
                         android:drawableLeft="@drawable/pay_ucoin"
                         android:gravity="center_vertical"
                         android:singleLine="true"
-                        android:text="U币（开发中...）"
+                        android:text="U币"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
