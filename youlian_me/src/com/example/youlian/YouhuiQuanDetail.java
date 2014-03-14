@@ -27,6 +27,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.app.YouLianApp;
 import com.example.youlian.mode.YouhuiQuan;
+import com.example.youlian.util.PreferencesUtils;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -329,18 +330,24 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			break;
 
 		case R.id.bt_apply:
-			if(type_from == 0){//普通
-				if(isExist){
-					YouLianHttpApi.useYouhuiQuan(Global.getUserToken(getApplicationContext()), quan.fav_id, 
-							createUseYouhuiQuanSuccessListener(), createMyReqErrorListener());
-				}else{
-					YouLianHttpApi.applyYouhuiQuan(Global.getUserToken(getApplicationContext()), 
-							quan.fav_ent_id, createApplyYouhuiQuanSuccessListener(), createMyReqErrorListener());
+			if(!PreferencesUtils.isLogin(this)) {
+				Intent intent = new Intent(this, LoginActivity.class);
+				startActivity(intent);
+			} else {
+				if(type_from == 0){//普通
+					if(isExist){
+						YouLianHttpApi.useYouhuiQuan(Global.getUserToken(getApplicationContext()), quan.fav_id, 
+								createUseYouhuiQuanSuccessListener(), createMyReqErrorListener());
+					}else{
+						YouLianHttpApi.applyYouhuiQuan(Global.getUserToken(getApplicationContext()), 
+								quan.fav_ent_id, createApplyYouhuiQuanSuccessListener(), createMyReqErrorListener());
+					}
+				}else{//热狗
+					YouLianHttpApi.add2ShoppingCart(Global.getUserToken(getApplicationContext()), 
+							quan.fav_ent_id, "1", createAddCartSuccessListener(), createMyReqErrorListener());
 				}
-			}else{//热狗
-				YouLianHttpApi.add2ShoppingCart(Global.getUserToken(getApplicationContext()), 
-						quan.fav_ent_id, "1", createAddCartSuccessListener(), createMyReqErrorListener());
 			}
+			
 			
 			break;
 		case R.id.btn_pie:// 敲到

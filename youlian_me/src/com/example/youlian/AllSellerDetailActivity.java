@@ -10,6 +10,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Act;
 import com.example.youlian.mode.Card;
+import com.example.youlian.util.PreferencesUtils;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -166,12 +167,17 @@ public class AllSellerDetailActivity extends Activity implements OnClickListener
 			startActivity(i);
 			break;
 		case R.id.btn_more:// 收藏
-			if(isFav){
-				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), act.id, "4", createDelFavSuccessListener(), createMyReqErrorListener());
-			}else{
-				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), act.id, "4", createAddFavSuccessListener(), createErrorListener());
+			if(!PreferencesUtils.isLogin(this)) {
+				Intent intent = new Intent(this, LoginActivity.class);
+				startActivity(intent);
+			} else {
+				if(isFav){
+					YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), act.id, "4", createDelFavSuccessListener(), createMyReqErrorListener());
+				}else{
+					YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), act.id, "4", createAddFavSuccessListener(), createErrorListener());
+				}
+				isFav = !isFav;
 			}
-			isFav = !isFav;
 			break;
 		default:
 			break;

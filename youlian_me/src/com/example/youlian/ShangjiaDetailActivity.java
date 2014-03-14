@@ -38,6 +38,7 @@ import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Ad;
 import com.example.youlian.mode.Card;
 import com.example.youlian.mode.Customer;
+import com.example.youlian.util.PreferencesUtils;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -233,12 +234,18 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 			startActivity(intent);
 			break;
 		case R.id.btn_more:// 收藏
-			if(isFav){
-				YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), card.id, "3", createDelFavSuccessListener(), createMyReqErrorListener());
-			}else{
-				YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), card.id, "3", createAddFavSuccessListener(), createMyReqErrorListener());
+			if(!PreferencesUtils.isLogin(this)) {
+				 intent = new Intent(this, LoginActivity.class);
+				startActivity(intent);
+			} else {
+				if(isFav){
+					YouLianHttpApi.delFav(Global.getUserToken(getApplicationContext()), card.id, "3", createDelFavSuccessListener(), createMyReqErrorListener());
+				}else{
+					YouLianHttpApi.addFav(Global.getUserToken(getApplicationContext()), card.id, "3", createAddFavSuccessListener(), createMyReqErrorListener());
+				}
+				isFav = !isFav;
 			}
-			isFav = !isFav;
+			
 			break;
 		default:
 			break;

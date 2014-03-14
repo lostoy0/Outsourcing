@@ -26,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.example.youlian.mode.Comment;
 import com.example.youlian.mode.YouhuiQuan;
 import com.example.youlian.util.ExceptionUtils;
+import com.example.youlian.util.PreferencesUtils;
 import com.example.youlian.view.ActLeft;
 import com.example.youlian.view.ActRight;
 import com.example.youlian.view.CommentItem;
@@ -156,16 +157,20 @@ public class CommentAddActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.ib_right:
 			Log.i(TAG, "ddddddddd");
-			final String content = et_content.getText().toString();
-			new Thread(new Runnable() {
-				@Override
-				public void run() {
-					YouLianHttpApi.comment3(Global.getUserToken(getApplicationContext()), customer_id, content, 
-							String.valueOf(star_level), null, null, "2",
-							null, null, createGetCommentSuccessListener(), createGetAdErrorListener());
-				}
-			}).start();
-			
+			if(!PreferencesUtils.isLogin(this)) {
+				Intent intent = new Intent(this, LoginActivity.class);
+				startActivity(intent);
+			} else{
+				final String content = et_content.getText().toString();
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						YouLianHttpApi.comment3(Global.getUserToken(getApplicationContext()), customer_id, content, 
+								String.valueOf(star_level), null, null, "2",
+								null, null, createGetCommentSuccessListener(), createGetAdErrorListener());
+					}
+				}).start();
+			}
 			break;
 		case R.id.iv_icon_one:
 			star_level = 1;
