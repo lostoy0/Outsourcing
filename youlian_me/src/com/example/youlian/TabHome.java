@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -29,6 +30,7 @@ public class TabHome extends TabActivity implements OnClickListener,
 	private static final String TAB_PIC = "pic";
 	private static final String TAB_SEARCH = "search";
 	private static final String TAB_MORE = "more";
+	private static final String TAG = "TabHome";
 
 	public static TabHome sTabHome = null;
 
@@ -55,11 +57,16 @@ public class TabHome extends TabActivity implements OnClickListener,
 			}
 		}
 	};
-	
+	int defaultPosition = 0;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		Log.i(TAG, "TabHome:" + this);
+		Intent intent = getIntent();
+		if(intent != null){
+			defaultPosition = intent.getIntExtra("postion", 0);
+		}
 		
 		registerBroadcast();
 		
@@ -126,7 +133,6 @@ public class TabHome extends TabActivity implements OnClickListener,
 		// set tab buttons
 		mPieButton = (Button) findViewById(R.id.btn_pie);
 		mPieButton.setOnClickListener(this);
-		mPieButton.setSelected(true);
 
 		mTierButton = (Button) findViewById(R.id.btn_tier);
 		mTierButton.setOnClickListener(this);
@@ -143,6 +149,35 @@ public class TabHome extends TabActivity implements OnClickListener,
 		mFooterLight = (ImageView) findViewById(R.id.footer_light);
 		mFooterLeft = mFooterLight.getLeft();
 		mScreenWidth = getResources().getDisplayMetrics().widthPixels;
+		
+		
+		switch (defaultPosition) {
+		case 0:
+			getTabHost().setCurrentTabByTag(TAB_PIE);
+			setSelect(R.id.btn_pie);
+			break;
+		case 1:
+			getTabHost().setCurrentTabByTag(TAB_TIER);
+			setSelect(R.id.btn_tier);
+			break;
+		case 2:
+			getTabHost().setCurrentTabByTag(TAB_PIC);
+			setSelect(R.id.btn_pic);
+			break;
+		case 3:
+			getTabHost().setCurrentTabByTag(TAB_SEARCH);
+			setSelect(R.id.btn_wigame);
+			break;
+		case 4:
+			getTabHost().setCurrentTabByTag(TAB_MORE);
+			setSelect(R.id.btn_more);
+			break;
+
+		default:
+			break;
+		}
+		
+		
 	}
 
 	public void onClick(View v) {
@@ -215,8 +250,8 @@ public class TabHome extends TabActivity implements OnClickListener,
 		mFooterLight.startAnimation(ta);
 		mFooterLeft = toLeft;
 	}
-
-
+	
+	
 	@Override
 	public void onTabChanged(String tabId) {
 		// TODO Auto-generated method stub

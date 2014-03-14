@@ -12,6 +12,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.ByteArrayBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 
@@ -562,6 +563,63 @@ public class YouLianHttpApi {
 		}
 
 	}
+	
+	
+	
+	public static void comment3(final String user_token,
+			final String customer_id, final String content,
+			final String star_level, final String user_lng,
+			final String user_lat, final String sign_type,
+			final String activity_id, final String shop_id,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		final String server = "younion.comment.on.add";
+		String url = URL_TEST;
+		Log.i(TAG, "url:" + url);
+		HttpClient httpClient = new DefaultHttpClient();
+		HttpPost postRequest = new HttpPost(url);
+		MultipartEntity reqEntity = new MultipartEntity(
+				HttpMultipartMode.BROWSER_COMPATIBLE);
+		try {
+			reqEntity.addPart("api_key", new StringBody(
+					"87d5d0947f5cac0f96109353e64c1688"));
+			reqEntity.addPart("api_sign", new StringBody(
+					"63bd0a3d5c4e0fab882afdb994ea696c"));
+			reqEntity.addPart(KEY_SERVER, new StringBody(server));
+
+			reqEntity.addPart("user_token", new StringBody(user_token));
+			reqEntity.addPart("customer_id", new StringBody(customer_id));
+			reqEntity.addPart("content", new StringBody(content));
+			reqEntity.addPart("star_level", new StringBody(star_level));
+
+			reqEntity.addPart(KEY_CLIENT_TYPE, new StringBody("android"));
+			reqEntity.addPart("sign_type", new StringBody(sign_type));
+			
+//			byte[] data = new byte[5];
+//			ByteArrayBody bab = new ByteArrayBody(data, "kfc.jpg");  
+//	        reqEntity.addPart("image", bab); 
+			
+			
+			postRequest.setEntity(reqEntity);
+			HttpResponse response = httpClient.execute(postRequest);
+			int code = response.getStatusLine().getStatusCode();
+			Log.i(TAG,"code:" + code);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					response.getEntity().getContent(), "UTF-8"));
+			String sResponse;
+			StringBuilder s = new StringBuilder();
+			while ((sResponse = reader.readLine()) != null) {
+				s = s.append(sResponse);
+			}
+			Log.i(TAG, s.toString());
+		} catch (Exception e) {
+			Log.i(TAG, e.toString());
+			e.printStackTrace();
+		}
+
+	}
+
+	
 
 	/**
 	 * 首页城市接口

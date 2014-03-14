@@ -73,6 +73,8 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
     private UMImage mUMImgBitmap = null;
 	
 	public List<ImageView> ivs = new ArrayList<ImageView>();
+	
+	int type_from;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -82,6 +84,8 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_youhuiquan_detail);
 
 		String fav_ent_id = getIntent().getStringExtra("fav_ent_id");
+		type_from = getIntent().getIntExtra("type_from" , 0);
+		
 
 		initViews();
 		
@@ -228,13 +232,20 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		tv_title.setText(quan.fav_name);
 		
 		
-		if(isExit()){
-			isExist = true;
-			bt_apply.setText("使用");
+		if(type_from == 0){
+			if(isExit()){
+				isExist = true;
+				bt_apply.setText("使用");
+			}else{
+				isExist = false;
+				bt_apply.setText("申请");
+			}
+		}else if(type_from == 1){
+			bt_apply.setText("购买");
 		}else{
-			isExist = false;
-			bt_apply.setText("申请");
+			
 		}
+		
 		
 		if("1".equals(quan.is_favorites)){
 			isFav = true;
@@ -318,13 +329,19 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			break;
 
 		case R.id.bt_apply:
-			if(isExist){
-				YouLianHttpApi.useYouhuiQuan(Global.getUserToken(getApplicationContext()), quan.fav_id, 
-						createUseYouhuiQuanSuccessListener(), createMyReqErrorListener());
-			}else{
-				YouLianHttpApi.applyYouhuiQuan(Global.getUserToken(getApplicationContext()), 
-						quan.fav_ent_id, createApplyYouhuiQuanSuccessListener(), createMyReqErrorListener());
+			if(type_from == 0){//普通
+				if(isExist){
+					YouLianHttpApi.useYouhuiQuan(Global.getUserToken(getApplicationContext()), quan.fav_id, 
+							createUseYouhuiQuanSuccessListener(), createMyReqErrorListener());
+				}else{
+					YouLianHttpApi.applyYouhuiQuan(Global.getUserToken(getApplicationContext()), 
+							quan.fav_ent_id, createApplyYouhuiQuanSuccessListener(), createMyReqErrorListener());
+				}
+			}else{//热狗
+				YouLianHttpApi.add2ShoppingCart(Global.getUserToken(getApplicationContext()), 
+						quan.fav_ent_id, "1", createAddCartSuccessListener(), createMyReqErrorListener());
 			}
+			
 			break;
 		case R.id.btn_pie:// 敲到
 			Intent i = new Intent(getApplicationContext(), CommentAddActivity.class);
@@ -441,6 +458,42 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 							Toast.makeText(getApplicationContext(), msg,
 									Toast.LENGTH_SHORT).show();
 						} 
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		};
+	}
+	
+	
+	private Response.Listener<String> createAddCartSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				if (response != null) {
+					try {// 03-13 12:18:05.600: I/YouhuiQuanDetail(25621): success:{"status":"0","msg":"必须拥有该商家的会员卡：金百合婚纱摄影会员卡 才能购买此券！"}
+
+						JSONObject o = new JSONObject(response);
+						int status = o.optInt("status");
+						if (status == 1) {
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+							
+							
+							Intent intent = new Intent(getApplicationContext(), TabHome.class);
+							intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+							intent.putExtra("postion", 2);
+							startActivity(intent);
+							 
+						} else{
+							String msg = o.optString("msg");
+							Toast.makeText(getApplicationContext(), msg,
+									Toast.LENGTH_SHORT).show();
+						}
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}

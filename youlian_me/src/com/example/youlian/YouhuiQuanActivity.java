@@ -91,7 +91,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		type_from = getIntent().getIntExtra("type", 0);
 		if(type_from == 0){
 			tv_title.setText(R.string.youhuiquan);
-		}else{
+		}else if(type_from == 1){
 			tv_title.setText("热购");
 		}
 		
@@ -108,6 +108,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 				YouhuiQuan quan = handleYouhuiQuans.get(position);
 				Intent intent = new Intent(getApplicationContext(), YouhuiQuanDetail.class);
 				intent.putExtra("fav_ent_id", quan.fav_ent_id);
+				intent.putExtra("type_from", type_from);
 				startActivity(intent);
 			}
 		});

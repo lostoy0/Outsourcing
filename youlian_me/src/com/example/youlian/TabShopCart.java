@@ -71,7 +71,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 	}
 	
 	private void loadData() {
-		SimpleProgressDialog.show(this);
+//		SimpleProgressDialog.show(this);
 		YouLianHttpApi.getShoppingCart(Global.getUserToken(this), createGetGoodsListSuccessListener(), createGetGoodsListErrorListener());
 	}
 
@@ -231,7 +231,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
-				SimpleProgressDialog.dismiss();
+//				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -265,7 +265,7 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-            	SimpleProgressDialog.dismiss();
+//            	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
             	showEmptyView();
             }

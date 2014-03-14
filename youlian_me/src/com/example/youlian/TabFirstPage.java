@@ -107,6 +107,10 @@ public class TabFirstPage extends Activity implements OnClickListener {
 		// 活动主题
 		YouLianHttpApi.getSubjectActivity(createMyReqSuccessListener(),
 				createMyReqErrorListener());
+		// 获取城市
+		YouLianHttpApi.getArea(createGetAreaSuccessListener(),
+				createMyReqErrorListener());
+		
 		
 		
 	}
@@ -268,15 +272,17 @@ public class TabFirstPage extends Activity implements OnClickListener {
 		Location location  = null;
 		if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 			Log.i(TAG,"GPS_PROVIDER");
-			location = locationManager
-					.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 			locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
 					1000, 0, locationListener);
+			location = locationManager
+					.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 		} else {
 			Log.i(TAG,"network_provider");
 			locationManager
 					.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
 							1000, 0, locationListener);
+			locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
+					1000, 0, locationListener);
 			location = locationManager
 					.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 			
@@ -499,6 +505,18 @@ public class TabFirstPage extends Activity implements OnClickListener {
 			}
 		};
 	}
+	
+	
+	private Response.Listener<String> createGetAreaSuccessListener() {
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.i(TAG, "success:" + response);
+				
+				
+			}
+		};
+	}
 
 	private Response.ErrorListener createMyReqErrorListener() {
 		return new Response.ErrorListener() {
@@ -529,7 +547,6 @@ public class TabFirstPage extends Activity implements OnClickListener {
 	private void getAddress() {
 		if(address == null){
 			new Thread(new Runnable() {
-				
 				@Override
 				public void run() {
 					HttpGet request = new HttpGet(getAddressUrl());
@@ -548,16 +565,27 @@ public class TabFirstPage extends Activity implements OnClickListener {
 								String ss = jaa.getString(0);
 								// 根据types中的street_address获取address
 								if ("route".equalsIgnoreCase(ss)) {
-									address = js.getString("formatted_address");
-									Message msg = handler.obtainMessage();
-									msg.what = what;
-									msg.obj = address;
-									handler.sendMessage(msg);
-									Log.d(TAG, "address:" + address);
+//									address = js.getString("formatted_address");
+									
+									JSONArray arrays = js.optJSONArray("address_components");
+									int len = arrays.length();
+									for(int k=0; k<len; k++){
+										JSONObject o = arrays.getJSONObject(k);
+										JSONArray oa = o.optJSONArray("types");
+										String s = oa.getString(0);
+										if("locality".equalsIgnoreCase(s)){
+											String re = o.optString("short_name");
+											address = re;
+											Message msg = handler.obtainMessage();
+											msg.what = what;
+											msg.obj = address;
+											handler.sendMessage(msg);
+											Log.d(TAG, "address:" + address);
+											return;
+										}
+									}
 								}
-
 							}
-
 						}
 					} catch (Exception e) {
 						Log.i("MainActivity", e.toString());
