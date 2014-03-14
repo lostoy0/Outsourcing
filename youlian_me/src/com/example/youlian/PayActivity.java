@@ -7,6 +7,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,19 +18,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alipay.android.app.sdk.AliPay;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.example.youlian.adapter.PayOrderListAdapter;
 import com.example.youlian.common.Constants;
 import com.example.youlian.mode.Order;
 import com.example.youlian.mode.OrderDetail;
+import com.example.youlian.more.MsgCenterDetActivity;
 import com.example.youlian.pay.alipay.Result;
+import com.example.youlian.util.PreferencesUtils;
 import com.example.youlian.util.YlLogger;
 import com.example.youlian.view.SimpleProgressDialog;
+import com.youlian.view.dialog.HuzAlertDialog;
 
 /**
  * 支付界面
@@ -46,19 +50,13 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 	private static final int TYPE_ALIPAY_WEB = 1;
 	private static final int TYPE_UCOIN = 0;
 	
-	private static final int ORDER_TYPE_RECHARGE = 1;//充值订单
-	private static final int ORDER_TYPE_GENERAL = 0;//普通订单
-	
 	public static final String KEY_ORDER = "order";
-	
-	private int mOrderType = ORDER_TYPE_GENERAL;
 	
 	private TextView mTotalMoneyTextView;
 	private ImageButton mSelectYiPayButton, mSelectUnionButton, mSelectAlipayClientButton, mSelectAlipayButton, mSelectUcoinButton;
 	private Button mPayButton;
 	
-	private ListView mListView;
-	private PayOrderListAdapter mAdapter;
+	private LinearLayout mContainer;
 	private List<OrderDetail> mList;
 	
 	private int mSelectedPayType = TYPE_ALIPAY_CLIENT;
@@ -67,7 +65,10 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 	private Order mSettleOrder;
 	
 	public boolean isRechargeOrder() {
-		return mOrderType == ORDER_TYPE_RECHARGE;
+		if(mSettleOrder != null && mSettleOrder.orderNo != null && mSettleOrder.orderNo.startsWith("R")) {
+			return true;
+		}
+		return false;
 	}
 	
 	private PayHandler mHandler;
@@ -96,13 +97,6 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		if(mOrder == null) {
 			mLogger.e("order is null");
 			finish();
-		}
-		
-		String orderNoString = mOrder.orderNo;
-		if(!TextUtils.isEmpty(orderNoString) && orderNoString.startsWith("R")) {
-			mOrderType = ORDER_TYPE_RECHARGE;
-		} else {
-			mOrderType = ORDER_TYPE_GENERAL;
 		}
 		
 		mList = new ArrayList<OrderDetail>();
@@ -175,7 +169,6 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 	private void startPay() {
 		switch(mSelectedPayType) {
 		case TYPE_YIPAY:
-		case TYPE_UCOIN:
 		case TYPE_UNIONPAY:
 			showToast("抱歉，该支付方式暂未开发完成，请使用其他支付方式支付");
 			return;
@@ -193,10 +186,10 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 			Intent intent = new Intent(PayActivity.this, AliWapPayActivity.class);
 			intent.putExtra("url", url);
 			startActivityForResult(intent, REQ_ALIPAY_WAP);
-			
-//			Uri uri = Uri.parse(url);
-//			Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//			startActivity(intent);
+		} else if(mSelectedPayType == TYPE_UCOIN) {
+			SimpleProgressDialog.show(this);
+			YouLianHttpApi.payOrder(Global.getUserToken(getApplicationContext()), mOrder.id, mSelectedPayType, 
+					createPaySuccessListener(), createPayErrorListener());
 		}
 	}
 
@@ -235,9 +228,7 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		findViewById(R.id.pay_tv_alipay_client).setOnClickListener(this);
 		findViewById(R.id.pay_tv_ucoin).setOnClickListener(this);
 		
-		mListView = (ListView) findViewById(R.id.list);
-		mAdapter = new PayOrderListAdapter(this, mList);
-		mListView.setAdapter(mAdapter);
+		mContainer = (LinearLayout) findViewById(R.id.order_goods_container);
 	}
 	
 	private void resetSelectState(int selected) {
@@ -299,14 +290,14 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 						Order order = Order.from(object.optJSONObject(Constants.key_result));
 						if(order != null) {
 							mSettleOrder = order;
+							if(isRechargeOrder()) {
+								mTotalMoneyTextView.setText("总计：" + mSettleOrder.youcoinCount + "元");
+							} else {
+								mTotalMoneyTextView.setText("总计：" + mSettleOrder.youcoinCount + "U币");
+							}
 							if(mSettleOrder.orderDetailList != null && mSettleOrder.orderDetailList.size() > 0) {
 								mList.addAll(mSettleOrder.orderDetailList);
-								mAdapter.notifyDataSetChanged();
-								if(isRechargeOrder()) {
-									mTotalMoneyTextView.setText("总计：" + mSettleOrder.youcoinCount + "元");
-								} else {
-									mTotalMoneyTextView.setText("总计：" + mSettleOrder.youcoinCount + "U币");
-								}
+								fillGoodsList();
 							}
 						}
 					} catch (JSONException e) {
@@ -315,6 +306,39 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 				}
 			}
 		};
+	}
+	
+	private void fillGoodsList() {
+		if(mList != null && mList.size() > 0) {
+			mContainer.removeAllViews();
+			
+			for(int i=0; i<mList.size(); i++) {
+				OrderDetail detail = mList.get(i);
+				if(detail != null) {
+					mContainer.addView(createGoodsItemView(detail));
+					if(i < mList.size()-1) {
+						mContainer.addView(getLayoutInflater().inflate(R.layout.dashedline, null));
+					}
+				}
+			}
+		}
+	}
+	
+	private View createGoodsItemView(OrderDetail orderDetail) {
+		View goodsView = getLayoutInflater().inflate(R.layout.item_pay_order, null);
+		TextView nameTextView = (TextView) goodsView.findViewById(R.id.pay_tv_goodsname);
+		TextView pricetTextView = (TextView) goodsView.findViewById(R.id.pay_tv_price);
+		TextView quantityTextView = (TextView) goodsView.findViewById(R.id.pay_tv_amount);
+		
+		nameTextView.setText("商品名称：" + orderDetail.productName);
+		if(isRechargeOrder()) {
+			pricetTextView.setText("单价：" + orderDetail.price + "元");
+		} else {
+			pricetTextView.setText("单价：" + orderDetail.price + "U币");
+		}
+		quantityTextView.setText("数量：" + orderDetail.quantity + "");
+		
+		return goodsView;
 	}
 	
 	private Response.ErrorListener createSettleOrderErrorListener() {
@@ -335,20 +359,9 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
-					/*if(mSelectedPayType == TYPE_ALIPAY_WEB) {
-						Intent intent = new Intent(PayActivity.this, AliWapPayActivity.class);
-						intent.putExtra("wap", response);
-						startActivityForResult(intent, REQ_ALIPAY_WAP);
-						return;
-					}*/
-					
 					try {
 						JSONObject object = new JSONObject(response);
-						if(0 == object.optInt(Constants.key_status)) {
-							showToast(object.optString(Constants.KEY_MSG));
-						} else {
-							handlePay(object);
-						}
+						handlePay(object);
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -363,14 +376,25 @@ public class PayActivity extends BaseActivity implements OnClickListener {
             public void onErrorResponse(VolleyError error) {
             	SimpleProgressDialog.dismiss();
             	mLogger.e(error.getMessage());
+            	showToast("支付失败");
             }
         };
     }
 	
 	private void handlePay(JSONObject json) {
+		if(mSelectedPayType != TYPE_UCOIN && 0 == json.optInt(Constants.key_status)) {
+			showToast("支付失败");
+			return;
+		}
+		
 		switch(mSelectedPayType) {
 		case TYPE_UCOIN:
-			
+			int resultCode = json.optInt(Constants.key_status);
+			if(resultCode == 0) {
+				showUcoinPayFailedDialog();
+			} else if(resultCode == 1) {
+				showToast("支付成功");
+			}
 			break;
 			
 		case TYPE_ALIPAY_WEB:
@@ -392,6 +416,24 @@ public class PayActivity extends BaseActivity implements OnClickListener {
 		}
 	}
 	
+	private void showUcoinPayFailedDialog() {
+		Builder bd = new HuzAlertDialog.Builder(this);
+		bd.setTitle("支付失败");
+		bd.setMessage("您的U币账户余额不足，是否充值？");
+		bd.setPositiveButton("是", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface d, int which) {
+				Intent intent = new Intent(PayActivity.this, CoinRechargeActivity.class);
+				startActivity(intent);
+			}
+		});
+		bd.setNeutralButton("否", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface d, int which) {
+				d.dismiss();
+			}
+		});
+		bd.show();
+	}
+
 	private void alipayClient(final String orderInfo) {
 		if(TextUtils.isEmpty(orderInfo)) return;
 		

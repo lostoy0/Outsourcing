@@ -28,7 +28,7 @@
         <LinearLayout
             android:id="@+id/contentView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:background="@drawable/rounded_one"
             android:orientation="vertical" >
@@ -76,7 +76,8 @@
             <ListView
                 android:id="@+id/list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:scrollbarStyle="outsideOverlay"
                 android:scrollbars="none" />
 
@@ -97,7 +98,7 @@
                     android:layout_alignParentRight="true"
                     android:text="0元"
                     android:textColor="@color/red"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/cart_tv_money_pre"
@@ -107,7 +108,7 @@
                     android:layout_toLeftOf="@id/cart_tv_money"
                     android:text="合计："
                     android:textColor="#666"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/cart_tv_amount"
@@ -117,7 +118,7 @@
                     android:layout_below="@id/cart_tv_money"
                     android:text="0"
                     android:textColor="@color/red"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/cart_tv_amount_pre"
@@ -127,7 +128,7 @@
                     android:layout_below="@id/cart_tv_money_pre"
                     android:text="数量："
                     android:textColor="#666"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/cart_btn_delete"

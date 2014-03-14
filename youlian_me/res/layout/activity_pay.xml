@@ -23,25 +23,14 @@
                 android:background="@drawable/rounded_one"
                 android:orientation="vertical" >
 
-                <!-- <TextView
-                    android:id="@+id/pay_tv_shopname"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center"
-                    android:singleLine="true"
-                    android:text="商户名称xxx"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <include layout="@layout/merge_line_grey_horizontal" /> -->
-
-                <ListView 
-                    android:id="@+id/list"
+                <LinearLayout
+                    android:id="@+id/order_goods_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:scrollbars="none" />
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:padding="4dp" />
 
                 <include layout="@layout/merge_line_grey_horizontal" />
 
@@ -161,7 +150,8 @@
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
-                    <!-- <TextView
+                    <!--
+                         <TextView
                         android:id="@+id/pay_tv_alipay_client_check"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -170,7 +160,8 @@
                         android:singleLine="true"
                         android:text="（已安装）"
                         android:textColor="#999"
-                        android:textSize="18sp" /> -->
+                        android:textSize="18sp" />
+                    -->
 
                     <ImageButton
                         android:id="@+id/pay_ib_select_alipay_client"
@@ -244,7 +235,7 @@
                         android:drawableLeft="@drawable/pay_ucoin"
                         android:gravity="center_vertical"
                         android:singleLine="true"
-                        android:text="U币（开发中...）"
+                        android:text="U币"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -264,7 +255,6 @@
                         android:background="@null"
                         android:src="@drawable/arrow" />
                 </LinearLayout>
-
             </LinearLayout>
 
             <Button

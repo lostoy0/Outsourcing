@@ -1230,8 +1230,12 @@ public class YouLianHttpApi {
 			Response.ErrorListener errorListener) {
 		String server = "younion.order.add";
 		String url = getUrl(KEY_SERVER, server, "user_token", user_token,
-				"cart_ids", cart_ids, "client_type", "android", "uCoinCount",
+				"cart_ids", "0", "client_type", "android", "uCoinCount",
 				uCoinCount + "");
+		if(!"0".equals(cart_ids)) {
+			url = getUrl(KEY_SERVER, server, "user_token", user_token,
+					"cart_ids", cart_ids, "client_type", "android");
+		}
 		Log.i(TAG, "url:" + url);
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),

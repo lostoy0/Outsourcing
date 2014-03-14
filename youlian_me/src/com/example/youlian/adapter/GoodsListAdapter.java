@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,7 +86,7 @@ public class GoodsListAdapter extends BaseAdapter {
 			
 			holder.nameTextView.setText(item.goodsName);
 			holder.amountTextView.setText("数量：" + item.quantity);
-			holder.priceTextView.setText("单价：" + item.goodsPrice + "元");
+			holder.priceTextView.setText("单价：" + item.goodsPrice + "U币");
 			
 			holder.selectButton.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -122,8 +121,9 @@ public class GoodsListAdapter extends BaseAdapter {
 						int amount = Integer.parseInt(holder.changeAmountTextView.getText().toString().trim());
 						if(amount > 0) {
 							amount --;
+							item.quantity = amount;
 							holder.changeAmountTextView.setText(amount + "");
-							holder.amountTextView.setText(amount + "");
+							holder.amountTextView.setText("数量：" + amount);
 							if(mStateMap.get(item.goodsId)) mContext.resetQuantityAndMoney();
 						}
 					}
@@ -133,8 +133,9 @@ public class GoodsListAdapter extends BaseAdapter {
 					public void onClick(View v) {
 						int amount = Integer.parseInt(holder.changeAmountTextView.getText().toString().trim());
 						amount ++;
+						item.quantity = amount;
 						holder.changeAmountTextView.setText(amount + "");
-						holder.amountTextView.setText(amount + "");
+						holder.amountTextView.setText("数量：" + amount);
 						if(mStateMap.get(item.goodsId)) mContext.resetQuantityAndMoney();
 					}
 				});
