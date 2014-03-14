@@ -1,6 +1,15 @@
 package com.example.youlian.mode;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.text.TextUtils;
+
+import com.example.youlian.common.Constants;
 
 /**
  * 1）返回的结果如果type为1表示为点对点的推送消息，
@@ -23,7 +32,6 @@ public class MsgCenterResult implements Serializable {
 	/**消息详情*/
 	public String content;
 	/**消息时间（年月日）*/
-	/**消息时间*/
 	public String time;
 	/**0为公告消息 1为点对点推送的消息*/
 	public int type;
@@ -34,4 +42,37 @@ public class MsgCenterResult implements Serializable {
 	/**链接的ID*/
 	public String linkId;	
 	
+	public static MsgCenterResult from(JSONObject json) {
+		MsgCenterResult result = null;
+		if(json != null) {
+			result = new MsgCenterResult();
+			result.content = json.optString("content");
+			result.id = json.optString("id");
+			result.introduction = json.optString("introduction");
+			result.linkId = json.optString("linkId");
+			result.linkType = json.optInt("linkType");
+			result.show_status = json.optInt("show_status");
+			result.time = json.optString("time");
+			result.title = json.optString("title");
+			result.type = json.optInt("type");
+		}
+		return result;
+	}
+	
+	public static ArrayList<MsgCenterResult> getList(String response) throws JSONException {
+		ArrayList<MsgCenterResult> results = null;
+		if(!TextUtils.isEmpty(response)) {
+			JSONObject responseJsonObject = new JSONObject(response);
+			if("1".equals(responseJsonObject.opt(Constants.key_status))) {
+				JSONArray array = responseJsonObject.optJSONArray(Constants.key_result);
+				if(array != null && array.length() > 0) {
+					results = new ArrayList<MsgCenterResult>();
+					for(int i=0; i<array.length(); i++) {
+						results.add(MsgCenterResult.from(array.getJSONObject(i)));
+					}
+				}
+			}
+		}
+		return results;
+	}
 }
