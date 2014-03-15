@@ -12,4 +12,10 @@
 
     <dimen name="tab_width">48dp</dimen>
     <dimen name="act_detail_marge_left">10dp</dimen>
+    
+    
+    <dimen name="btn_upload_photo_width">224dp</dimen>
+	<dimen name="btn_upload_photo_height">48dp</dimen>
+	<dimen name="upload_photo_margin_top">25dp</dimen>
+	<dimen name="title_text_size">20sp</dimen>
 </resources>

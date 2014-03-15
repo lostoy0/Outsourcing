@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -482,6 +483,46 @@ public class YouLianHttpApi {
 		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
+	
+	
+	/**
+	 * 
+	 * @param user_token
+	 * @param customer_id
+	 * @param content
+	 * @param star_level
+	 * @param user_lng
+	 * @param user_lat
+	 * @param sign_type
+	 * @param activity_id
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void comment4(final String user_token,
+			final String customer_id, final String content,
+			final String star_level, final String user_lng,
+			final String user_lat, final String sign_type,
+			Response.Listener<String> successListener,
+			Response.ErrorListener errorListener) {
+		final String server = "younion.comment.on.add";
+		 String url = getUrl(KEY_SERVER, server,
+		 "user_token", user_token,
+		 "customer_id", customer_id,
+		 "content", content,
+		 "star_level", star_level,
+		 "user_lng", user_lng,
+		 "user_lat", user_lat,
+		 KEY_CLIENT_TYPE, "android",
+		 "sign_type", sign_type
+		 );
+		Log.i(TAG, "url:" + url);
+		RequestQueue queue = MyVolley.getRequestQueue();
+		StringRequest myReq = new StringRequest(Method.POST, url.toString(),
+				successListener, errorListener) {
+		};
+		myReq.setShouldCache(false);
+		queue.add(myReq);
+	}
 
 	public static void comment2(final String user_token,
 			final String customer_id, final String content,
@@ -570,52 +611,61 @@ public class YouLianHttpApi {
 			final String customer_id, final String content,
 			final String star_level, final String user_lng,
 			final String user_lat, final String sign_type,
-			final String activity_id, final String shop_id,
-			Response.Listener<String> successListener,
-			Response.ErrorListener errorListener) {
-		final String server = "younion.comment.on.add";
-		String url = URL_TEST;
-		Log.i(TAG, "url:" + url);
-		HttpClient httpClient = new DefaultHttpClient();
-		HttpPost postRequest = new HttpPost(url);
-		MultipartEntity reqEntity = new MultipartEntity(
-				HttpMultipartMode.BROWSER_COMPATIBLE);
-		try {
-			reqEntity.addPart("api_key", new StringBody(
-					"87d5d0947f5cac0f96109353e64c1688"));
-			reqEntity.addPart("api_sign", new StringBody(
-					"63bd0a3d5c4e0fab882afdb994ea696c"));
-			reqEntity.addPart(KEY_SERVER, new StringBody(server));
-
-			reqEntity.addPart("user_token", new StringBody(user_token));
-			reqEntity.addPart("customer_id", new StringBody(customer_id));
-			reqEntity.addPart("content", new StringBody(content));
-			reqEntity.addPart("star_level", new StringBody(star_level));
-
-			reqEntity.addPart(KEY_CLIENT_TYPE, new StringBody("android"));
-			reqEntity.addPart("sign_type", new StringBody(sign_type));
-			
-//			byte[] data = new byte[5];
-//			ByteArrayBody bab = new ByteArrayBody(data, "kfc.jpg");  
-//	        reqEntity.addPart("image", bab); 
-			
-			
-			postRequest.setEntity(reqEntity);
-			HttpResponse response = httpClient.execute(postRequest);
-			int code = response.getStatusLine().getStatusCode();
-			Log.i(TAG,"code:" + code);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					response.getEntity().getContent(), "UTF-8"));
-			String sResponse;
-			StringBuilder s = new StringBuilder();
-			while ((sResponse = reader.readLine()) != null) {
-				s = s.append(sResponse);
+			final byte data[],
+			final Response.Listener<String> successListener,
+			final Response.ErrorListener errorListener) {
+			new Thread(new Runnable() {
+			@Override
+			public void run() {
+				final String server = "younion.comment.on.add";
+				 String url = getUrl(KEY_SERVER, server,
+				 "user_token", user_token,
+				 "customer_id", customer_id,
+				 "star_level", star_level,
+				 "user_lng", user_lng,
+				 "user_lat", user_lat,
+				 KEY_CLIENT_TYPE, "android",
+				 "sign_type", sign_type
+				 );
+				Log.i(TAG, "url:" + url);
+				 
+				Log.i(TAG, "url:" + url);
+				HttpClient httpClient = new DefaultHttpClient();
+				HttpPost postRequest = new HttpPost(url);
+				MultipartEntity reqEntity = new MultipartEntity(
+						HttpMultipartMode.BROWSER_COMPATIBLE);
+				try {
+					if(data != null){
+						ByteArrayBody bab = new ByteArrayBody(data, "kfc.jpg");  
+				        reqEntity.addPart("image", bab); 
+					}
+			        reqEntity.addPart("content", new StringBody(content, Charset.forName("UTF-8")));
+					postRequest.setEntity(reqEntity);
+					HttpResponse response = httpClient.execute(postRequest);
+					int code = response.getStatusLine().getStatusCode();
+					Log.i(TAG,"code:" + code);
+					if(code == 200){
+						successListener.onResponse("success");
+					}else{
+						errorListener.onErrorResponse(null);
+					}
+					
+//					BufferedReader reader = new BufferedReader(new InputStreamReader(
+//							response.getEntity().getContent(), "UTF-8"));
+//					String sResponse;
+//					StringBuilder s = new StringBuilder();
+//					while ((sResponse = reader.readLine()) != null) {
+//						s = s.append(sResponse);
+//					}
+//					Log.i(TAG, s.toString());
+				} catch (Exception e) {
+					Log.i(TAG, e.toString());
+					e.printStackTrace();
+				}
 			}
-			Log.i(TAG, s.toString());
-		} catch (Exception e) {
-			Log.i(TAG, e.toString());
-			e.printStackTrace();
-		}
+		}).start();
+		
+		
 
 	}
 
@@ -885,6 +935,60 @@ public class YouLianHttpApi {
 		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
+	
+	
+	public static void updateUserIcon(final String user_token
+			, final byte data[]
+			, final Response.Listener<String> successListener,
+			final Response.ErrorListener errorListener) {
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				String server = "younion.user.info.update";
+				 String url = getUrl(KEY_SERVER, server,
+				 "user_token", user_token,
+				 KEY_CLIENT_TYPE, "android"
+				 );
+				Log.i(TAG, "url:" + url);
+				HttpClient httpClient = new DefaultHttpClient();
+				HttpPost postRequest = new HttpPost(url);
+				MultipartEntity reqEntity = new MultipartEntity(
+						HttpMultipartMode.BROWSER_COMPATIBLE);
+				try {
+					if(data != null){
+						ByteArrayBody bab = new ByteArrayBody(data, "kfc.jpg");  
+				        reqEntity.addPart("image", bab); 
+					}
+					postRequest.setEntity(reqEntity);
+					HttpResponse response = httpClient.execute(postRequest);
+					int code = response.getStatusLine().getStatusCode();
+					Log.i(TAG,"code:" + code);
+					if(code == 200){
+						if(successListener != null){
+							successListener.onResponse("success");
+						}
+					}else{
+						if(errorListener != null){
+							errorListener.onErrorResponse(null);
+						}
+						
+					}
+					
+//					BufferedReader reader = new BufferedReader(new InputStreamReader(
+//							response.getEntity().getContent(), "UTF-8"));
+//					String sResponse;
+//					StringBuilder s = new StringBuilder();
+//					while ((sResponse = reader.readLine()) != null) {
+//						s = s.append(sResponse);
+//					}
+				} catch (Exception e) {
+					Log.i(TAG, e.toString());
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	
 
 	/**
 	 * 获取收藏列表

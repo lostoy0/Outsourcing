@@ -19,6 +19,7 @@ import com.example.youlian.AllSellerDetailActivity;
 import com.example.youlian.R;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Comment;
+import com.example.youlian.mode.Pic;
 
 public class CommentItem extends FrameLayout {
 	/**
@@ -96,16 +97,21 @@ public class CommentItem extends FrameLayout {
 		for(int i=0; i<level; i++){
 			ivs.get(i).setImageResource(R.drawable.star_red);
 		}
-		if(TextUtils.isEmpty(comment.pic)){
-			iv_image.setVisibility(View.GONE);
-		}else{
-			iv_image.setVisibility(View.VISIBLE);
-			ImageLoader imageLoader = MyVolley.getImageLoader();
-            imageLoader.get(comment.pic, 
-                           ImageLoader.getImageListener(iv_image, 
-                                                         0, 
-                                                         0));
+		
+		if(comment.pic != null){
+			Pic p = comment.pic;
+			if(TextUtils.isEmpty(p.url)){
+				iv_image.setVisibility(View.GONE);
+			}else{
+				iv_image.setVisibility(View.VISIBLE);
+				ImageLoader imageLoader = MyVolley.getImageLoader();
+	            imageLoader.get(p.url, 
+	                           ImageLoader.getImageListener(iv_image, 
+	                                                         0, 
+	                                                         0));
+			}
 		}
+		
 		tv_username.setText(comment.userName);
 		tv_content.setText(comment.content);
 		tv_date.setText(comment.addTime);

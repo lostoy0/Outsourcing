@@ -1,18 +1,27 @@
 package com.example.youlian;
 
+import java.io.File;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -21,6 +30,7 @@ import com.example.youlian.app.MyVolley;
 import com.example.youlian.common.Constants;
 import com.example.youlian.mode.RegioninfoVO;
 import com.example.youlian.mode.UserInfo;
+import com.example.youlian.util.Utilities;
 import com.example.youlian.util.Utils;
 import com.example.youlian.util.YlLogger;
 import com.example.youlian.view.SimpleProgressDialog;
@@ -72,8 +82,42 @@ public class ModifyUserInfoActivity extends BaseActivity implements
 		mAddrTextView = (TextView) findViewById(R.id.modify_addr_tv);
 		mModifyAddrView = findViewById(R.id.modify_addr_panel);
 		mModifyAddrView.setOnClickListener(this);
+		
+		
+		mRelativeLayoutUpload = (RelativeLayout) this
+				.findViewById(R.id.rl_upload);
+		mRelativeLayoutUpload.setVisibility(View.GONE);
+		mRelativeLayoutUpload.setOnTouchListener(new View.OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				mRelativeLayoutUpload.setVisibility(View.GONE);
+				return true;
+			}
+		});
+		mTakePhoto = (Button) this.findViewById(R.id.bt_pz);
+		mPics = (Button) this.findViewById(R.id.bt_photo);
+		mCancelUpload = (Button) this.findViewById(R.id.bt_cancel_upload);
+		mTakePhoto.setOnClickListener(this);
+		mPics.setOnClickListener(this);
+		mCancelUpload.setOnClickListener(this);
+
+		findViewById(R.id.upload_container).setOnTouchListener(
+				new View.OnTouchListener() {
+					@Override
+					public boolean onTouch(View v, MotionEvent event) {
+						return true;
+					}
+		});
 	}
 
+	// 上传
+		private RelativeLayout mRelativeLayoutUpload;
+		private Button mTakePhoto;
+		private Button mPics;
+		private Button mCancelUpload;
+			
+			
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
@@ -86,7 +130,11 @@ public class ModifyUserInfoActivity extends BaseActivity implements
 			break;
 			
 		case R.id.modify_icon_panel:
-			
+			if (mRelativeLayoutUpload.getVisibility() != View.VISIBLE) {
+				mRelativeLayoutUpload.setVisibility(View.VISIBLE);
+			} else {
+				mRelativeLayoutUpload.setVisibility(View.GONE);
+			}
 			break;
 			
 		case R.id.modify_addr_panel:
@@ -96,6 +144,16 @@ public class ModifyUserInfoActivity extends BaseActivity implements
 			
 		case R.id.modify_pass_panel:
 			startActivity(new Intent(this, ModifyPsdActivity.class));
+			break;
+			
+		case R.id.bt_pz:// 拍照上传
+			uploadByTakePhoto();
+			break;
+		case R.id.bt_photo:// 照片
+			uploadByPics();
+			break;
+		case R.id.bt_cancel_upload:// 取消上传
+			mRelativeLayoutUpload.setVisibility(View.GONE);
 			break;
 		}
 	}
@@ -190,20 +248,106 @@ public class ModifyUserInfoActivity extends BaseActivity implements
 			mAddrTextView.setText(mUserInfo.province.areaName + " " + mUserInfo.city.areaName + " " + mUserInfo.district.areaName);
 		}
 	}
+	
+	private static final int REQ_CHOOSE_PHOTO = 8;
+	private static final int REQ_IMAGE_CAPTURE = 9;
 
+	private static final String TAG = "ModifyUserInfoActivity";
+	private Uri mCaptureUri;
+	private String upLoadFilePath = "";
+	private void uploadByTakePhoto() {
+		if (android.os.Environment.getExternalStorageState().equals(
+				android.os.Environment.MEDIA_MOUNTED)) {
+			try {
+				File uploadFile = new File(
+						MyVolley.getCacheDir(getApplicationContext()), "pic_"
+								+ String.valueOf(System.currentTimeMillis())
+								+ ".jpg");
+				mCaptureUri = Uri.fromFile(uploadFile);
+				upLoadFilePath = uploadFile.getPath();
+				Log.i(TAG, "upLoadFilePath:" + upLoadFilePath);
+				Intent intent = Utilities.createPhotoCaptureIntent(mCaptureUri);
+				startActivityForResult(intent, REQ_IMAGE_CAPTURE);
+			} catch (ActivityNotFoundException e) {
+				Toast.makeText(getApplicationContext(), "wy_toast_no_camera",
+						Toast.LENGTH_SHORT).show();
+			}
+		} else {
+			Toast.makeText(getApplicationContext(), "无法拍照", Toast.LENGTH_SHORT)
+					.show();
+		}
+	}
+	byte[] bytes;
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		
-		if(requestCode == REQ_ADDR && resultCode == RESULT_OK) {
-			mProvince = (RegioninfoVO) data.getSerializableExtra(AreaProvinceActivity.key_province);
-			mCity = (RegioninfoVO) data.getSerializableExtra(AreaProvinceActivity.key_city);
-			mDistrict = (RegioninfoVO) data.getSerializableExtra(AreaProvinceActivity.key_district);
-			if(mProvince != null) {
-				StringBuilder builder = new StringBuilder();
-				builder.append(mProvince.areaName).append(" ").append(mCity==null?"":mCity.areaName).append(" ").append(mDistrict==null?"":mDistrict.areaName);
-				if(builder.length()>0) mAddrTextView.setText(builder.toString());
+//		mTencent.onActivityResult(requestCode, resultCode, data);
+		switch (requestCode) {
+		case REQ_CHOOSE_PHOTO:
+			if (resultCode == RESULT_OK) {
+				Bundle extras = data.getExtras();
+				if (extras != null) {
+					Bitmap photo = extras.getParcelable("data");
+					mIconImageView.setImageBitmap(photo);
+					mIconImageView.invalidate();
+					bytes = Utilities.bitmap2Bytes(photo);
+					YouLianHttpApi.updateUserIcon(Global.getUserToken(getApplicationContext()), bytes, null, null);
+					Log.i(TAG, "bytes length:" +  bytes.length);
+					hideUploadView();
+				}
 			}
+			break;
+
+		case REQ_IMAGE_CAPTURE:
+			if (resultCode == RESULT_OK) {
+				try {
+					Intent intent = new Intent("com.android.camera.action.CROP");
+					intent.setDataAndType(mCaptureUri, "image/*");
+					intent.putExtra("crop", "true");
+					// aspectX aspectY 是宽高的比例
+					intent.putExtra("aspectX", 1);
+					intent.putExtra("aspectY", 1);
+					// outputX outputY 是裁剪图片宽高
+					intent.putExtra("outputX", 220);
+					intent.putExtra("outputY", 220);
+					intent.putExtra("return-data", true);
+					startActivityForResult(intent, REQ_CHOOSE_PHOTO);
+				} catch (ActivityNotFoundException e) {
+					Toast.makeText(getApplicationContext(),
+							R.string.no_image_gallery, Toast.LENGTH_SHORT)
+							.show();
+				}
+			}
+			break;
+			
+		case REQ_ADDR:
+			if(requestCode == REQ_ADDR && resultCode == RESULT_OK) {
+				mProvince = (RegioninfoVO) data.getSerializableExtra(AreaProvinceActivity.key_province);
+				mCity = (RegioninfoVO) data.getSerializableExtra(AreaProvinceActivity.key_city);
+				mDistrict = (RegioninfoVO) data.getSerializableExtra(AreaProvinceActivity.key_district);
+				if(mProvince != null) {
+					StringBuilder builder = new StringBuilder();
+					builder.append(mProvince.areaName).append(" ").append(mCity==null?"":mCity.areaName).append(" ").append(mDistrict==null?"":mDistrict.areaName);
+					if(builder.length()>0) mAddrTextView.setText(builder.toString());
+				}
+			}
+			break;
+		}
+	}
+	private void uploadByPics() {
+		try {
+			Intent intent = Utilities.createPhotoPickIntent(220, 220, 1, 1,
+					null);
+			startActivityForResult(intent, REQ_CHOOSE_PHOTO);
+		} catch (ActivityNotFoundException e) {
+			Toast.makeText(getApplicationContext(), R.string.no_image_gallery,
+					Toast.LENGTH_SHORT).show();
+		}
+	}
+
+
+	protected void hideUploadView() {
+		if (mRelativeLayoutUpload.getVisibility() == View.VISIBLE) {
+			mRelativeLayoutUpload.setVisibility(View.GONE);
 		}
 	}
 
