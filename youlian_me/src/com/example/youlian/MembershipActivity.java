@@ -66,7 +66,10 @@ public class MembershipActivity extends Activity implements OnClickListener {
 	public List<String> hots = new ArrayList<String>();
 	public List<String> parts = new ArrayList<String>();
 	
-	ImageLoader  mImageLoader;;
+	ImageLoader  mImageLoader;
+	private TextView tv_all_area;
+	private TextView tv_all_sort;
+	private TextView tv_hot;;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -130,6 +133,10 @@ public class MembershipActivity extends Activity implements OnClickListener {
 				case allarea:
 					if(position < cities.size()){
 						if(position == 0) {
+							tv_all_area.setText(R.string.all_area);
+							handlecards.clear();
+							handlecards.addAll(cards);
+							adapter.notifyDataSetChanged();
 							setListviewVisible();
 							return;
 						}
@@ -142,24 +149,31 @@ public class MembershipActivity extends Activity implements OnClickListener {
 						handlecards.clear();
 						switch (position) {
 						case 0:
+							tv_all_sort.setText(getString(R.string.all_size, size));
 							handlecards.addAll(cards);
 							break;
 						case ShangjiaActivity.shenghuo_service:
+							tv_all_sort.setText(getString(R.string.living_service, shenghuoService));
 							initShenghuoList(ShangjiaActivity.shenghuo_service);
 							break;
 						case ShangjiaActivity.meili_liren:
+							tv_all_sort.setText(getString(R.string.meili_liren, meiliLiren));
 							initShenghuoList(ShangjiaActivity.meili_liren);
 							break;
 						case ShangjiaActivity.xiuxian_yule:
+							tv_all_sort.setText(getString(R.string.xiuxian_yulei, xiuxianYule));
 							initShenghuoList(ShangjiaActivity.xiuxian_yule);
 							break;
 						case ShangjiaActivity.canyin_meishi:
+							tv_all_sort.setText(getString(R.string.canyin_meishi, canyinMeishi));
 							initShenghuoList(ShangjiaActivity.canyin_meishi);
 							break;
 						case ShangjiaActivity.guangjie_gouwu:
+							tv_all_sort.setText(getString(R.string.gouwu_buy, guangjieGouwu));
 							initShenghuoList(ShangjiaActivity.guangjie_gouwu);
 							break;
 						case ShangjiaActivity.other:
+							tv_all_sort.setText(getString(R.string.other, otherMe));
 							initShenghuoList(ShangjiaActivity.other);
 							break;
 						default:
@@ -204,6 +218,11 @@ public class MembershipActivity extends Activity implements OnClickListener {
 		hots.add(getString(R.string.all_of));
 		hots.add(getString(R.string.hot));
 		hots.add(getString(R.string.nearby));
+		
+		tv_all_area = (TextView)this.findViewById(R.id.tv_all_area);
+		tv_all_sort = (TextView)this.findViewById(R.id.tv_all_sort);
+		tv_hot = (TextView)this.findViewById(R.id.tv_hot);
+		
 	}
 
 	boolean exChange = true;
@@ -580,6 +599,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 		}
 	}
 	protected void initCity(City c) {
+		tv_all_area.setText(c.areaName);
 		handlecards.clear();
 		int size = cards.size();
 		for(int i=0; i<size; i++){
@@ -591,7 +611,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 		adapter.notifyDataSetChanged();
 	}
 	
-	
+	int size;
 	int shenghuoService;
 	int meiliLiren;
 	int xiuxianYule;
@@ -599,7 +619,7 @@ public class MembershipActivity extends Activity implements OnClickListener {
 	int guangjieGouwu;
 	int otherMe;
 	private void initCategoryNum() {
-		int size = cards.size();
+		size = cards.size();
 		for(int i=0;i<size; i++){
 			Card c = cards.get(i);
 			int type = Integer.parseInt(c.category_id);

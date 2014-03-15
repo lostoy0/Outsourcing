@@ -97,8 +97,15 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 		YouLianHttpApi.getAreaByProvinceIdCid(null, Global.getLocCityId(getApplicationContext()), null, creategetAreaByProvinceIdCidSuccessListener(), createGetAreaErrorListener());
 		
 	}
-
+	private TextView tv_all_area;
+	private TextView tv_all_sort;
+	private TextView tv_hot;;
 	private void initViews() {
+		tv_all_area = (TextView)this.findViewById(R.id.tv_all_area);
+		tv_all_sort = (TextView)this.findViewById(R.id.tv_all_sort);
+		tv_hot = (TextView)this.findViewById(R.id.tv_hot);
+		
+		
 		mImageLoader = MyVolley.getImageLoader();
 		back = (ImageButton) this.findViewById(R.id.back);
 		back.setOnClickListener(this);
@@ -152,6 +159,11 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 				case allarea:
 					if(position < cities.size()){
 						if(position == 0) {
+							tv_all_area.setText(R.string.all_area);
+							mHandleCustomers.clear();
+							mHandleCustomers.addAll(mCustomers);
+							adapter.notifyDataSetChanged();
+							
 							setListviewVisible();
 							return;
 						}
@@ -164,24 +176,31 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 						mHandleCustomers.clear();
 						switch (position) {
 						case 0:
+							tv_all_sort.setText(getString(R.string.all_size, size));
 							mHandleCustomers.addAll(mCustomers);
 							break;
 						case shenghuo_service:
+							tv_all_sort.setText(getString(R.string.living_service, shenghuoService));
 							initShenghuoList(shenghuo_service);
 							break;
 						case meili_liren:
+							tv_all_sort.setText(getString(R.string.meili_liren, meiliLiren));
 							initShenghuoList(meili_liren);
 							break;
 						case xiuxian_yule:
+							tv_all_sort.setText(getString(R.string.xiuxian_yulei, xiuxianYule));
 							initShenghuoList(xiuxian_yule);
 							break;
 						case canyin_meishi:
+							tv_all_sort.setText(getString(R.string.canyin_meishi, canyinMeishi));
 							initShenghuoList(canyin_meishi);
 							break;
 						case guangjie_gouwu:
+							tv_all_sort.setText(getString(R.string.gouwu_buy, guangjieGouwu));
 							initShenghuoList(guangjie_gouwu);
 							break;
 						case other:
+							tv_all_sort.setText(getString(R.string.other, otherMe));
 							initShenghuoList(other);
 							break;
 						default:
@@ -553,9 +572,9 @@ public class ShangjiaActivity extends Activity implements OnClickListener {
 		};
 	}
 	
-
+	int size;
 	private void initCategoryNum() {
-		int size = mCustomers.size();
+		size = mCustomers.size();
 		for(int i=0;i<size; i++){
 			Customer c = mCustomers.get(i);
 			int type = Integer.parseInt(c.customerKindId);

@@ -526,6 +526,8 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 							JSONObject jsonObject = o.optJSONObject("result");
 							int suc = jsonObject.optInt("successful");
 							if(suc == 1){
+								Intent intent = new Intent(YouhuiQuanDetail.this, CouponListActivity.class);
+								startActivity(intent);
 							}else{
 								
 							}

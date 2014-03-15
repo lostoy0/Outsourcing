@@ -358,6 +358,9 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 									Toast.LENGTH_SHORT).show();
 							bt_chongzhi.setText(R.string.already_apply);
 							
+							Intent intent = new Intent(MemberShipDetail.this, CardListActivity.class);
+							startActivity(intent);
+							
 						} else {
 							String msg = o.optString("msg");
 							Toast.makeText(getApplicationContext(), msg,
