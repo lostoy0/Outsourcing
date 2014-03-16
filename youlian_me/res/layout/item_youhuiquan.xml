@@ -5,9 +5,9 @@
 
      <com.android.volley.toolbox.NetworkImageView
          android:id="@+id/iv_icon"
-         android:layout_width="80dp"
-         android:layout_height="60dp"
-         android:scaleType="fitXY"
+        android:layout_width="@dimen/item_image_width"
+        android:layout_height="@dimen/item_image_height"
+        android:scaleType="fitXY"
          />
 
     <LinearLayout
