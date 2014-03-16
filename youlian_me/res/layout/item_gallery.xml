@@ -7,9 +7,11 @@
     <ImageView
         android:id="@+id/gallery_image"
         android:layout_width="fill_parent"
-        android:layout_height="150dp"
+        android:layout_height="@dimen/gallery_height"
         android:scaleType="fitXY" 
         android:src="@drawable/guanggao"
+        android:layout_marginLeft="5dp"
+    	android:layout_marginRight="5dp"
         />
 
 </RelativeLayout>

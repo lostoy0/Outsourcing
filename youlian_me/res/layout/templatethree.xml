@@ -21,6 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_title"
+             android:textColor="@color/black"
+            	android:textSize="@dimen/item_title_text_size"
             android:text="超爱电影" />
 
         <View
@@ -32,21 +34,21 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/template_three_height"
         android:layout_margin="5dp"
         android:id="@+id/iv_first"
         android:scaleType="fitXY"  />
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/template_three_height"
         android:layout_margin="5dp"
         android:id="@+id/iv_second"
         android:scaleType="fitXY"  />
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/template_three_height"
         android:layout_margin="5dp"
         android:id="@+id/iv_third"
         android:scaleType="fitXY"  />

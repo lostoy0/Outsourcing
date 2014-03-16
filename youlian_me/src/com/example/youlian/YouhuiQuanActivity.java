@@ -511,9 +511,9 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 								if(type_from == 0){//优惠券
 									youhuiQuans.add(y);
 								}else {
-									if("1".equals(y.isBuy)){
+//									if("1".equals(y.isBuy)){
 										youhuiQuans.add(y);
-									}
+//									}
 								}
 							}
 							handleYouhuiQuans.addAll(youhuiQuans);

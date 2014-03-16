@@ -21,6 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="超级吃货" 
+             android:textColor="@color/black"
+            	android:textSize="@dimen/item_title_text_size"
             android:id="@+id/tv_title"
             />
 
@@ -37,33 +39,34 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/template_six_width"
             android:layout_margin="5dp"
-            android:layout_weight="2"
+            android:scaleType="fitXY"
+            android:layout_weight="1"
             android:id="@+id/iv_first"
             />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/template_six_width"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:orientation="vertical" >
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
                 android:scaleType="fitXY"
+                 android:layout_weight="1"
                 android:id="@+id/iv_second"
                 />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
+               android:layout_width="fill_parent"
+                android:layout_height="0dp"
                 android:layout_marginTop="4dp"
+                 android:layout_weight="1"
                 android:scaleType="fitXY"
-                android:layout_weight="1"
                 android:id="@+id/iv_third"
                	/>
         </LinearLayout>
@@ -75,7 +78,7 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/template_six_small_height"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:id="@+id/iv_fourth"
@@ -83,7 +86,7 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/template_six_small_height"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:id="@+id/iv_five"
@@ -91,7 +94,7 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/template_six_small_height"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:id="@+id/iv_six"

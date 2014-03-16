@@ -57,11 +57,11 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:text="140" />
+            android:text="140字" />
 
         <EditText
             android:id="@+id/et_content"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/shop_width"
             android:layout_height="150dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_edit"
@@ -70,7 +70,7 @@
             android:padding="5dp" />
 
         <FrameLayout
-            android:layout_width="300dp"
+            android:layout_width="@dimen/shop_width"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_edit"

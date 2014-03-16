@@ -26,7 +26,9 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content" 
+            android:gravity="center_vertical"
+            >
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -64,15 +66,15 @@
                 />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/yizhifu_width"
+                android:layout_height="@dimen/yizhifu_height"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/iv_online_chong"
                 android:src="@drawable/online_chong" />
             
              <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/yizhifu_width"
+                android:layout_height="@dimen/yizhifu_height"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/iv_yi_chong"
                 android:src="@drawable/yi_chong"
