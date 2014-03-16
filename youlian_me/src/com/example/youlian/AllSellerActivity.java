@@ -48,7 +48,7 @@ public class AllSellerActivity extends Activity implements OnClickListener {
 		
 		initViews();
 		SimpleProgressDialog.show(this);
-		YouLianHttpApi.getAllactivitys(createGetAdSuccessListener(), createGetAdErrorListener());
+		YouLianHttpApi.getAllactivitys(Global.getLocCityId(getApplicationContext()), createGetAdSuccessListener(), createGetAdErrorListener());
 		
 	}
 	

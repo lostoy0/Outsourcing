@@ -47,11 +47,11 @@ public class YouLianHttpApi {
 	 * @param successListener
 	 * @param errorListener
 	 */
-	public static void getAdvertisement(String zone,
+	public static void getAdvertisement(String city_id, String zone,
 			Response.Listener<String> successListener,
 			Response.ErrorListener errorListener) {
 		String server = "younion.advertisement.get";
-		String url = getUrl(KEY_SERVER, server, "zone", zone, KEY_CLIENT,
+		String url = getUrl(KEY_SERVER, server, "city_id", city_id, "zone", zone, KEY_CLIENT,
 				"android");
 		Log.i(TAG, "url:" + url);
 		RequestQueue queue = MyVolley.getRequestQueue();
@@ -135,11 +135,11 @@ public class YouLianHttpApi {
 	 * @param successListener
 	 * @param errorListener
 	 */
-	public static void getSubjectActivity(
+	public static void getSubjectActivity(String city_id,
 			Response.Listener<String> successListener,
 			Response.ErrorListener errorListener) {
 		String server = "younion.subject.active.get";
-		String url = getUrl(KEY_SERVER, server, KEY_CLIENT_TYPE, "android");
+		String url = getUrl(KEY_SERVER, server, KEY_CLIENT_TYPE, "android", "city_id", city_id);
 		Log.i(TAG, "url:" + url);
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
@@ -154,11 +154,11 @@ public class YouLianHttpApi {
 	 * @param successListener
 	 * @param errorListener
 	 */
-	public static void getAllactivitys(
+	public static void getAllactivitys(String city_id,
 			Response.Listener<String> successListener,
 			Response.ErrorListener errorListener) {
 		String server = "younion.allactivitys.get";
-		String url = getUrl(KEY_SERVER, server);
+		String url = getUrl(KEY_SERVER, server, "city_id", city_id);
 		Log.i(TAG, "url:" + url);
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
@@ -320,11 +320,11 @@ public class YouLianHttpApi {
 	 * @param successListener
 	 * @param errorListener
 	 */
-	public static void getYouhuiQuan(String user_token, String req_type,
+	public static void getYouhuiQuan(String cityId,String user_token, String req_type,
 			Response.Listener<String> successListener,
 			Response.ErrorListener errorListener) {
 		String server = "younion.favents.get";
-		String url = getUrl(KEY_SERVER, server, "user_token", user_token,
+		String url = getUrl(KEY_SERVER, server, "user_token", user_token, "city_id", cityId,
 				"req_type", req_type);
 		Log.i(TAG, "url:" + url);
 		RequestQueue queue = MyVolley.getRequestQueue();
@@ -708,6 +708,7 @@ public class YouLianHttpApi {
 		RequestQueue queue = MyVolley.getRequestQueue();
 		StringRequest myReq = new StringRequest(Method.GET, url.toString(),
 				successListener, errorListener);
+		myReq.setShouldCache(false);
 		queue.add(myReq);
 	}
 

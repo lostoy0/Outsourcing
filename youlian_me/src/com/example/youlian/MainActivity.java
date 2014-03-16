@@ -53,8 +53,12 @@ public class MainActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 
+		Global.saveLocCityId(getApplicationContext(), "106105101");
+		
 		loading = (ImageView) this.findViewById(R.id.loading);
 		loading.setImageResource(R.drawable.loading);
+		
+		
 		// resolution=480_495
 		YouLianHttpApi.getInitInfo("480_495", createGetAdSuccessListener(),
 				createGetAdErrorListener());

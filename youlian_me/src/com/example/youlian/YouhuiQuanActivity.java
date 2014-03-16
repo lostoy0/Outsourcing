@@ -78,7 +78,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		initViews();
 
 		SimpleProgressDialog.show(this);
-		YouLianHttpApi.getYouhuiQuan(Global.getUserToken(getApplicationContext()), null, createMyReqSuccessListener(),createMyReqErrorListener());
+		YouLianHttpApi.getYouhuiQuan(Global.getLocCityId(getApplicationContext()), Global.getUserToken(getApplicationContext()), null, createMyReqSuccessListener(),createMyReqErrorListener());
 	
 		YouLianHttpApi.getAreaByProvinceIdCid(null, Global.getLocCityId(getApplicationContext()), null, creategetAreaByProvinceIdCidSuccessListener(), createGetAreaErrorListener());
 	}

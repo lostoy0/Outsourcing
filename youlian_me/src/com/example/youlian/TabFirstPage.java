@@ -98,14 +98,15 @@ public class TabFirstPage extends Activity implements OnClickListener {
 
 		setContentView(R.layout.activity_tab_pie);
 
+		
 		initViews();
 		
 		SimpleProgressDialog.show(this);
 		// 获取广告轮播图
-		YouLianHttpApi.getAdvertisement("0", createGetAdSuccessListener(),
+		YouLianHttpApi.getAdvertisement(Global.getLocCityId(getApplicationContext()), "0", createGetAdSuccessListener(),
 				createGetAdErrorListener());
 		// 活动主题
-		YouLianHttpApi.getSubjectActivity(createMyReqSuccessListener(),
+		YouLianHttpApi.getSubjectActivity(Global.getLocCityId(getApplicationContext()), createMyReqSuccessListener(),
 				createMyReqErrorListener());
 		// 获取城市
 		YouLianHttpApi.getArea(createGetAreaSuccessListener(),
@@ -513,7 +514,6 @@ public class TabFirstPage extends Activity implements OnClickListener {
 			public void onResponse(String response) {
 				Log.i(TAG, "success:" + response);
 				
-				
 			}
 		};
 	}
@@ -576,10 +576,10 @@ public class TabFirstPage extends Activity implements OnClickListener {
 										if("locality".equalsIgnoreCase(s)){
 											String re = o.optString("short_name");
 											address = re;
-											Message msg = handler.obtainMessage();
-											msg.what = what;
-											msg.obj = address;
-											handler.sendMessage(msg);
+//											Message msg = handler.obtainMessage();
+//											msg.what = what;
+//											msg.obj = address;
+//											handler.sendMessage(msg);
 											Log.d(TAG, "address:" + address);
 											return;
 										}
