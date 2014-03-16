@@ -51,6 +51,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_toRightOf="@id/bt_apply"
+                        android:textColor="@color/my_red"
                         android:text="出示此页面即可使用" />
 
                     <TextView
@@ -199,30 +200,33 @@
                         android:layout_height="wrap_content" >
 
                         <ImageView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:scaleType="fitXY"
                             android:id="@+id/iv_one"
+                            android:visibility="invisible"
                             android:src="@drawable/guanggao" />
 
                         <ImageView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:scaleType="fitXY"
                             android:id="@+id/iv_two"
+                            android:visibility="invisible"
                             android:src="@drawable/guanggao" />
 
                         <ImageView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="80dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:scaleType="fitXY"
                             android:id="@+id/iv_three"
+                            android:visibility="invisible"
                             android:src="@drawable/guanggao" />
                     </LinearLayout>
                 </LinearLayout>

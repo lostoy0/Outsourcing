@@ -20,6 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/item_title_text_size"
             android:text="真功夫" />
 
         <LinearLayout
@@ -86,6 +88,9 @@
                 android:layout_height="wrap_content"
                 android:text="白金卡" 
                 android:id="@+id/tv_cardname"
+                android:textColor="@color/black"
+            	android:textSize="@dimen/item_desc_text_size"
+            	android:singleLine="true"
                 />
 
             <TextView
@@ -93,6 +98,8 @@
                 android:layout_height="wrap_content"
                  android:id="@+id/tv_desc"
                  android:singleLine="true"
+                 android:textColor="@color/black"
+            	android:textSize="@dimen/item_desc_text_size"
                 android:text="(申请后7折优惠)" />
         </LinearLayout>
     </LinearLayout>

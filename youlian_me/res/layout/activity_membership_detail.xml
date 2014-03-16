@@ -90,6 +90,8 @@
                                 android:layout_height="wrap_content"
                                 android:id="@+id/tv_apply"
                                 android:singleLine="true"
+                                android:text="ddddddd"
+                                android:textSize="@dimen/item_title_text_size"
                                 />
 
                             <TextView
@@ -97,6 +99,8 @@
                                 android:layout_height="wrap_content"
                                 android:id="@+id/tv_desc"
                                 android:singleLine="true"
+                                android:text="ddddddd"
+                                android:textColor="@color/my_red_sow"
                                 />
 
                             <TextView
@@ -104,6 +108,8 @@
                                 android:layout_height="wrap_content"
                                android:id="@+id/tv_date"
                                android:singleLine="true"
+                               android:textColor="@color/my_red_sow"
+                               android:text="ddddddd"
                                />
                         </LinearLayout>
                     </LinearLayout>
@@ -123,8 +129,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginLeft="25dp"
                             android:id="@+id/tv_left"
+                            android:text="ddddddd"
+                            android:textColor="#9ACD32"
                              />
                     </LinearLayout>
                 </LinearLayout>
@@ -157,6 +165,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:text="dddddddddddddddddddddddddd"
+                    android:textColor="@color/my_red"
+                    android:singleLine="true"
                     android:id="@+id/tv_chongzhi_desc"
                     />
             </LinearLayout>
@@ -170,6 +180,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                     android:textSize="@dimen/item_title_text_size"
                     android:text="会员福利" />
 
                 <TextView
@@ -181,6 +192,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                     android:textSize="@dimen/item_title_text_size"
                     android:text="使用说明" />
 
                 <TextView

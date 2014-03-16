@@ -278,6 +278,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 				}
 				YouhuiQuan quan = list.get(i);
 				ImageView iv = ivs.get(i);
+				iv.setVisibility(View.VISIBLE);
 				if (TextUtils.isEmpty(quan.fav_id)) {
 					if (quan.nonactivatedPic != null) {
 						imageLoader.get(quan.nonactivatedPic, ImageLoader
@@ -304,6 +305,10 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 					}
 				});
 			}
+			
+			
+			
+			
 		}
 		
 	}

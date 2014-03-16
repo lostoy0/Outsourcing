@@ -83,4 +83,8 @@
     <color name="viewfinder_frame">#ff88ae00</color>
     <color name="viewfinder_laser">#ffff0000</color>
     <color name="viewfinder_mask">#60000000</color>
+    
+    <color name="my_red">#FF8247</color>
+     <color name="my_red_sow">#FFD39B</color>
+    
 </resources>
