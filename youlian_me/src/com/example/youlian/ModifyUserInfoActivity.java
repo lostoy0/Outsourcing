@@ -159,7 +159,9 @@ public class ModifyUserInfoActivity extends BaseActivity implements
 	}
 
 	private void save() {
-		YouLianHttpApi.updateUserInfo(Global.getUserToken(this), mNickNameEditText.getText().toString().trim(), 
+		YouLianHttpApi.updateUserInfo(Global.getUserToken(this), 
+				mNickNameEditText.getText().toString().trim(), 
+				mNickNameEditText.getText().toString().trim(),  
 				mPhoneEditText.getText().toString().trim(), mEmailEditText.getText().toString().trim(), 
 						mProvince==null?"":mProvince.areaId, mCity==null?"":mCity.areaId,
 								mDistrict==null?"":mDistrict.areaId, 

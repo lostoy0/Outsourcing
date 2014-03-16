@@ -920,13 +920,13 @@ public class YouLianHttpApi {
 	 * @param successListener
 	 * @param errorListener
 	 */
-	public static void updateUserInfo(String user_token, String userName,
+	public static void updateUserInfo(String user_token, String userName, String nickname,
 			String phone, String email, String province_id, String city_id,
 			String district_id, Response.Listener<String> successListener,
 			Response.ErrorListener errorListener) {
 		String server = "younion.user.info.update";
 		String url = getUrl(KEY_SERVER, server, "user_token", user_token,
-				"userName", userName, "phone", phone, "email", email,
+				"userName", userName, "nickname", nickname, "phone", phone, "email", email,
 				"province_id", province_id, "city_id", city_id, "district_id",
 				district_id);
 		Log.i(TAG, "url:" + url);
