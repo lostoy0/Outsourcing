@@ -35,6 +35,8 @@ public class MyInfo {
 	public int hasBlanceCardCount;
 	/**优惠券即将过期数量*/
 	public int willExpFavourableCount;
+	/**昵称*/
+	public String nickname;
 	
 	public static MyInfo from(JSONObject json) {
 		MyInfo info = null;
@@ -53,6 +55,7 @@ public class MyInfo {
 			info.youcoin = json.optInt("youcoin");
 			info.youdot = json.optInt("youdot");
 			info.userName = json.optString("userName");
+			info.nickname = json.optString("nickname");
 		}
 		return info;
 	}

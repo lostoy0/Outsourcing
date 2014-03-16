@@ -18,6 +18,14 @@ public class Global {
 	public static final int TEMPLATE_FIVE = 5;
 	public static final int TEMPLATE_SIX = 6;
 	
+	/*二维码规则：
+	二维码规则-》type:id  签到活动特殊规则-》type:id:shopId
+	会员卡-》1:id
+	优惠券-》2:id
+	商家-》3:id
+	普通活动（专题活动）-》4:id
+	签到活动-》5:id:shopId*/
+	
 	private static String sUserToken = null;
 	
 	/**

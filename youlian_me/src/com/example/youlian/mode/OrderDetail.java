@@ -17,6 +17,10 @@ public class OrderDetail implements Serializable {
 	public double price;
 	/**数量*/
 	public int quantity;	
+	/**热购券ID，当isFav=1时不存在 */
+	public String productId;
+	/**是否为热购券0是 1否（表示U币即充值）*/
+	public int isFav;
 	
 	public static OrderDetail from(JSONObject json) {
 		OrderDetail detail = null;
@@ -27,6 +31,8 @@ public class OrderDetail implements Serializable {
 			detail.productName = json.optString("productName");
 			detail.quantity = json.optInt("quantity");
 			detail.simpleDescription = json.optString("simpleDescription");
+			detail.productId = json.optString("productId");
+			detail.isFav = json.optInt("isFav");
 		}
 		return detail;
 	}
