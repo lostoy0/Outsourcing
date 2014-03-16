@@ -8,8 +8,9 @@
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/goods_item_iv_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/item_image_width"
+        android:layout_height="@dimen/item_image_height"
+        android:scaleType="fitXY"
         android:src="@drawable/default_img" />
 
     <RelativeLayout
@@ -60,9 +61,9 @@
             android:layout_alignLeft="@id/goods_item_tv_name"
             android:layout_toLeftOf="@id/goods_item_tv_amount"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/item_line_spacing"
             android:ellipsize="end"
-            android:maxLines="3"
+            android:maxHeight="@dimen/item_order_goods_desc_maxheight"
             android:text="这个商品大大地不错dlfkdlkf款到即发了sd卡见富婆网的空间发"
             android:textColor="#666"
             android:textSize="14sp" />
