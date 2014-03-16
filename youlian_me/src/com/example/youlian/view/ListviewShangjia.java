@@ -1,5 +1,6 @@
 package com.example.youlian.view;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -113,58 +114,104 @@ public class ListviewShangjia extends FrameLayout {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			Log.i(TAG, "position:" + position);
-			final ViewCache vc;
+			ViewHolder holder = null;
 			if (convertView == null) {
-				vc = new ViewCache();
-				convertView = mInflater.inflate(R.layout.home_listview_item, null);
-				vc.stroe_img = (NetworkImageView)convertView.findViewById(R.id.stroe_img);
-				vc.is_store = (ImageView)convertView.findViewById(R.id.is_store);
-				vc.follow_active = (ImageView)convertView.findViewById(R.id.follow_active);
-//				vc.follow_card = (ImageView)convertView.findViewById(R.id.follow_card);
-				vc.follow_interest = (ImageView)convertView.findViewById(R.id.follow_interest);
-				vc.follow_union = (ImageView)convertView.findViewById(R.id.follow_union);
-				vc.stroe_name_text = (TextView)convertView.findViewById(R.id.card_name_text);
-				vc.card_content_text = (TextView)convertView.findViewById(R.id.card_content_text);
-				vc.is_have_fad = (ImageView)convertView.findViewById(R.id.is_have_fad);
-				vc.is_rem = (ImageView)convertView.findViewById(R.id.is_rem);
-				convertView.setTag(vc);
+				convertView = mInflater.inflate(R.layout.item_shangjia,
+						parent, false);
+				holder = new ViewHolder();
+				holder.iv_icon = (NetworkImageView) convertView
+						.findViewById(R.id.iv_icon);
+				holder.tv_title = (TextView) convertView
+						.findViewById(R.id.tv_title);
+				holder.iv_star_one = (ImageView) convertView
+						.findViewById(R.id.iv_star_one);
+				holder.iv_star_two = (ImageView) convertView
+						.findViewById(R.id.iv_star_two);
+				holder.iv_star_three = (ImageView) convertView
+						.findViewById(R.id.iv_star_three);
+				holder.iv_star_four = (ImageView) convertView
+						.findViewById(R.id.iv_star_four);
+				holder.iv_star_five = (ImageView) convertView
+						.findViewById(R.id.iv_star_five);
+				holder.ivs.add(holder.iv_star_one);
+				holder.ivs.add(holder.iv_star_two);
+				holder.ivs.add(holder.iv_star_three);
+				holder.ivs.add(holder.iv_star_four);
+				holder.ivs.add(holder.iv_star_five);
+				holder.iv_yi_chong = (ImageView) convertView
+						.findViewById(R.id.iv_yi_chong);
+				
+				
+				holder.tv_cardname = (TextView) convertView
+						.findViewById(R.id.tv_cardname);
+				holder.tv_desc = (TextView) convertView
+						.findViewById(R.id.tv_desc);
+				convertView.setTag(holder);
 			}else {
-				vc = (ViewCache) convertView.getTag();
+				holder = (ViewHolder) convertView.getTag();
 			}
 
-			setValue(position, vc);
+			setValue(holder, position);
 			return convertView;
 		}
 		
 		
-		private void setValue(int position, ViewCache holder) {
-			Customer customer = mCustomers.get(position);
-			if(customer.logo != null){
-				holder.stroe_img.setDefaultImageResId(R.drawable.guanggao);
-				holder.stroe_img.setImageUrl(customer.logo, mImageLoader);
+		public void setValue(ViewHolder holder, int position) {
+			Customer c = mCustomers.get(position);
+			if(c.logo != null){
+				holder.iv_icon.setDefaultImageResId(R.drawable.guanggao);
+				holder.iv_icon.setImageUrl(c.logo, mImageLoader);
 			}else{
-				holder.stroe_img.setImageResource(R.drawable.guanggao);
+				holder.iv_icon.setImageResource(R.drawable.guanggao);
 			}
 			
-			holder.stroe_name_text.setText(customer.name);
-			holder.card_content_text.setText(customer.introduce);
-			try{
-				if(Integer.parseInt(customer.isRecommend) == 1){
-					holder.is_rem.setVisibility(View.VISIBLE);
-				}else{
-					holder.is_rem.setVisibility(View.GONE);
-				}	
-			}catch(NumberFormatException e){
-				holder.is_rem.setVisibility(View.GONE);
+			holder.tv_title.setText(c.name);
+			refreshStar(c.starLevel, holder);
+			
+			holder.tv_cardname.setText(c.favEntityCount+"张优惠券");
+			holder.tv_desc.setText(c.cardEntityCount + "张会员卡");
+			
+		
+			if(Integer.parseInt(c.canBestpay) == 1){
+				holder.iv_yi_chong.setVisibility(View.VISIBLE);
+			}else{
+				holder.iv_yi_chong.setVisibility(View.GONE);
 			}
+		
 		}
 
-
-		private class ViewCache {
-			public TextView stroe_name_text;
-			public TextView card_content_text;
-			public ImageView is_store,follow_active,follow_union,follow_interest,is_have_fad,is_rem;
-			public NetworkImageView stroe_img;
+		private void refreshStar(String star_level, ViewHolder holder) {
+			float numF = Float.parseFloat(star_level);
+			System.out.println("numb:" + numF);
+			int numI = (int) numF;
+			boolean isHalf = false;
+			if(numF-numI>0){
+				isHalf = true;
+			}
+			
+			for(int i=0; i<5; i++){
+				ImageView iv = holder.ivs.get(i);
+				if(i<numI){
+					iv.setImageResource(R.drawable.star_red_card);
+				}else{
+					iv.setImageResource(R.drawable.star_huise_card);
+				}
+			}
+			if(isHalf){
+				if(numI < 5){
+					holder.ivs.get(numI).setImageResource(R.drawable.star_half_card);
+				}
+			}
+			
+		}
+		class ViewHolder {
+			public NetworkImageView iv_icon;
+			public TextView tv_title;
+			public ImageView iv_star_one, iv_star_two, iv_star_three,
+					iv_star_four, iv_star_five;
+			public List<ImageView> ivs = new ArrayList<ImageView>();
+			public ImageView iv_yi_chong;
+			TextView tv_cardname, tv_desc;
 		}
 
 		@Override

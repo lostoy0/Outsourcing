@@ -55,6 +55,8 @@ public class YouhuiQuan implements Serializable{
 	public String fav_name;
 	
 	public String customer_brief;
+	public String customer_introduce;
+	public String customerName;
 	
 	public List<YouhuiQuan> moreYouHuiquan = new ArrayList<YouhuiQuan>(); 
 	
@@ -64,10 +66,17 @@ public class YouhuiQuan implements Serializable{
 		pic.fav_ent_name = jsonObj.optString("fav_ent_name");
 		pic.nonactivatedPic = jsonObj.optString("nonactivatedPic");
 		pic.activatedPic = jsonObj.optString("activatedPic");
-		pic.use_date_from = jsonObj.optString("use_date_from");
-		pic.use_date_to = jsonObj.optString("use_date_to");
-		pic.apply_date_from = jsonObj.optString("apply_date_from");
-		pic.apply_date_to = jsonObj.optString("apply_date_to");
+		
+		String result = jsonObj.optString("use_date_from");
+		pic.use_date_from = result.substring(0, result.indexOf(" "));
+		result = jsonObj.optString("use_date_to");
+		pic.use_date_to = result.substring(0, result.indexOf(" "));
+		result = jsonObj.optString("apply_date_from");
+		pic.apply_date_from = result.substring(0, result.indexOf(" "));
+		result = jsonObj.optString("apply_date_to");;
+		pic.apply_date_to =  result.substring(0, result.indexOf(" "));
+		
+		
 		pic.money = jsonObj.optString("money");
 		pic.fav_id = jsonObj.optString("fav_id");
 		pic.simple_description = jsonObj.optString("simple_description");
@@ -115,6 +124,9 @@ public class YouhuiQuan implements Serializable{
 		pic.fav_name = jsonObj.optString("fav_name");
 		
 		pic.customer_brief = jsonObj.optString("customer_brief");
+		pic.customer_introduce = jsonObj.optString("customer_introduce");
+		
+		pic.customerName = jsonObj.optString("customerName");
 		
 		
 		

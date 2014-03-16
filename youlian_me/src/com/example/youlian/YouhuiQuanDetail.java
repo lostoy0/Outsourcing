@@ -7,6 +7,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog.Builder;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -28,6 +31,7 @@ import com.example.youlian.app.MyVolley;
 import com.example.youlian.app.YouLianApp;
 import com.example.youlian.mode.YouhuiQuan;
 import com.example.youlian.util.PreferencesUtils;
+import com.example.youlian.view.dialog.HuzAlertDialog;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -159,6 +163,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 	private ImageView iv_one;
 	private ImageView iv_two;
 	private ImageView iv_three;
+	private TextView tv_money;
 
 	private void initViews() {
 		back = (ImageButton) this.findViewById(R.id.back);
@@ -198,6 +203,8 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		ivs.add(iv_one);
 		ivs.add(iv_two);
 		ivs.add(iv_three);
+		
+		tv_money = (TextView)this.findViewById(R.id.tv_money);
 	}
 
 
@@ -243,6 +250,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			}
 		}else if(type_from == 1){
 			bt_apply.setText("购买");
+			tv_money.setText("￥ " + quan.sellingPrice);
 		}else{
 			
 		}
@@ -261,7 +269,16 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		tv_name.setText("名称：" + quan.fav_name);
 		tv_shenling.setText("申领时间：" + quan.apply_date_from + "至"
 				+ quan.apply_date_to);
-		tv_use.setText("使用时间：" + quan.use_date_from + "至" + quan.use_date_to);
+		
+		if(type_from == 0){
+			tv_use.setVisibility(View.GONE);
+		}else if(type_from == 1){
+			tv_use.setText("使用时间：" + quan.use_date_from + "至" + quan.use_date_to);
+		}else{
+			
+		}
+		
+		
 		tv_use_desc.setText("使用说明：\n" + quan.fav_detail);
 		tv_mendian_info.setText("门店信息（" + quan.shops.size() + ")");
 		tv_user_comment.setText("用户点评(" + quan.comments + ")");
@@ -395,7 +412,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 			break;
 		case R.id.rel_shop_desc:// 
 			intent = new Intent(getApplicationContext(), SellerActivity.class);
-			intent.putExtra("title", quan.fav_name);
+			intent.putExtra("title", quan.customerName);
 			
 			if (TextUtils.isEmpty(quan.fav_id)) {
 				if (quan.nonactivatedPic != null) {
@@ -406,8 +423,7 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 					intent.putExtra("url", quan.activatedPic);
 				}
 			}
-			
-			intent.putExtra("desc", quan.customer_brief);
+			intent.putExtra("desc", quan.customer_introduce);
 			startActivity(intent);
 			break;
 			
@@ -495,11 +511,8 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 							Toast.makeText(getApplicationContext(), msg,
 									Toast.LENGTH_SHORT).show();
 							
+							notNewVersionShow();
 							
-							Intent intent = new Intent(getApplicationContext(), TabHome.class);
-							intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-							intent.putExtra("postion", 2);
-							startActivity(intent);
 							 
 						} else{
 							String msg = o.optString("msg");
@@ -515,7 +528,35 @@ public class YouhuiQuanDetail extends Activity implements OnClickListener {
 		};
 	}
 	
-	
+	public void notNewVersionShow() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("添加购物车成功，是否去结算");
+		Builder bd = new HuzAlertDialog.Builder(this);
+		bd.setTitle("提示")
+				.setMessage(sb.toString())// 设置内容
+				.setPositiveButton("去结算",// 设置确定按钮
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								dialog.cancel();
+								Intent intent = new Intent(getApplicationContext(), TabHome.class);
+								intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+								intent.putExtra("postion", 2);
+								startActivity(intent);
+							}
+						})
+				.setNegativeButton("取消",// 设置确定按钮
+						new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog,
+							int which) {
+						dialog.cancel();
+					}
+				}).create();// 创建
+		// 显示对话框
+		bd.show();
+	}
 	
 	private Response.Listener<String> createUseYouhuiQuanSuccessListener() {
 		return new Response.Listener<String>() {

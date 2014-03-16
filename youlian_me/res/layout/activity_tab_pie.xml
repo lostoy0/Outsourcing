@@ -48,8 +48,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:background="@null"
-                    android:text="请输入商家名称"
-                    android:textColorHint="@color/grey"
+                    android:text="寻找你喜欢的商家"
+                    android:textColor="@color/grey"
                     android:textSize="18dip" />
             </LinearLayout>
 
@@ -136,20 +136,19 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/select_btn_huodong"
-                android:orientation="vertical" >
+                android:orientation="vertical" 
+                android:gravity="center_vertical"
+                >
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="30dp"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
                     android:text="活动" />
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="精彩活动，尽在优联" />
+               
             </LinearLayout>
 
             <LinearLayout
@@ -158,6 +157,7 @@
                 android:layout_height="70dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:background="@drawable/select_btn_shangjia"
                 android:orientation="vertical" >
 
@@ -165,14 +165,11 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="30dp"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
                     android:text="商家" />
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="优品质，联系我" />
+              
             </LinearLayout>
         </LinearLayout>
 
@@ -202,54 +199,7 @@
             </LinearLayout>
         </FrameLayout>
 
-        <!--
-             <com.example.youlian.view.TemplateOne
-            android:layout_width="fill_parent"
-            android:layout_height="100dp"
-            android:layout_margin="5dp"
-            android:layout_marginTop="@dimen/hotbuy_margin_top"
-            android:background="@drawable/guanggao" />
-        -->
-
-
-        <!-- 超级吃货 -->
-
-
-        <!--
-             <com.example.youlian.view.TemplateTwo
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
-        -->
-
-
-        <!-- 超爱电影 -->
-
-
-        <!--
-             <com.example.youlian.view.TemplateThree
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
-        -->
-
-
-        <!--
-        <com.example.youlian.view.TemplateFour
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
-
-         <com.example.youlian.view.TemplateFive
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
-        
-        <com.example.youlian.view.TemplateSix
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
-        -->
+       
 
     </LinearLayout>
 

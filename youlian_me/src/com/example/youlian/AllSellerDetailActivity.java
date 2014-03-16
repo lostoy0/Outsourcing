@@ -78,11 +78,11 @@ public class AllSellerDetailActivity extends Activity implements OnClickListener
 		tv_end_time = (TextView) this.findViewById(R.id.tv_end_time);
 		tv_eat_num = (TextView) this.findViewById(R.id.tv_eat_num);
 		tv_eat_standard = (TextView) this.findViewById(R.id.tv_eat_standard);
-		tv_eat_time = (TextView) this.findViewById(R.id.tv_eat_time);
+		/*tv_eat_time = (TextView) this.findViewById(R.id.tv_eat_time);
 		
 		tv_eat_didian = (TextView) this.findViewById(R.id.tv_eat_didian);
 		tv_eat_address = (TextView) this.findViewById(R.id.tv_eat_address);
-		tv_act_rule = (TextView) this.findViewById(R.id.tv_act_rule);
+		tv_act_rule = (TextView) this.findViewById(R.id.tv_act_rule);*/
 		
 		initShareViews();
 	}
@@ -131,18 +131,18 @@ public class AllSellerDetailActivity extends Activity implements OnClickListener
 			mMoreButton.setText("收藏");
 		}
         
-        tv_desc.setText(act.description);
+        tv_desc.setText(act.title);
         
-        tv_title.setText(act.title);
+        tv_title.setText(act.customerName);
         
         tv_start_time.setText(getString(R.string.start_time, act.startTime));
         tv_end_time.setText(getString(R.string.end_time, act.endTime));
-        tv_eat_num.setText(getString(R.string.eat_num, "2"));
-        tv_eat_standard.setText(getString(R.string.eat_standard, act.description));
-        tv_eat_time.setText(getString(R.string.eat_time, act.description));
-        tv_eat_didian.setText(getString(R.string.eat_address, act.description));
-        tv_eat_address.setText(getString(R.string.address, act.instruction));
-        tv_act_rule.setText(getString(R.string.act_rule, act.instruction));
+        
+        
+        
+        tv_eat_num.setText(act.instruction);
+        tv_eat_standard.setText(act.description);
+        
 	}
 	
 	@Override

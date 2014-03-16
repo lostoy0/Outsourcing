@@ -1,38 +1,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:padding="5dp"
     >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:background="@drawable/bg_commit"
-        android:orientation="vertical" >
+        android:background="@color/white"
+        android:paddingBottom="5dp"
+        >
 
         <ImageView
             android:id="@+id/iv_icon"
-            android:layout_width="150dp"
+            android:layout_width="fill_parent"
             android:layout_height="170dp"
             android:scaleType="fitXY"
+            android:layout_centerHorizontal="true"
             android:src="@drawable/ic_launcher" />
         
         <View
             android:layout_marginTop="5dp"
-            android:layout_width="150dp"
+            android:layout_width="165dp"
             android:layout_height="1dp"
+            android:layout_below="@id/iv_icon"
+            android:id="@+id/sprite"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/sprite_comment" />
 
         <TextView
             android:id="@+id/tv_title"
+            android:layout_below="@id/sprite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-             android:singleLine="true"
+            android:layout_centerHorizontal="true"
             />
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

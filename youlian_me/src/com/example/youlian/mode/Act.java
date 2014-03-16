@@ -42,8 +42,14 @@ public class Act implements Serializable {
 		Act pic = new Act();
 		pic.id = jsonObj.optString("id");
 		pic.title = jsonObj.optString("title");
-		pic.startTime = jsonObj.optString("startTime");
-		pic.endTime = jsonObj.optString("endTime");
+		
+		String result = jsonObj.optString("startTime");
+		pic.startTime = result.substring(0, result.indexOf(" "));
+		
+		result = jsonObj.optString("endTime");;
+		pic.endTime = result.substring(0, result.indexOf(" "));
+		
+		
 		pic.is_hot = jsonObj.optString("is_hot");
 		pic.is_recommend = jsonObj.optString("is_recommend");
 		pic.is_new = jsonObj.optString("is_new");

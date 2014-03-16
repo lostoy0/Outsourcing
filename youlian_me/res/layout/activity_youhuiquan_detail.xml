@@ -43,6 +43,7 @@
                         android:layout_width="120dp"
                         android:layout_height="50dp"
                         android:background="@drawable/btn_chongzhi" 
+                        android:textColor="@color/white"
                         android:text="申请"
                         />
 
@@ -52,6 +53,8 @@
                         android:layout_marginLeft="20dp"
                         android:layout_toRightOf="@id/bt_apply"
                         android:textColor="@color/my_red"
+                        android:id="@+id/tv_money"
+                        android:textSize="15sp"
                         android:text="出示此页面即可使用" />
 
                     <TextView
@@ -233,13 +236,13 @@
             </LinearLayout>
         </ScrollView>
 
-        <!-- 底部 工具栏 -->
+         <!-- 底部 工具栏 -->
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@drawable/select_foot_bg"
+            android:background="@color/bg_share_btn"
             android:orientation="horizontal" >
 
             <Button
@@ -248,7 +251,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_button_bg"
-                android:drawableTop="@drawable/select_btn_pie"
+                android:drawableTop="@drawable/select_btn_tier"
                 android:paddingTop="4dp"
                 android:singleLine="true"
                 android:text="签到"
@@ -262,7 +265,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_button_bg"
-                android:drawableTop="@drawable/select_btn_tier"
+                android:drawableTop="@drawable/selector_share"
                 android:paddingTop="4dp"
                 android:singleLine="true"
                 android:text="分享"
@@ -276,7 +279,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_button_bg"
-                android:drawableTop="@drawable/btn_foot_wigame"
+                android:drawableTop="@drawable/selector_comment"
                 android:paddingTop="4dp"
                 android:singleLine="true"
                 android:text="评论"
@@ -290,7 +293,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_button_bg"
-                android:drawableTop="@drawable/select_btn_more"
+                android:drawableTop="@drawable/selector_fav"
                 android:paddingTop="4dp"
                 android:singleLine="true"
                 android:text="收藏"

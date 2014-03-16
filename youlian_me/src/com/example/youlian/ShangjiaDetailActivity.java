@@ -94,6 +94,11 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 	private int indicatorPositon;
 	private TextView youhuiquan_huiyuanka;
 	private TextView psersonal_xiaofei;
+	private ImageView iv_star_one;
+	private ImageView iv_star_two;
+	private ImageView iv_star_three;
+	private ImageView iv_star_four;
+	private ImageView iv_star_five;
 	
 	private void initViews() {
 		back = (ImageButton) this.findViewById(R.id.back); 
@@ -138,10 +143,28 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 		rel_shop_desc = (RelativeLayout) this.findViewById(R.id.rel_shop_desc);
 		rel_shop_desc.setOnClickListener(this);
 		tv_shop_desc = (TextView) this.findViewById(R.id.tv_shop_desc);
+		
+		iv_star_one = (ImageView) this
+				.findViewById(R.id.iv_star_one);
+		iv_star_two = (ImageView) this
+				.findViewById(R.id.iv_star_two);
+		iv_star_three = (ImageView) this
+				.findViewById(R.id.iv_star_three);
+		iv_star_four = (ImageView) this
+				.findViewById(R.id.iv_star_four);
+		iv_star_five = (ImageView) this
+				.findViewById(R.id.iv_star_five);
+		ivs.add(iv_star_one);
+		ivs.add(iv_star_two);
+		ivs.add(iv_star_three);
+		ivs.add(iv_star_four);
+		ivs.add(iv_star_five);
+		
+		
 		initShareViews();
 	}
 	
-	
+	public List<ImageView> ivs = new ArrayList<ImageView>();
 	private boolean isFav = false;
 	private Button mPieButton;
 	private Button mTierButton;
@@ -183,10 +206,22 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 		tv_use_desc.setText(getString(R.string.liulan_count, card.browseCount));// 浏览次数
 		tv_member_fuli.setText(getString(R.string.fav_count, card.favoritesCount));// 收藏人数
 		
-
-		tv_mendian_info.setText("门店信息（" + card.shops.size() + ")");
+		int size = card.shops.size();
+		tv_mendian_info.setText("门店信息（" +  size + ")");
+		
 		tv_user_comment.setText("用户点评(" + card.comments + ")");
 		tv_shop_desc.setText(card.brief);
+		
+		int count = Integer.parseInt(card.comments);
+		for(int i=0; i<5; i++){
+			ImageView iv = ivs.get(i);
+			if(i<count){
+				iv.setImageResource(R.drawable.star_red_card);
+			}else{
+				iv.setImageResource(R.drawable.star_huise_card);
+			}
+		}
+		
 	}
 
 	
@@ -212,9 +247,9 @@ public class ShangjiaDetailActivity extends Activity implements OnClickListener 
 			break;
 		case R.id.rel_shop_desc:// 
 			intent = new Intent(getApplicationContext(), SellerActivity.class);
-			intent.putExtra("title", card);
+			intent.putExtra("title", card.name);
 			intent.putExtra("url", card.logo);
-			intent.putExtra("desc", card.brief);
+			intent.putExtra("desc", card.introduce);
 			startActivity(intent);
 			break;
 			

@@ -4,7 +4,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="hotbuy_size">80dp</dimen>
-    <dimen name="hotbuy_margin_top">20dp</dimen>
+    <dimen name="hotbuy_margin_top">10dp</dimen>
     <dimen name="youhuiquan_width">300dp</dimen>
     <dimen name="youhuiquan_detail_margin_top">10dp</dimen>
     <dimen name="add_commit_start_left">10dp</dimen>
@@ -44,8 +44,7 @@
     <dimen name="shop_width">300dp</dimen>
     
     
-     <dimen name="yizhifu_width">70dp</dimen>
-      <dimen name="yizhifu_height">30dp</dimen>
-     
+    <dimen name="yizhifu_width">40dp</dimen>
+      <dimen name="yizhifu_height">15dp</dimen>
     
 </resources>

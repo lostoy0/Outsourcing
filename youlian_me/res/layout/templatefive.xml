@@ -21,7 +21,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="超级吃货" 
-             android:textColor="@color/black"
             	android:textSize="@dimen/item_title_text_size"
             android:id="@+id/tv_title"
             />
@@ -40,16 +39,20 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="@dimen/template_six_width"
-            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:scaleType="fitXY"
             android:layout_weight="1"
             android:id="@+id/iv_first"
+            android:src="@drawable/icon_huodong"
             />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="@dimen/template_six_width"
-            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:orientation="vertical" >
 
@@ -59,12 +62,13 @@
                 android:scaleType="fitXY"
                  android:layout_weight="1"
                 android:id="@+id/iv_second"
+                 android:src="@drawable/icon_huodong"
                 />
 
             <ImageView
                android:layout_width="fill_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="5dp"
                  android:layout_weight="1"
                 android:scaleType="fitXY"
                 android:id="@+id/iv_third"
@@ -74,29 +78,36 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        >
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="@dimen/template_six_small_height"
-            android:layout_margin="5dp"
             android:layout_weight="1"
             android:id="@+id/iv_fourth"
+            android:scaleType="fitXY"
+             android:src="@drawable/icon_huodong"
             />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="@dimen/template_six_small_height"
-            android:layout_margin="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
+            android:scaleType="fitXY"
             android:id="@+id/iv_five"
             />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="@dimen/template_six_small_height"
-            android:layout_margin="5dp"
+             android:layout_marginLeft="5dp"
             android:layout_weight="1"
+            android:scaleType="fitXY"
             android:id="@+id/iv_six"
             />
     </LinearLayout>

@@ -74,11 +74,16 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_youhuiquan);
-
+		type_from = getIntent().getIntExtra("type", 0);
 		initViews();
 
 		SimpleProgressDialog.show(this);
-		YouLianHttpApi.getYouhuiQuan(Global.getLocCityId(getApplicationContext()), Global.getUserToken(getApplicationContext()), null, createMyReqSuccessListener(),createMyReqErrorListener());
+		if(type_from == 0){
+			YouLianHttpApi.getYouhuiQuan(Global.getLocCityId(getApplicationContext()), Global.getUserToken(getApplicationContext()), null, createMyReqSuccessListener(),createMyReqErrorListener());
+		}else{
+			YouLianHttpApi.getYouhuiQuan(Global.getLocCityId(getApplicationContext()), Global.getUserToken(getApplicationContext()), "1", createMyReqSuccessListener(),createMyReqErrorListener());
+		}
+		
 	
 		YouLianHttpApi.getAreaByProvinceIdCid(null, Global.getLocCityId(getApplicationContext()), null, creategetAreaByProvinceIdCidSuccessListener(), createGetAreaErrorListener());
 	}
@@ -99,7 +104,7 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 		back.setOnClickListener(this);
 		
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
-		type_from = getIntent().getIntExtra("type", 0);
+		
 		if(type_from == 0){
 			tv_title.setText(R.string.youhuiquan);
 		}else if(type_from == 1){
@@ -508,13 +513,8 @@ public class YouhuiQuanActivity extends Activity implements OnClickListener {
 							for(int i=0; i<len; i++){
 								JSONObject oo = array.getJSONObject(i);
 								YouhuiQuan y = YouhuiQuan.parse(oo);
-								if(type_from == 0){//优惠券
-									youhuiQuans.add(y);
-								}else {
-//									if("1".equals(y.isBuy)){
-										youhuiQuans.add(y);
-//									}
-								}
+								
+								youhuiQuans.add(y);
 							}
 							handleYouhuiQuans.addAll(youhuiQuans);
 							

@@ -63,8 +63,10 @@
             <TextView
                 android:id="@+id/tv_desc"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:background="#ffffff"
+                android:textSize="20sp"
+                android:text="ddddddddd"
                 android:gravity="center"
                 android:padding="10dp"
                  />
@@ -74,6 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/act_detail_marge_left"
+                android:layout_marginTop="10dp"
                 />
 
             <TextView
@@ -95,9 +98,10 @@
                 android:id="@+id/tv_eat_standard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:layout_marginLeft="@dimen/act_detail_marge_left"
                 />
-
+<!-- 
             <TextView
                 android:id="@+id/tv_eat_time"
                 android:layout_width="wrap_content"
@@ -126,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/act_detail_marge_left"
                 android:layout_marginTop="20dp"
-                />
+                /> -->
         </LinearLayout>
     </ScrollView>
 
@@ -136,7 +140,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@drawable/select_foot_bg"
+            android:background="@color/bg_share_btn"
             android:orientation="horizontal" >
 
             <Button
@@ -145,7 +149,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_button_bg"
-                android:drawableTop="@drawable/select_btn_pie"
+                android:drawableTop="@drawable/select_btn_tier"
                 android:paddingTop="4dp"
                 android:singleLine="true"
                 android:text="签到"
@@ -159,7 +163,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_button_bg"
-                android:drawableTop="@drawable/select_btn_tier"
+                android:drawableTop="@drawable/selector_share"
                 android:paddingTop="4dp"
                 android:singleLine="true"
                 android:text="分享"
@@ -173,7 +177,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_button_bg"
-                android:drawableTop="@drawable/btn_foot_wigame"
+                android:drawableTop="@drawable/selector_comment"
                 android:paddingTop="4dp"
                 android:singleLine="true"
                 android:text="评论"
@@ -187,7 +191,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_button_bg"
-                android:drawableTop="@drawable/select_btn_more"
+                android:drawableTop="@drawable/selector_fav"
                 android:paddingTop="4dp"
                 android:singleLine="true"
                 android:text="收藏"

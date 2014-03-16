@@ -176,16 +176,60 @@
                 android:layout_marginTop="@dimen/youhuiquan_detail_margin_top"
                 android:background="@drawable/rounded_one"
                 android:padding="10dp" >
-
+				
+                <LinearLayout 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linear_user_comment"
+                    android:gravity="center_vertical"
+                    >	
                 <TextView
                     android:id="@+id/tv_user_comment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+                
+                 <LinearLayout
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content" 
+		            android:layout_marginLeft="5dp"
+		            >
+		            <ImageView
+		                android:id="@+id/iv_star_one"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:src="@drawable/star_red" />
+		
+		            <ImageView
+		                android:id="@+id/iv_star_two"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:src="@drawable/star_red" />
+		
+		            <ImageView
+		                android:id="@+id/iv_star_three"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:src="@drawable/star_red" />
+		
+		            <ImageView
+		                android:id="@+id/iv_star_four"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:src="@drawable/star_red" />
+		
+		            <ImageView
+		                android:id="@+id/iv_star_five"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:src="@drawable/star_red" />
+		
+		        </LinearLayout>
+		        </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_user_comment"
+                    android:layout_below="@id/linear_user_comment"
                     android:text="看看他们都说了什么，亲，你也可以去点评!" />
 
                 <ImageView
@@ -229,13 +273,13 @@
     </ScrollView>
 
     
-     <!-- 底部 工具栏 -->
+      <!-- 底部 工具栏 -->
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@drawable/select_foot_bg"
+            android:background="@color/bg_share_btn"
             android:orientation="horizontal" >
 
             <Button
@@ -244,7 +288,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_button_bg"
-                android:drawableTop="@drawable/select_btn_pie"
+                android:drawableTop="@drawable/select_btn_tier"
                 android:paddingTop="4dp"
                 android:singleLine="true"
                 android:text="签到"
@@ -258,7 +302,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_button_bg"
-                android:drawableTop="@drawable/select_btn_tier"
+                android:drawableTop="@drawable/selector_share"
                 android:paddingTop="4dp"
                 android:singleLine="true"
                 android:text="分享"
@@ -272,7 +316,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_button_bg"
-                android:drawableTop="@drawable/btn_foot_wigame"
+                android:drawableTop="@drawable/selector_comment"
                 android:paddingTop="4dp"
                 android:singleLine="true"
                 android:text="评论"
@@ -286,7 +330,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_button_bg"
-                android:drawableTop="@drawable/select_btn_more"
+                android:drawableTop="@drawable/selector_fav"
                 android:paddingTop="4dp"
                 android:singleLine="true"
                 android:text="收藏"

@@ -194,6 +194,7 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 				Intent intent = new Intent(this, LoginActivity.class);
 				startActivity(intent);
 			} else {
+				
 				YouLianHttpApi.applyCard(Global.getUserToken(getApplicationContext())
 							, card.card_id, createApplyCardSuccessListener(), createMyReqErrorListener());
 			}
@@ -216,9 +217,9 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 			break;
 		case R.id.rel_shop_desc:// 
 			intent = new Intent(getApplicationContext(), SellerActivity.class);
-			intent.putExtra("title", card);
+			intent.putExtra("title", card.customerName);
 			intent.putExtra("url", card.nonactivatedPic);
-			intent.putExtra("desc", card.customer_brief);
+			intent.putExtra("desc", card.customer_introduce);
 			startActivity(intent);
 			break;
 			

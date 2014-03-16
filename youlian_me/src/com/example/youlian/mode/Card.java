@@ -52,6 +52,7 @@ public class Card implements Serializable{
 	public String customer_id;
 	public String customer_brief;
 	public String customer_introduce;
+	public String customerName;
 	
 	/**申请方式	1-商家自发 2-商家自发+自主申请 3-自主申请 只有2，3方式的才能进行会员卡的编辑与修改*/
 	public String applyWay;
@@ -132,6 +133,8 @@ public class Card implements Serializable{
 		ad.customer_id = jsonObj.optString("customer_id");
 		ad.customer_brief = jsonObj.optString("customer_brief");
 		ad.customer_introduce = jsonObj.optString("customer_introduce");
+		
+		ad.customerName = jsonObj.optString("customerName");
 		
 		return ad;
 	}

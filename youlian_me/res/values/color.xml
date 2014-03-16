@@ -86,5 +86,7 @@
     
     <color name="my_red">#FF8247</color>
      <color name="my_red_sow">#FFD39B</color>
+     <color name="bg_share_btn">#424242</color>
+     
     
 </resources>

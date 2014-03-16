@@ -109,6 +109,7 @@ public class AllSellerActivity extends Activity implements OnClickListener {
         		left.setTag(i);
         		left.setOnClickListener(onClickListener);
         		container_left.addView(left);
+        		
     		}else{
     			ActRight right = new ActRight(getApplicationContext());
     			right.setData(acts.get(i));
