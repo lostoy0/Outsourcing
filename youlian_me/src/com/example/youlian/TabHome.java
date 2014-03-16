@@ -23,7 +23,7 @@ import com.example.youlian.common.Constants;
 @SuppressWarnings("deprecation")
 public class TabHome extends TabActivity implements OnClickListener,
 		OnTabChangeListener {
-
+	
 	// tab id
 	private static final String TAB_PIE = "pie";
 	private static final String TAB_TIER = "tier";
@@ -63,9 +63,14 @@ public class TabHome extends TabActivity implements OnClickListener,
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		Log.i(TAG, "TabHome:" + this);
-		Intent intent = getIntent();
-		if(intent != null){
-			defaultPosition = intent.getIntExtra("postion", 0);
+		
+		if(savedInstanceState != null) {
+			defaultPosition = savedInstanceState.getInt("pos");
+		} else {
+			Intent intent = getIntent();
+			if(intent != null){
+				defaultPosition = intent.getIntExtra("postion", 0);
+			}
 		}
 		
 		registerBroadcast();
@@ -79,7 +84,13 @@ public class TabHome extends TabActivity implements OnClickListener,
 		initViews();
 
 	}
-
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt("pos", defaultPosition);
+	}
+	
 	private void registerBroadcast() {
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(Constants.ACTION_SIGN_FROM_PERSONALCENTER);
@@ -249,6 +260,7 @@ public class TabHome extends TabActivity implements OnClickListener,
 		ta.setDuration(300);
 		mFooterLight.startAnimation(ta);
 		mFooterLeft = toLeft;
+		defaultPosition = index-1;
 	}
 	
 	

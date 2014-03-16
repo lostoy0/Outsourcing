@@ -262,7 +262,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements
 				File uploadFile = new File(
 						MyVolley.getCacheDir(getApplicationContext()), "pic_"
 								+ String.valueOf(System.currentTimeMillis())
-								+ ".jpg");
+								+ ".png");
 				mCaptureUri = Uri.fromFile(uploadFile);
 				upLoadFilePath = uploadFile.getPath();
 				Log.i(TAG, "upLoadFilePath:" + upLoadFilePath);

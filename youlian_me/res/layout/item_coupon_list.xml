@@ -16,8 +16,9 @@
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/coupon_item_iv_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/item_image_width"
+        android:layout_height="@dimen/item_image_height"
+        android:scaleType="fitXY"
         android:src="@drawable/default_img" />
 
     <LinearLayout
@@ -42,7 +43,7 @@
             android:id="@+id/coupon_item_tv_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/item_line_spacing"
             android:ellipsize="end"
             android:singleLine="true"
             android:text="￥98元"
@@ -53,7 +54,7 @@
             android:id="@+id/coupon_item_tv_validdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/item_line_spacing"
             android:ellipsize="end"
             android:singleLine="true"
             android:text="有效期：至2014-12-20"

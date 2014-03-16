@@ -16,8 +16,9 @@
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/card_item_iv_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/item_image_width"
+        android:layout_height="@dimen/item_image_height"
+        android:scaleType="fitXY"
         android:src="@drawable/default_img" />
 
     <LinearLayout
@@ -41,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/item_line_spacing"
             android:orientation="horizontal" >
 
             <RatingBar
@@ -56,15 +57,15 @@
 
             <ImageView
                 android:id="@+id/iv_online_pay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_img_onlinepay_width"
+                android:layout_height="@dimen/item_img_onlinepay_height"
                 android:layout_marginLeft="8dp"
                 android:src="@drawable/online_pay_small" />
 
             <ImageView
                 android:id="@+id/iv_yi_pay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_img_onlinepay_width"
+                android:layout_height="@dimen/item_img_onlinepay_height"
                 android:layout_marginLeft="8dp"
                 android:src="@drawable/yi_chong" />
         </LinearLayout>
@@ -72,7 +73,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/item_line_spacing"
             android:orientation="horizontal" >
 
             <TextView
