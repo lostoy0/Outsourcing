@@ -60,10 +60,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		mLoginIdEditText = (EditText) findViewById(R.id.login_id);
 		mPasswordEditText = (EditText) findViewById(R.id.password);
 
-		if (PreferencesUtils.getBooleanByKey(this,
-				Configure.SESSION_USER_IS_REMPSD)) {
-			mAutoLoginButton.setImageResource(R.drawable.remember_psd_b);
-		}
+		mAutoLoginButton.setImageResource(R.drawable.remember_psd_b);
+		PreferencesUtils.addConfigInfo(this,
+				Configure.SESSION_USER_IS_REMPSD, true);
 	}
 
 	/**
