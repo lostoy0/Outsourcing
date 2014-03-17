@@ -207,12 +207,31 @@ public class YouLianHttpApi {
 		queue.add(myReq);
 	}
 	
-	
-	public static void applyCard(String userToken, String card_id,
+	/**
+	 * 申请会员卡
+	 * @param userToken	用户token	Y
+	 * @param card_id	会员卡ID	  Y
+	 * @param email	电子email	N
+	 * @param qq	腾讯QQ	N
+	 * @param idcard	身份证	N
+	 * @param birthday	生日	N
+	 * @param member_name	会员名	N
+	 * @param member_sex	性别（1：男 0：女）	N
+	 * @param phone	手机号码	N
+	 * @param is_allow_push	是否允许推送（1：允许 0：不允许）	N
+	 * @param client_type	客户端类型（iphone/android）	Y
+	 * @param successListener
+	 * @param errorListener
+	 */
+	public static void applyCard(String userToken, String card_id, String email, String qq, String idcard, String birthday,
+			String member_name, String member_sex, String phone, String is_allow_push,
 			Response.Listener<String> successListener,
 			Response.ErrorListener errorListener) {
 		String server = "younion.card.apply";
-		String url = getUrl("user_token", userToken, "card_id", card_id,
+		String url = getUrl("user_token", userToken, "card_id", card_id, "email", email,
+				"qq", qq, "idcard", idcard, "birthday", birthday, 
+				"member_name", member_name, "member_sex", member_sex, "phone", phone,
+				"is_allow_push", is_allow_push,
 				KEY_SERVER, server, KEY_CLIENT_TYPE, "android");
 		Log.i(TAG, "url:" + url);
 		RequestQueue queue = MyVolley.getRequestQueue();

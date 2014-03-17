@@ -23,7 +23,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.example.youlian.app.MyVolley;
 import com.example.youlian.mode.Card;
-import com.example.youlian.mode.YouhuiQuan;
 import com.example.youlian.util.PreferencesUtils;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.RequestType;
@@ -33,6 +32,9 @@ import com.umeng.socialize.media.UMImage;
 
 public class MemberShipDetail extends Activity implements OnClickListener {
 	protected static final String TAG = "MembershipActivity";
+	
+	private static final int req_apply_card = 0x1000;
+	
 	private ImageButton back;
 	private TextView tv_title;
 	private Card card;
@@ -195,8 +197,17 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 				startActivity(intent);
 			} else {
 				
-				YouLianHttpApi.applyCard(Global.getUserToken(getApplicationContext())
-							, card.card_id, createApplyCardSuccessListener(), createMyReqErrorListener());
+				/*YouLianHttpApi.applyCard(Global.getUserToken(getApplicationContext())
+							, card.card_id, createApplyCardSuccessListener(), createMyReqErrorListener());*/
+				
+//				if(isApplySue){
+//					getError("您已经申领过该会员卡");
+//				}else{
+					Intent mApplyCardActivity = new Intent(this,
+							ApplyCardActivity.class);
+					mApplyCardActivity.putExtra("card", card);
+					startActivityForResult(mApplyCardActivity, req_apply_card);
+//				}
 			}
 			break;
 			
@@ -387,5 +398,16 @@ public class MemberShipDetail extends Activity implements OnClickListener {
 						Toast.LENGTH_SHORT).show();
 			}
 		};
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		if(requestCode == req_apply_card && resultCode == RESULT_OK) {
+			bt_chongzhi.setEnabled(false);
+			bt_chongzhi.setClickable(false);
+			bt_chongzhi.setText(R.string.already_apply);
+		}
 	}
 }
