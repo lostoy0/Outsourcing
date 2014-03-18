@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -192,6 +193,14 @@ public class TabHome extends TabActivity implements OnClickListener,
 	}
 
 	public void onClick(View v) {
+		
+		if(TextUtils.isEmpty(Global.getUserToken(this)) 
+				&& (v.getId() == R.id.btn_pic || v.getId() == R.id.btn_wigame)) {
+			Intent intent = new Intent(this, LoginActivity.class);
+			startActivityForResult(intent, v.getId());
+			return;
+		}
+		
 		// 1.5 Compatible
 		// if target is 1.6, can use new setIndicator method
 		switch (v.getId()) {
@@ -270,5 +279,23 @@ public class TabHome extends TabActivity implements OnClickListener,
 		
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		if(resultCode == RESULT_OK) {
+			switch (requestCode) {
+			case R.id.btn_pic:
+				getTabHost().setCurrentTabByTag(TAB_PIC);
+				break;
+			case R.id.btn_wigame:
+				getTabHost().setCurrentTabByTag(TAB_SEARCH);
+				break;
+			}
+			
+			setSelect(requestCode);
+		}
+
+	}
 	
 }

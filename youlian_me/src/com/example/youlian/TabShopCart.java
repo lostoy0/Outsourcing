@@ -83,7 +83,8 @@ public class TabShopCart extends BaseActivity implements OnClickListener {
 	private void initViews() {
 		mContentView = findViewById(R.id.contentView);
 		mEmptyView = findViewById(R.id.emptyView);
-		mEmptyView.setVisibility(View.GONE);
+		mEmptyView.setVisibility(View.VISIBLE);
+		mContentView.setVisibility(View.GONE);
 		
 		mShopNameTextView = (TextView) findViewById(R.id.cart_tv_goodsname);
 		mShopNameTextView.setText("");

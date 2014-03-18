@@ -130,7 +130,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		return new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
-				SimpleProgressDialog.dismiss();
 				if(TextUtils.isEmpty(response)) {
 					mLogger.i("response is null");
 				} else {
@@ -159,7 +158,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 				LoginResult result = LoginResult.from(jsonObject.optJSONObject(Constants.key_result));
 				if(result != null) {//登录成功，保存登录信息
 					PreferencesUtils.saveSessionUser(LoginActivity.this, result);
-					SimpleProgressDialog.show(LoginActivity.this);
 					YouLianHttpApi.bindDeviceId(Global.getUserToken(getApplicationContext()), 
 							getDeviceId(), createSuccessListener(), createErrorListener());
 				}
