@@ -53,6 +53,7 @@ public class CoinRechargeActivity extends BaseActivity {
 		});
 		
 		mRechargeUcoinCountEditText = (EditText) findViewById(R.id.et_ucoin_count);
+		mRechargeUcoinCountEditText.requestFocus();
 		mRechargeUcoinCountEditText.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {

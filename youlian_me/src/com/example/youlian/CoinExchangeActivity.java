@@ -75,8 +75,8 @@ public class CoinExchangeActivity extends BaseActivity {
 		mExchangeRuleTextView = (TextView) findViewById(R.id.tv_exchange_rule);
 		
 		mUdotCountTextView.setText("您目前拥有U点：" + mUdotCount + "点");
-		mExchangeUcoinCountEditText.setText("0");
-		mExchangeUcoinCountEditText.setSelection(1);
+		mExchangeUcoinCountEditText.setText("");
+		mExchangeUcoinCountEditText.requestFocus();
 		mCostUdotTextView.setText("0U点");
 		
 		findViewById(R.id.btn_exchange).setOnClickListener(new OnClickListener() {

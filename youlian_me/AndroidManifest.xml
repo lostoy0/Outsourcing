@@ -104,8 +104,10 @@
         <activity android:name=".AreaProvinceActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
         <activity android:name=".AreaCityActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
         <activity android:name=".AreaDistrictActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
-        <activity android:name=".CoinExchangeActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
-        <activity android:name=".CoinRechargeActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
+        <activity android:name=".CoinExchangeActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
+        <activity android:name=".CoinRechargeActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
         <activity android:name=".CardListActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
         <activity android:name=".CardActivity" android:screenOrientation="landscape" android:theme="@android:style/Theme.Black.NoTitleBar"></activity>
         <activity android:name=".CouponListActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
