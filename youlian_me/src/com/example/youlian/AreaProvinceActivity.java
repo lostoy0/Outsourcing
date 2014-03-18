@@ -101,7 +101,7 @@ public class AreaProvinceActivity extends BaseActivity implements OnItemClickLis
 							if(array != null && array.length()>0) {
 								for(int i=0; i<array.length(); i++) {
 									RegioninfoVO vo = RegioninfoVO.from(array.getJSONObject(i));
-									if(vo != null) mRegioninfoVOs.add(0, vo);
+									if(vo != null) mRegioninfoVOs.add(vo);
 								}
 								mAdapter.notifyDataSetChanged();
 							}
